@@ -92,8 +92,8 @@ private:
 #endif
 
 #if OPENSSL_VERSION_NUMBER >= 0x30000000L
-	static OSSL_PROVIDER* _defaultProvider;
-	static OSSL_PROVIDER* _legacyProvider;
+	static std::atomic<OSSL_PROVIDER*> _defaultProvider;
+	static std::atomic<OSSL_PROVIDER*> _legacyProvider;
 #endif
 };
 
