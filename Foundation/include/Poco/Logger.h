@@ -28,32 +28,6 @@
 #include <cstddef>
 #include <memory>
 
-// Define to enable C++20 source_location usage in the Poco Logger
-// NOTE: source_location must also be available to use this feature
-#if __cpp_lib_source_location >= 201907L
-#define POCO_ENABLE_SOURCE_LOCATION
-#endif
-
-// define the macros used to create source_location parameters and arguments
-#ifdef POCO_ENABLE_SOURCE_LOCATION
-#define POCO_SOURCE_LOCATION_PARAMETER , std::source_location srcLocation = std::source_location::current()
-#define POCO_SOURCE_LOCATION_ARGUMENT , srcLocation
-#else
-#define POCO_SOURCE_LOCATION_PARAMETER // no-op
-#define POCO_SOURCE_LOCATION_ARGUMENT // no-op
-#endif
-
-#ifdef POCO_ENABLE_SOURCE_LOCATION // include the source_location header if the feature is enabled
-
-#if __has_include(<source_location>)
-#include <source_location>
-#elif __has_include(<experimental/source_location>)
-#include <experimental/source_location>
-using std::source_location = std::experimental::source_location;
-#endif
-
-#endif
-
 namespace Poco {
 
 
@@ -148,11 +122,11 @@ public:
 		/// setting the target channel and log level, respectively, via the LoggingRegistry.
 		/// The "channel" and "level" properties are set-only.
 
-	void log(const Message& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void log(const Message& msg);
 		/// Logs the given message if its priority is
 		/// greater than or equal to the Logger's log level.
 
-	void log(const Exception& exc POCO_SOURCE_LOCATION_PARAMETER);
+	void log(const Exception& exc POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// Logs the given exception with priority PRIO_ERROR.
 
 	void log(const Exception& exc, const char* file, int line);
@@ -162,7 +136,7 @@ public:
 		/// the __FILE__ macro. The string is not copied
 		/// internally for performance reasons.
 
-	void fatal(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void fatal(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// If the Logger's log level is at least PRIO_FATAL,
 		/// creates a Message with priority PRIO_FATAL
 		/// and the given message text and sends it
@@ -184,7 +158,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_FATAL);
 	}
 
-	void critical(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void critical(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// If the Logger's log level is at least PRIO_CRITICAL,
 		/// creates a Message with priority PRIO_CRITICAL
 		/// and the given message text and sends it
@@ -206,7 +180,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_CRITICAL);
 	}
 
-	void error(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void error(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// If the Logger's log level is at least PRIO_ERROR,
 		/// creates a Message with priority PRIO_ERROR
 		/// and the given message text and sends it
@@ -228,7 +202,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_ERROR);
 	}
 
-	void warning(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void warning(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// If the Logger's log level is at least PRIO_WARNING,
 		/// creates a Message with priority PRIO_WARNING
 		/// and the given message text and sends it
@@ -250,7 +224,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_WARNING);
 	}
 
-	void notice(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void notice(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// If the Logger's log level is at least PRIO_NOTICE,
 		/// creates a Message with priority PRIO_NOTICE
 		/// and the given message text and sends it
@@ -272,7 +246,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_NOTICE);
 	}
 
-	void information(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void information(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// If the Logger's log level is at least PRIO_INFORMATION,
 		/// creates a Message with priority PRIO_INFORMATION
 		/// and the given message text and sends it
@@ -294,7 +268,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_INFORMATION);
 	}
 
-	void debug(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void debug(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// If the Logger's log level is at least PRIO_DEBUG,
 		/// creates a Message with priority PRIO_DEBUG
 		/// and the given message text and sends it
@@ -316,7 +290,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_DEBUG);
 	}
 
-	void trace(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
+	void trace(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 		/// If the Logger's log level is at least PRIO_TRACE,
 		/// creates a Message with priority PRIO_TRACE
 		/// and the given message text and sends it
@@ -478,7 +452,7 @@ protected:
 	Logger(const std::string& name, Channel::Ptr pChannel, int level);
 	~Logger();
 
-	void log(const std::string& text, Message::Priority prio POCO_SOURCE_LOCATION_PARAMETER);
+	void log(const std::string& text, Message::Priority prio POCO_SOURCE_LOCATION_PARAMETER_DECLARATION);
 	void log(const std::string& text, Message::Priority prio, const char* file, int line);
 	void log(const std::string& text, Message::Priority prio, const char* file, const char* function, int line);
 
@@ -849,11 +823,11 @@ inline int Logger::getLevel() const
 }
 
 
-inline void Logger::log(const std::string& text, Message::Priority prio POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::log(const std::string& text, Message::Priority prio POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
 	if (_level >= prio && _pChannel)
 	{
-		_pChannel->log(Message(_name, text, prio));
+		_pChannel->log(Message(_name, text, prio POCO_SOURCE_LOCATION_ARGUMENT));
 	}
 }
 
@@ -876,9 +850,9 @@ inline void Logger::log(const std::string& text, Message::Priority prio, const c
 }
 
 
-inline void Logger::fatal(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::fatal(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
-	log(msg, Message::PRIO_FATAL);
+	log(msg, Message::PRIO_FATAL POCO_SOURCE_LOCATION_ARGUMENT);
 }
 
 
@@ -889,9 +863,9 @@ inline void Logger::fatal(const std::string& msg, const char* file, int line)
 
 
 
-inline void Logger::critical(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::critical(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
-	log(msg, Message::PRIO_CRITICAL);
+	log(msg, Message::PRIO_CRITICAL POCO_SOURCE_LOCATION_ARGUMENT);
 }
 
 
@@ -901,9 +875,9 @@ inline void Logger::critical(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::error(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::error(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
-	log(msg, Message::PRIO_ERROR);
+	log(msg, Message::PRIO_ERROR POCO_SOURCE_LOCATION_ARGUMENT);
 }
 
 
@@ -913,9 +887,9 @@ inline void Logger::error(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::warning(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::warning(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
-	log(msg, Message::PRIO_WARNING);
+	log(msg, Message::PRIO_WARNING POCO_SOURCE_LOCATION_ARGUMENT);
 }
 
 
@@ -925,9 +899,9 @@ inline void Logger::warning(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::notice(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::notice(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
-	log(msg, Message::PRIO_NOTICE);
+	log(msg, Message::PRIO_NOTICE POCO_SOURCE_LOCATION_ARGUMENT);
 }
 
 
@@ -937,9 +911,9 @@ inline void Logger::notice(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::information(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::information(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
-	log(msg, Message::PRIO_INFORMATION);
+	log(msg, Message::PRIO_INFORMATION POCO_SOURCE_LOCATION_ARGUMENT);
 }
 
 
@@ -949,9 +923,9 @@ inline void Logger::information(const std::string& msg, const char* file, int li
 }
 
 
-inline void Logger::debug(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::debug(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
-	log(msg, Message::PRIO_DEBUG);
+	log(msg, Message::PRIO_DEBUG POCO_SOURCE_LOCATION_ARGUMENT);
 }
 
 
@@ -961,9 +935,9 @@ inline void Logger::debug(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::trace(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
+inline void Logger::trace(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER_DEFINITION)
 {
-	log(msg, Message::PRIO_TRACE);
+	log(msg, Message::PRIO_TRACE POCO_SOURCE_LOCATION_ARGUMENT);
 }
 
 

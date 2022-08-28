@@ -45,6 +45,9 @@ Message::Message(const std::string& source, const std::string& text, Priority pr
 	_tid(0),
 	_ostid(0),
 	_pid(0),
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	_srcLocation(),
+#endif
 	_file(0),
 	_function(0),
 	_line(0),
@@ -54,6 +57,27 @@ Message::Message(const std::string& source, const std::string& text, Priority pr
 }
 
 
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+
+Message::Message(const std::string& source, const std::string& text, Priority prio, std::source_location srcLocation) :
+	_source(source),
+	_text(text),
+	_prio(prio),
+	_tid(0),
+	_ostid(0),
+	_pid(0),
+	_srcLocation(srcLocation),
+	_file(0),
+	_function(0),
+	_line(0),
+	_pMap(0)
+{
+	init();
+}
+
+#endif
+
+
 Message::Message(const std::string& source, const std::string& text, Priority prio, const char* file, int line):
 	_source(source),
 	_text(text),
@@ -61,6 +85,9 @@ Message::Message(const std::string& source, const std::string& text, Priority pr
 	_tid(0),
 	_ostid(0),
 	_pid(0),
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	_srcLocation(),
+#endif
 	_file(file),
 	_function(0),
 	_line(line),
@@ -77,6 +104,9 @@ Message::Message(const std::string& source, const std::string& text, Priority pr
 	_tid(0),
 	_ostid(0),
 	_pid(0),
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	_srcLocation(),
+#endif
 	_file(file),
 	_function(function),
 	_line(line),
@@ -95,6 +125,9 @@ Message::Message(const Message& msg):
 	_ostid(msg._ostid),
 	_thread(msg._thread),
 	_pid(msg._pid),
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	_srcLocation(msg._srcLocation),
+#endif
 	_file(msg._file),
 	_function(msg._function),
 	_line(msg._line)
@@ -115,6 +148,9 @@ Message::Message(Message&& msg) noexcept:
 	_ostid(std::move(msg._ostid)),
 	_thread(std::move(msg._thread)),
 	_pid(std::move(msg._pid)),
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	_srcLocation(std::move(msg._srcLocation)),
+#endif
 	_file(std::move(msg._file)),
 	_function(std::move(msg._function)),
 	_line(std::move(msg._line))
@@ -133,6 +169,9 @@ Message::Message(const Message& msg, const std::string& text):
 	_ostid(msg._ostid),
 	_thread(msg._thread),
 	_pid(msg._pid),
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	_srcLocation(msg._srcLocation),
+#endif
 	_file(msg._file),
 	_function(msg._function),
 	_line(msg._line)
@@ -186,6 +225,9 @@ Message& Message::operator = (Message&& msg) noexcept
 	_ostid = std::move(msg._ostid);
 	_thread = std::move(msg._thread);
 	_pid = std::move(msg._pid);
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	_srcLocation = std::move(msg._srcLocation);
+#endif
 	_file = std::move(msg._file);
 	_function = std::move(msg._function);
 	_line = std::move(msg._line);
@@ -207,6 +249,9 @@ void Message::swap(Message& msg)
 	swap(_ostid, msg._ostid);
 	swap(_thread, msg._thread);
 	swap(_pid, msg._pid);
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	swap(_srcLocation, msg._srcLocation);
+#endif
 	swap(_file, msg._file);
 	swap(_function, msg._function);
 	swap(_line, msg._line);

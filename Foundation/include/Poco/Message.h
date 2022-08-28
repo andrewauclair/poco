@@ -22,6 +22,31 @@
 #include "Poco/Timestamp.h"
 #include <map>
 
+// Define to enable C++20 source_location usage in the Poco Logger
+// NOTE: source_location must also be available to use this feature
+#if __cpp_lib_source_location >= 201907L
+#define POCO_ENABLE_SOURCE_LOCATION
+#endif
+
+// define the macros used to create source_location parameters and arguments
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+#define POCO_SOURCE_LOCATION_PARAMETER_DECLARATION , std::source_location srcLocation = std::source_location::current()
+#define POCO_SOURCE_LOCATION_PARAMETER_DEFINITION , std::source_location srcLocation
+#define POCO_SOURCE_LOCATION_ARGUMENT , srcLocation
+
+// include the source_location header if the feature is enabled
+#if __has_include(<source_location>)
+#include <source_location>
+#elif __has_include(<experimental/source_location>)
+#include <experimental/source_location>
+using std::source_location = std::experimental::source_location;
+#endif
+
+#else
+#define POCO_SOURCE_LOCATION_PARAMETER_DECLARATION // no-op
+#define POCO_SOURCE_LOCATION_PARAMETER_DEFINITION // no-op
+#define POCO_SOURCE_LOCATION_ARGUMENT // no-op
+#endif
 
 namespace Poco {
 
@@ -64,7 +89,12 @@ public:
 	Message(const std::string& source, const std::string& text, Priority prio);
 		/// Creates a Message with the given source, text and priority.
 		/// The thread and process ids are set.
-
+		
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	Message(const std::string& source, const std::string& text, Priority prio, std::source_location srcLocation);
+		/// Creates a Message with the given source, text, priority and source location.
+		/// The thread and process ids are set.
+#endif
 	Message(const std::string& source, const std::string& text, Priority prio, const char* file, int line);
 		/// Creates a Message with the given source, text, priority,
 		/// source file path and line.
@@ -234,6 +264,11 @@ private:
 	long        _ostid;
 	std::string _thread;
 	long        _pid;
+
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+	std::source_location _srcLocation;
+#endif
+
 	const char* _file;
 	const char* _function;
 	int         _line;
