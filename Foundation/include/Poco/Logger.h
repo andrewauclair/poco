@@ -28,6 +28,31 @@
 #include <cstddef>
 #include <memory>
 
+// Define to enable C++20 source_location usage in the Poco Logger
+// NOTE: source_location must also be available to use this feature
+#if __cpp_lib_source_location >= 201907L
+#define POCO_ENABLE_SOURCE_LOCATION
+#endif
+
+// define the macros used to create source_location parameters and arguments
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+#define POCO_SOURCE_LOCATION_PARAMETER , std::source_location srcLocation = std::source_location::current()
+#define POCO_SOURCE_LOCATION_ARGUMENT , srcLocation
+#else
+#define POCO_SOURCE_LOCATION_PARAMETER // no-op
+#define POCO_SOURCE_LOCATION_ARGUMENT // no-op
+#endif
+
+#ifdef POCO_ENABLE_SOURCE_LOCATION // include the source_location header if the feature is enabled
+
+#if __has_include(<source_location>)
+#include <source_location>
+#elif __has_include(<experimental/source_location>)
+#include <experimental/source_location>
+using std::source_location = std::experimental::source_location;
+#endif
+
+#endif
 
 namespace Poco {
 
@@ -123,11 +148,11 @@ public:
 		/// setting the target channel and log level, respectively, via the LoggingRegistry.
 		/// The "channel" and "level" properties are set-only.
 
-	void log(const Message& msg);
+	void log(const Message& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// Logs the given message if its priority is
 		/// greater than or equal to the Logger's log level.
 
-	void log(const Exception& exc);
+	void log(const Exception& exc POCO_SOURCE_LOCATION_PARAMETER);
 		/// Logs the given exception with priority PRIO_ERROR.
 
 	void log(const Exception& exc, const char* file, int line);
@@ -137,7 +162,7 @@ public:
 		/// the __FILE__ macro. The string is not copied
 		/// internally for performance reasons.
 
-	void fatal(const std::string& msg);
+	void fatal(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// If the Logger's log level is at least PRIO_FATAL,
 		/// creates a Message with priority PRIO_FATAL
 		/// and the given message text and sends it
@@ -159,7 +184,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_FATAL);
 	}
 
-	void critical(const std::string& msg);
+	void critical(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// If the Logger's log level is at least PRIO_CRITICAL,
 		/// creates a Message with priority PRIO_CRITICAL
 		/// and the given message text and sends it
@@ -181,7 +206,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_CRITICAL);
 	}
 
-	void error(const std::string& msg);
+	void error(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// If the Logger's log level is at least PRIO_ERROR,
 		/// creates a Message with priority PRIO_ERROR
 		/// and the given message text and sends it
@@ -203,7 +228,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_ERROR);
 	}
 
-	void warning(const std::string& msg);
+	void warning(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// If the Logger's log level is at least PRIO_WARNING,
 		/// creates a Message with priority PRIO_WARNING
 		/// and the given message text and sends it
@@ -225,7 +250,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_WARNING);
 	}
 
-	void notice(const std::string& msg);
+	void notice(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// If the Logger's log level is at least PRIO_NOTICE,
 		/// creates a Message with priority PRIO_NOTICE
 		/// and the given message text and sends it
@@ -247,7 +272,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_NOTICE);
 	}
 
-	void information(const std::string& msg);
+	void information(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// If the Logger's log level is at least PRIO_INFORMATION,
 		/// creates a Message with priority PRIO_INFORMATION
 		/// and the given message text and sends it
@@ -269,7 +294,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_INFORMATION);
 	}
 
-	void debug(const std::string& msg);
+	void debug(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// If the Logger's log level is at least PRIO_DEBUG,
 		/// creates a Message with priority PRIO_DEBUG
 		/// and the given message text and sends it
@@ -291,7 +316,7 @@ public:
 		log(Poco::format(fmt, arg1, std::forward<Args>(args)...), Message::PRIO_DEBUG);
 	}
 
-	void trace(const std::string& msg);
+	void trace(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER);
 		/// If the Logger's log level is at least PRIO_TRACE,
 		/// creates a Message with priority PRIO_TRACE
 		/// and the given message text and sends it
@@ -453,8 +478,9 @@ protected:
 	Logger(const std::string& name, Channel::Ptr pChannel, int level);
 	~Logger();
 
-	void log(const std::string& text, Message::Priority prio);
+	void log(const std::string& text, Message::Priority prio POCO_SOURCE_LOCATION_PARAMETER);
 	void log(const std::string& text, Message::Priority prio, const char* file, int line);
+	void log(const std::string& text, Message::Priority prio, const char* file, const char* function, int line);
 
 	static std::string format(const std::string& fmt, int argc, std::string argv[]);
 	static Logger& parent(const std::string& name);
@@ -481,6 +507,172 @@ private:
 //
 // convenience macros
 //
+#ifdef POCO_ENABLE_SOURCE_LOCATION
+
+#define poco_fatal(logger, msg) \
+	if ((logger).fatal()) (logger).fatal(msg POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_fatal_f1(logger, fmt, arg1) \
+	if ((logger).fatal()) (logger).fatal(Poco::format((fmt), arg1) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_fatal_f2(logger, fmt, arg1, arg2) \
+	if ((logger).fatal()) (logger).fatal(Poco::format((fmt), (arg1), (arg2)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_fatal_f3(logger, fmt, arg1, arg2, arg3) \
+	if ((logger).fatal()) (logger).fatal(Poco::format((fmt), (arg1), (arg2), (arg3)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_fatal_f4(logger, fmt, arg1, arg2, arg3, arg4) \
+	if ((logger).fatal()) (logger).fatal(Poco::format((fmt), (arg1), (arg2), (arg3), (arg4)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_fatal_f(logger, fmt, ...) \
+	if ((logger).fatal()) (logger).fatal(Poco::format((fmt), __VA_ARGS__) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_critical(logger, msg) \
+	if ((logger).critical()) (logger).critical(msg POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_critical_f1(logger, fmt, arg1) \
+	if ((logger).critical()) (logger).critical(Poco::format((fmt), (arg1)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_critical_f2(logger, fmt, arg1, arg2) \
+	if ((logger).critical()) (logger).critical(Poco::format((fmt), (arg1), (arg2)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_critical_f3(logger, fmt, arg1, arg2, arg3) \
+	if ((logger).critical()) (logger).critical(Poco::format((fmt), (arg1), (arg2), (arg3)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_critical_f4(logger, fmt, arg1, arg2, arg3, arg4) \
+	if ((logger).critical()) (logger).critical(Poco::format((fmt), (arg1), (arg2), (arg3), (arg4)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_critical_f(logger, fmt, ...) \
+	if ((logger).critical()) (logger).critical(Poco::format((fmt), __VA_ARGS__) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_error(logger, msg) \
+	if ((logger).error()) (logger).error(msg POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_error_f1(logger, fmt, arg1) \
+	if ((logger).error()) (logger).error(Poco::format((fmt), (arg1)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_error_f2(logger, fmt, arg1, arg2) \
+	if ((logger).error()) (logger).error(Poco::format((fmt), (arg1), (arg2)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_error_f3(logger, fmt, arg1, arg2, arg3) \
+	if ((logger).error()) (logger).error(Poco::format((fmt), (arg1), (arg2), (arg3)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_error_f4(logger, fmt, arg1, arg2, arg3, arg4) \
+	if ((logger).error()) (logger).error(Poco::format((fmt), (arg1), (arg2), (arg3), (arg4)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_error_f(logger, fmt, ...) \
+	if ((logger).error()) (logger).error(Poco::format((fmt), __VA_ARGS__) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_warning(logger, msg) \
+	if ((logger).warning()) (logger).warning(msg POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_warning_f1(logger, fmt, arg1) \
+	if ((logger).warning()) (logger).warning(Poco::format((fmt), (arg1)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_warning_f2(logger, fmt, arg1, arg2) \
+	if ((logger).warning()) (logger).warning(Poco::format((fmt), (arg1), (arg2)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_warning_f3(logger, fmt, arg1, arg2, arg3) \
+	if ((logger).warning()) (logger).warning(Poco::format((fmt), (arg1), (arg2), (arg3)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_warning_f4(logger, fmt, arg1, arg2, arg3, arg4) \
+	if ((logger).warning()) (logger).warning(Poco::format((fmt), (arg1), (arg2), (arg3), (arg4)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_warning_f(logger, fmt, ...) \
+	if ((logger).warning()) (logger).warning(Poco::format((fmt), __VA_ARGS__) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_notice(logger, msg) \
+	if ((logger).notice()) (logger).notice(msg POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_notice_f1(logger, fmt, arg1) \
+	if ((logger).notice()) (logger).notice(Poco::format((fmt), (arg1)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_notice_f2(logger, fmt, arg1, arg2) \
+	if ((logger).notice()) (logger).notice(Poco::format((fmt), (arg1), (arg2)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_notice_f3(logger, fmt, arg1, arg2, arg3) \
+	if ((logger).notice()) (logger).notice(Poco::format((fmt), (arg1), (arg2), (arg3)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_notice_f4(logger, fmt, arg1, arg2, arg3, arg4) \
+	if ((logger).notice()) (logger).notice(Poco::format((fmt), (arg1), (arg2), (arg3), (arg4)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_notice_f(logger, fmt, ...) \
+	if ((logger).notice()) (logger).notice(Poco::format((fmt), __VA_ARGS__) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_information(logger, msg) \
+	if ((logger).information()) (logger).information(msg POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_information_f1(logger, fmt, arg1) \
+	if ((logger).information()) (logger).information(Poco::format((fmt), (arg1)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_information_f2(logger, fmt, arg1, arg2) \
+	if ((logger).information()) (logger).information(Poco::format((fmt), (arg1), (arg2)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_information_f3(logger, fmt, arg1, arg2, arg3) \
+	if ((logger).information()) (logger).information(Poco::format((fmt), (arg1), (arg2), (arg3)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_information_f4(logger, fmt, arg1, arg2, arg3, arg4) \
+	if ((logger).information()) (logger).information(Poco::format((fmt), (arg1), (arg2), (arg3), (arg4)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_information_f(logger, fmt, ...) \
+	if ((logger).information()) (logger).information(Poco::format((fmt), __VA_ARGS__) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#if defined(_DEBUG) || defined(POCO_LOG_DEBUG)
+
+#define poco_debug(logger, msg) \
+		if ((logger).debug()) (logger).debug(msg POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_debug_f1(logger, fmt, arg1) \
+		if ((logger).debug()) (logger).debug(Poco::format((fmt), (arg1)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_debug_f2(logger, fmt, arg1, arg2) \
+		if ((logger).debug()) (logger).debug(Poco::format((fmt), (arg1), (arg2)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_debug_f3(logger, fmt, arg1, arg2, arg3) \
+		if ((logger).debug()) (logger).debug(Poco::format((fmt), (arg1), (arg2), (arg3)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_debug_f4(logger, fmt, arg1, arg2, arg3, arg4) \
+		if ((logger).debug()) (logger).debug(Poco::format((fmt), (arg1), (arg2), (arg3), (arg4)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_debug_f(logger, fmt, ...) \
+		if ((logger).debug()) (logger).debug(Poco::format((fmt), __VA_ARGS__) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_trace(logger, msg) \
+		if ((logger).trace()) (logger).trace(msg POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_trace_f1(logger, fmt, arg1) \
+		if ((logger).trace()) (logger).trace(Poco::format((fmt), (arg1)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_trace_f2(logger, fmt, arg1, arg2) \
+		if ((logger).trace()) (logger).trace(Poco::format((fmt), (arg1), (arg2)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_trace_f3(logger, fmt, arg1, arg2, arg3) \
+		if ((logger).trace()) (logger).trace(Poco::format((fmt), (arg1), (arg2), (arg3)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_trace_f4(logger, fmt, arg1, arg2, arg3, arg4) \
+		if ((logger).trace()) (logger).trace(Poco::format((fmt), (arg1), (arg2), (arg3), (arg4)) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#define poco_trace_f(logger, fmt, ...) \
+		if ((logger).trace()) (logger).trace(Poco::format((fmt), __VA_ARGS__) POCO_SOURCE_LOCATION_ARGUMENT); else (void) 0
+
+#else
+#define poco_debug(logger, msg)
+#define poco_debug_f1(logger, fmt, arg1)
+#define poco_debug_f2(logger, fmt, arg1, arg2)
+#define poco_debug_f3(logger, fmt, arg1, arg2, arg3)
+#define poco_debug_f4(logger, fmt, arg1, arg2, arg3, arg4)
+#define poco_debug_f(logger, fmt, ...)
+#define poco_trace(logger, msg)
+#define poco_trace_f1(logger, fmt, arg1)
+#define poco_trace_f2(logger, fmt, arg1, arg2)
+#define poco_trace_f3(logger, fmt, arg1, arg2, arg3)
+#define poco_trace_f4(logger, fmt, arg1, arg2, arg3, arg4)
+#define poco_trace_f(logger, fmt, ...)
+
+#endif
+
+#else // #ifdef POCO_ENABLE_SOURCE_LOCATION
+
 #define poco_fatal(logger, msg) \
 	if ((logger).fatal()) (logger).fatal(msg, __FILE__, __LINE__); else (void) 0
 
@@ -640,6 +832,7 @@ private:
 	#define poco_trace_f(logger, fmt, ...)
 #endif
 
+#endif // #if POCO_ENABLE_SOURCE_LOCATION
 
 //
 // inlines
@@ -656,7 +849,7 @@ inline int Logger::getLevel() const
 }
 
 
-inline void Logger::log(const std::string& text, Message::Priority prio)
+inline void Logger::log(const std::string& text, Message::Priority prio POCO_SOURCE_LOCATION_PARAMETER)
 {
 	if (_level >= prio && _pChannel)
 	{
@@ -674,7 +867,16 @@ inline void Logger::log(const std::string& text, Message::Priority prio, const c
 }
 
 
-inline void Logger::fatal(const std::string& msg)
+inline void Logger::log(const std::string& text, Message::Priority prio, const char* file, const char* function, int line)
+{
+	if (_level >= prio && _pChannel)
+	{
+		_pChannel->log(Message(_name, text, prio, file, function, line));
+	}
+}
+
+
+inline void Logger::fatal(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	log(msg, Message::PRIO_FATAL);
 }
@@ -687,7 +889,7 @@ inline void Logger::fatal(const std::string& msg, const char* file, int line)
 
 
 
-inline void Logger::critical(const std::string& msg)
+inline void Logger::critical(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	log(msg, Message::PRIO_CRITICAL);
 }
@@ -699,7 +901,7 @@ inline void Logger::critical(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::error(const std::string& msg)
+inline void Logger::error(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	log(msg, Message::PRIO_ERROR);
 }
@@ -711,7 +913,7 @@ inline void Logger::error(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::warning(const std::string& msg)
+inline void Logger::warning(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	log(msg, Message::PRIO_WARNING);
 }
@@ -723,7 +925,7 @@ inline void Logger::warning(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::notice(const std::string& msg)
+inline void Logger::notice(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	log(msg, Message::PRIO_NOTICE);
 }
@@ -735,7 +937,7 @@ inline void Logger::notice(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::information(const std::string& msg)
+inline void Logger::information(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	log(msg, Message::PRIO_INFORMATION);
 }
@@ -747,7 +949,7 @@ inline void Logger::information(const std::string& msg, const char* file, int li
 }
 
 
-inline void Logger::debug(const std::string& msg)
+inline void Logger::debug(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	log(msg, Message::PRIO_DEBUG);
 }
@@ -759,7 +961,7 @@ inline void Logger::debug(const std::string& msg, const char* file, int line)
 }
 
 
-inline void Logger::trace(const std::string& msg)
+inline void Logger::trace(const std::string& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	log(msg, Message::PRIO_TRACE);
 }

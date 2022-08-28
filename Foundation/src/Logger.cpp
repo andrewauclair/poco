@@ -74,7 +74,7 @@ void Logger::setProperty(const std::string& name, const std::string& value)
 }
 
 
-void Logger::log(const Message& msg)
+void Logger::log(const Message& msg POCO_SOURCE_LOCATION_PARAMETER)
 {
 	if (_level >= msg.getPriority() && _pChannel)
 	{
@@ -83,7 +83,7 @@ void Logger::log(const Message& msg)
 }
 
 
-void Logger::log(const Exception& exc)
+void Logger::log(const Exception& exc POCO_SOURCE_LOCATION_PARAMETER)
 {
 	error(exc.displayText());
 }

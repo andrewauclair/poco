@@ -77,6 +77,18 @@ public:
 		///
 		/// The thread and process ids are set.
 
+	Message(const std::string& source, const std::string& text, Priority prio, const char* file, const char* function, int line);
+	/// Creates a Message with the given source, text, priority,
+	/// source file path and line.
+	///
+	/// The source file path must be a
+	/// static string with a lifetime that's at least the lifetime
+	/// of the message object (the string is not copied internally).
+	/// Usually, this will be the path string obtained from the
+	/// __FILE__ macro.
+	///
+	/// The thread and process ids are set.
+	
 	Message(const Message& msg);
 		/// Creates a Message by copying another one.
 
@@ -150,11 +162,23 @@ public:
 		/// File must be a static string, such as the value of
 		/// the __FILE__ macro. The string is not copied
 		/// internally for performance reasons.
-
+	
 	const char* getSourceFile() const;
 		/// Returns the source file path of the code creating
 		/// the message. May be 0 if not set.
 
+	void setSourceFunction(const char* function);
+		///  Sets the source function of the statement
+		/// generating the log message.
+		/// 
+		/// Function must be a static string, such as the value of
+		/// the __FUNCTION__ macro. The string is not copied
+		/// internally for performance reasons.
+	
+	const char* getSourceFunction() const;
+	///  Returns the source function of the code creating the
+	/// message. May be 0 if not set.
+	
 	void setSourceLine(int line);
 		/// Sets the source file line of the statement
 		/// generating the log message.
@@ -211,6 +235,7 @@ private:
 	std::string _thread;
 	long        _pid;
 	const char* _file;
+	const char* _function;
 	int         _line;
 	StringMap*  _pMap;
 };
@@ -268,6 +293,12 @@ inline long Message::getPid() const
 inline const char* Message::getSourceFile() const
 {
 	return _file;
+}
+
+
+inline const char* Message::getSourceFunction() const
+{
+	return _function;
 }
 
 

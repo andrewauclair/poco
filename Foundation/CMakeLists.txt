@@ -121,6 +121,8 @@ target_include_directories(Foundation
 target_compile_definitions(Foundation
 	PUBLIC
 		$<$<CONFIG:Debug>:_DEBUG>
+		$<$<BOOL:${DISABLE_CPP14}>:POCO_DISABLE_CPP20>
+		$<$<NOT:$<BOOL:${DISABLE_CPP14}>>:POCO_ENABLE_CPP20>
 		$<$<BOOL:${DISABLE_CPP14}>:POCO_DISABLE_CPP14>
 		$<$<NOT:$<BOOL:${DISABLE_CPP14}>>:POCO_ENABLE_CPP14>
 		$<$<BOOL:${DISABLE_CPP11}>:POCO_DISABLE_CPP11>
@@ -132,6 +134,10 @@ target_compile_features(Foundation
 )
 if(NOT DISABLE_CPP14 AND CMAKE_VERSION VERSION_GREATER "3.8")
 	target_compile_features(Foundation PUBLIC cxx_std_14)
+endif()
+
+if(NOT DISABLE_CPP20 && CMAKE_VERSION VERSION_GREATER "3.12")
+	target_compile_features(Foundation PUBLIC cxx_std_20)
 endif()
 
 if(NOT BUILD_SHARED_LIBS)

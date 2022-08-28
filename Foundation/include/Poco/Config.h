@@ -17,7 +17,6 @@
 #ifndef Foundation_Config_INCLUDED
 #define Foundation_Config_INCLUDED
 
-
 // Define to disable implicit linking
 // #define POCO_NO_AUTOMATIC_LIBS
 
@@ -207,6 +206,5 @@
 
 // Disarm POCO_DEPRECATED macro.
 // #define POCO_NO_DEPRECATED
-
 
 #endif // Foundation_Config_INCLUDED
