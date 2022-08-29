@@ -136,7 +136,7 @@ if(NOT DISABLE_CPP14 AND CMAKE_VERSION VERSION_GREATER "3.8")
 	target_compile_features(Foundation PUBLIC cxx_std_14)
 endif()
 
-if(NOT DISABLE_CPP20 && CMAKE_VERSION VERSION_GREATER "3.12")
+if(NOT DISABLE_CPP20 AND CMAKE_VERSION VERSION_GREATER "3.12")
 	target_compile_features(Foundation PUBLIC cxx_std_20)
 endif()
 
