@@ -93,13 +93,21 @@ void FileChannel::open()
 		{
 			try
 			{
-				_pFile = _pArchiveStrategy->archive(_pFile);
+				if (_pArchiveStrategy)
+				{
+					_pFile = _pArchiveStrategy->archive(_pFile);
+				}
 				purge();
 			}
 			catch (...)
 			{
 				_pFile = new LogFile(_path);
 			}
+		}
+
+		if (_pArchiveStrategy)
+		{
+			_pFile = _pArchiveStrategy->open(_pFile);
 		}
 	}
 }
@@ -224,7 +232,7 @@ const std::string& FileChannel::path() const
 }
 
 
-void FileChannel::setRotation(const std::string& rotation)
+RotateStrategy* FileChannel::createRotationStrategy(const std::string& rotation, const std::string& times) const
 {
 	std::string::const_iterator it  = rotation.begin();
 	std::string::const_iterator end = rotation.end();
@@ -238,12 +246,12 @@ void FileChannel::setRotation(const std::string& rotation)
 	RotateStrategy* pStrategy = 0;
 	if ((rotation.find(',') != std::string::npos) || (rotation.find(':') != std::string::npos))
 	{
-		if (_times == "utc")
+		if (times == "utc")
 			pStrategy = new RotateAtTimeStrategy<DateTime>(rotation);
-		else if (_times == "local")
+		else if (times == "local")
 			pStrategy = new RotateAtTimeStrategy<LocalDateTime>(rotation);
 		else
-			throw PropertyNotSupportedException("times", _times);
+			throw PropertyNotSupportedException("times", times);
 	}
 	else if (unit == "daily")
 		pStrategy = new RotateByIntervalStrategy(Timespan(1*Timespan::DAYS));
@@ -271,9 +279,54 @@ void FileChannel::setRotation(const std::string& rotation)
 		pStrategy = new RotateBySizeStrategy(n);
 	else if (unit != "never")
 		throw InvalidArgumentException("rotation", rotation);
+
+	return pStrategy;
+}
+
+
+void FileChannel::setRotationStrategy(RotateStrategy* strategy)
+{
+	poco_check_ptr(strategy);
+
 	delete _pRotateStrategy;
-	_pRotateStrategy = pStrategy;
+	_pRotateStrategy = strategy;
+}
+
+
+void FileChannel::setRotation(const std::string& rotation)
+{
+	setRotationStrategy(createRotationStrategy(rotation, _times));
 	_rotation = rotation;
+}
+
+
+ArchiveStrategy* FileChannel::createArchiveStrategy(const std::string& archive, const std::string& times) const
+{
+	ArchiveStrategy* pStrategy = 0;
+	if (archive == "number")
+	{
+		pStrategy = new ArchiveByNumberStrategy;
+	}
+	else if (archive == "timestamp")
+	{
+		if (times == "utc")
+			pStrategy = new ArchiveByTimestampStrategy<DateTime>;
+		else if (times == "local")
+			pStrategy = new ArchiveByTimestampStrategy<LocalDateTime>;
+		else
+			throw PropertyNotSupportedException("times", times);
+	}
+	else throw InvalidArgumentException("archive", archive);
+	return pStrategy;
+}
+
+
+void FileChannel::setArchiveStrategy(ArchiveStrategy* strategy)
+{
+	poco_check_ptr(strategy);
+
+	delete _pArchiveStrategy;
+	_pArchiveStrategy = strategy;
 }
 
 
@@ -394,6 +447,8 @@ int FileChannel::extractDigit(const std::string& value, std::string::const_itera
 
 void FileChannel::setPurgeStrategy(PurgeStrategy* strategy)
 {
+	poco_check_ptr(strategy);
+
 	delete _pPurgeStrategy;
 	_pPurgeStrategy = strategy;
 }
