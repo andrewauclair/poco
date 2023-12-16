@@ -251,7 +251,7 @@ std::string format(const std::string& fmt, const Any& value)
 
 void format(std::string& result, const char *fmt, const std::vector<Any>& values)
 {
-	format(result, std::string(fmt), values);
+	Poco::format(result, std::string(fmt), values);
 }
 
 

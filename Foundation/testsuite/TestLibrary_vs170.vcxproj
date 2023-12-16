@@ -329,6 +329,11 @@
   <ItemGroup>
     <ClInclude Include="src\TestPlugin.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Foundation_vs170.vcxproj">
+      <Project>{b01196cc-b693-4548-8464-2ff60499e73f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

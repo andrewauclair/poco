@@ -13,9 +13,9 @@
 #define AnyTest_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "CppUnit/TestCase.h"
-
+//#include "Poco/Foundation.h"
+//#include "CppUnit/TestCase.h"
+import PocoFoundation;
 
 class AnyTest: public CppUnit::TestCase
 {
