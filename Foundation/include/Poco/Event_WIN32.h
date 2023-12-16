@@ -21,7 +21,12 @@
 #include "Poco/Foundation.h"
 #include "Poco/Exception.h"
 #include "Poco/UnWindows.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <atomic>
+#endif
 
 namespace Poco {
 

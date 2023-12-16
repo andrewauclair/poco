@@ -15,9 +15,13 @@
 #include "Poco/Any.h"
 #include "Poco/SharedPtr.h"
 #include "Poco/Bugcheck.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <memory>
-
+#endif
 
 #if defined(_MSC_VER) && _MSC_VER < 1400
 	#pragma warning(disable:4800)//forcing value to bool 'true' or 'false'

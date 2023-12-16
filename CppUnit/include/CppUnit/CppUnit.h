@@ -6,6 +6,8 @@
 #ifndef CppUnit_CppUnit_INCLUDED
 #define CppUnit_CppUnit_INCLUDED
 
+#define POCO_MODULES
+
 //
 // Ensure that POCO_DLL is default unless POCO_STATIC is defined
 //

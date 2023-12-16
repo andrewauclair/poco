@@ -19,8 +19,12 @@
 
 
 #include "Poco/Foundation.h"
-#include <atomic>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <atomic>
+#endif
 
 namespace Poco {
 

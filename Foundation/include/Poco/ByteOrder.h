@@ -18,10 +18,14 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Types.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #if defined(_MSC_VER)
 #include <stdlib.h> // builtins
 #endif
-
+#endif
 
 namespace Poco {
 

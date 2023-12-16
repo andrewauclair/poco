@@ -20,8 +20,12 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Manifest.h"
-#include <typeinfo>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <typeinfo>
+#endif
 
 #if defined(_WIN32)
 	#define POCO_LIBRARY_API __declspec(dllexport)

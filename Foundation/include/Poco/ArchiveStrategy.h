@@ -23,8 +23,12 @@
 #include "Poco/File.h"
 #include "Poco/DateTimeFormatter.h"
 #include "Poco/NumberFormatter.h"
-#include <atomic>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <atomic>
+#endif
 
 namespace Poco {
 

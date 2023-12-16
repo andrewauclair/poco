@@ -22,7 +22,12 @@
 #include "Poco/Exception.h"
 #include "Poco/ScopedLock.h"
 #include "Poco/Timestamp.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <atomic>
+#endif
 
 #ifdef POCO_ENABLE_STD_MUTEX
 #include "Poco/Mutex_STD.h"

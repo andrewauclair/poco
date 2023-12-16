@@ -10,9 +10,13 @@
 #include "CppUnit/CppUnit.h"
 #include "CppUnit/Guards.h"
 #include "CppUnit/Test.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <string>
-
+#endif
 
 namespace CppUnit {
 

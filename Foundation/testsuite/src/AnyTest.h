@@ -13,9 +13,18 @@
 #define AnyTest_INCLUDED
 
 
-//#include "Poco/Foundation.h"
-//#include "CppUnit/TestCase.h"
+import PocoCppUnit;
 import PocoFoundation;
+
+#if defined(POCO_MODULES)
+import PocoCppUnit;
+import PocoFoundation;
+import std;
+#else
+#include "Poco/Foundation.h"
+#include "CppUnit/TestCase.h"
+#include <string>
+#endif
 
 class AnyTest: public CppUnit::TestCase
 {

@@ -3,16 +3,19 @@
 //
 
 
-#include <stdexcept>
-#include <math.h>
+
 #include "CppUnit/TestCase.h"
 #include "CppUnit/TestResult.h"
 #include "CppUnit/estring.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <stdexcept>
+#include <math.h>
 #include <typeinfo>
 #include <iostream>
-
-
-using namespace std;
+#endif
 
 
 namespace CppUnit {
@@ -50,7 +53,7 @@ void TestCase::loop2assertImplementation(bool condition, const std::string& cond
 // Check for a failed equality assertion
 void TestCase::assertEquals(double expected, double actual, double delta, long lineNumber, const std::string& fileName)
 {
-	if (fabs(expected - actual) > delta)
+	if (std::fabs(expected - actual) > delta)
 		assertImplementation(false, notEqualsMessage(expected, actual), lineNumber, fileName);
 }
 
@@ -81,14 +84,14 @@ void TestCase::assertEquals(const char* expected, const std::string& actual, lon
 
 void TestCase::assertNotNull(const void* pointer, const std::string& pointerExpression, long lineNumber, const std::string& fileName)
 {
-	if (pointer == NULL)
+	if (pointer == nullptr)
 		throw CppUnitException(pointerExpression + " must not be NULL", lineNumber, fileName);
 }
 
 
 void TestCase::assertNull(const void* pointer, const std::string& pointerExpression, long lineNumber, const std::string& fileName)
 {
-	if (pointer != NULL)
+	if (pointer != nullptr)
 		throw CppUnitException(pointerExpression + " must be NULL", lineNumber, fileName);
 }
 

@@ -26,10 +26,14 @@
 #include "Poco/EventArgs.h"
 #include "Poco/Delegate.h"
 #include "Poco/SharedPtr.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <map>
 #include <set>
 #include <cstddef>
-
+#endif
 
 namespace Poco {
 

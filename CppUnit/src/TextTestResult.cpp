@@ -7,6 +7,10 @@
 #include "CppUnit/CppUnitException.h"
 #include "CppUnit/Test.h"
 #include "CppUnit/estring.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -14,7 +18,7 @@
 #include <cstdlib>
 #include <cctype>
 #include <exception>
-
+#endif
 
 namespace CppUnit {
 

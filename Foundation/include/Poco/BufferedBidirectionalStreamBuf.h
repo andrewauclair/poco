@@ -21,10 +21,14 @@
 #include "Poco/Foundation.h"
 #include "Poco/BufferAllocator.h"
 #include "Poco/StreamUtil.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <streambuf>
 #include <iosfwd>
 #include <ios>
-
+#endif
 
 namespace Poco {
 

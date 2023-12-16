@@ -22,8 +22,12 @@
 #include "Poco/Thread.h"
 #include "Poco/Mutex.h"
 #include "Poco/Environment.h"
-#include <vector>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <vector>
+#endif
 
 namespace Poco {
 

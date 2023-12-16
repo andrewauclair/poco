@@ -21,8 +21,12 @@
 #include "Poco/KeyValueArgs.h"
 #include "Poco/ValidArgs.h"
 #include "Poco/EventArgs.h"
-#include <set>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <set>
+#endif
 
 namespace Poco {
 

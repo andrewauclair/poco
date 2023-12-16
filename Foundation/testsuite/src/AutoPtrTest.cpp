@@ -13,8 +13,12 @@
 #include "CppUnit/TestSuite.h"
 #include "Poco/AutoPtr.h"
 #include "Poco/Exception.h"
-#include <atomic>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <atomic>
+#endif
 
 using Poco::AutoPtr;
 using Poco::makeAuto;

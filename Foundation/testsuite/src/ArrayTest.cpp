@@ -12,9 +12,14 @@
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Array.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <algorithm>
 #include <functional>
+#endif
 
 ArrayTest::ArrayTest(const std::string& name): CppUnit::TestCase(name)
 {

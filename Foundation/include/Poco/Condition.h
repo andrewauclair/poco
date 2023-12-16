@@ -23,8 +23,12 @@
 #include "Poco/ScopedUnlock.h"
 #include "Poco/Event.h"
 #include "Poco/Exception.h"
-#include <deque>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <deque>
+#endif
 
 namespace Poco {
 

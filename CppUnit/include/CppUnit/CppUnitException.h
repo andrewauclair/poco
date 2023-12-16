@@ -8,9 +8,13 @@
 
 
 #include "CppUnit/CppUnit.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <exception>
 #include <string>
-
+#endif
 
 namespace CppUnit {
 

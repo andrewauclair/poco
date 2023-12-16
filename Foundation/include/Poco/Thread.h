@@ -21,9 +21,13 @@
 #include "Poco/Foundation.h"
 #include "Poco/Event.h"
 #include "Poco/Mutex.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <thread>
 #include <chrono>
-
+#endif
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)

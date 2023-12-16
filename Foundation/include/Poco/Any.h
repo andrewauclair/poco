@@ -18,11 +18,15 @@
 
 #include "Poco/Exception.h"
 #include "Poco/MetaProgramming.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <typeinfo>
 #include <cstring>
 #include <cstddef>
-
+#endif
 
 #define poco_any_assert(cond) do { if (!(cond)) std::abort(); } while (0)
 

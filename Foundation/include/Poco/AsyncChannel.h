@@ -25,8 +25,12 @@
 #include "Poco/Runnable.h"
 #include "Poco/AutoPtr.h"
 #include "Poco/NotificationQueue.h"
-#include <atomic>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <atomic>
+#endif
 
 namespace Poco {
 

@@ -8,10 +8,14 @@
 
 
 #include "CppUnit/CppUnit.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <string>
 #include <vector>
 #include <functional>
-
+#endif
 
 namespace CppUnit {
 

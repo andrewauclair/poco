@@ -20,9 +20,13 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Exception.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cstring>
 #include <cstddef>
-
+#endif
 
 namespace Poco {
 

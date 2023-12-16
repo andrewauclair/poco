@@ -1194,6 +1194,9 @@
     <ClInclude Include="src\ZLibTest.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CppUnit\CppUnit_vs170.vcxproj">
+      <Project>{138bb448-808a-4fe5-a66d-78d1f8770f59}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\Foundation_vs170.vcxproj">
       <Project>{b01196cc-b693-4548-8464-2ff60499e73f}</Project>
     </ProjectReference>

@@ -7,9 +7,13 @@
 #include "CppUnit/Test.h"
 #include "CppUnit/TestSuite.h"
 #include "CppUnit/TextTestResult.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <iostream>
 #include <fstream>
-
+#endif
 
 namespace CppUnit {
 

@@ -9,6 +9,10 @@
 
 #include "CppUnit/CppUnit.h"
 #include "CppUnit/Test.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <string>
 #include <ostream>
@@ -16,7 +20,7 @@
 #include <cstdarg>
 #endif
 #include "Poco/Exception.h"
-
+#endif
 
 namespace CppUnit {
 

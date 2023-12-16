@@ -23,8 +23,12 @@
 #include "Poco/Event.h"
 #include "Poco/RefCountedObject.h"
 #include "Poco/Exception.h"
-#include <algorithm>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <algorithm>
+#endif
 
 namespace Poco {
 

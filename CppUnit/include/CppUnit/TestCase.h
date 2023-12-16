@@ -12,10 +12,14 @@
 #include "CppUnit/Test.h"
 #include "CppUnit/TestResult.h"
 #include "CppUnit/CppUnitException.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <string>
 #include <vector>
 #include <typeinfo>
-
+#endif
 
 namespace CppUnit {
 

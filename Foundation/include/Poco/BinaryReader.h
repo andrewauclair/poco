@@ -21,9 +21,13 @@
 #include "Poco/Foundation.h"
 #include "Poco/Buffer.h"
 #include "Poco/MemoryStream.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <istream>
-
+#endif
 
 namespace Poco {
 

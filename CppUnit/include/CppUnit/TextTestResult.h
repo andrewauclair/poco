@@ -9,9 +9,13 @@
 
 #include "CppUnit/CppUnit.h"
 #include "CppUnit/TestResult.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <set>
 #include <ostream>
-
+#endif
 
 namespace CppUnit {
 
