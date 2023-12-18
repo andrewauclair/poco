@@ -55,10 +55,10 @@ class Foundation_API FPEnvironmentImpl
 protected:
 	enum RoundingModeImpl
 	{
-		FP_ROUND_DOWNWARD_IMPL   = _RC_DOWN,
-		FP_ROUND_UPWARD_IMPL     = _RC_UP,
-		FP_ROUND_TONEAREST_IMPL  = _RC_NEAR,
-		FP_ROUND_TOWARDZERO_IMPL = _RC_CHOP
+		FP_ROUND_DOWNWARD_IMPL = 0x00000100,// _RC_DOWN,
+		FP_ROUND_UPWARD_IMPL     = 0x00000200,//_RC_UP,
+		FP_ROUND_TONEAREST_IMPL  = 0x00000000,//_RC_NEAR,
+		FP_ROUND_TOWARDZERO_IMPL = 0x00000300//_RC_CHOP
 	};
 	enum FlagImpl
 	{
@@ -97,52 +97,52 @@ private:
 //
 inline bool FPEnvironmentImpl::isInfiniteImpl(float value)
 {
-	if (_isnan(value) != 0) return false;
-	return _finite(value) == 0;
+	if (std::isnan(value) != 0) return false;
+	return std::isfinite(value) == 0;
 }
 
 
 inline bool FPEnvironmentImpl::isInfiniteImpl(double value)
 {
-	if (_isnan(value) != 0) return false;
-	return _finite(value) == 0;
+	if (std::isnan(value) != 0) return false;
+	return std::isfinite(value) == 0;
 }
 
 
 inline bool FPEnvironmentImpl::isInfiniteImpl(long double value)
 {
-	if (_isnan(static_cast<double>(value)) != 0) return false;
-	return _finite(static_cast<double>(value)) == 0;
+	if (std::isnan(static_cast<double>(value)) != 0) return false;
+	return std::isfinite(static_cast<double>(value)) == 0;
 }
 
 
 inline bool FPEnvironmentImpl::isNaNImpl(float value)
 {
-	return _isnan(value) != 0;
+	return std::isnan(value) != 0;
 }
 
 
 inline bool FPEnvironmentImpl::isNaNImpl(double value)
 {
-	return _isnan(value) != 0;
+	return std::isnan(value) != 0;
 }
 
 
 inline bool FPEnvironmentImpl::isNaNImpl(long double value)
 {
-	return _isnan(static_cast<double>(value)) != 0;
+	return std::isnan(static_cast<double>(value)) != 0;
 }
 
 
 inline float FPEnvironmentImpl::copySignImpl(float target, float source)
 {
-	return float(_copysign(target, source));
+	return float(std::copysign(target, source));
 }
 
 
 inline double FPEnvironmentImpl::copySignImpl(double target, double source)
 {
-	return _copysign(target, source);
+	return std::copysign(target, source);
 }
 
 

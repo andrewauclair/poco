@@ -19,8 +19,12 @@
 
 
 #include "Poco/Foundation.h"
-#include <cstdlib>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <cstdlib>
+#endif
 
 namespace Poco {
 
