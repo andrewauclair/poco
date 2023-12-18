@@ -205,7 +205,8 @@ public:
 		/// other threads.
 
 private:
-	std::atomic_flag _flag = ATOMIC_FLAG_INIT;
+	// TODO ATOMIC_FLAG_INIT is a macro in <atomic> and can't be used with import std;
+	std::atomic_flag _flag = {};// ATOMIC_FLAG_INIT;
 };
 
 

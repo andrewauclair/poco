@@ -20,8 +20,12 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Timestamp.h"
-#include <vector>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <vector>
+#endif
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)

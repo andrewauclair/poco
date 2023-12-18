@@ -26,9 +26,13 @@
 #include "Poco/Thread.h"
 #include "Poco/Format.h"
 #include "Poco/Stopwatch.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <atomic>
 #include <vector>
-
+#endif
 
 namespace Poco {
 

@@ -19,9 +19,13 @@
 
 
 #include "Poco/Exception.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <iterator>
 #include <algorithm>
-
+#endif
 
 namespace Poco {
 namespace Dynamic {

@@ -21,8 +21,12 @@
 #include "Poco/Foundation.h"
 #include "Poco/Exception.h"
 #include "Poco/SingletonHolder.h"
-#include <set>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <set>
+#endif
 
 namespace Poco {
 

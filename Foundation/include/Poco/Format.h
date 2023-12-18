@@ -20,9 +20,13 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Any.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <type_traits>
-
+#endif
 
 namespace Poco {
 

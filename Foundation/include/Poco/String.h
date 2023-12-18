@@ -20,8 +20,13 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Ascii.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cstring>
 #include <algorithm>
+#endif
 
 // ignore loop unrolling warnings in this file
 #if defined(__clang__) && ((__clang_major__ > 3) || (__clang_major__ == 3 && __clang_minor__ >= 6))

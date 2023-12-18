@@ -21,8 +21,12 @@
 #include "Poco/Foundation.h"
 #include "Poco/Logger.h"
 #include "Poco/UnbufferedStreamBuf.h"
-#include <istream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <istream>
+#endif
 
 namespace Poco {
 

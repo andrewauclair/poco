@@ -20,8 +20,13 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/BufferedStreamBuf.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <istream>
 #include <ostream>
+#endif
 #if defined(POCO_UNBUNDLED)
 #include <zlib.h>
 #else

@@ -20,8 +20,12 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/TextIterator.h"
-#include <set>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <set>
+#endif
 
 namespace Poco {
 

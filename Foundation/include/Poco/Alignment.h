@@ -17,8 +17,11 @@
 #ifndef Foundation_Alignment_INCLUDED
 #define Foundation_Alignment_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <type_traits>
+#endif
 #define POCO_HAVE_ALIGNMENT
 
 

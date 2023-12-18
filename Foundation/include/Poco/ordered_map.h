@@ -24,7 +24,9 @@
 #ifndef TSL_ORDERED_MAP_H
 #define TSL_ORDERED_MAP_H
 
-
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cstddef>
 #include <deque>
 #include <functional>
@@ -33,6 +35,7 @@
 #include <type_traits>
 #include <utility>
 #include <vector>
+#endif
 #include "ordered_hash.h"
 
 

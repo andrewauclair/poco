@@ -22,9 +22,13 @@
 #include "Poco/Instantiator.h"
 #include "Poco/Exception.h"
 #include "Poco/Mutex.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <map>
 #include <memory>
-
+#endif
 
 namespace Poco {
 

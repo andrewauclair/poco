@@ -22,9 +22,13 @@
 #include "Poco/Notification.h"
 #include "Poco/Mutex.h"
 #include "Poco/SharedPtr.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <cstddef>
-
+#endif
 
 namespace Poco {
 

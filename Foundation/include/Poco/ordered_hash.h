@@ -24,7 +24,9 @@
 #ifndef TSL_ORDERED_HASH_H
 #define TSL_ORDERED_HASH_H
 
-
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <cassert>
 #include <climits>
@@ -40,7 +42,7 @@
 #include <type_traits>
 #include <utility>
 #include <vector>
-
+#endif
 
 /**
  * Macros for compatibility with GCC 4.8

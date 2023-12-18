@@ -19,10 +19,15 @@
 
 
 #include "Poco/Foundation.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <string>
 #undef min
 #undef max
 #include <limits>
+#endif
 
 
 namespace Poco {

@@ -21,12 +21,16 @@
 #include "Poco/Bugcheck.h"
 #include "Poco/Foundation.h"
 #include "Poco/StreamUtil.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <streambuf>
 #include <iosfwd>
 #include <ios>
 #include <istream>
 #include <ostream>
-
+#endif
 
 namespace Poco {
 

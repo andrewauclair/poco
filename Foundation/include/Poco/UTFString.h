@@ -20,8 +20,12 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Types.h"
-#include <string>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <string>
+#endif
 
 namespace Poco {
 

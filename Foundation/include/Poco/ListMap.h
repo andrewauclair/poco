@@ -21,9 +21,13 @@
 #include "Poco/Foundation.h"
 #include "Poco/String.h"
 #include "Poco/Exception.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <utility>
-
+#endif
 
 namespace Poco {
 

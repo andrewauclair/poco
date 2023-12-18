@@ -24,9 +24,13 @@
 #else
 #include "Poco/FileStream_POSIX.h"
 #endif
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <istream>
 #include <ostream>
-
+#endif
 
 namespace Poco {
 

@@ -20,8 +20,12 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Timestamp.h"
-#include <chrono>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <chrono>
+#endif
 
 namespace Poco {
 

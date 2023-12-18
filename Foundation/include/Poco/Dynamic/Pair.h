@@ -21,8 +21,12 @@
 #include "Poco/Foundation.h"
 #include "Poco/Dynamic/Var.h"
 #include "Poco/Dynamic/VarHolder.h"
-#include <utility>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <utility>
+#endif
 
 namespace Poco {
 namespace Dynamic {

@@ -24,9 +24,13 @@
 #include "Poco/SharedPtr.h"
 #include "Poco/OrderedMap.h"
 #include "Poco/OrderedSet.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <map>
 #include <set>
-
+#endif
 
 namespace Poco {
 namespace Dynamic {

@@ -91,8 +91,11 @@
 	#endif
 #endif
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <string>
-
+#endif
 namespace Poco {
 
 using namespace std::literals;
@@ -166,7 +169,11 @@ using namespace std::literals;
 //
 #include "Poco/Bugcheck.h"
 #include "Poco/Types.h"
-#include <string>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <string>
+#endif
 
 #endif // Foundation_Foundation_INCLUDED

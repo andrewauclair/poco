@@ -20,11 +20,15 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Hash.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <functional>
 #include <algorithm>
 #include <vector>
 #include <cstddef>
-
+#endif
 
 namespace Poco {
 

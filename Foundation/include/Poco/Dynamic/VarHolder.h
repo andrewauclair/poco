@@ -34,6 +34,10 @@
 #include "Poco/UUID.h"
 #include "Poco/Any.h"
 #include "Poco/Exception.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <list>
 #include <deque>
@@ -42,7 +46,7 @@
 #undef min
 #undef max
 #include <limits>
-
+#endif
 
 namespace Poco {
 namespace Dynamic {

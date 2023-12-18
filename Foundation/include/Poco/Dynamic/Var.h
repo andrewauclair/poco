@@ -25,10 +25,14 @@
 #include "Poco/OrderedSet.h"
 #include "Poco/Dynamic/VarHolder.h"
 #include "Poco/Dynamic/VarIterator.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <typeinfo>
 #include <map>
 #include <set>
-
+#endif
 
 namespace Poco {
 namespace Dynamic {

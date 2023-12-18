@@ -20,8 +20,12 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/DigestEngine.h"
-#include <cstring>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <cstring>
+#endif
 
 namespace Poco {
 

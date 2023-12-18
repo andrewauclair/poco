@@ -20,8 +20,12 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Mutex.h"
-#include <map>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <map>
+#endif
 
 namespace Poco {
 

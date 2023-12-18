@@ -20,10 +20,14 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/DirectoryIterator.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <stack>
 #include <queue>
 #include <functional>
-
+#endif
 
 namespace Poco {
 

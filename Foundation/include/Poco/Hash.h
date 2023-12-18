@@ -23,8 +23,12 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Types.h"
-#include <cstddef>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <cstddef>
+#endif
 
 #if defined(_MSC_VER)
 #   define POCO_HASH_ROTL32(x, r) _rotl(x,r)

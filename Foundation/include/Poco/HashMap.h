@@ -21,8 +21,12 @@
 #include "Poco/Foundation.h"
 #include "Poco/LinearHashTable.h"
 #include "Poco/Exception.h"
-#include <utility>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <utility>
+#endif
 
 namespace Poco {
 

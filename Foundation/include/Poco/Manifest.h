@@ -20,9 +20,13 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/MetaObject.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <map>
 #include <typeinfo>
-
+#endif
 
 namespace Poco {
 

@@ -21,8 +21,12 @@
 #include "Poco/Foundation.h"
 #include "Poco/Formatter.h"
 #include "Poco/Message.h"
-#include <vector>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <vector>
+#endif
 
 namespace Poco {
 

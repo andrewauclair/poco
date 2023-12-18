@@ -19,8 +19,12 @@
 
 
 #include "Poco/Foundation.h"
-#include <unordered_set>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <unordered_set>
+#endif
 
 namespace Poco {
 

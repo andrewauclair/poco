@@ -23,11 +23,15 @@
 #include "Poco/Message.h"
 #include "Poco/Format.h"
 #include "Poco/AutoPtr.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <map>
 #include <vector>
 #include <cstddef>
 #include <memory>
-
+#endif
 
 namespace Poco {
 

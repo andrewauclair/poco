@@ -21,8 +21,12 @@
 #include "Poco/Foundation.h"
 #include "Poco/DigestEngine.h"
 #include "Poco/ByteOrder.h"
-#include <algorithm>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <algorithm>
+#endif
 
 namespace Poco {
 

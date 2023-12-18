@@ -21,9 +21,14 @@
 #include "Poco/Foundation.h"
 #include "Poco/RefCountedObject.h"
 #include <unistd.h>
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <map>
 #include <atomic>
+#endif
 
 
 namespace Poco {

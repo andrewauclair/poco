@@ -22,11 +22,11 @@
 #if defined(POCO_MODULES)
 import std;
 #else
+
+#endif
 #if defined(_MSC_VER)
 #include <stdlib.h> // builtins
 #endif
-#endif
-
 namespace Poco {
 
 

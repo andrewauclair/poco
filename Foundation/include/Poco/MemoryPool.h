@@ -21,9 +21,13 @@
 #include "Poco/Foundation.h"
 #include "Poco/AtomicCounter.h"
 #include "Poco/Mutex.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <cstddef>
-
+#endif
 
 namespace Poco {
 

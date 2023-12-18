@@ -22,8 +22,12 @@
 #include "Poco/Notification.h"
 #include "Poco/Mutex.h"
 #include "Poco/Event.h"
-#include <deque>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <deque>
+#endif
 
 namespace Poco {
 

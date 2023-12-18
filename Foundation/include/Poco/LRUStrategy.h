@@ -23,10 +23,14 @@
 #include "Poco/AbstractStrategy.h"
 #include "Poco/EventArgs.h"
 #include "Poco/Exception.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <list>
 #include <map>
 #include <cstddef>
-
+#endif
 
 namespace Poco {
 

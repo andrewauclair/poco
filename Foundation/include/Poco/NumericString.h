@@ -27,6 +27,9 @@
 #ifdef max
 	#undef max
 #endif
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <limits>
 #include <cmath>
 #include <cctype>
@@ -34,12 +37,13 @@
 	#include <locale>
 #endif
 #include <type_traits>
+#endif
 #if defined(POCO_NOINTMAX)
 typedef Poco::UInt64 uintmax_t;
 typedef Poco::Int64 intmax_t;
 #endif
 #if !defined (INTMAX_MAX)
-#define INTMAX_MAX std::numeric_limits<intmax_t>::max()
+#define INTMAX_MAX std::numeric_limits<std::intmax_t>::max()
 #endif
 #ifdef POCO_COMPILER_MSVC
 #pragma warning(push)
@@ -98,14 +102,14 @@ inline bool isIntOverflow(From val)
 	if (std::numeric_limits<To>::is_signed)
 	{
 		ret = (!std::numeric_limits<From>::is_signed &&
-			  (uintmax_t)val > (uintmax_t)INTMAX_MAX) ||
-			  (intmax_t)val  < (intmax_t)std::numeric_limits<To>::min() ||
-			  (intmax_t)val  > (intmax_t)std::numeric_limits<To>::max();
+			  (std::uintmax_t)val > (std::uintmax_t)INTMAX_MAX) ||
+			  (std::intmax_t)val  < (std::intmax_t)std::numeric_limits<To>::min() ||
+			  (std::intmax_t)val  > (std::intmax_t)std::numeric_limits<To>::max();
 	}
 	else
 	{
 		ret = isNegative(val) ||
-				(uintmax_t)val > (uintmax_t)std::numeric_limits<To>::max();
+				(std::uintmax_t)val > (uintmax_t)std::numeric_limits<To>::max();
 	}
 	return ret;
 }

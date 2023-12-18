@@ -20,8 +20,12 @@
 
 #include "Poco/Foundation.h"
 #include <fenv.h>
-#include <cmath>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <cmath>
+#endif
 
 namespace Poco {
 

@@ -23,9 +23,13 @@
 #include "Poco/Condition.h"
 #include "Poco/AutoPtr.h"
 #include "Poco/SharedPtr.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <cctype>
-
+#endif
 
 namespace Poco {
 

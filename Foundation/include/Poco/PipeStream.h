@@ -21,9 +21,13 @@
 #include "Poco/Foundation.h"
 #include "Poco/Pipe.h"
 #include "Poco/BufferedStreamBuf.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <istream>
 #include <ostream>
-
+#endif
 
 namespace Poco {
 
