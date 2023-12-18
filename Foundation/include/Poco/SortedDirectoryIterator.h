@@ -21,8 +21,12 @@
 #include "Poco/File.h"
 #include "Poco/Path.h"
 #include "Poco/DirectoryIterator.h"
-#include <deque>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <deque>
+#endif
 
 namespace Poco
 {

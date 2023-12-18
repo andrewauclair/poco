@@ -24,8 +24,12 @@
 #include "Poco/AutoPtr.h"
 #include "Poco/NotificationCenter.h"
 #include "Poco/Timestamp.h"
-#include <list>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <list>
+#endif
 
 namespace Poco {
 

@@ -18,8 +18,14 @@
 #include "Poco/Event.h"
 #include "Poco/ThreadLocal.h"
 #include "Poco/ErrorHandler.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <sstream>
 #include <ctime>
+#endif
+
 #if defined(_WIN32_WCE) && _WIN32_WCE < 0x800
 #include "wce_time.h"
 #endif
@@ -215,7 +221,7 @@ void PooledThread::run()
 #if defined(_WIN32_WCE) && _WIN32_WCE < 0x800
 			_idleTime = wceex_time(NULL);
 #else
-			_idleTime = time(NULL);
+			_idleTime = std::time(nullptr);
 #endif
 			_idle     = true;
 			_targetCompleted.set();

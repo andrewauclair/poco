@@ -26,10 +26,15 @@
 #elif defined(POCO_OS_FAMILY_WINDOWS)
 #include "Poco/UnWindows.h"
 #endif
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #undef min
 #undef max
 #include <limits>
+#endif
 
 
 #ifndef POCO_HAVE_CLOCK_GETTIME

@@ -16,8 +16,12 @@
 #include "Poco/Message.h"
 #include "Poco/String.h"
 #include "Poco/Exception.h"
-#include <iostream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <iostream>
+#endif
 
 namespace Poco {
 

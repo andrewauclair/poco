@@ -14,8 +14,12 @@
 
 #include "Poco/TextIterator.h"
 #include "Poco/TextEncoding.h"
-#include <algorithm>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <algorithm>
+#endif
 
 namespace Poco {
 

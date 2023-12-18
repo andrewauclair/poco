@@ -31,8 +31,12 @@
 // Use DOUBLE_CONVERSION_NON_PREFIXED_MACROS to get unprefixed macros as was
 // the case in double-conversion releases prior to 3.1.6
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cstdlib>
 #include <cstring>
+#endif
 
 // For pre-C++11 compatibility
 #if __cplusplus >= 201103L
@@ -41,7 +45,12 @@
 #define DOUBLE_CONVERSION_NULLPTR NULL
 #endif
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cassert>
+#endif
+
 #ifndef DOUBLE_CONVERSION_ASSERT
 #define DOUBLE_CONVERSION_ASSERT(condition)         \
     assert(condition)
@@ -71,7 +80,7 @@
 #ifndef DOUBLE_CONVERSION_UNREACHABLE
 #ifdef _MSC_VER
 void DOUBLE_CONVERSION_NO_RETURN abort_noreturn();
-inline void abort_noreturn() { abort(); }
+inline void abort_noreturn() { std::abort(); }
 #define DOUBLE_CONVERSION_UNREACHABLE()   (abort_noreturn())
 #else
 #define DOUBLE_CONVERSION_UNREACHABLE()   (abort())
@@ -183,7 +192,11 @@ typedef unsigned __int64 uint64_t;
 
 #else
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <stdint.h>
+#endif
 
 #endif
 

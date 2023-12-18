@@ -13,8 +13,12 @@
 
 
 #include "Poco/Notification.h"
-#include <typeinfo>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <typeinfo>
+#endif
 
 namespace Poco {
 

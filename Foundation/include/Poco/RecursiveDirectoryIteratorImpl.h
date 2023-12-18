@@ -20,9 +20,13 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/DirectoryIteratorStrategy.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <stack>
 #include <functional>
-
+#endif
 
 namespace Poco {
 

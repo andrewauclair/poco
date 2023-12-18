@@ -15,9 +15,13 @@
 #include "Poco/UUID.h"
 #include "Poco/ByteOrder.h"
 #include "Poco/Exception.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <cstring>
-
+#endif
 
 namespace Poco {
 

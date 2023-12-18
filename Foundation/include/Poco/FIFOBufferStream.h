@@ -21,9 +21,13 @@
 #include "Poco/Foundation.h"
 #include "Poco/FIFOBuffer.h"
 #include "Poco/BufferedBidirectionalStreamBuf.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <istream>
 #include <ostream>
-
+#endif
 
 namespace Poco {
 

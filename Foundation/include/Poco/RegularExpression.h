@@ -22,9 +22,13 @@
 
 
 #include "Poco/Foundation.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <map>
-
+#endif
 
 namespace Poco {
 

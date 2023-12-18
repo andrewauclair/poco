@@ -20,8 +20,12 @@
 #include "Poco/File.h"
 #include "Poco/Path.h"
 #include "Poco/String.h"
-#include <fstream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <fstream>
+#endif
 
 using Poco::Thread;
 using Poco::Process;

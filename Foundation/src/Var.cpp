@@ -14,12 +14,16 @@
 
 #include "Poco/Dynamic/Var.h"
 #include "Poco/Dynamic/Struct.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <cctype>
 #include <vector>
 #include <list>
 #include <deque>
-
+#endif
 
 namespace Poco {
 namespace Dynamic {

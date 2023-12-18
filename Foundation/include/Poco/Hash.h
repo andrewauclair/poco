@@ -144,7 +144,7 @@ inline void hashCombine(Poco::UInt32& h1, Poco::UInt32 k1)
 
 inline void hashCombine(Poco::UInt64& h, Poco::UInt64 k)
 {
-    const Poco::UInt64 m = UINT64_C(0xc6a4a7935bd1e995);
+    const Poco::UInt64 m = 0xc6a4a7935bd1e995ULL;
     const int r = 47;
 
     k *= m;

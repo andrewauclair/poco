@@ -13,8 +13,12 @@
 
 #include "Poco/JSONString.h"
 #include "Poco/UTF8String.h"
-#include <ostream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <ostream>
+#endif
 
 namespace {
 

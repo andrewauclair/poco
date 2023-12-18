@@ -14,9 +14,13 @@
 
 #include "Poco/TextBufferIterator.h"
 #include "Poco/TextEncoding.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <cstring>
-
+#endif
 
 namespace Poco {
 

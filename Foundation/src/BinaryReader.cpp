@@ -16,8 +16,12 @@
 #include "Poco/ByteOrder.h"
 #include "Poco/TextEncoding.h"
 #include "Poco/TextConverter.h"
-#include <algorithm>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <algorithm>
+#endif
 
 namespace Poco {
 

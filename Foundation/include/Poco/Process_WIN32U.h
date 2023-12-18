@@ -20,8 +20,14 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/RefCountedObject.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <map>
+#endif
+
 #include "Poco/UnWindows.h"
 
 

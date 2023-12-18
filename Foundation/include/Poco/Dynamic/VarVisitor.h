@@ -18,8 +18,13 @@
 
 
 #include "Poco/Dynamic/Var.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <unordered_map>
 #include <functional>
+#endif
 
 namespace Poco {
 namespace Details {

@@ -19,8 +19,13 @@
 
 
 #include "Poco/Foundation.h"
-#include <float.h>
-#include <math.h>
+
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <cfloat>
+#include <cmath>
+#endif
 
 #ifndef _SW_INEXACT
 #	define _SW_INEXACT 0x00000001 // inexact (precision)

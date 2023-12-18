@@ -14,8 +14,12 @@
 
 #include "Poco/Windows1252Encoding.h"
 #include "Poco/String.h"
-#include <map>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <map>
+#endif
 
 namespace Poco {
 

@@ -22,11 +22,15 @@
 #include "Poco/Exception.h"
 #include "Poco/HashFunction.h"
 #include "Poco/HashStatistic.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <map>
 #include <cstddef>
 #include <algorithm>
-
+#endif
 
 namespace Poco {
 

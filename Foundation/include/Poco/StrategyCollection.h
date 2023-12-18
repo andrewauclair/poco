@@ -22,8 +22,12 @@
 #include "Poco/ValidArgs.h"
 #include "Poco/AbstractStrategy.h"
 #include "Poco/SharedPtr.h"
-#include <vector>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <vector>
+#endif
 
 namespace Poco {
 

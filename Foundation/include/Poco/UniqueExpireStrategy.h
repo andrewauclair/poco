@@ -24,9 +24,13 @@
 #include "Poco/Bugcheck.h"
 #include "Poco/Timestamp.h"
 #include "Poco/EventArgs.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <set>
 #include <map>
-
+#endif
 
 namespace Poco {
 

@@ -15,10 +15,16 @@
 #include "Poco/Timestamp.h"
 #include "Poco/Timespan.h"
 #include "Poco/Exception.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #undef min
 #undef max
 #include <limits>
+#endif
+
 #if defined(POCO_OS_FAMILY_UNIX)
 #include <time.h>
 #include <unistd.h>

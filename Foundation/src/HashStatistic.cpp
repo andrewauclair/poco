@@ -13,7 +13,12 @@
 
 
 #include "Poco/HashStatistic.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <sstream>
+#endif
 
 namespace Poco {
 

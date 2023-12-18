@@ -15,10 +15,14 @@
 #include "Poco/Foundation.h"
 #include "Poco/UnicodeConverter.h"
 #include "Poco/Error.h"
-#include <string>
-#include <string.h>
-#include <errno.h>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <string>
+#include <cstring>
+#include <cerrno>
+#endif
 
 namespace Poco {
 

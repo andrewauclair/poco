@@ -19,9 +19,13 @@
 
 #include "Poco/Environment.h"
 #include "Poco/Version.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cstdlib>
 #include <cstdio> // snprintf()
-
+#endif
 
 #if defined(POCO_VXWORKS)
 #include "Environment_VX.cpp"

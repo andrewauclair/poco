@@ -18,8 +18,12 @@
 #include "Poco/File.h"
 #include "Poco/Process.h"
 #include "Poco/FileStream.h"
-#include <fstream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <fstream>
+#endif
 
 using Poco::Path;
 using Poco::File;

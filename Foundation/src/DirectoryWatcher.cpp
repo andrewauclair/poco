@@ -38,10 +38,14 @@
 		#define O_EVTONLY 0x8000
 	#endif
 #endif
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <map>
 #include <atomic>
-
+#endif
 
 namespace Poco {
 

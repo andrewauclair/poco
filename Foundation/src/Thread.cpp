@@ -17,8 +17,12 @@
 #include "Poco/Exception.h"
 #include "Poco/ThreadLocal.h"
 #include "Poco/AtomicCounter.h"
-#include <sstream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <sstream>
+#endif
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)

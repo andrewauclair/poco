@@ -21,8 +21,14 @@
 #include "Poco/Timezone.h"
 #include "Poco/Timespan.h"
 #include "Poco/Exception.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <ctime>
+#endif
+
 #if defined(_WIN32_WCE) && _WIN32_WCE < 0x800
 #include "wce_time.h"
 #elif defined(_WIN32)

@@ -13,8 +13,12 @@
 
 
 #include "Poco/URIStreamFactory.h"
-#include <algorithm>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <algorithm>
+#endif
 
 namespace Poco {
 

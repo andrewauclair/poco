@@ -15,10 +15,14 @@
 #include "Poco/Dynamic/VarIterator.h"
 #include "Poco/Dynamic/Var.h"
 //#include "Poco/Dynamic/Struct.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #undef min
 #undef max
 #include <limits>
-
+#endif
 
 namespace Poco {
 namespace Dynamic {

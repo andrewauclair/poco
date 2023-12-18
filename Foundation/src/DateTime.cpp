@@ -16,10 +16,14 @@
 #include "Poco/Timespan.h"
 #include "Poco/Exception.h"
 #include "Poco/Format.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <cmath>
 #include <ctime>
-
+#endif
 
 namespace Poco {
 
@@ -33,7 +37,7 @@ DateTime::DateTime()
 }
 
 
-DateTime::DateTime(const tm& tmStruct):
+DateTime::DateTime(const std::tm& tmStruct):
 	_year(tmStruct.tm_year + 1900),
 	_month(tmStruct.tm_mon + 1),
 	_day(tmStruct.tm_mday),

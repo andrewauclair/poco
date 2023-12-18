@@ -19,8 +19,12 @@
 #include "Poco/UTF8Encoding.h"
 #include "Poco/NumberFormatter.h"
 #include "Poco/Ascii.h"
-#include <algorithm>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <algorithm>
+#endif
 
 namespace Poco {
 

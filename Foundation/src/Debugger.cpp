@@ -13,9 +13,15 @@
 
 
 #include "Poco/Debugger.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <sstream>
 #include <cstdlib>
 #include <cstdio>
+#endif
+
 #if defined(POCO_OS_FAMILY_WINDOWS)
 	#include "Poco/UnWindows.h"
 #elif defined(POCO_OS_FAMILY_UNIX) && !defined(POCO_VXWORKS)

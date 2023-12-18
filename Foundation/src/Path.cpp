@@ -20,8 +20,12 @@
 #include "Poco/UnicodeConverter.h"
 #include "Poco/Buffer.h"
 #endif
-#include <algorithm>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <algorithm>
+#endif
 
 #if defined(POCO_OS_FAMILY_UNIX)
 #include "Path_UNIX.cpp"

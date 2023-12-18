@@ -19,13 +19,17 @@
 
 #include "Poco/NumberFormatter.h"
 #include "Poco/MemoryStream.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <iomanip>
 #if !defined(POCO_NO_LOCALE)
 #include <locale>
 #endif
 #include <cstdio>
 #include <cinttypes>
-
+#endif
 
 #if defined(_MSC_VER) || defined(__MINGW32__)
 	#define I64_FMT "I64"

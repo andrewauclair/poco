@@ -19,9 +19,14 @@
 #include "Poco/ThreadLocal.h"
 #include "Poco/ErrorHandler.h"
 #include "Poco/NotificationQueue.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <sstream>
 #include <ctime>
 #include <utility>
+#endif
 
 namespace Poco {
 

@@ -15,8 +15,12 @@
 #include "Poco/Bugcheck.h"
 #include "Poco/Debugger.h"
 #include "Poco/Exception.h"
-#include <sstream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <sstream>
+#endif
 
 namespace Poco {
 

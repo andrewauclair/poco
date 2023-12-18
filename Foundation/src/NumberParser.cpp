@@ -16,13 +16,17 @@
 #include "Poco/Exception.h"
 #include "Poco/String.h"
 #include "Poco/NumericString.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cstdio>
 #include <cctype>
 #include <stdlib.h>
 #if !defined(POCO_NO_LOCALE)
 	#include <locale>
 #endif
-
+#endif
 
 #if defined(POCO_LONG_IS_64_BIT)
 	#define I64_FMT "l"

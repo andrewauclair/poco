@@ -24,8 +24,12 @@
 #include "Poco/Event.h"
 #include "Poco/Timestamp.h"
 #include "Poco/Clock.h"
-#include <map>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <map>
+#endif
 
 namespace Poco {
 

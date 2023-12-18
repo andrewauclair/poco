@@ -26,9 +26,13 @@
 #include "Poco/Timespan.h"
 #include "Poco/EventArgs.h"
 #include "Poco/UniqueExpireStrategy.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <set>
 #include <map>
-
+#endif
 
 namespace Poco {
 

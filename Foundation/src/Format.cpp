@@ -15,12 +15,16 @@
 #include "Poco/Format.h"
 #include "Poco/Exception.h"
 #include "Poco/Ascii.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <sstream>
 #if !defined(POCO_NO_LOCALE)
 #include <locale>
 #endif
 #include <cstddef>
-
+#endif
 
 namespace Poco {
 

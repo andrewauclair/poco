@@ -16,8 +16,14 @@
 #include "Poco/Exception.h"
 #include "Poco/UnicodeConverter.h"
 #include "Poco/Buffer.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <sstream>
 #include <cstring>
+#endif
+
 #include "Poco/UnWindows.h"
 #include <winsock2.h>
 #include <wincrypt.h>

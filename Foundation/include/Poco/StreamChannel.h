@@ -21,8 +21,12 @@
 #include "Poco/Foundation.h"
 #include "Poco/Channel.h"
 #include "Poco/Mutex.h"
-#include <ostream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <ostream>
+#endif
 
 namespace Poco {
 

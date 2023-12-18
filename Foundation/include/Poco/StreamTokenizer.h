@@ -20,9 +20,13 @@
 
 #include "Poco/Foundation.h"
 #include "Poco/Token.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <istream>
 #include <vector>
-
+#endif
 
 namespace Poco {
 

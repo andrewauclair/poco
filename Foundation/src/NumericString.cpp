@@ -32,9 +32,13 @@
 
 poco_static_assert(POCO_MAX_FLT_STRING_LEN == double_conversion::kMaxSignificantDecimalDigits);
 #include "Poco/String.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <memory>
 #include <cctype>
-
+#endif
 
 namespace {
 

@@ -20,11 +20,15 @@
 #endif
 #include "Poco/Mutex.h"
 #include "Poco/Random.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <random>
 #include <set>
 #include <sstream>
-
+#endif
 
 namespace Poco {
 

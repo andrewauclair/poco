@@ -21,8 +21,12 @@
 
 
 #include "Poco/SHA2Engine.h"
-#include <string.h>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <cstring>
+#endif
 
 namespace Poco {
 
@@ -208,7 +212,7 @@ SHA2Engine::SHA2Engine(ALGORITHM algorithm):
 SHA2Engine::~SHA2Engine()
 {
 	reset();
-	free(_context);
+	std::free(_context);
 }
 
 
@@ -353,7 +357,7 @@ std::size_t SHA2Engine::digestLength() const
 void SHA2Engine::reset()
 {
 	if (_context != NULL) free(_context);
-	_context = calloc(1, sizeof(HASHCONTEXT));
+	_context = std::calloc(1, sizeof(HASHCONTEXT));
 	HASHCONTEXT* pContext = (HASHCONTEXT*)_context;
 	if (_algorithm == SHA_224)
 	{

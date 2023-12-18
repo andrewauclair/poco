@@ -14,8 +14,12 @@
 
 #include "Poco/TimedNotificationQueue.h"
 #include "Poco/Notification.h"
-#include <limits>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <limits>
+#endif
 
 namespace Poco {
 
