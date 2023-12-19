@@ -12,9 +12,13 @@
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/RandomStream.h"
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <vector>
 #include <cmath>
-
+#endif
 
 using Poco::RandomInputStream;
 

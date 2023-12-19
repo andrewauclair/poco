@@ -13,11 +13,18 @@
 #ifndef GlobTest_INCLUDED
 #define GlobTest_INCLUDED
 
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include <set>
-
+#endif
 
 class GlobTest: public CppUnit::TestCase
 {

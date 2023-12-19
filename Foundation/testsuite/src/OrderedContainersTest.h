@@ -10,14 +10,24 @@
 #ifndef OrderedContainersTest_INCLUDED
 #define OrderedContainersTest_INCLUDED
 
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/OrderedMap.h"
 #include "Poco/OrderedSet.h"
-#include "ordered_map_util.h"
+
 #include <tuple>
 #include <deque>
+#endif
+
+#include "ordered_map_util.h"
 
 #ifdef POCO_COMPILER_MSVC
 #pragma warning(push)

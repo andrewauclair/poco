@@ -9,21 +9,22 @@
 
 
 #include "AutoPtrTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/AutoPtr.h"
 #include "Poco/Exception.h"
 
-#if defined(POCO_MODULES)
-import std;
-#else
 #include <atomic>
 #endif
-
-using Poco::AutoPtr;
-using Poco::makeAuto;
-using Poco::NullPointerException;
-
 
 namespace
 {
@@ -92,13 +93,13 @@ AutoPtrTest::~AutoPtrTest()
 void AutoPtrTest::testAutoPtr()
 {
 	{
-		AutoPtr<TestObj> ptr = new TestObj;
+		Poco::AutoPtr<TestObj> ptr = new TestObj;
 		assertTrue (ptr->rc() == 1);
-		AutoPtr<TestObj> ptr2 = ptr;
+		Poco::AutoPtr<TestObj> ptr2 = ptr;
 		assertTrue (ptr->rc() == 2);
 		ptr2 = new TestObj;
 		assertTrue (ptr->rc() == 1);
-		AutoPtr<TestObj> ptr3;
+		Poco::AutoPtr<TestObj> ptr3;
 		ptr3 = ptr2;
 		assertTrue (ptr2->rc() == 2);
 		ptr3 = new TestObj;
@@ -107,7 +108,7 @@ void AutoPtrTest::testAutoPtr()
 		assertTrue (ptr2->rc() == 2);
 		assertTrue (TestObj::count() > 0);
 
-		AutoPtr<TestObj> ptr4 = std::move(ptr);
+		Poco::AutoPtr<TestObj> ptr4 = std::move(ptr);
 		assertTrue (ptr4->rc() == 1);
 		assertTrue (ptr.isNull());
 
@@ -121,7 +122,7 @@ void AutoPtrTest::testAutoPtr()
 
 void AutoPtrTest::testOps()
 {
-	AutoPtr<TestObj> ptr1;
+	Poco::AutoPtr<TestObj> ptr1;
 	assertNull(ptr1.get());
 	TestObj* pTO1 = new TestObj;
 	TestObj* pTO2 = new TestObj;
@@ -133,9 +134,9 @@ void AutoPtrTest::testOps()
 	}
 	assertTrue (pTO1 < pTO2);
 	ptr1 = pTO1;
-	AutoPtr<TestObj> ptr2 = pTO2;
-	AutoPtr<TestObj> ptr3 = ptr1;
-	AutoPtr<TestObj> ptr4;
+	Poco::AutoPtr<TestObj> ptr2 = pTO2;
+	Poco::AutoPtr<TestObj> ptr3 = ptr1;
+	Poco::AutoPtr<TestObj> ptr4;
 	assertTrue (ptr1.get() == pTO1);
 	assertTrue (ptr1 == pTO1);
 	assertTrue (ptr2.get() == pTO2);
@@ -168,7 +169,7 @@ void AutoPtrTest::testOps()
 		assertTrue (ptr4->rc() > 0);
 		fail ("must throw NullPointerException");
 	}
-	catch (NullPointerException&)
+	catch (Poco::NullPointerException&)
 	{
 	}
 
@@ -192,13 +193,13 @@ void AutoPtrTest::testOps()
 
 void AutoPtrTest::testMakeAuto()
 {
-	AutoPtr<TestObj> ptr = makeAuto<TestObj>();
+	Poco::AutoPtr<TestObj> ptr = Poco::makeAuto<TestObj>();
 	assertTrue (ptr->rc() == 1);
 
-	ptr = makeAuto<TestObj>(42);
+	ptr = Poco::makeAuto<TestObj>(42);
 	assertTrue (ptr->rc() == 1);
 
-	ptr = makeAuto<TestObj>(42, "fortytwo");
+	ptr = Poco::makeAuto<TestObj>(42, "fortytwo");
 	assertTrue (ptr->rc() == 1);
 }
 

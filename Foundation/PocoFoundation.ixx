@@ -42,6 +42,7 @@ module;
 #include "Poco/Error.h"
 #include "Poco/Exception.h"
 #include "Poco/FIFOBuffer.h"
+#include "Poco/FIFOBufferStream.h"
 #include "Poco/Format.h"
 #include "Poco/Foundation.h"
 #include "Poco/FPEnvironment.h"
@@ -292,9 +293,346 @@ module;
 #include "Poco/UUID.h"
 #include "Poco/UUIDGenerator.h"
 
-export module PocoFoundation;
+// this isn't in a group?
+#include "Poco/Array.h"
+
+export module poco.foundation;
 
 namespace Poco
 {
+	export using Poco::Any;
+	export using Poco::AnyCast;
 
+	export using Poco::Ascii;
+
+	export using Poco::Base32Encoder;
+	export using Poco::Base32Decoder;
+	export using Poco::Base64Encoder;
+	export using Poco::Base64Decoder;
+
+	export using Poco::DataFormatException;
+	export using Poco::ActiveMethod;
+	export using Poco::ActiveResult;
+	export using Poco::Event;
+	export using Poco::ActiveDispatcher;
+	export using Poco::Activity;
+	export using Poco::Condition;
+	export using Poco::Mutex;
+	export using Poco::TimeoutException;
+	export using Poco::Base64EncodingOptions;
+	export using Poco::Timestamp;
+	export using Poco::DateTime;
+	export using Poco::Timespan;
+	export using Poco::Timezone;
+	export using Poco::AssertionViolationException;
+	export using Poco::CountingInputStream;
+	export using Poco::CountingOutputStream;
+	export using Poco::DateTimeFormat;
+	export using Poco::DateTimeFormatter;
+	export using Poco::HashMap;
+	export using Poco::LinearHashTable;
+	export using Poco::Hash;
+	export using Poco::HashTable;
+	export using Poco::Stopwatch;
+	export using Poco::NumberFormatter;
+	export using Poco::format;
+	export using Poco::ClassLoader;
+	export using Poco::Manifest;
+	export using Poco::SharedLibrary;
+	export using Poco::AbstractMetaObject;
+	export using Poco::NotFoundException;
+	export using Poco::Path;
+	export using Poco::File;
+	export using Poco::ExpireLRUCache;
+	export using Poco::FileChannel;
+	export using Poco::Message;
+	export using Poco::TemporaryFile;
+	export using Poco::LocalDateTime;
+	export using Poco::DirectoryIterator;
+	export using Poco::InvalidArgumentException;
+	//export using Poco::FIFOBufferStream;
+
+	export using Poco::Exception;
+	export using Poco::BadCastException;
+	export using Poco::NullPointerException;
+	export using Poco::InvalidAccessException;
+	export using Poco::NullValueException;
+
+	export using Poco::UInt8;
+	export using Poco::UInt16;
+	export using Poco::UInt32;
+	export using Poco::UInt64;
+	export using Poco::Int8;
+	export using Poco::Int16;
+	export using Poco::Int32;
+	export using Poco::Int64;
+
+	export using Poco::AutoPtr;
+	export using Poco::SharedPtr;
+
+	export using Poco::Array;
+
+	export using Poco::AutoReleasePool;
+
+	export using Poco::ByteOrder;
+
+	export using Poco::Runnable;
+
+	export using Poco::AtomicCounter;
+
+	export using Poco::Environment;
+
+	export using Poco::Buffer;
+	export using Poco::BasicFIFOBuffer;
+	export using Poco::FIFOBuffer;
+
+	export using Poco::Thread;
+	export using Poco::ThreadLocal;
+
+	export using Poco::Nullable;
+	export using Poco::Clock;
+	export using Poco::Task;
+	export using Poco::TextIterator;
+
+	export using Poco::TypeList;
+	export using Poco::NullTypeList;
+	export using Poco::TypeListType;
+	export using Poco::TypeGetter;
+	export using Poco::TypeLocator;
+	export using Poco::TypeAppender;
+	export using Poco::TypeOneEraser;
+	export using Poco::TypeAllEraser;
+	export using Poco::TypeDuplicateEraser;
+	export using Poco::TypeOneReplacer;
+	export using Poco::TypeAllReplacer;
+	export using Poco::Tuple;
+	export using Poco::Void;
+
+	export using Poco::TaskStartedNotification;
+	export using Poco::TaskCancelledNotification;
+	export using Poco::TaskFinishedNotification;
+	export using Poco::TaskFailedNotification;
+	export using Poco::TaskProgressNotification;
+	export using Poco::TaskCustomNotification;
+
+	export using Poco::NoThreadAvailableException;
+	export using Poco::SystemException;
+	export using Poco::Observer;
+
+	export using Poco::UUIDGenerator;
+	export using Poco::UUID;
+	export using Poco::TaskManager;
+
+	export using Poco::SortedDirectoryIterator;
+
+	export using Poco::StreamTokenizer;
+	export using Poco::Token;
+	export using Poco::InvalidToken;
+	export using Poco::EOFToken;
+	export using Poco::WhitespaceToken;
+
+	export using Poco::URIStreamOpener;
+	export using Poco::URIStreamFactory;
+	export using Poco::URI;
+
+	export using Poco::ThreadTarget;
+
+	export using Poco::LineEnding;
+	export using Poco::InputLineEndingConverter;
+	export using Poco::OutputLineEndingConverter;
+	export using Poco::StreamCopier;
+	export using Poco::ListMap;
+
+	export using Poco::HMACEngine;
+	export using Poco::MD5Engine;
+	export using Poco::SHA2Engine224;
+	export using Poco::SHA2Engine256;
+	export using Poco::SHA2Engine384;
+	export using Poco::SHA2Engine512;
+	export using Poco::SHA2Engine;
+	export using Poco::DigestEngine;
+
+	export using Poco::DateTimeParser;
+	export using Poco::SyntaxException;
+
+	export using Poco::MemoryInputStream;
+	export using Poco::MemoryOutputStream;
+	export using Poco::MemoryPool;
+	export using Poco::LoggingFactory;
+	export using Poco::Channel;
+	export using Poco::ConsoleChannel;
+	export using Poco::SimpleFileChannel;
+	export using Poco::SplitterChannel;
+	export using Poco::Formatter;
+	export using Poco::PatternFormatter;
+	export using Poco::Instantiator;
+
+	export using Poco::AsyncChannel;
+	export using Poco::FormattingChannel;
+	export using Poco::ConsoleChannel;
+	export using Poco::StreamChannel;
+
+	export using Poco::DigestInputStream;
+	export using Poco::DigestOutputStream;
+
+	export using Poco::PathSyntaxException;
+
+	export using Poco::NullInputStream;
+	export using Poco::NullOutputStream;
+
+	export using Poco::PBKDF2Engine;
+	export using Poco::SHA1Engine;
+
+	export using Poco::NamedMutex;
+	export using Poco::OutOfMemoryException;
+	export using Poco::NotImplementedException;
+
+	export using Poco::NumberParser;
+	export using Poco::MetaObject;
+	export using Poco::FastMemoryPool;
+	export using Poco::NDC;
+	export using Poco::Logger;
+	export using Poco::LogStream;
+	export using Poco::LoggingRegistry;
+	export using Poco::MD4Engine;
+	export using Poco::MD5Engine;
+
+	export using Poco::WindowsConsoleChannel;
+	export using Poco::NamedTuple;
+
+	export using Poco::PriorityNotificationQueue;
+	export using Poco::Notification;
+	export using Poco::RunnableAdapter;
+
+	export using Poco::HexBinaryEncoder;
+	export using Poco::HexBinaryDecoder;
+
+	export using Poco::Process;
+	export using Poco::ProcessHandle;
+	export using Poco::Pipe;
+	export using Poco::PipeInputStream;
+	export using Poco::PipeOutputStream;
+
+	export using Poco::TimedNotificationQueue;
+	export using Poco::NotificationQueue;
+
+	export using Poco::TextBufferIterator;
+	export using Poco::Latin1Encoding;
+	export using Poco::UTF8Encoding;
+	export using Poco::UTF16Encoding;
+
+	export using Poco::StringTokenizer;
+	export using Poco::RangeException;
+
+	export using Poco::AccessExpirationDecorator;
+
+	export using Poco::UniqueExpireLRUCache;
+
+	export using Poco::InflatingInputStream;
+	export using Poco::InflatingOutputStream;
+	export using Poco::DeflatingOutputStream;
+	export using Poco::DeflatingInputStream;
+	export using Poco::InflatingStreamBuf;
+	export using Poco::DeflatingStreamBuf;
+
+	export template<typename T, typename... Args>
+	Poco::AutoPtr<T> makeAuto(Args&&... args);
+
+	export using Poco::decimalSeparator;
+	export using Poco::thousandSeparator;
+	export using Poco::DataURIStream;
+
+	namespace Dynamic
+	{
+		export using Poco::Dynamic::Var;
+		export using Poco::Dynamic::Pair;
+		export using Poco::Dynamic::Struct;
+		
+	}
+	export using Poco::DynamicStruct;
+	export using Poco::FIFOBufferStream;
+
+	export using Poco::FPE;
+
+	export using Poco::FileInputStream;
+	export using Poco::FileOutputStream;
+	export using Poco::FileStream;
+
+	export using Poco::Glob;
+	export using Poco::HashSet;
+
+	export using Poco::ExpireCache;
+	export using Poco::LRUCache;
+
+
+	export using Poco::SimpleRecursiveDirectoryIterator;
+	export using Poco::SiblingsFirstRecursiveDirectoryIterator;
+
+	export using Poco::NotificationCenter;
+	export using Poco::NObserver;
+
+	export using Poco::Delegate;
+	export using Poco::Expire;
+	export using Poco::FunctionDelegate;
+	export using Poco::Random;
+	export using Poco::OrderedMap;
+	export using Poco::OrderedSet;
+
+	export template <typename I>
+		bool strToInt(const char* pStr, I& outResult, short base, char thSep);
+
+	export template <typename I>
+		bool strToInt(const std::string& str, I& result, short base, char thSep);
+
+	//export template <class TObj>
+	//	Delegate<TObj, void, true> delegate(TObj* pObj, void (TObj::* NotifyMethod)(const void*));
+
+
+	//export template <class TObj>
+	//	Delegate<TObj, void, false> delegate(TObj* pObj, void (TObj::* NotifyMethod)());
+
+
+	//export template <class TObj>
+	//	Expire<void> delegate(TObj* pObj, void (TObj::* NotifyMethod)(const void*), Timestamp::TimeDiff expireMillisecs);
+
+
+	//export template <class TObj>
+	//	Expire<void> delegate(TObj* pObj, void (TObj::* NotifyMethod)(), Timestamp::TimeDiff expireMillisecs);
+
+
+	//export Poco::delegate;
+	/*inline Expire<void> delegate(void (*NotifyMethod)(const void*), Timestamp::TimeDiff expireMillisecs)
+	{
+		return Expire<void>(FunctionDelegate<void, true, true>(NotifyMethod), expireMillisecs);
+	}
+
+
+	inline Expire<void> delegate(void (*NotifyMethod)(void*), Timestamp::TimeDiff expireMillisecs)
+	{
+		return Expire<void>(FunctionDelegate<void, true, false>(NotifyMethod), expireMillisecs);
+	}
+
+
+	inline Expire<void> delegate(void (*NotifyMethod)(), Timestamp::TimeDiff expireMillisecs)
+	{
+		return Expire<void>(FunctionDelegate<void, false>(NotifyMethod), expireMillisecs);
+	}
+
+
+	inline FunctionDelegate<void, true, true> delegate(void (*NotifyMethod)(const void*))
+	{
+		return FunctionDelegate<void, true, true>(NotifyMethod);
+	}
+
+
+	inline FunctionDelegate<void, true, false> delegate(void (*NotifyMethod)(void*))
+	{
+		return FunctionDelegate<void, true, false>(NotifyMethod);
+	}
+
+
+	inline FunctionDelegate<void, false> delegate(void (*NotifyMethod)())
+	{
+		return FunctionDelegate<void, false>(NotifyMethod);
+	}*/
 }

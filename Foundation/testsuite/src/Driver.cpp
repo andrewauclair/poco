@@ -13,5 +13,10 @@
 #include "CppUnit/TestRunner.h"
 #include "FoundationTestSuite.h"
 
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#endif
 
 CppUnitMain(FoundationTestSuite)

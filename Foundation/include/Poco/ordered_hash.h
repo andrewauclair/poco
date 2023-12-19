@@ -44,6 +44,8 @@ import std;
 #include <vector>
 #endif
 
+#include <limits.h> // CHAR_BIT
+
 /**
  * Macros for compatibility with GCC 4.8
  */

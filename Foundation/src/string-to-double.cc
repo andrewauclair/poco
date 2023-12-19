@@ -25,9 +25,13 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <climits>
 #include <locale>
 #include <cmath>
+#endif
 
 #include "string-to-double.h"
 
@@ -393,7 +397,7 @@ static double RadixStringToIeee(Iterator* current,
     while (IsDecimalDigitForRadix(**current, 10)) {
       // No need to read exponents if they are too big. That could potentially overflow
       // the `written_exponent` variable.
-      if (abs(written_exponent) <= 100 * Double::kMaxExponent) {
+      if (std::abs(written_exponent) <= 100 * Double::kMaxExponent) {
         written_exponent = 10 * written_exponent + **current - '0';
       }
       if (Advance(current, separator, radix, end)) break;

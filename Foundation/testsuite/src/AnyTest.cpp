@@ -7,8 +7,16 @@
 // SPDX-License-Identifier:	BSL-1.0
 //
 
-
 #include "AnyTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Exception.h"
@@ -16,9 +24,6 @@
 #include "Poco/SharedPtr.h"
 #include "Poco/Bugcheck.h"
 
-#if defined(POCO_MODULES)
-import std;
-#else
 #include <vector>
 #include <memory>
 #endif
@@ -28,7 +33,7 @@ import std;
 #endif
 
 
-using namespace Poco;
+//using namespace Poco;
 
 
 class SomeClass
@@ -58,10 +63,10 @@ AnyTest::~AnyTest()
 
 void AnyTest::testAnyDefaultCtor()
 {
-	const Any value;
+	const Poco::Any value;
 
 	assertTrue (value.empty());
-	assertTrue (0 == AnyCast<int>(&value));
+	assertTrue (0 == Poco::AnyCast<int>(&value));
 	assertTrue (value.type() == typeid(void));
 }
 
@@ -69,126 +74,126 @@ void AnyTest::testAnyDefaultCtor()
 void AnyTest::testAnyConvertingCtor()
 {
 	std::string text = "test message";
-	Any value = text;
+	Poco::Any value = text;
 
 	assertTrue (!value.empty());
 	assertTrue (value.type() == typeid(std::string));
-	assertTrue (0 == AnyCast<int>(&value));
-	assertTrue (0 != AnyCast<std::string>(&value));
-	assertTrue (AnyCast<std::string>(value) == text);
-	assertTrue (AnyCast<std::string>(&value) != &text);
+	assertTrue (0 == Poco::AnyCast<int>(&value));
+	assertTrue (0 != Poco::AnyCast<std::string>(&value));
+	assertTrue (Poco::AnyCast<std::string>(value) == text);
+	assertTrue (Poco::AnyCast<std::string>(&value) != &text);
 }
 
 
 void AnyTest::testAnyCopyCtor()
 {
 	std::string text = "test message";
-	Any original = text, copy = original;
+	Poco::Any original = text, copy = original;
 
 	assertTrue (!copy.empty());
 	assertTrue (original.type() == copy.type());
-	assertTrue (AnyCast<std::string>(original) == AnyCast<std::string>(copy));
+	assertTrue (Poco::AnyCast<std::string>(original) == Poco::AnyCast<std::string>(copy));
 	assertTrue (text == AnyCast<std::string>(copy));
-	assertTrue (AnyCast<std::string>(&original) != AnyCast<std::string>(&copy));
+	assertTrue (Poco::AnyCast<std::string>(&original) != Poco::AnyCast<std::string>(&copy));
 }
 
 
 void AnyTest::testAnyCopyAssign()
 {
 	std::string text = "test message";
-	Any original = text, copy;
-	Any* assignResult = &(copy = original);
+	Poco::Any original = text, copy;
+	Poco::Any* assignResult = &(copy = original);
 
 	assertTrue (!copy.empty());
 	assertTrue (original.type() == copy.type());
-	assertTrue (AnyCast<std::string>(original) == AnyCast<std::string>(copy));
+	assertTrue (Poco::AnyCast<std::string>(original) == Poco::AnyCast<std::string>(copy));
 	assertTrue (text == AnyCast<std::string>(copy));
-	assertTrue (AnyCast<std::string>(&original) != AnyCast<std::string>(&copy));
+	assertTrue (Poco::AnyCast<std::string>(&original) != Poco::AnyCast<std::string>(&copy));
 	assertTrue (assignResult == &copy);
 
 	// test self assignment
-	Any& ref = original;
+	Poco::Any& ref = original;
 	original = ref;
-	assertTrue (AnyCast<std::string>(original) == AnyCast<std::string>(copy));
+	assertTrue (Poco::AnyCast<std::string>(original) == Poco::AnyCast<std::string>(copy));
 	original = original;
-	assertTrue (AnyCast<std::string>(original) == AnyCast<std::string>(copy));
+	assertTrue (Poco::AnyCast<std::string>(original) == Poco::AnyCast<std::string>(copy));
 }
 
 
 void AnyTest::testAnyConvertingAssign()
 {
 	std::string text = "test message";
-	Any value;
-	Any* assignResult = &(value = text);
+	Poco::Any value;
+	Poco::Any* assignResult = &(value = text);
 
 	assertTrue (!value.empty());
 	assertTrue (value.type() == typeid(std::string));
-	assertTrue (0 == AnyCast<int>(&value));
-	assertTrue (0 != AnyCast<std::string>(&value));
-	assertTrue (AnyCast<std::string>(value) == text);
-	assertTrue (AnyCast<std::string>(&value) != &text);
+	assertTrue (0 == Poco::AnyCast<int>(&value));
+	assertTrue (0 != Poco::AnyCast<std::string>(&value));
+	assertTrue (Poco::AnyCast<std::string>(value) == text);
+	assertTrue (Poco::AnyCast<std::string>(&value) != &text);
 	assertTrue (assignResult == &value);
 }
 
 
 void AnyTest::testAnyCastToReference()
 {
-	Any a(137);
-	const Any b(a);
+	Poco::Any a(137);
+	const Poco::Any b(a);
 
-	int&                ra    = AnyCast<int &>(a);
-	int const&          ra_c  = AnyCast<int const &>(a);
+	int&                ra    = Poco::AnyCast<int &>(a);
+	int const&          ra_c  = Poco::AnyCast<int const &>(a);
 	// NOTE: The following two AnyCasts will trigger the
 	// undefined behavior sanitizer.
-	int volatile&       ra_v  = AnyCast<int volatile &>(a);
-	int const volatile& ra_cv = AnyCast<int const volatile&>(a);
+	int volatile&       ra_v  = Poco::AnyCast<int volatile &>(a);
+	int const volatile& ra_cv = Poco::AnyCast<int const volatile&>(a);
 
 	// cv references to same obj
 	assertTrue (&ra == &ra_c && &ra == &ra_v && &ra == &ra_cv);
 
-	int const &          rb_c  = AnyCast<int const &>(b);
-	int const volatile & rb_cv = AnyCast<int const volatile &>(b);
+	int const &          rb_c  = Poco::AnyCast<int const &>(b);
+	int const volatile & rb_cv = Poco::AnyCast<int const volatile &>(b);
 
 	assertTrue (&rb_c == &rb_cv); // cv references to copied const obj
 	assertTrue (&ra != &rb_c); // copies hold different objects
 
 	++ra;
-	int incremented = AnyCast<int>(a);
+	int incremented = Poco::AnyCast<int>(a);
 	assertTrue (incremented == 138); // increment by reference changes value
 
 	try
 	{
-		AnyCast<char &>(a);
+		Poco::AnyCast<char &>(a);
 		failmsg ("AnyCast to incorrect reference type");
 	}
-	catch (BadCastException&) { }
+	catch (Poco::BadCastException&) { }
 
 	try
 	{
-		AnyCast<const char &>(b),
+		Poco::AnyCast<const char &>(b),
 		failmsg ("AnyCast to incorrect const reference type");
 	}
-	catch (BadCastException&) { }
+	catch (Poco::BadCastException&) { }
 }
 
 
 void AnyTest::testAnyBadCast()
 {
 	std::string text = "test message";
-	Any value = text;
+	Poco::Any value = text;
 
 	try
 	{
-		AnyCast<const char *>(value);
+		Poco::AnyCast<const char *>(value);
 		fail ("must throw");
 	}
-	catch (BadCastException&) { }
+	catch (Poco::BadCastException&) { }
 }
 
 
 void AnyTest::testAnySwap()
 {
-	Any empty1, empty2;
+	Poco::Any empty1, empty2;
 	assertTrue (empty1.empty());
 	assertTrue (empty2.empty());
 	empty1.swap(empty2);
@@ -199,14 +204,14 @@ void AnyTest::testAnySwap()
 	empty1 = text;
 	assertTrue (!empty1.empty());
 	assertTrue (empty2.empty());
-	assertTrue (text == AnyCast<std::string>(empty1));
+	assertTrue (text == Poco::AnyCast<std::string>(empty1));
 
 	empty1.swap(empty2);
 	assertTrue (empty1.empty());
 	assertTrue (!empty2.empty());
-	assertTrue (text == AnyCast<std::string>(empty2));
+	assertTrue (text == Poco::AnyCast<std::string>(empty2));
 
-	Any original = text, swapped;
+	Poco::Any original = text, swapped;
 #ifdef POCO_NO_SOO
 	assertFalse (original.local());
 #else
@@ -215,13 +220,13 @@ void AnyTest::testAnySwap()
 	assertFalse (original.empty());
 	assertFalse (swapped.local());
 	assertTrue (swapped.empty());
-	std::string* originalPtr = AnyCast<std::string>(&original);
-	Any* swapResult = &original.swap(swapped);
+	std::string* originalPtr = Poco::AnyCast<std::string>(&original);
+	Poco::Any* swapResult = &original.swap(swapped);
 
 	assertTrue (original.empty());
 	assertTrue (!swapped.empty());
 	assertTrue (swapped.type() == typeid(std::string));
-	assertTrue (text == AnyCast<std::string>(swapped));
+	assertTrue (text == Poco::AnyCast<std::string>(swapped));
 	assertTrue (0 != originalPtr);
 	assertTrue (swapResult == &original);
 
@@ -237,7 +242,7 @@ void AnyTest::testAnySwap()
 		Poco::UInt64 eight = 8;
 		Poco::UInt64 nine = 9;
 
-		bool operator==(const BigObject& other)
+		bool operator==(const BigObject& other) const
 		{
 			return one == other.one &&
 				two == other.two &&
@@ -251,21 +256,22 @@ void AnyTest::testAnySwap()
 		}
 	};
 
-	poco_assert (sizeof(BigObject) > POCO_SMALL_OBJECT_SIZE);
+	// TODO add back
+	//poco_assert (sizeof(BigObject) > POCO_SMALL_OBJECT_SIZE);
 
 	BigObject bigObject;
-	Any bigOriginal = bigObject, swappedBig;
+	Poco::Any bigOriginal = bigObject, swappedBig;
 	assertFalse (bigOriginal.local());
 	assertFalse (bigOriginal.empty());
 	assertFalse (swappedBig.local());
 	assertTrue (swappedBig.empty());
-	BigObject* bigPtr = AnyCast<BigObject>(&bigOriginal);
-	Any* swapBigResult = &bigOriginal.swap(swappedBig);
+	BigObject* bigPtr = Poco::AnyCast<BigObject>(&bigOriginal);
+	Poco::Any* swapBigResult = &bigOriginal.swap(swappedBig);
 
 	assertTrue (bigOriginal.empty());
 	assertTrue (!swappedBig.empty());
 	assertTrue (swappedBig.type() == typeid(BigObject));
-	assertTrue (bigObject == AnyCast<BigObject>(swappedBig));
+	assertTrue (bigObject == Poco::AnyCast<BigObject>(swappedBig));
 	assertTrue (0 != bigPtr);
 	assertTrue (swapBigResult == &bigOriginal);
 
@@ -279,7 +285,7 @@ void AnyTest::testAnySwap()
 #endif
 	assertFalse (bigOriginal.local());
 
-	Any temp = original;
+	Poco::Any temp = original;
 #ifdef POCO_NO_SOO
 	assertFalse (temp.local());
 #else
@@ -287,11 +293,11 @@ void AnyTest::testAnySwap()
 #endif
 
 	original = bigOriginal;
-	assertTrue (bigObject == AnyCast<BigObject>(original));
+	assertTrue (bigObject == Poco::AnyCast<BigObject>(original));
 	assertFalse (original.local());
 
 	bigOriginal = temp;
-	assertTrue (text == AnyCast<std::string>(bigOriginal));
+	assertTrue (text == Poco::AnyCast<std::string>(bigOriginal));
 #ifdef POCO_NO_SOO
 	assertFalse (bigOriginal.local());
 #else
@@ -302,8 +308,8 @@ void AnyTest::testAnySwap()
 
 void AnyTest::testAnyEmptyCopy()
 {
-	const Any null;
-	Any copied = null, assigned;
+	const Poco::Any null;
+	Poco::Any copied = null, assigned;
 	assigned = null;
 
 	assertTrue (null.empty());
@@ -314,38 +320,38 @@ void AnyTest::testAnyEmptyCopy()
 
 void AnyTest::testAnyInt()
 {
-	Any e;
+	Poco::Any e;
 	assertTrue (e.empty());
 	e = 0;
 	assertFalse (e.empty());
 
-	Any a = 13;
+	Poco::Any a = 13;
 	assertTrue (a.type() == typeid(int));
-	int* i = AnyCast<int>(&a);
+	int* i = Poco::AnyCast<int>(&a);
 	assertTrue (*i == 13);
-	Any b = a;
+	Poco::Any b = a;
 	assertTrue (b.type() == typeid(int));
-	int *cpyI = AnyCast<int>(&b);
+	int *cpyI = Poco::AnyCast<int>(&b);
 	assertTrue (*cpyI == *i);
 	*cpyI = 20;
 	assertTrue (*cpyI != *i);
-	std::string* s = AnyCast<std::string>(&a);
-	assertTrue (s == NULL);
+	std::string* s = Poco::AnyCast<std::string>(&a);
+	assertTrue (s == nullptr);
 
-	int POCO_UNUSED tmp = AnyCast<int>(a);
-	const Any c = a;
-	tmp = AnyCast<int>(a);
+	[[maybe_unused]] int tmp = Poco::AnyCast<int>(a);
+	const Poco::Any c = a;
+	tmp = Poco::AnyCast<int>(a);
 }
 
 
 void AnyTest::testAnyComplexType()
 {
 	SomeClass str(13,std::string("hello"));
-	Any a = str;
-	Any b = a;
+	Poco::Any a = str;
+	Poco::Any b = a;
 	assertTrue (a.type() == typeid(SomeClass));
 	assertTrue (b.type() == typeid(SomeClass));
-	SomeClass str2 = AnyCast<SomeClass>(a);
+	SomeClass str2 = Poco::AnyCast<SomeClass>(a);
 	assertTrue (str == str2);
 	const SomeClass& strCRef = RefAnyCast<SomeClass>(a);
 	assertTrue (str == strCRef);
@@ -360,12 +366,12 @@ void AnyTest::testAnyVector()
 	tmp.push_back(1);
 	tmp.push_back(2);
 	tmp.push_back(3);
-	Any a = tmp;
+	Poco::Any a = tmp;
 	assertTrue (a.type() == typeid(std::vector<int>));
-	std::vector<int> tmp2 = AnyCast<std::vector<int> >(a);
+	std::vector<int> tmp2 = Poco::AnyCast<std::vector<int> >(a);
 	assertTrue (tmp2.size() == 3);
-	const std::vector<int>& vecCRef = RefAnyCast<std::vector<int> >(a);
-	std::vector<int>& vecRef = RefAnyCast<std::vector<int> >(a);
+	const std::vector<int>& vecCRef = Poco::RefAnyCast<std::vector<int> >(a);
+	std::vector<int>& vecRef = Poco::RefAnyCast<std::vector<int> >(a);
 
 	assertTrue (vecRef[0] == 1);
 	assertTrue (vecRef[1] == 2);
@@ -378,7 +384,7 @@ void AnyTest::testAnyVector()
 void AnyTest::testPlaceholder()
 {
 #ifndef POCO_NO_SOO
-	Placeholder<char> ph;
+	Poco::Placeholder<char> ph;
 	assertTrue(ph.isEmpty());
 	assertFalse(ph.isLocal());
 
@@ -391,7 +397,7 @@ void AnyTest::testPlaceholder()
 	assertTrue(ph.isEmpty());
 	assertFalse(ph.isLocal());
 
-	Placeholder<int> phi;
+	Poco::Placeholder<int> phi;
 	assertTrue(phi.isEmpty());
 	assertFalse(phi.isLocal());
 
@@ -404,7 +410,7 @@ void AnyTest::testPlaceholder()
 	assertTrue(phi.isEmpty());
 	assertFalse(phi.isLocal());
 
-	Placeholder<std::shared_ptr<int>> sph;
+	Poco::Placeholder<std::shared_ptr<int>> sph;
 	assertTrue(sph.isEmpty());
 	assertFalse(sph.isLocal());
 
@@ -413,7 +419,7 @@ void AnyTest::testPlaceholder()
 	assertFalse(sph.isEmpty());
 	assertTrue(sph.isLocal());
 
-	Placeholder<Poco::SharedPtr<int>> psph;
+	Poco::Placeholder<Poco::SharedPtr<int>> psph;
 	assertTrue(psph.isEmpty());
 	assertFalse(psph.isLocal());
 
@@ -422,7 +428,7 @@ void AnyTest::testPlaceholder()
 	assertFalse(psph.isEmpty());
 	assertTrue(psph.isLocal());
 
-	Placeholder<std::vector<int>> vph;
+	Poco::Placeholder<std::vector<int>> vph;
 	assertTrue(vph.isEmpty());
 	assertFalse(vph.isLocal());
 

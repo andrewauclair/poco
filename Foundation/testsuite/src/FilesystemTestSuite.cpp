@@ -9,12 +9,12 @@
 
 
 #include "FilesystemTestSuite.h"
+
 #include "PathTest.h"
 #include "FileTest.h"
 #include "GlobTest.h"
 #include "DirectoryWatcherTest.h"
 #include "DirectoryIteratorsTest.h"
-
 
 CppUnit::Test* FilesystemTestSuite::suite()
 {

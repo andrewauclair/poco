@@ -13,13 +13,21 @@
 #ifndef NotificationCenterTest_INCLUDED
 #define NotificationCenterTest_INCLUDED
 
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/Notification.h"
 #include "Poco/AutoPtr.h"
-#include <set>
 
+#include <set>
+#endif
 
 class TestNotification;
 

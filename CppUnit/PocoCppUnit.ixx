@@ -17,9 +17,17 @@ module;
 #include "CppUnit/TestSuite.h"
 #include "CppUnit/TextTestResult.h"
 
-export module PocoCppUnit;
+export module poco.cppunit;
 
 namespace CppUnit
 {
+	export using CppUnit::Test;
+	export using CppUnit::TestCaller;
 	export using CppUnit::TestCase;
+	export using CppUnit::TestDecorator;
+	export using CppUnit::TestFailure;
+	export using CppUnit::TestResult;
+	export using CppUnit::TestRunner;
+	export using CppUnit::TestSetup;
+	export using CppUnit::TestSuite;
 }

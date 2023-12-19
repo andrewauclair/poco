@@ -20,6 +20,9 @@
 
 #include "Poco/Foundation.h"
 
+#if defined(POCO_MODULES)
+import std;
+#endif
 
 namespace Poco {
 
@@ -107,6 +110,12 @@ private:
 	std::string::const_iterator _end;
 };
 
+inline TextIterator::TextIterator(const std::string::const_iterator& end) :
+	_pEncoding(0),
+	_it(end),
+	_end(end)
+{
+}
 
 //
 // inlines

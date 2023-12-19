@@ -7,8 +7,14 @@
 // SPDX-License-Identifier:	BSL-1.0
 //
 
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 
-#include "NumberParserTest.h"
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Exception.h"
@@ -17,10 +23,13 @@
 #include "Poco/NumericString.h"
 #include "Poco/MemoryStream.h"
 #include "Poco/Stopwatch.h"
+
 #include <iostream>
 #include <iomanip>
 #include <cstdio>
+#endif
 
+#include "NumberParserTest.h"
 
 using Poco::NumberParser;
 using Poco::NumberFormatter;

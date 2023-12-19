@@ -13,11 +13,15 @@
 #ifndef TestChannel_INCLUDED
 #define TestChannel_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.foundation;
+#else
 #include "Poco/Channel.h"
 #include "Poco/Message.h"
-#include <list>
 
+#include <list>
+#endif
 
 class TestChannel: public Poco::Channel
 {

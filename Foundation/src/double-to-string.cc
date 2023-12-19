@@ -25,9 +25,13 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <climits>
 #include <cmath>
+#endif
 
 #include "double-to-string.h"
 

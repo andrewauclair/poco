@@ -9,6 +9,15 @@
 
 
 #include "URIStreamOpenerTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/URIStreamOpener.h"
@@ -16,9 +25,10 @@
 #include "Poco/URI.h"
 #include "Poco/TemporaryFile.h"
 #include "Poco/Path.h"
+
 #include <fstream>
 #include <sstream>
-
+#endif
 
 using Poco::URIStreamOpener;
 using Poco::URIStreamFactory;

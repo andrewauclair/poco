@@ -12,8 +12,12 @@
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/TeeStream.h"
-#include <sstream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <sstream>
+#endif
 
 using Poco::TeeInputStream;
 using Poco::TeeOutputStream;

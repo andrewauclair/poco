@@ -9,14 +9,24 @@
 
 
 #include "PathTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Path.h"
 #include "Poco/Exception.h"
 #include "Poco/Random.h"
 #include "Poco/Environment.h"
-#include <iostream>
 
+#include <iostream>
+#endif
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)

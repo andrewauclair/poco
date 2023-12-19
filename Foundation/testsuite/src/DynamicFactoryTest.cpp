@@ -13,8 +13,12 @@
 #include "CppUnit/TestSuite.h"
 #include "Poco/DynamicFactory.h"
 #include "Poco/Exception.h"
-#include <memory>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <memory>
+#endif
 
 using Poco::DynamicFactory;
 using Poco::Instantiator;

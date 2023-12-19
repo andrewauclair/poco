@@ -12,8 +12,12 @@
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Timezone.h"
-#include <iostream>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <iostream>
+#endif
 
 using Poco::Timezone;
 

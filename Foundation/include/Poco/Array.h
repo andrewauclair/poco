@@ -27,8 +27,12 @@
 
 #include "Poco/Exception.h"
 #include "Poco/Bugcheck.h"
-#include <algorithm>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <algorithm>
+#endif
 
 namespace Poco {
 
@@ -195,6 +199,55 @@ public:
 		std::fill_n(begin(),size(),value);
 	}
 
+	// comparisons
+	template<class T, std::size_t N>
+	inline friend bool operator== (const Array<T, N>& x, const Array<T, N>& y)
+	{
+		return std::equal(x.begin(), x.end(), y.begin());
+	}
+
+	template<class T, std::size_t N>
+	inline friend bool operator< (const Array<T, N>& x, const Array<T, N>& y)
+	{
+		return std::lexicographical_compare(x.begin(), x.end(), y.begin(), y.end());
+	}
+
+
+	template<class T, std::size_t N>
+	inline friend bool operator!= (const Array<T, N>& x, const Array<T, N>& y)
+	{
+		return !(x == y);
+	}
+
+
+	template<class T, std::size_t N>
+	inline friend bool operator> (const Array<T, N>& x, const Array<T, N>& y)
+	{
+		return y < x;
+	}
+
+
+	template<class T, std::size_t N>
+	inline friend bool operator<= (const Array<T, N>& x, const Array<T, N>& y)
+	{
+		return !(y < x);
+	}
+
+
+	template<class T, std::size_t N>
+	inline friend bool operator>= (const Array<T, N>& x, const Array<T, N>& y)
+	{
+		return !(x < y);
+	}
+
+
+	template<class T, std::size_t N>
+	inline friend void swap(Array<T, N>& x, Array<T, N>& y) noexcept
+		/// global swap()
+	{
+		x.swap(y);
+	}
+
 public:
 	T elems[N];
 		/// Fixed-size array of elements of type T, public specifier used to make this class a aggregate.
@@ -202,55 +255,10 @@ public:
 };
 
 
-// comparisons
-template<class T, std::size_t N>
-bool operator== (const Array<T,N>& x, const Array<T,N>& y)
-{
-	return std::equal(x.begin(), x.end(), y.begin());
-}
 
 
-template<class T, std::size_t N>
-bool operator< (const Array<T,N>& x, const Array<T,N>& y)
-{
-	return std::lexicographical_compare(x.begin(),x.end(),y.begin(),y.end());
-}
 
 
-template<class T, std::size_t N>
-bool operator!= (const Array<T,N>& x, const Array<T,N>& y)
-{
-	return !(x==y);
-}
-
-
-template<class T, std::size_t N>
-bool operator> (const Array<T,N>& x, const Array<T,N>& y)
-{
-	return y<x;
-}
-
-
-template<class T, std::size_t N>
-bool operator<= (const Array<T,N>& x, const Array<T,N>& y)
-{
-	return !(y<x);
-}
-
-
-template<class T, std::size_t N>
-bool operator>= (const Array<T,N>& x, const Array<T,N>& y)
-{
-	return !(x<y);
-}
-
-
-template<class T, std::size_t N>
-inline void swap (Array<T,N>& x, Array<T,N>& y) noexcept
-	/// global swap()
-{
-	x.swap(y);
-}
 
 
 }// namespace Poco

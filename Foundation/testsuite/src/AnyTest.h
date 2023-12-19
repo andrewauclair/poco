@@ -12,14 +12,10 @@
 #ifndef AnyTest_INCLUDED
 #define AnyTest_INCLUDED
 
-
-import PocoCppUnit;
-import PocoFoundation;
-
 #if defined(POCO_MODULES)
-import PocoCppUnit;
-import PocoFoundation;
 import std;
+import poco.cppunit;
+import poco.foundation;
 #else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"

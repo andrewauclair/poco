@@ -9,13 +9,23 @@
 
 
 #include "NotificationCenterTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/NotificationCenter.h"
 #include "Poco/Observer.h"
 #include "Poco/NObserver.h"
 #include "Poco/AutoPtr.h"
-
+#endif
 
 using Poco::NotificationCenter;
 using Poco::Observer;

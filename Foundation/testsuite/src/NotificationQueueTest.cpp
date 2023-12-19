@@ -9,6 +9,15 @@
 
 
 #include "NotificationQueueTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/NotificationQueue.h"
@@ -17,7 +26,7 @@
 #include "Poco/Runnable.h"
 #include "Poco/RunnableAdapter.h"
 #include "Poco/Random.h"
-
+#endif
 
 using Poco::NotificationQueue;
 using Poco::Notification;

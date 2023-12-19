@@ -851,6 +851,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\CppUnit\CppAsserts.h" />
+    <ClInclude Include="include\CppUnit\CppTestMacros.h" />
     <ClInclude Include="include\CppUnit\CppUnit.h" />
     <ClInclude Include="include\CppUnit\CppUnitException.h" />
     <ClInclude Include="include\CppUnit\estring.h" />

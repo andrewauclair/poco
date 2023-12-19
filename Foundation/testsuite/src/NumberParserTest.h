@@ -16,11 +16,21 @@
 
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/NumberParser.h"
 #include "Poco/NumberFormatter.h"
 #undef max
 #undef min
 #include <limits>
+#endif
 
 class NumberParserTest: public CppUnit::TestCase
 {

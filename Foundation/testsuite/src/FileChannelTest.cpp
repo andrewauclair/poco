@@ -9,6 +9,15 @@
 
 
 #include "FileChannelTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/FileChannel.h"
@@ -29,8 +38,9 @@
 #include "Poco/RotateStrategy.h"
 #include "Poco/ArchiveStrategy.h"
 #include "Poco/PurgeStrategy.h"
-#include <vector>
 
+#include <vector>
+#endif
 
 using Poco::FileChannel;
 using Poco::Message;

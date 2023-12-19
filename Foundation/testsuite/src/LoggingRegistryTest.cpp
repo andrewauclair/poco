@@ -9,13 +9,22 @@
 
 
 #include "LoggingRegistryTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/LoggingRegistry.h"
 #include "Poco/ConsoleChannel.h"
 #include "Poco/PatternFormatter.h"
 #include "Poco/AutoPtr.h"
-
+#endif
 
 using Poco::LoggingRegistry;
 using Poco::Channel;

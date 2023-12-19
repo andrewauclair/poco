@@ -9,12 +9,22 @@
 
 
 #include "ListMapTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/ListMap.h"
 #include "Poco/Exception.h"
-#include <map>
 
+#include <map>
+#endif
 
 using Poco::ListMap;
 

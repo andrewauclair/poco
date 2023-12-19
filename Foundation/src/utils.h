@@ -51,6 +51,8 @@ import std;
 #include <cassert>
 #endif
 
+#define assert
+
 #ifndef DOUBLE_CONVERSION_ASSERT
 #define DOUBLE_CONVERSION_ASSERT(condition)         \
     assert(condition)

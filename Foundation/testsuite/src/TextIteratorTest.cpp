@@ -9,13 +9,22 @@
 
 
 #include "TextIteratorTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/TextIterator.h"
 #include "Poco/Latin1Encoding.h"
 #include "Poco/UTF8Encoding.h"
 #include "Poco/UTF16Encoding.h"
-
+#endif
 
 using Poco::TextIterator;
 using Poco::Latin1Encoding;

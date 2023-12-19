@@ -9,12 +9,18 @@
 
 
 #include "AutoReleasePoolTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/AutoReleasePool.h"
-
-
-using Poco::AutoReleasePool;
+#endif
 
 
 namespace
@@ -75,7 +81,7 @@ AutoReleasePoolTest::~AutoReleasePoolTest()
 
 void AutoReleasePoolTest::testAutoReleasePool()
 {
-	AutoReleasePool<TestObj> arp;
+	Poco::AutoReleasePool<TestObj> arp;
 	arp.add(new TestObj);
 	arp.add(new TestObj);
 	assertTrue (TestObj::count() == 2);

@@ -25,7 +25,9 @@
 #ifndef TSL_UTILS_H
 #define TSL_UTILS_H
 
-
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cstddef>
 #include <cstdint>
 #include <functional>
@@ -33,7 +35,7 @@
 #include <ostream>
 #include <string>
 #include <utility>
-
+#endif
 
 template<unsigned int MOD>
 class mod_hash {

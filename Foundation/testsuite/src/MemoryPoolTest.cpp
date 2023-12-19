@@ -9,15 +9,25 @@
 
 
 #include "MemoryPoolTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/MemoryPool.h"
 #include "Poco/NumberFormatter.h"
 #include "Poco/Stopwatch.h"
+
 #include <vector>
 #include <cstring>
 #include <iostream>
-
+#endif
 
 using Poco::MemoryPool;
 using Poco::NumberFormatter;

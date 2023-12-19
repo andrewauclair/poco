@@ -9,6 +9,15 @@
 
 
 #include "ChannelTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/SplitterChannel.h"
@@ -19,9 +28,11 @@
 #include "Poco/FormattingChannel.h"
 #include "Poco/ConsoleChannel.h"
 #include "Poco/StreamChannel.h"
-#include "TestChannel.h"
-#include <sstream>
 
+#include <sstream>
+#endif
+
+#include "TestChannel.h"
 
 using Poco::SplitterChannel;
 using Poco::AsyncChannel;

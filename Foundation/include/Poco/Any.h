@@ -392,6 +392,9 @@ private:
 	friend ValueType* AnyCast(Any*);
 
 	template <typename ValueType>
+	friend const ValueType* AnyCast(const Any*);
+
+	template <typename ValueType>
 	friend ValueType* UnsafeAnyCast(Any*);
 
 	template <typename ValueType>
@@ -401,7 +404,13 @@ private:
 	friend ValueType& RefAnyCast(Any&);
 
 	template <typename ValueType>
+	friend const ValueType& RefAnyCast(const Any&);
+
+	template <typename ValueType>
 	friend ValueType AnyCast(Any&);
+
+	template <typename ValueType>
+	friend ValueType AnyCast(const Any&);
 };
 
 

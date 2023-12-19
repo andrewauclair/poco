@@ -13,13 +13,22 @@
 
 #ifndef POCO_NO_INOTIFY
 
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 
+#include "Poco/DelegateInlines.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/DirectoryWatcher.h"
 #include "Poco/Delegate.h"
 #include "Poco/FileStream.h"
-
+#endif
 
 using Poco::DirectoryWatcher;
 

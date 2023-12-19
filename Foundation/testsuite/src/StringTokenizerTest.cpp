@@ -6,14 +6,23 @@
 //
 // SPDX-License-Identifier:	BSL-1.0
 //
-#include <iostream>
-
 #include "StringTokenizerTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/StringTokenizer.h"
 #include "Poco/Exception.h"
 
+#include <iostream>
+#endif
 
 using Poco::StringTokenizer;
 using Poco::RangeException;

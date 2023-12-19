@@ -9,6 +9,15 @@
 
 
 #include "CoreTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Bugcheck.h"
@@ -24,35 +33,19 @@
 #include "Poco/BasicEvent.h"
 #include "Poco/Delegate.h"
 #include "Poco/Exception.h"
+
 #include <iostream>
 #include <sstream>
 #include <vector>
 #include <cstring>
-
-
-using Poco::Bugcheck;
-using Poco::Exception;
-using Poco::Environment;
-using Poco::Thread;
-using Poco::Runnable;
-using Poco::Buffer;
-using Poco::BasicFIFOBuffer;
-using Poco::FIFOBuffer;
-using Poco::AtomicCounter;
-using Poco::Nullable;
-using Poco::Ascii;
-using Poco::BasicEvent;
-using Poco::delegate;
-using Poco::NullType;
-using Poco::InvalidAccessException;
-
+#endif
 
 namespace
 {
 	class ACTRunnable: public Poco::Runnable
 	{
 	public:
-		ACTRunnable(AtomicCounter& counter):
+		ACTRunnable(Poco::AtomicCounter& counter):
 			_counter(counter)
 		{
 		}
@@ -69,7 +62,7 @@ namespace
 		}
 
 	private:
-		AtomicCounter& _counter;
+		Poco::AtomicCounter& _counter;
 	};
 }
 
@@ -182,33 +175,33 @@ void CoreTest::testBugcheck()
 void CoreTest::testEnvironment()
 {
 #if !defined(_WIN32_WCE)
-	Environment::set("FOO", "BAR");
-	assertTrue (Environment::has("FOO"));
-	assertTrue (Environment::get("FOO") == "BAR");
+	Poco::Environment::set("FOO", "BAR");
+	assertTrue (Poco::Environment::has("FOO"));
+	assertTrue (Poco::Environment::get("FOO") == "BAR");
 #endif
 	try
 	{
-		std::string v = Environment::get("THISONEDOESNOTEXIST123");
+		std::string v = Poco::Environment::get("THISONEDOESNOTEXIST123");
 		failmsg("Environment variable does not exist - must throw exception");
 	}
-	catch (Exception&)
+	catch (Poco::Exception&)
 	{
 	}
 
-	std::cout << "OS Name:         " << Environment::osName() << std::endl;
-	std::cout << "OS Display Name: " << Environment::osDisplayName() << std::endl;
-	std::cout << "OS Version:      " << Environment::osVersion() << std::endl;
-	std::cout << "OS Architecture: " << Environment::osArchitecture() << std::endl;
-	std::cout << "Node Name:       " << Environment::nodeName() << std::endl;
-	std::cout << "Node ID:         " << Environment::nodeId() << std::endl;
-	std::cout << "Number of CPUs:  " << Environment::processorCount() << std::endl;
+	std::cout << "OS Name:         " << Poco::Environment::osName() << std::endl;
+	std::cout << "OS Display Name: " << Poco::Environment::osDisplayName() << std::endl;
+	std::cout << "OS Version:      " << Poco::Environment::osVersion() << std::endl;
+	std::cout << "OS Architecture: " << Poco::Environment::osArchitecture() << std::endl;
+	std::cout << "Node Name:       " << Poco::Environment::nodeName() << std::endl;
+	std::cout << "Node ID:         " << Poco::Environment::nodeId() << std::endl;
+	std::cout << "Number of CPUs:  " << Poco::Environment::processorCount() << std::endl;
 }
 
 
 void CoreTest::testBuffer()
 {
 	std::size_t s = 10;
-	Buffer<int> b(s);
+	Poco::Buffer<int> b(s);
 	assertTrue (b.size() == s);
 	assertTrue (b.sizeBytes() == s * sizeof(int));
 	assertTrue (b.capacity() == s);
@@ -256,8 +249,8 @@ void CoreTest::testBuffer()
 	catch (Exception&) { }
 #endif
 
-	Buffer<int> c(s);
-	Buffer<int> d(c);
+	Poco::Buffer<int> c(s);
+	Poco::Buffer<int> d(c);
 	assertTrue (c == d);
 
 	c[1] = -1;
@@ -265,15 +258,15 @@ void CoreTest::testBuffer()
 	c.clear();
 	assertTrue (c[1] == 0);
 
-	Buffer<int> e(0);
+	Poco::Buffer<int> e(0);
 	assertTrue (e.empty());
 
 	assertTrue (c != e);
 
-	Buffer<int> f = e;
+	Poco::Buffer<int> f = e;
 	assertTrue (f == e);
 
-	Buffer<char> g(0);
+	Poco::Buffer<char> g(0);
 	g.append("hello", 5);
 	assertTrue (g.size() == 5);
 
@@ -282,19 +275,19 @@ void CoreTest::testBuffer()
 	assertTrue ( !std::memcmp(g.begin(), "hellohello", 10) );
 
 	char h[10];
-	Buffer<char> buf(h, 10);
+	Poco::Buffer<char> buf(h, 10);
 	try
 	{
 		buf.append("hello", 5);
 		fail ("must fail");
 	}
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	buf.assign("hello", 5);
 	assertTrue ( !std::memcmp(&h[0], "hello", 5) );
 
 	const char j[10] = "hello";
-	Buffer<char> k(j, 5);
+	Poco::Buffer<char> k(j, 5);
 	k.append("hello", 5);
 	assertTrue ( !std::memcmp(&j[0], "hello", 5) );
 	assertTrue ( !std::memcmp(k.begin(), "hellohello", 10) );
@@ -318,18 +311,18 @@ void CoreTest::testBuffer()
 
 void CoreTest::testFIFOBufferEOFAndError()
 {
-	typedef FIFOBuffer::Type T;
+	typedef Poco::FIFOBuffer::Type T;
 
-	FIFOBuffer f(20, true);
+	Poco::FIFOBuffer f(20, true);
 
 	assertTrue (f.isEmpty());
 	assertTrue (!f.isFull());
 
-	Buffer<T> b(10);
+	Poco::Buffer<T> b(10);
 	std::vector<T> v;
 
-	f.readable += delegate(this, &CoreTest::onReadable);
-	f.writable += delegate(this, &CoreTest::onWritable);
+	f.readable += Poco::delegate(this, &CoreTest::onReadable);
+	f.writable += Poco::delegate(this, &CoreTest::onWritable);
 
 	for (T c = '0'; c < '0' +  10; ++c)
 		v.push_back(c);
@@ -390,14 +383,14 @@ void CoreTest::testFIFOBufferEOFAndError()
 		f.copy(b.begin(), 5);
 		fail ("must throw InvalidAccessException");
 	}
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	try
 	{
 		f.advance(5);
 		fail ("must throw InvalidAccessException");
 	}
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	assertTrue (1 == _notToWritable);
 	assertTrue (2 == _writableToNot);
@@ -424,14 +417,14 @@ void CoreTest::testFIFOBufferEOFAndError()
 
 void CoreTest::testFIFOBufferChar()
 {
-	typedef FIFOBuffer::Type T;
+	typedef Poco::FIFOBuffer::Type T;
 
-	FIFOBuffer f(20, true);
+	Poco::FIFOBuffer f(20, true);
 
 	assertTrue (f.isEmpty());
 	assertTrue (!f.isFull());
 
-	Buffer<T> b(10);
+	Poco::Buffer<T> b(10);
 	std::vector<T> v;
 
 	f.readable += delegate(this, &CoreTest::onReadable);
@@ -471,7 +464,7 @@ void CoreTest::testFIFOBufferChar()
 	assertTrue ('8' == f[3]);
 	assertTrue ('9' == f[4]);
 	try { T POCO_UNUSED i = f[10]; fail ("must fail"); }
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	v.clear();
 	for (T c = 'a'; c < 'a' + 10; ++c)
@@ -499,7 +492,7 @@ void CoreTest::testFIFOBufferChar()
 	assertTrue ('i' == f[13]);
 	assertTrue ('j' == f[14]);
 	try { T POCO_UNUSED i = f[15]; fail ("must fail"); }
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	f.read(b, 10);
 	assertTrue (20 == f.size());
@@ -511,7 +504,7 @@ void CoreTest::testFIFOBufferChar()
 	assertTrue ('i' == f[3]);
 	assertTrue ('j' == f[4]);
 	try { T POCO_UNUSED i = f[5]; fail ("must fail"); }
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	assertTrue (1 == _notToReadable);
 	assertTrue (0 == _readableToNot);
@@ -527,7 +520,7 @@ void CoreTest::testFIFOBufferChar()
 	assertTrue (20 == f.size());
 	assertTrue (0 == f.used());
 	try { T POCO_UNUSED i = f[0]; fail ("must fail"); }
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 	assertTrue (f.isEmpty());
 
 	assertTrue (1 == _notToReadable);
@@ -693,7 +686,7 @@ void CoreTest::testFIFOBufferChar()
 	{
 		f.copy(&arr[0], 8);
 		fail("must fail");
-	} catch (InvalidAccessException&) { }
+	} catch (Poco::InvalidAccessException&) { }
 
 	f.copy(&arr[0], 3);
 	assertTrue (7 == _notToReadable);
@@ -720,7 +713,7 @@ void CoreTest::testFIFOBufferChar()
 	{
 		f.copy(&arr[0], 1);
 		fail("must fail");
-	} catch (InvalidAccessException&) { }
+	} catch (Poco::InvalidAccessException&) { }
 
 	f.drain(1);
 	assertTrue (7 == _notToReadable);
@@ -764,8 +757,8 @@ void CoreTest::testFIFOBufferInt()
 {
 	typedef int T;
 
-	BasicFIFOBuffer<T> f(20);
-	Buffer<T> b(10);
+	Poco::BasicFIFOBuffer<T> f(20);
+	Poco::Buffer<T> b(10);
 	std::vector<T> v;
 
 	for (T c = 0; c < 10; ++c)
@@ -798,7 +791,7 @@ void CoreTest::testFIFOBufferInt()
 	assertTrue (8 == f[3]);
 	assertTrue (9 == f[4]);
 	try { T POCO_UNUSED i = f[10]; fail ("must fail"); }
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	v.clear();
 	for (T c = 10; c < 20; ++c)
@@ -826,7 +819,7 @@ void CoreTest::testFIFOBufferInt()
 	assertTrue (18 == f[13]);
 	assertTrue (19 == f[14]);
 	try { T POCO_UNUSED i = f[15]; fail ("must fail"); }
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	f.read(b, 10);
 	assertTrue (20 == f.size());
@@ -838,14 +831,14 @@ void CoreTest::testFIFOBufferInt()
 	assertTrue (18 == f[3]);
 	assertTrue (19 == f[4]);
 	try { T POCO_UNUSED i = f[5]; fail ("must fail"); }
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	f.read(b, 6);
 	assertTrue (5 == b.size());
 	assertTrue (20 == f.size());
 	assertTrue (0 == f.used());
 	try { T POCO_UNUSED i = f[0]; fail ("must fail"); }
-	catch (InvalidAccessException&) { }
+	catch (Poco::InvalidAccessException&) { }
 
 	assertTrue (f.isEmpty());
 
@@ -905,7 +898,7 @@ void CoreTest::testFIFOBufferInt()
 
 void CoreTest::testAtomicCounter()
 {
-	AtomicCounter ac;
+	Poco::AtomicCounter ac;
 
 	assertTrue (ac.value() == 0);
 	assertTrue (ac++ == 0);
@@ -919,15 +912,15 @@ void CoreTest::testAtomicCounter()
 	ac = 0;
 	assertTrue (ac.value() == 0);
 
-	AtomicCounter ac2(2);
+	Poco::AtomicCounter ac2(2);
 	assertTrue (ac2.value() == 2);
 
 	ACTRunnable act(ac);
-	Thread t1;
-	Thread t2;
-	Thread t3;
-	Thread t4;
-	Thread t5;
+	Poco::Thread t1;
+	Poco::Thread t2;
+	Poco::Thread t3;
+	Poco::Thread t4;
+	Poco::Thread t5;
 
 	t1.start(act);
 	t2.start(act);
@@ -947,9 +940,9 @@ void CoreTest::testAtomicCounter()
 
 void CoreTest::testNullable()
 {
-	Nullable<int> i;
-	Nullable<double> f;
-	Nullable<std::string> s;
+	Poco::Nullable<int> i;
+	Poco::Nullable<double> f;
+	Poco::Nullable<std::string> s;
 
 	assertTrue (i.isNull());
 	assertTrue (f.isNull());
@@ -975,7 +968,7 @@ void CoreTest::testNullable()
 	assertTrue (f.isNull());
 	assertTrue (s.isNull());
 
-	Nullable<int> n1;
+	Poco::Nullable<int> n1;
 	assertTrue (n1.isNull());
 
 	assertTrue (n1.value(42) == 42);
@@ -998,7 +991,7 @@ void CoreTest::testNullable()
 	assertTrue (!n1.isNull());
 	assertTrue (n1.value() == 1);
 
-	Nullable<int> n2(42);
+	Poco::Nullable<int> n2(42);
 	assertTrue (!n2.isNull());
 	assertTrue (n2.value() == 42);
 	assertTrue (n2.value(99) == 42);
@@ -1034,7 +1027,7 @@ void CoreTest::testNullable()
 	assertTrue (n2 != n1);
 	assertTrue (n1 > n2);
 
-	NullType nd{};
+	Poco::NullType nd{};
 	assertTrue (n1 != nd);
 	assertTrue (nd != n1);
 	n1.clear();
@@ -1045,76 +1038,76 @@ void CoreTest::testNullable()
 
 void CoreTest::testAscii()
 {
-	assertTrue (Ascii::isAscii('A'));
-	assertTrue (!Ascii::isAscii(-1));
-	assertTrue (!Ascii::isAscii(128));
-	assertTrue (!Ascii::isAscii(222));
+	assertTrue (Poco::Ascii::isAscii('A'));
+	assertTrue (!Poco::Ascii::isAscii(-1));
+	assertTrue (!Poco::Ascii::isAscii(128));
+	assertTrue (!Poco::Ascii::isAscii(222));
 
-	assertTrue (Ascii::isSpace(' '));
-	assertTrue (Ascii::isSpace('\t'));
-	assertTrue (Ascii::isSpace('\r'));
-	assertTrue (Ascii::isSpace('\n'));
-	assertTrue (!Ascii::isSpace('A'));
-	assertTrue (!Ascii::isSpace(-1));
-	assertTrue (!Ascii::isSpace(222));
+	assertTrue (Poco::Ascii::isSpace(' '));
+	assertTrue (Poco::Ascii::isSpace('\t'));
+	assertTrue (Poco::Ascii::isSpace('\r'));
+	assertTrue (Poco::Ascii::isSpace('\n'));
+	assertTrue (!Poco::Ascii::isSpace('A'));
+	assertTrue (!Poco::Ascii::isSpace(-1));
+	assertTrue (!Poco::Ascii::isSpace(222));
 
-	assertTrue (Ascii::isDigit('0'));
-	assertTrue (Ascii::isDigit('1'));
-	assertTrue (Ascii::isDigit('2'));
-	assertTrue (Ascii::isDigit('3'));
-	assertTrue (Ascii::isDigit('4'));
-	assertTrue (Ascii::isDigit('5'));
-	assertTrue (Ascii::isDigit('6'));
-	assertTrue (Ascii::isDigit('7'));
-	assertTrue (Ascii::isDigit('8'));
-	assertTrue (Ascii::isDigit('9'));
-	assertTrue (!Ascii::isDigit('a'));
+	assertTrue (Poco::Ascii::isDigit('0'));
+	assertTrue (Poco::Ascii::isDigit('1'));
+	assertTrue (Poco::Ascii::isDigit('2'));
+	assertTrue (Poco::Ascii::isDigit('3'));
+	assertTrue (Poco::Ascii::isDigit('4'));
+	assertTrue (Poco::Ascii::isDigit('5'));
+	assertTrue (Poco::Ascii::isDigit('6'));
+	assertTrue (Poco::Ascii::isDigit('7'));
+	assertTrue (Poco::Ascii::isDigit('8'));
+	assertTrue (Poco::Ascii::isDigit('9'));
+	assertTrue (!Poco::Ascii::isDigit('a'));
 
-	assertTrue (Ascii::isHexDigit('0'));
-	assertTrue (Ascii::isHexDigit('1'));
-	assertTrue (Ascii::isHexDigit('2'));
-	assertTrue (Ascii::isHexDigit('3'));
-	assertTrue (Ascii::isHexDigit('4'));
-	assertTrue (Ascii::isHexDigit('5'));
-	assertTrue (Ascii::isHexDigit('6'));
-	assertTrue (Ascii::isHexDigit('7'));
-	assertTrue (Ascii::isHexDigit('8'));
-	assertTrue (Ascii::isHexDigit('9'));
-	assertTrue (Ascii::isHexDigit('a'));
-	assertTrue (Ascii::isHexDigit('b'));
-	assertTrue (Ascii::isHexDigit('c'));
-	assertTrue (Ascii::isHexDigit('d'));
-	assertTrue (Ascii::isHexDigit('e'));
-	assertTrue (Ascii::isHexDigit('f'));
-	assertTrue (Ascii::isHexDigit('A'));
-	assertTrue (Ascii::isHexDigit('B'));
-	assertTrue (Ascii::isHexDigit('C'));
-	assertTrue (Ascii::isHexDigit('D'));
-	assertTrue (Ascii::isHexDigit('E'));
-	assertTrue (Ascii::isHexDigit('F'));
-	assertTrue (!Ascii::isHexDigit('G'));
+	assertTrue (Poco::Ascii::isHexDigit('0'));
+	assertTrue (Poco::Ascii::isHexDigit('1'));
+	assertTrue (Poco::Ascii::isHexDigit('2'));
+	assertTrue (Poco::Ascii::isHexDigit('3'));
+	assertTrue (Poco::Ascii::isHexDigit('4'));
+	assertTrue (Poco::Ascii::isHexDigit('5'));
+	assertTrue (Poco::Ascii::isHexDigit('6'));
+	assertTrue (Poco::Ascii::isHexDigit('7'));
+	assertTrue (Poco::Ascii::isHexDigit('8'));
+	assertTrue (Poco::Ascii::isHexDigit('9'));
+	assertTrue (Poco::Ascii::isHexDigit('a'));
+	assertTrue (Poco::Ascii::isHexDigit('b'));
+	assertTrue (Poco::Ascii::isHexDigit('c'));
+	assertTrue (Poco::Ascii::isHexDigit('d'));
+	assertTrue (Poco::Ascii::isHexDigit('e'));
+	assertTrue (Poco::Ascii::isHexDigit('f'));
+	assertTrue (Poco::Ascii::isHexDigit('A'));
+	assertTrue (Poco::Ascii::isHexDigit('B'));
+	assertTrue (Poco::Ascii::isHexDigit('C'));
+	assertTrue (Poco::Ascii::isHexDigit('D'));
+	assertTrue (Poco::Ascii::isHexDigit('E'));
+	assertTrue (Poco::Ascii::isHexDigit('F'));
+	assertTrue (!Poco::Ascii::isHexDigit('G'));
 
-	assertTrue (Ascii::isPunct('.'));
-	assertTrue (Ascii::isPunct(','));
-	assertTrue (!Ascii::isPunct('A'));
+	assertTrue (Poco::Ascii::isPunct('.'));
+	assertTrue (Poco::Ascii::isPunct(','));
+	assertTrue (!Poco::Ascii::isPunct('A'));
 
-	assertTrue (Ascii::isAlpha('a'));
-	assertTrue (Ascii::isAlpha('Z'));
-	assertTrue (!Ascii::isAlpha('0'));
+	assertTrue (Poco::Ascii::isAlpha('a'));
+	assertTrue (Poco::Ascii::isAlpha('Z'));
+	assertTrue (!Poco::Ascii::isAlpha('0'));
 
-	assertTrue (Ascii::isLower('a'));
-	assertTrue (!Ascii::isLower('A'));
+	assertTrue (Poco::Ascii::isLower('a'));
+	assertTrue (!Poco::Ascii::isLower('A'));
 
-	assertTrue (Ascii::isUpper('A'));
-	assertTrue (!Ascii::isUpper('a'));
+	assertTrue (Poco::Ascii::isUpper('A'));
+	assertTrue (!Poco::Ascii::isUpper('a'));
 
-	assertTrue (Ascii::toLower('A') == 'a');
-	assertTrue (Ascii::toLower('z') == 'z');
-	assertTrue (Ascii::toLower('0') == '0');
+	assertTrue (Poco::Ascii::toLower('A') == 'a');
+	assertTrue (Poco::Ascii::toLower('z') == 'z');
+	assertTrue (Poco::Ascii::toLower('0') == '0');
 
-	assertTrue (Ascii::toUpper('a') == 'A');
-	assertTrue (Ascii::toUpper('0') == '0');
-	assertTrue (Ascii::toUpper('Z') == 'Z');
+	assertTrue (Poco::Ascii::toUpper('a') == 'A');
+	assertTrue (Poco::Ascii::toUpper('0') == '0');
+	assertTrue (Poco::Ascii::toUpper('Z') == 'Z');
 }
 
 

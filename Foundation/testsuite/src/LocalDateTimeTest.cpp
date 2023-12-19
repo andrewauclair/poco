@@ -14,6 +14,15 @@
 
 
 #include "LocalDateTimeTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/LocalDateTime.h"
@@ -23,8 +32,15 @@
 #include "Poco/Timezone.h"
 #include "Poco/DateTimeFormat.h"
 #include "Poco/DateTimeFormatter.h"
+#endif
+
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <ctime>
 #include <iostream>
+#endif
+
 #if defined(_WIN32_WCE) && _WIN32_WCE < 0x800
 #include "wce_time.h"
 #endif

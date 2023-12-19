@@ -9,13 +9,23 @@
 
 
 #include "RWLockTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/RWLock.h"
 #include "Poco/Thread.h"
 #include "Poco/Runnable.h"
-#include <atomic>
 
+#include <atomic>
+#endif
 
 using Poco::RWLock;
 using Poco::Thread;

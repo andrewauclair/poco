@@ -16,8 +16,12 @@
 #include "Poco/Exception.h"
 #include "Poco/ErrorHandler.h"
 #include <process.h>
-#include <limits>
 
+#if defined(POCO_MODULES)
+import std;
+#else
+#include <limits>
+#endif
 
 namespace
 {

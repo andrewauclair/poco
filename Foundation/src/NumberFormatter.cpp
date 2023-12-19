@@ -20,6 +20,8 @@
 #include "Poco/NumberFormatter.h"
 #include "Poco/MemoryStream.h"
 
+#include <inttypes.h>
+
 #if defined(POCO_MODULES)
 import std;
 #else

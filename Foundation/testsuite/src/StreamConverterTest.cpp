@@ -9,6 +9,15 @@
 
 
 #include "StreamConverterTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/StreamConverter.h"
@@ -16,8 +25,9 @@
 #include "Poco/Latin1Encoding.h"
 #include "Poco/UTF8Encoding.h"
 #include "Poco/StreamCopier.h"
-#include <sstream>
 
+#include <sstream>
+#endif
 
 using Poco::InputStreamConverter;
 using Poco::OutputStreamConverter;

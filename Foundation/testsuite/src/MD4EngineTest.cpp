@@ -9,10 +9,19 @@
 
 
 #include "MD4EngineTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/MD4Engine.h"
-
+#endif
 
 using Poco::MD4Engine;
 using Poco::DigestEngine;

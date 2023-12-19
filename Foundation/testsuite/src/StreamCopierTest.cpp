@@ -9,11 +9,21 @@
 
 
 #include "StreamCopierTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/StreamCopier.h"
-#include <sstream>
 
+#include <sstream>
+#endif
 
 using Poco::StreamCopier;
 

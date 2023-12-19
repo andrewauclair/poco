@@ -9,15 +9,25 @@
 
 
 #include "LinearHashTableTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/LinearHashTable.h"
 #include "Poco/HashTable.h"
 #include "Poco/Stopwatch.h"
 #include "Poco/NumberFormatter.h"
+
 #include <set>
 #include <iostream>
-
+#endif
 
 #ifdef POCO_COMPILER_MSVC
 #pragma warning(push)

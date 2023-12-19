@@ -9,12 +9,22 @@
 
 
 #include "ClockTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Clock.h"
 #include "Poco/Thread.h"
-#include <iostream>
 
+#include <iostream>
+#endif
 
 using Poco::Clock;
 using Poco::Thread;

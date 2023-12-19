@@ -9,6 +9,15 @@
 
 
 #include "LoggingFactoryTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/LoggingFactory.h"
@@ -28,8 +37,9 @@
 #include "Poco/Message.h"
 #include "Poco/AutoPtr.h"
 #include "Poco/Exception.h"
-#include <memory>
 
+#include <memory>
+#endif
 
 using Poco::LoggingFactory;
 using Poco::Channel;

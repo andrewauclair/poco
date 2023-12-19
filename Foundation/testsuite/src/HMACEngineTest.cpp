@@ -9,13 +9,22 @@
 
 
 #include "HMACEngineTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/HMACEngine.h"
 #include "Poco/MD5Engine.h"
 #include "Poco/SHA2Engine.h"
 #include "Poco/Exception.h"
-
+#endif
 
 using Poco::HMACEngine;
 using Poco::MD5Engine;

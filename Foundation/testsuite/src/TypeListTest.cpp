@@ -9,13 +9,23 @@
 
 
 #include "TypeListTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Tuple.h"
 #include "Poco/TypeList.h"
 #include "Poco/Void.h"
-#include <iostream>
 
+#include <iostream>
+#endif
 
 #if defined(_MSC_VER)
 #	pragma warning(disable:4800) // forcing value to bool 'true' or 'false' on MSVC 71

@@ -9,6 +9,15 @@
 
 
 #include "PriorityEventTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "DummyDelegate.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
@@ -16,7 +25,7 @@
 #include "Poco/PriorityExpire.h"
 #include "Poco/Thread.h"
 #include "Poco/Exception.h"
-
+#endif
 
 using namespace Poco;
 

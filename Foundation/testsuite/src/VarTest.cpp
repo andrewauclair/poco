@@ -9,6 +9,15 @@
 
 
 #include "VarTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Exception.h"
@@ -17,10 +26,11 @@
 #include "Poco/Dynamic/Struct.h"
 #include "Poco/Dynamic/Pair.h"
 #include "Poco/Dynamic/VarVisitor.h"
+
 #include <map>
 #include <utility>
 #include <iostream>
-
+#endif
 
 #if defined(_MSC_VER) && _MSC_VER < 1400
 	#pragma warning(disable:4800)//forcing value to bool 'true' or 'false'
@@ -239,7 +249,7 @@ void VarTest::testInt16()
 
 	try
 	{
-		Int32 POCO_UNUSED value2; value2 = a1.extract<Int32>();
+		[[maybe_unused]] Int32 value2; value2 = a1.extract<Int32>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -333,7 +343,7 @@ void VarTest::testInt32()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		[[maybe_unused]] Int16 value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -427,7 +437,7 @@ void VarTest::testInt64()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		[[maybe_unused]] Int16 value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -521,7 +531,7 @@ void VarTest::testUInt8()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		[[maybe_unused]] Int16 value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -615,7 +625,7 @@ void VarTest::testUInt16()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		[[maybe_unused]] Int16 value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -709,7 +719,7 @@ void VarTest::testUInt32()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		[[maybe_unused]] Int16 value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)

@@ -9,14 +9,24 @@
 
 
 #include "TaskTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Task.h"
 #include "Poco/Thread.h"
 #include "Poco/Event.h"
 #include "Poco/AutoPtr.h"
-#include <iostream>
 
+#include <iostream>
+#endif
 
 using Poco::Task;
 using Poco::Thread;

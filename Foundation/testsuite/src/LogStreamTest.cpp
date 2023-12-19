@@ -9,13 +9,23 @@
 
 
 #include "LogStreamTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Logger.h"
 #include "Poco/LogStream.h"
 #include "Poco/AutoPtr.h"
-#include "TestChannel.h"
+#endif
 
+#include "TestChannel.h"
 
 using Poco::Logger;
 using Poco::LogStream;

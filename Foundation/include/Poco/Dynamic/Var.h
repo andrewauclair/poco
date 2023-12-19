@@ -550,6 +550,1431 @@ public:
 		/// Converts the Var to a string in JSON format. Note that toString(const Var&) will return
 		/// a different result than Var::convert<std::string>() and Var::toString()!
 
+	friend const Var operator + (const char* other, const Var& da)
+		/// Addition operator for adding Var to const char*
+	{
+		std::string tmp = other;
+		return tmp + da.convert<std::string>();
+	}
+
+
+	friend char operator + (const char& other, const Var& da)
+		/// Addition operator for adding Var to char
+	{
+		return other + da.convert<char>();
+	}
+
+
+	friend char operator - (const char& other, const Var& da)
+		/// Subtraction operator for subtracting Var from char
+	{
+		return other - da.convert<char>();
+	}
+
+
+	friend char operator * (const char& other, const Var& da)
+		/// Multiplication operator for multiplying Var with char
+	{
+		return other * da.convert<char>();
+	}
+
+
+	friend char operator / (const char& other, const Var& da)
+		/// Division operator for dividing Var with char
+	{
+		return other / da.convert<char>();
+	}
+
+
+	friend char operator += (char& other, const Var& da)
+		/// Addition assignment operator for adding Var to char
+	{
+		return other += da.convert<char>();
+	}
+
+
+	friend char operator -= (char& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from char
+	{
+		return other -= da.convert<char>();
+	}
+
+
+	friend char operator *= (char& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with char
+	{
+		return other *= da.convert<char>();
+	}
+
+
+	friend char operator /= (char& other, const Var& da)
+		/// Division assignment operator for dividing Var with char
+	{
+		return other /= da.convert<char>();
+	}
+
+
+	friend bool operator == (const char& other, const Var& da)
+		/// Equality operator for comparing Var with char
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<char>();
+	}
+
+
+	friend bool operator != (const char& other, const Var& da)
+		/// Inequality operator for comparing Var with char
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<char>();
+	}
+
+
+	friend bool operator < (const char& other, const Var& da)
+		/// Less than operator for comparing Var with char
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<char>();
+	}
+
+
+	friend bool operator <= (const char& other, const Var& da)
+		/// Less than or equal operator for comparing Var with char
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<char>();
+	}
+
+
+	friend bool operator > (const char& other, const Var& da)
+		/// Greater than operator for comparing Var with char
+	{
+		if (da.isEmpty())return false;
+		return other > da.convert<char>();
+	}
+
+
+	friend bool operator >= (const char& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with char
+	{
+		if (da.isEmpty())return false;
+		return other >= da.convert<char>();
+	}
+
+
+	friend Poco::Int8 operator + (const Poco::Int8& other, const Var& da)
+		/// Addition operator for adding Var to Poco::Int8
+	{
+		return other + da.convert<Poco::Int8>();
+	}
+
+
+	friend Poco::Int8 operator - (const Poco::Int8& other, const Var& da)
+		/// Subtraction operator for subtracting Var from Poco::Int8
+	{
+		return other - da.convert<Poco::Int8>();
+	}
+
+
+	friend Poco::Int8 operator * (const Poco::Int8& other, const Var& da)
+		/// Multiplication operator for multiplying Var with Poco::Int8
+	{
+		return other * da.convert<Poco::Int8>();
+	}
+
+
+	friend Poco::Int8 operator / (const Poco::Int8& other, const Var& da)
+		/// Division operator for dividing Var with Poco::Int8
+	{
+		return other / da.convert<Poco::Int8>();
+	}
+
+
+	friend Poco::Int8 operator += (Poco::Int8& other, const Var& da)
+		/// Addition assignment operator for adding Var to Poco::Int8
+	{
+		return other += da.convert<Poco::Int8>();
+	}
+
+
+	friend Poco::Int8 operator -= (Poco::Int8& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from Poco::Int8
+	{
+		return other -= da.convert<Poco::Int8>();
+	}
+
+
+	friend Poco::Int8 operator *= (Poco::Int8& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with Poco::Int8
+	{
+		return other *= da.convert<Poco::Int8>();
+	}
+
+
+	friend Poco::Int8 operator /= (Poco::Int8& other, const Var& da)
+		/// Division assignment operator for dividing Var with Poco::Int8
+	{
+		return other /= da.convert<Poco::Int8>();
+	}
+
+
+	friend bool operator == (const Poco::Int8& other, const Var& da)
+		/// Equality operator for comparing Var with Poco::Int8
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<Poco::Int8>();
+	}
+
+
+	friend bool operator != (const Poco::Int8& other, const Var& da)
+		/// Inequality operator for comparing Var with Poco::Int8
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<Poco::Int8>();
+	}
+
+
+	friend bool operator < (const Poco::Int8& other, const Var& da)
+		/// Less than operator for comparing Var with Poco::Int8
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<Poco::Int8>();
+	}
+
+
+	friend bool operator <= (const Poco::Int8& other, const Var& da)
+		/// Less than or equal operator for comparing Var with Poco::Int8
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<Poco::Int8>();
+	}
+
+
+	friend bool operator > (const Poco::Int8& other, const Var& da)
+		/// Greater than operator for comparing Var with Poco::Int8
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<Poco::Int8>();
+	}
+
+
+	friend bool operator >= (const Poco::Int8& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with Poco::Int8
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<Poco::Int8>();
+	}
+
+
+	friend Poco::UInt8 operator + (const Poco::UInt8& other, const Var& da)
+		/// Addition operator for adding Var to Poco::UInt8
+	{
+		return other + da.convert<Poco::UInt8>();
+	}
+
+
+	friend Poco::UInt8 operator - (const Poco::UInt8& other, const Var& da)
+		/// Subtraction operator for subtracting Var from Poco::UInt8
+	{
+		return other - da.convert<Poco::UInt8>();
+	}
+
+
+	friend Poco::UInt8 operator * (const Poco::UInt8& other, const Var& da)
+		/// Multiplication operator for multiplying Var with Poco::UInt8
+	{
+		return other * da.convert<Poco::UInt8>();
+	}
+
+
+	friend Poco::UInt8 operator / (const Poco::UInt8& other, const Var& da)
+		/// Division operator for dividing Var with Poco::UInt8
+	{
+		return other / da.convert<Poco::UInt8>();
+	}
+
+
+	friend Poco::UInt8 operator += (Poco::UInt8& other, const Var& da)
+		/// Addition assignment operator for adding Var to Poco::UInt8
+	{
+		return other += da.convert<Poco::UInt8>();
+	}
+
+
+	friend Poco::UInt8 operator -= (Poco::UInt8& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from Poco::UInt8
+	{
+		return other -= da.convert<Poco::UInt8>();
+	}
+
+
+	friend Poco::UInt8 operator *= (Poco::UInt8& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with Poco::UInt8
+	{
+		return other *= da.convert<Poco::UInt8>();
+	}
+
+
+	friend Poco::UInt8 operator /= (Poco::UInt8& other, const Var& da)
+		/// Division assignment operator for dividing Var with Poco::UInt8
+	{
+		return other /= da.convert<Poco::UInt8>();
+	}
+
+
+	friend bool operator == (const Poco::UInt8& other, const Var& da)
+		/// Equality operator for comparing Var with Poco::UInt8
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<Poco::UInt8>();
+	}
+
+
+	friend bool operator != (const Poco::UInt8& other, const Var& da)
+		/// Inequality operator for comparing Var with Poco::UInt8
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<Poco::UInt8>();
+	}
+
+
+	friend bool operator < (const Poco::UInt8& other, const Var& da)
+		/// Less than operator for comparing Var with Poco::UInt8
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<Poco::UInt8>();
+	}
+
+
+	friend bool operator <= (const Poco::UInt8& other, const Var& da)
+		/// Less than or equal operator for comparing Var with Poco::UInt8
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<Poco::UInt8>();
+	}
+
+
+	friend bool operator > (const Poco::UInt8& other, const Var& da)
+		/// Greater than operator for comparing Var with Poco::UInt8
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<Poco::UInt8>();
+	}
+
+
+	friend bool operator >= (const Poco::UInt8& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with Poco::UInt8
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<Poco::UInt8>();
+	}
+
+
+	friend Poco::Int16 operator + (const Poco::Int16& other, const Var& da)
+		/// Addition operator for adding Var to Poco::Int16
+	{
+		return other + da.convert<Poco::Int16>();
+	}
+
+
+	friend Poco::Int16 operator - (const Poco::Int16& other, const Var& da)
+		/// Subtraction operator for subtracting Var from Poco::Int16
+	{
+		return other - da.convert<Poco::Int16>();
+	}
+
+
+	friend Poco::Int16 operator * (const Poco::Int16& other, const Var& da)
+		/// Multiplication operator for multiplying Var with Poco::Int16
+	{
+		return other * da.convert<Poco::Int16>();
+	}
+
+
+	friend Poco::Int16 operator / (const Poco::Int16& other, const Var& da)
+		/// Division operator for dividing Var with Poco::Int16
+	{
+		return other / da.convert<Poco::Int16>();
+	}
+
+
+	friend Poco::Int16 operator += (Poco::Int16& other, const Var& da)
+		/// Addition assignment operator for adding Var to Poco::Int16
+	{
+		return other += da.convert<Poco::Int16>();
+	}
+
+
+	friend Poco::Int16 operator -= (Poco::Int16& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from Poco::Int16
+	{
+		return other -= da.convert<Poco::Int16>();
+	}
+
+
+	friend Poco::Int16 operator *= (Poco::Int16& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with Poco::Int16
+	{
+		return other *= da.convert<Poco::Int16>();
+	}
+
+
+	friend Poco::Int16 operator /= (Poco::Int16& other, const Var& da)
+		/// Division assignment operator for dividing Var with Poco::Int16
+	{
+		return other /= da.convert<Poco::Int16>();
+	}
+
+
+	friend bool operator == (const Poco::Int16& other, const Var& da)
+		/// Equality operator for comparing Var with Poco::Int16
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<Poco::Int16>();
+	}
+
+
+	friend bool operator != (const Poco::Int16& other, const Var& da)
+		/// Inequality operator for comparing Var with Poco::Int16
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<Poco::Int16>();
+	}
+
+
+	friend bool operator < (const Poco::Int16& other, const Var& da)
+		/// Less than operator for comparing Var with Poco::Int16
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<Poco::Int16>();
+	}
+
+
+	friend bool operator <= (const Poco::Int16& other, const Var& da)
+		/// Less than or equal operator for comparing Var with Poco::Int16
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<Poco::Int16>();
+	}
+
+
+	friend bool operator > (const Poco::Int16& other, const Var& da)
+		/// Greater than operator for comparing Var with Poco::Int16
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<Poco::Int16>();
+	}
+
+
+	friend bool operator >= (const Poco::Int16& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with Poco::Int16
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<Poco::Int16>();
+	}
+
+
+	friend Poco::UInt16 operator + (const Poco::UInt16& other, const Var& da)
+		/// Addition operator for adding Var to Poco::UInt16
+	{
+		return other + da.convert<Poco::UInt16>();
+	}
+
+
+	friend Poco::UInt16 operator - (const Poco::UInt16& other, const Var& da)
+		/// Subtraction operator for subtracting Var from Poco::UInt16
+	{
+		return other - da.convert<Poco::UInt16>();
+	}
+
+
+	friend Poco::UInt16 operator * (const Poco::UInt16& other, const Var& da)
+		/// Multiplication operator for multiplying Var with Poco::UInt16
+	{
+		return other * da.convert<Poco::UInt16>();
+	}
+
+
+	friend Poco::UInt16 operator / (const Poco::UInt16& other, const Var& da)
+		/// Division operator for dividing Var with Poco::UInt16
+	{
+		return other / da.convert<Poco::UInt16>();
+	}
+
+
+	friend Poco::UInt16 operator += (Poco::UInt16& other, const Var& da)
+		/// Addition assignment operator for adding Var to Poco::UInt16
+	{
+		return other += da.convert<Poco::UInt16>();
+	}
+
+
+	friend Poco::UInt16 operator -= (Poco::UInt16& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from Poco::UInt16
+	{
+		return other -= da.convert<Poco::UInt16>();
+	}
+
+
+	friend Poco::UInt16 operator *= (Poco::UInt16& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with Poco::UInt16
+	{
+		return other *= da.convert<Poco::UInt16>();
+	}
+
+
+	friend Poco::UInt16 operator /= (Poco::UInt16& other, const Var& da)
+		/// Division assignment operator for dividing Var with Poco::UInt16
+	{
+		return other /= da.convert<Poco::UInt16>();
+	}
+
+
+	friend bool operator == (const Poco::UInt16& other, const Var& da)
+		/// Equality operator for comparing Var with Poco::UInt16
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<Poco::UInt16>();
+	}
+
+
+	friend bool operator != (const Poco::UInt16& other, const Var& da)
+		/// Inequality operator for comparing Var with Poco::UInt16
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<Poco::UInt16>();
+	}
+
+
+	friend bool operator < (const Poco::UInt16& other, const Var& da)
+		/// Less than operator for comparing Var with Poco::UInt16
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<Poco::UInt16>();
+	}
+
+
+	friend bool operator <= (const Poco::UInt16& other, const Var& da)
+		/// Less than or equal operator for comparing Var with Poco::UInt16
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<Poco::UInt16>();
+	}
+
+
+	friend bool operator > (const Poco::UInt16& other, const Var& da)
+		/// Greater than operator for comparing Var with Poco::UInt16
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<Poco::UInt16>();
+	}
+
+
+	friend bool operator >= (const Poco::UInt16& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with Poco::UInt16
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<Poco::UInt16>();
+	}
+
+
+	friend Poco::Int32 operator + (const Poco::Int32& other, const Var& da)
+		/// Addition operator for adding Var to Poco::Int32
+	{
+		return other + da.convert<Poco::Int32>();
+	}
+
+
+	friend Poco::Int32 operator - (const Poco::Int32& other, const Var& da)
+		/// Subtraction operator for subtracting Var from Poco::Int32
+	{
+		return other - da.convert<Poco::Int32>();
+	}
+
+
+	friend Poco::Int32 operator * (const Poco::Int32& other, const Var& da)
+		/// Multiplication operator for multiplying Var with Poco::Int32
+	{
+		return other * da.convert<Poco::Int32>();
+	}
+
+
+	friend Poco::Int32 operator / (const Poco::Int32& other, const Var& da)
+		/// Division operator for dividing Var with Poco::Int32
+	{
+		return other / da.convert<Poco::Int32>();
+	}
+
+
+	friend Poco::Int32 operator += (Poco::Int32& other, const Var& da)
+		/// Addition assignment operator for adding Var to Poco::Int32
+	{
+		return other += da.convert<Poco::Int32>();
+	}
+
+
+	friend Poco::Int32 operator -= (Poco::Int32& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from Poco::Int32
+	{
+		return other -= da.convert<Poco::Int32>();
+	}
+
+
+	friend Poco::Int32 operator *= (Poco::Int32& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with Poco::Int32
+	{
+		return other *= da.convert<Poco::Int32>();
+	}
+
+
+	friend Poco::Int32 operator /= (Poco::Int32& other, const Var& da)
+		/// Division assignment operator for dividing Var with Poco::Int32
+	{
+		return other /= da.convert<Poco::Int32>();
+	}
+
+
+	friend bool operator == (const Poco::Int32& other, const Var& da)
+		/// Equality operator for comparing Var with Poco::Int32
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<Poco::Int32>();
+	}
+
+
+	friend bool operator != (const Poco::Int32& other, const Var& da)
+		/// Inequality operator for comparing Var with Poco::Int32
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<Poco::Int32>();
+	}
+
+
+	friend bool operator < (const Poco::Int32& other, const Var& da)
+		/// Less than operator for comparing Var with Poco::Int32
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<Poco::Int32>();
+	}
+
+
+	friend bool operator <= (const Poco::Int32& other, const Var& da)
+		/// Less than or equal operator for comparing Var with Poco::Int32
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<Poco::Int32>();
+	}
+
+
+	friend bool operator > (const Poco::Int32& other, const Var& da)
+		/// Greater than operator for comparing Var with Poco::Int32
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<Poco::Int32>();
+	}
+
+
+	friend bool operator >= (const Poco::Int32& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with Poco::Int32
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<Poco::Int32>();
+	}
+
+
+	friend Poco::UInt32 operator + (const Poco::UInt32& other, const Var& da)
+		/// Addition operator for adding Var to Poco::UInt32
+	{
+		return other + da.convert<Poco::UInt32>();
+	}
+
+
+	friend Poco::UInt32 operator - (const Poco::UInt32& other, const Var& da)
+		/// Subtraction operator for subtracting Var from Poco::UInt32
+	{
+		return other - da.convert<Poco::UInt32>();
+	}
+
+
+	friend Poco::UInt32 operator * (const Poco::UInt32& other, const Var& da)
+		/// Multiplication operator for multiplying Var with Poco::UInt32
+	{
+		return other * da.convert<Poco::UInt32>();
+	}
+
+
+	friend Poco::UInt32 operator / (const Poco::UInt32& other, const Var& da)
+		/// Division operator for dividing Var with Poco::UInt32
+	{
+		return other / da.convert<Poco::UInt32>();
+	}
+
+
+	friend Poco::UInt32 operator += (Poco::UInt32& other, const Var& da)
+		/// Addition assignment operator for adding Var to Poco::UInt32
+	{
+		return other += da.convert<Poco::UInt32>();
+	}
+
+
+	friend Poco::UInt32 operator -= (Poco::UInt32& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from Poco::UInt32
+	{
+		return other -= da.convert<Poco::UInt32>();
+	}
+
+
+	friend Poco::UInt32 operator *= (Poco::UInt32& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with Poco::UInt32
+	{
+		return other *= da.convert<Poco::UInt32>();
+	}
+
+
+	friend Poco::UInt32 operator /= (Poco::UInt32& other, const Var& da)
+		/// Division assignment operator for dividing Var with Poco::UInt32
+	{
+		return other /= da.convert<Poco::UInt32>();
+	}
+
+
+	friend bool operator == (const Poco::UInt32& other, const Var& da)
+		/// Equality operator for comparing Var with Poco::UInt32
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<Poco::UInt32>();
+	}
+
+
+	friend bool operator != (const Poco::UInt32& other, const Var& da)
+		/// Inequality operator for comparing Var with Poco::UInt32
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<Poco::UInt32>();
+	}
+
+
+	friend bool operator < (const Poco::UInt32& other, const Var& da)
+		/// Less than operator for comparing Var with Poco::UInt32
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<Poco::UInt32>();
+	}
+
+
+	friend bool operator <= (const Poco::UInt32& other, const Var& da)
+		/// Less than or equal operator for comparing Var with Poco::UInt32
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<Poco::UInt32>();
+	}
+
+
+	friend bool operator > (const Poco::UInt32& other, const Var& da)
+		/// Greater than operator for comparing Var with Poco::UInt32
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<Poco::UInt32>();
+	}
+
+
+	friend bool operator >= (const Poco::UInt32& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with Poco::UInt32
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<Poco::UInt32>();
+	}
+
+
+	friend Poco::Int64 operator + (const Poco::Int64& other, const Var& da)
+		/// Addition operator for adding Var to Poco::Int64
+	{
+		return other + da.convert<Poco::Int64>();
+	}
+
+
+	friend Poco::Int64 operator - (const Poco::Int64& other, const Var& da)
+		/// Subtraction operator for subtracting Var from Poco::Int64
+	{
+		return other - da.convert<Poco::Int64>();
+	}
+
+
+	friend Poco::Int64 operator * (const Poco::Int64& other, const Var& da)
+		/// Multiplication operator for multiplying Var with Poco::Int64
+	{
+		return other * da.convert<Poco::Int64>();
+	}
+
+
+	friend Poco::Int64 operator / (const Poco::Int64& other, const Var& da)
+		/// Division operator for dividing Var with Poco::Int64
+	{
+		return other / da.convert<Poco::Int64>();
+	}
+
+
+	friend Poco::Int64 operator += (Poco::Int64& other, const Var& da)
+		/// Addition assignment operator for adding Var to Poco::Int64
+	{
+		return other += da.convert<Poco::Int64>();
+	}
+
+
+	friend Poco::Int64 operator -= (Poco::Int64& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from Poco::Int64
+	{
+		return other -= da.convert<Poco::Int64>();
+	}
+
+
+	friend Poco::Int64 operator *= (Poco::Int64& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with Poco::Int64
+	{
+		return other *= da.convert<Poco::Int64>();
+	}
+
+
+	friend Poco::Int64 operator /= (Poco::Int64& other, const Var& da)
+		/// Division assignment operator for dividing Var with Poco::Int64
+	{
+		return other /= da.convert<Poco::Int64>();
+	}
+
+
+	friend bool operator == (const Poco::Int64& other, const Var& da)
+		/// Equality operator for comparing Var with Poco::Int64
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<Poco::Int64>();
+	}
+
+
+	friend bool operator != (const Poco::Int64& other, const Var& da)
+		/// Inequality operator for comparing Var with Poco::Int64
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<Poco::Int64>();
+	}
+
+
+	friend bool operator < (const Poco::Int64& other, const Var& da)
+		/// Less than operator for comparing Var with Poco::Int64
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<Poco::Int64>();
+	}
+
+
+	friend bool operator <= (const Poco::Int64& other, const Var& da)
+		/// Less than or equal operator for comparing Var with Poco::Int64
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<Poco::Int64>();
+	}
+
+
+	friend bool operator > (const Poco::Int64& other, const Var& da)
+		/// Greater than operator for comparing Var with Poco::Int64
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<Poco::Int64>();
+	}
+
+
+	friend bool operator >= (const Poco::Int64& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with Poco::Int64
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<Poco::Int64>();
+	}
+
+
+	friend Poco::UInt64 operator + (const Poco::UInt64& other, const Var& da)
+		/// Addition operator for adding Var to Poco::UInt64
+	{
+		return other + da.convert<Poco::UInt64>();
+	}
+
+
+	friend Poco::UInt64 operator - (const Poco::UInt64& other, const Var& da)
+		/// Subtraction operator for subtracting Var from Poco::UInt64
+	{
+		return other - da.convert<Poco::UInt64>();
+	}
+
+
+	friend Poco::UInt64 operator * (const Poco::UInt64& other, const Var& da)
+		/// Multiplication operator for multiplying Var with Poco::UInt64
+	{
+		return other * da.convert<Poco::UInt64>();
+	}
+
+
+	friend Poco::UInt64 operator / (const Poco::UInt64& other, const Var& da)
+		/// Division operator for dividing Var with Poco::UInt64
+	{
+		return other / da.convert<Poco::UInt64>();
+	}
+
+
+	friend Poco::UInt64 operator += (Poco::UInt64& other, const Var& da)
+		/// Addition assignment operator for adding Var to Poco::UInt64
+	{
+		return other += da.convert<Poco::UInt64>();
+	}
+
+
+	friend Poco::UInt64 operator -= (Poco::UInt64& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from Poco::UInt64
+	{
+		return other -= da.convert<Poco::UInt64>();
+	}
+
+
+	friend Poco::UInt64 operator *= (Poco::UInt64& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with Poco::UInt64
+	{
+		return other *= da.convert<Poco::UInt64>();
+	}
+
+
+	friend Poco::UInt64 operator /= (Poco::UInt64& other, const Var& da)
+		/// Division assignment operator for dividing Var with Poco::UInt64
+	{
+		return other /= da.convert<Poco::UInt64>();
+	}
+
+
+	friend bool operator == (const Poco::UInt64& other, const Var& da)
+		/// Equality operator for comparing Var with Poco::UInt64
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<Poco::UInt64>();
+	}
+
+
+	friend bool operator != (const Poco::UInt64& other, const Var& da)
+		/// Inequality operator for comparing Var with Poco::UInt64
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<Poco::UInt64>();
+	}
+
+
+	friend bool operator < (const Poco::UInt64& other, const Var& da)
+		/// Less than operator for comparing Var with Poco::UInt64
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<Poco::UInt64>();
+	}
+
+
+	friend bool operator <= (const Poco::UInt64& other, const Var& da)
+		/// Less than or equal operator for comparing Var with Poco::UInt64
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<Poco::UInt64>();
+	}
+
+
+	friend bool operator > (const Poco::UInt64& other, const Var& da)
+		/// Greater than operator for comparing Var with Poco::UInt64
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<Poco::UInt64>();
+	}
+
+
+	friend bool operator >= (const Poco::UInt64& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with Poco::UInt64
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<Poco::UInt64>();
+	}
+
+
+	friend float operator + (const float& other, const Var& da)
+		/// Addition operator for adding Var to float
+	{
+		return other + da.convert<float>();
+	}
+
+
+	friend float operator - (const float& other, const Var& da)
+		/// Subtraction operator for subtracting Var from float
+	{
+		return other - da.convert<float>();
+	}
+
+
+	friend float operator * (const float& other, const Var& da)
+		/// Multiplication operator for multiplying Var with float
+	{
+		return other * da.convert<float>();
+	}
+
+
+	friend float operator / (const float& other, const Var& da)
+		/// Division operator for dividing Var with float
+	{
+		return other / da.convert<float>();
+	}
+
+
+	friend float operator += (float& other, const Var& da)
+		/// Addition assignment operator for adding Var to float
+	{
+		return other += da.convert<float>();
+	}
+
+
+	friend float operator -= (float& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from float
+	{
+		return other -= da.convert<float>();
+	}
+
+
+	friend float operator *= (float& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with float
+	{
+		return other *= da.convert<float>();
+	}
+
+
+	friend float operator /= (float& other, const Var& da)
+		/// Division assignment operator for dividing Var with float
+	{
+		return other /= da.convert<float>();
+	}
+
+
+	friend bool operator == (const float& other, const Var& da)
+		/// Equality operator for comparing Var with float
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<float>();
+	}
+
+
+	friend bool operator != (const float& other, const Var& da)
+		/// Inequality operator for comparing Var with float
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<float>();
+	}
+
+
+	friend bool operator < (const float& other, const Var& da)
+		/// Less than operator for comparing Var with float
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<float>();
+	}
+
+
+	friend bool operator <= (const float& other, const Var& da)
+		/// Less than or equal operator for comparing Var with float
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<float>();
+	}
+
+
+	friend bool operator > (const float& other, const Var& da)
+		/// Greater than operator for comparing Var with float
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<float>();
+	}
+
+
+	friend bool operator >= (const float& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with float
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<float>();
+	}
+
+
+	friend double operator + (const double& other, const Var& da)
+		/// Addition operator for adding Var to double
+	{
+		return other + da.convert<double>();
+	}
+
+
+	friend double operator - (const double& other, const Var& da)
+		/// Subtraction operator for subtracting Var from double
+	{
+		return other - da.convert<double>();
+	}
+
+
+	friend double operator * (const double& other, const Var& da)
+		/// Multiplication operator for multiplying Var with double
+	{
+		return other * da.convert<double>();
+	}
+
+
+	friend double operator / (const double& other, const Var& da)
+		/// Division operator for dividing Var with double
+	{
+		return other / da.convert<double>();
+	}
+
+
+	friend double operator += (double& other, const Var& da)
+		/// Addition assignment operator for adding Var to double
+	{
+		return other += da.convert<double>();
+	}
+
+
+	friend double operator -= (double& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from double
+	{
+		return other -= da.convert<double>();
+	}
+
+
+	friend double operator *= (double& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with double
+	{
+		return other *= da.convert<double>();
+	}
+
+
+	friend double operator /= (double& other, const Var& da)
+		/// Division assignment operator for dividing Var with double
+	{
+		return other /= da.convert<double>();
+	}
+
+
+	friend bool operator == (const double& other, const Var& da)
+		/// Equality operator for comparing Var with double
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<double>();
+	}
+
+
+	friend bool operator != (const double& other, const Var& da)
+		/// Inequality operator for comparing Var with double
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<double>();
+	}
+
+
+	friend bool operator < (const double& other, const Var& da)
+		/// Less than operator for comparing Var with double
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<double>();
+	}
+
+
+	friend bool operator <= (const double& other, const Var& da)
+		/// Less than or equal operator for comparing Var with double
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<double>();
+	}
+
+
+	friend bool operator > (const double& other, const Var& da)
+		/// Greater than operator for comparing Var with double
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<double>();
+	}
+
+
+	friend bool operator >= (const double& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with double
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<double>();
+	}
+
+
+	friend bool operator == (const bool& other, const Var& da)
+		/// Equality operator for comparing Var with bool
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<bool>();
+	}
+
+
+	friend bool operator != (const bool& other, const Var& da)
+		/// Inequality operator for comparing Var with bool
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<bool>();
+	}
+
+
+	friend bool operator == (const std::string& other, const Var& da)
+		/// Equality operator for comparing Var with std::string
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<std::string>();
+	}
+
+
+	friend bool operator != (const std::string& other, const Var& da)
+		/// Inequality operator for comparing Var with std::string
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<std::string>();
+	}
+
+
+	friend bool operator == (const UTF16String& other, const Var& da)
+		/// Equality operator for comparing Var with UTF16String
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<UTF16String>();
+	}
+
+
+	friend bool operator != (const UTF16String& other, const Var& da)
+		/// Inequality operator for comparing Var with UTF16String
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<UTF16String>();
+	}
+
+
+	friend bool operator == (const char* other, const Var& da)
+		/// Equality operator for comparing Var with const char*
+	{
+		if (da.isEmpty()) return false;
+		return da.convert<std::string>() == other;
+	}
+
+
+	friend bool operator != (const char* other, const Var& da)
+		/// Inequality operator for comparing Var with const char*
+	{
+		if (da.isEmpty()) return true;
+		return da.convert<std::string>() != other;
+	}
+
+
+#ifndef POCO_INT64_IS_LONG
+
+
+	friend long operator + (const long& other, const Var& da)
+		/// Addition operator for adding Var to long
+	{
+		return other + da.convert<long>();
+	}
+
+
+	friend long operator - (const long& other, const Var& da)
+		/// Subtraction operator for subtracting Var from long
+	{
+		return other - da.convert<long>();
+	}
+
+
+	friend long operator * (const long& other, const Var& da)
+		/// Multiplication operator for multiplying Var with long
+	{
+		return other * da.convert<long>();
+	}
+
+
+	friend long operator / (const long& other, const Var& da)
+		/// Division operator for dividing Var with long
+	{
+		return other / da.convert<long>();
+	}
+
+
+	friend long operator += (long& other, const Var& da)
+		/// Addition assignment operator for adding Var to long
+	{
+		return other += da.convert<long>();
+	}
+
+
+	friend long operator -= (long& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from long
+	{
+		return other -= da.convert<long>();
+	}
+
+
+	friend long operator *= (long& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with long
+	{
+		return other *= da.convert<long>();
+	}
+
+
+	friend long operator /= (long& other, const Var& da)
+		/// Division assignment operator for dividing Var with long
+	{
+		return other /= da.convert<long>();
+	}
+
+
+	friend bool operator == (const long& other, const Var& da)
+		/// Equality operator for comparing Var with long
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<long>();
+	}
+
+
+	friend bool operator != (const long& other, const Var& da)
+		/// Inequality operator for comparing Var with long
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<long>();
+	}
+
+
+	friend bool operator < (const long& other, const Var& da)
+		/// Less than operator for comparing Var with long
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<long>();
+	}
+
+
+	friend bool operator <= (const long& other, const Var& da)
+		/// Less than or equal operator for comparing Var with long
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<long>();
+	}
+
+
+	friend bool operator > (const long& other, const Var& da)
+		/// Greater than operator for comparing Var with long
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<long>();
+	}
+
+
+	friend bool operator >= (const long& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with long
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<long>();
+	}
+
+
+	friend unsigned long operator + (const unsigned long& other, const Var& da)
+		/// Addition operator for adding Var to unsigned long
+	{
+		return other + da.convert<unsigned long>();
+	}
+
+
+	friend unsigned long operator - (const unsigned long& other, const Var& da)
+		/// Subtraction operator for subtracting Var from unsigned long
+	{
+		return other - da.convert<unsigned long>();
+	}
+
+
+	friend unsigned long operator * (const unsigned long& other, const Var& da)
+		/// Multiplication operator for multiplying Var with unsigned long
+	{
+		return other * da.convert<unsigned long>();
+	}
+
+
+	friend unsigned long operator / (const unsigned long& other, const Var& da)
+		/// Division operator for dividing Var with unsigned long
+	{
+		return other / da.convert<unsigned long>();
+	}
+
+
+	friend unsigned long operator += (unsigned long& other, const Var& da)
+		/// Addition assignment operator for adding Var to unsigned long
+	{
+		return other += da.convert<unsigned long>();
+	}
+
+
+	friend unsigned long operator -= (unsigned long& other, const Var& da)
+		/// Subtraction assignment operator for subtracting Var from unsigned long
+	{
+		return other -= da.convert<unsigned long>();
+	}
+
+
+	friend unsigned long operator *= (unsigned long& other, const Var& da)
+		/// Multiplication assignment operator for multiplying Var with unsigned long
+	{
+		return other *= da.convert<unsigned long>();
+	}
+
+
+	friend unsigned long operator /= (unsigned long& other, const Var& da)
+		/// Division assignment operator for dividing Var with unsigned long
+	{
+		return other /= da.convert<unsigned long>();
+	}
+
+
+	friend bool operator == (const unsigned long& other, const Var& da)
+		/// Equality operator for comparing Var with unsigned long
+	{
+		if (da.isEmpty()) return false;
+		return other == da.convert<unsigned long>();
+	}
+
+
+	friend bool operator != (const unsigned long& other, const Var& da)
+		/// Inequality operator for comparing Var with unsigned long
+	{
+		if (da.isEmpty()) return true;
+		return other != da.convert<unsigned long>();
+	}
+
+
+	friend bool operator < (const unsigned long& other, const Var& da)
+		/// Less than operator for comparing Var with unsigned long
+	{
+		if (da.isEmpty()) return false;
+		return other < da.convert<unsigned long>();
+	}
+
+
+	friend bool operator <= (const unsigned long& other, const Var& da)
+		/// Less than or equal operator for comparing Var with unsigned long
+	{
+		if (da.isEmpty()) return false;
+		return other <= da.convert<unsigned long>();
+	}
+
+
+	friend bool operator > (const unsigned long& other, const Var& da)
+		/// Greater than operator for comparing Var with unsigned long
+	{
+		if (da.isEmpty()) return false;
+		return other > da.convert<unsigned long>();
+	}
+
+
+	friend bool operator >= (const unsigned long& other, const Var& da)
+		/// Greater than or equal operator for comparing Var with unsigned long
+	{
+		if (da.isEmpty()) return false;
+		return other >= da.convert<unsigned long>();
+	}
 private:
 	Var& getAt(std::size_t n);
 	Var& getAt(const std::string& n);
@@ -857,1431 +2282,7 @@ inline std::size_t Var::size() const
 /// Var non-member functions
 ///
 
-inline const Var operator + (const char* other, const Var& da)
-	/// Addition operator for adding Var to const char*
-{
-	std::string tmp = other;
-	return tmp + da.convert<std::string>();
-}
 
-
-inline char operator + (const char& other, const Var& da)
-	/// Addition operator for adding Var to char
-{
-	return other + da.convert<char>();
-}
-
-
-inline char operator - (const char& other, const Var& da)
-	/// Subtraction operator for subtracting Var from char
-{
-	return other - da.convert<char>();
-}
-
-
-inline char operator * (const char& other, const Var& da)
-	/// Multiplication operator for multiplying Var with char
-{
-	return other * da.convert<char>();
-}
-
-
-inline char operator / (const char& other, const Var& da)
-	/// Division operator for dividing Var with char
-{
-	return other / da.convert<char>();
-}
-
-
-inline char operator += (char& other, const Var& da)
-	/// Addition assignment operator for adding Var to char
-{
-	return other += da.convert<char>();
-}
-
-
-inline char operator -= (char& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from char
-{
-	return other -= da.convert<char>();
-}
-
-
-inline char operator *= (char& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with char
-{
-	return other *= da.convert<char>();
-}
-
-
-inline char operator /= (char& other, const Var& da)
-	/// Division assignment operator for dividing Var with char
-{
-	return other /= da.convert<char>();
-}
-
-
-inline bool operator == (const char& other, const Var& da)
-	/// Equality operator for comparing Var with char
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<char>();
-}
-
-
-inline bool operator != (const char& other, const Var& da)
-	/// Inequality operator for comparing Var with char
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<char>();
-}
-
-
-inline bool operator < (const char& other, const Var& da)
-	/// Less than operator for comparing Var with char
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<char>();
-}
-
-
-inline bool operator <= (const char& other, const Var& da)
-	/// Less than or equal operator for comparing Var with char
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<char>();
-}
-
-
-inline bool operator > (const char& other, const Var& da)
-	/// Greater than operator for comparing Var with char
-{
-	if (da.isEmpty())return false;
-	return other > da.convert<char>();
-}
-
-
-inline bool operator >= (const char& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with char
-{
-	if (da.isEmpty())return false;
-	return other >= da.convert<char>();
-}
-
-
-inline Poco::Int8 operator + (const Poco::Int8& other, const Var& da)
-	/// Addition operator for adding Var to Poco::Int8
-{
-	return other + da.convert<Poco::Int8>();
-}
-
-
-inline Poco::Int8 operator - (const Poco::Int8& other, const Var& da)
-	/// Subtraction operator for subtracting Var from Poco::Int8
-{
-	return other - da.convert<Poco::Int8>();
-}
-
-
-inline Poco::Int8 operator * (const Poco::Int8& other, const Var& da)
-	/// Multiplication operator for multiplying Var with Poco::Int8
-{
-	return other * da.convert<Poco::Int8>();
-}
-
-
-inline Poco::Int8 operator / (const Poco::Int8& other, const Var& da)
-	/// Division operator for dividing Var with Poco::Int8
-{
-	return other / da.convert<Poco::Int8>();
-}
-
-
-inline Poco::Int8 operator += (Poco::Int8& other, const Var& da)
-	/// Addition assignment operator for adding Var to Poco::Int8
-{
-	return other += da.convert<Poco::Int8>();
-}
-
-
-inline Poco::Int8 operator -= (Poco::Int8& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from Poco::Int8
-{
-	return other -= da.convert<Poco::Int8>();
-}
-
-
-inline Poco::Int8 operator *= (Poco::Int8& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with Poco::Int8
-{
-	return other *= da.convert<Poco::Int8>();
-}
-
-
-inline Poco::Int8 operator /= (Poco::Int8& other, const Var& da)
-	/// Division assignment operator for dividing Var with Poco::Int8
-{
-	return other /= da.convert<Poco::Int8>();
-}
-
-
-inline bool operator == (const Poco::Int8& other, const Var& da)
-	/// Equality operator for comparing Var with Poco::Int8
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<Poco::Int8>();
-}
-
-
-inline bool operator != (const Poco::Int8& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::Int8
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::Int8>();
-}
-
-
-inline bool operator < (const Poco::Int8& other, const Var& da)
-	/// Less than operator for comparing Var with Poco::Int8
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<Poco::Int8>();
-}
-
-
-inline bool operator <= (const Poco::Int8& other, const Var& da)
-	/// Less than or equal operator for comparing Var with Poco::Int8
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<Poco::Int8>();
-}
-
-
-inline bool operator > (const Poco::Int8& other, const Var& da)
-	/// Greater than operator for comparing Var with Poco::Int8
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<Poco::Int8>();
-}
-
-
-inline bool operator >= (const Poco::Int8& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with Poco::Int8
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<Poco::Int8>();
-}
-
-
-inline Poco::UInt8 operator + (const Poco::UInt8& other, const Var& da)
-	/// Addition operator for adding Var to Poco::UInt8
-{
-	return other + da.convert<Poco::UInt8>();
-}
-
-
-inline Poco::UInt8 operator - (const Poco::UInt8& other, const Var& da)
-	/// Subtraction operator for subtracting Var from Poco::UInt8
-{
-	return other - da.convert<Poco::UInt8>();
-}
-
-
-inline Poco::UInt8 operator * (const Poco::UInt8& other, const Var& da)
-	/// Multiplication operator for multiplying Var with Poco::UInt8
-{
-	return other * da.convert<Poco::UInt8>();
-}
-
-
-inline Poco::UInt8 operator / (const Poco::UInt8& other, const Var& da)
-	/// Division operator for dividing Var with Poco::UInt8
-{
-	return other / da.convert<Poco::UInt8>();
-}
-
-
-inline Poco::UInt8 operator += (Poco::UInt8& other, const Var& da)
-	/// Addition assignment operator for adding Var to Poco::UInt8
-{
-	return other += da.convert<Poco::UInt8>();
-}
-
-
-inline Poco::UInt8 operator -= (Poco::UInt8& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from Poco::UInt8
-{
-	return other -= da.convert<Poco::UInt8>();
-}
-
-
-inline Poco::UInt8 operator *= (Poco::UInt8& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with Poco::UInt8
-{
-	return other *= da.convert<Poco::UInt8>();
-}
-
-
-inline Poco::UInt8 operator /= (Poco::UInt8& other, const Var& da)
-	/// Division assignment operator for dividing Var with Poco::UInt8
-{
-	return other /= da.convert<Poco::UInt8>();
-}
-
-
-inline bool operator == (const Poco::UInt8& other, const Var& da)
-	/// Equality operator for comparing Var with Poco::UInt8
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<Poco::UInt8>();
-}
-
-
-inline bool operator != (const Poco::UInt8& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::UInt8
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::UInt8>();
-}
-
-
-inline bool operator < (const Poco::UInt8& other, const Var& da)
-	/// Less than operator for comparing Var with Poco::UInt8
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<Poco::UInt8>();
-}
-
-
-inline bool operator <= (const Poco::UInt8& other, const Var& da)
-	/// Less than or equal operator for comparing Var with Poco::UInt8
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<Poco::UInt8>();
-}
-
-
-inline bool operator > (const Poco::UInt8& other, const Var& da)
-	/// Greater than operator for comparing Var with Poco::UInt8
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<Poco::UInt8>();
-}
-
-
-inline bool operator >= (const Poco::UInt8& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with Poco::UInt8
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<Poco::UInt8>();
-}
-
-
-inline Poco::Int16 operator + (const Poco::Int16& other, const Var& da)
-	/// Addition operator for adding Var to Poco::Int16
-{
-	return other + da.convert<Poco::Int16>();
-}
-
-
-inline Poco::Int16 operator - (const Poco::Int16& other, const Var& da)
-	/// Subtraction operator for subtracting Var from Poco::Int16
-{
-	return other - da.convert<Poco::Int16>();
-}
-
-
-inline Poco::Int16 operator * (const Poco::Int16& other, const Var& da)
-	/// Multiplication operator for multiplying Var with Poco::Int16
-{
-	return other * da.convert<Poco::Int16>();
-}
-
-
-inline Poco::Int16 operator / (const Poco::Int16& other, const Var& da)
-	/// Division operator for dividing Var with Poco::Int16
-{
-	return other / da.convert<Poco::Int16>();
-}
-
-
-inline Poco::Int16 operator += (Poco::Int16& other, const Var& da)
-	/// Addition assignment operator for adding Var to Poco::Int16
-{
-	return other += da.convert<Poco::Int16>();
-}
-
-
-inline Poco::Int16 operator -= (Poco::Int16& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from Poco::Int16
-{
-	return other -= da.convert<Poco::Int16>();
-}
-
-
-inline Poco::Int16 operator *= (Poco::Int16& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with Poco::Int16
-{
-	return other *= da.convert<Poco::Int16>();
-}
-
-
-inline Poco::Int16 operator /= (Poco::Int16& other, const Var& da)
-	/// Division assignment operator for dividing Var with Poco::Int16
-{
-	return other /= da.convert<Poco::Int16>();
-}
-
-
-inline bool operator == (const Poco::Int16& other, const Var& da)
-	/// Equality operator for comparing Var with Poco::Int16
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<Poco::Int16>();
-}
-
-
-inline bool operator != (const Poco::Int16& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::Int16
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::Int16>();
-}
-
-
-inline bool operator < (const Poco::Int16& other, const Var& da)
-	/// Less than operator for comparing Var with Poco::Int16
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<Poco::Int16>();
-}
-
-
-inline bool operator <= (const Poco::Int16& other, const Var& da)
-	/// Less than or equal operator for comparing Var with Poco::Int16
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<Poco::Int16>();
-}
-
-
-inline bool operator > (const Poco::Int16& other, const Var& da)
-	/// Greater than operator for comparing Var with Poco::Int16
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<Poco::Int16>();
-}
-
-
-inline bool operator >= (const Poco::Int16& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with Poco::Int16
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<Poco::Int16>();
-}
-
-
-inline Poco::UInt16 operator + (const Poco::UInt16& other, const Var& da)
-	/// Addition operator for adding Var to Poco::UInt16
-{
-	return other + da.convert<Poco::UInt16>();
-}
-
-
-inline Poco::UInt16 operator - (const Poco::UInt16& other, const Var& da)
-	/// Subtraction operator for subtracting Var from Poco::UInt16
-{
-	return other - da.convert<Poco::UInt16>();
-}
-
-
-inline Poco::UInt16 operator * (const Poco::UInt16& other, const Var& da)
-	/// Multiplication operator for multiplying Var with Poco::UInt16
-{
-	return other * da.convert<Poco::UInt16>();
-}
-
-
-inline Poco::UInt16 operator / (const Poco::UInt16& other, const Var& da)
-	/// Division operator for dividing Var with Poco::UInt16
-{
-	return other / da.convert<Poco::UInt16>();
-}
-
-
-inline Poco::UInt16 operator += (Poco::UInt16& other, const Var& da)
-	/// Addition assignment operator for adding Var to Poco::UInt16
-{
-	return other += da.convert<Poco::UInt16>();
-}
-
-
-inline Poco::UInt16 operator -= (Poco::UInt16& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from Poco::UInt16
-{
-	return other -= da.convert<Poco::UInt16>();
-}
-
-
-inline Poco::UInt16 operator *= (Poco::UInt16& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with Poco::UInt16
-{
-	return other *= da.convert<Poco::UInt16>();
-}
-
-
-inline Poco::UInt16 operator /= (Poco::UInt16& other, const Var& da)
-	/// Division assignment operator for dividing Var with Poco::UInt16
-{
-	return other /= da.convert<Poco::UInt16>();
-}
-
-
-inline bool operator == (const Poco::UInt16& other, const Var& da)
-	/// Equality operator for comparing Var with Poco::UInt16
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<Poco::UInt16>();
-}
-
-
-inline bool operator != (const Poco::UInt16& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::UInt16
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::UInt16>();
-}
-
-
-inline bool operator < (const Poco::UInt16& other, const Var& da)
-	/// Less than operator for comparing Var with Poco::UInt16
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<Poco::UInt16>();
-}
-
-
-inline bool operator <= (const Poco::UInt16& other, const Var& da)
-	/// Less than or equal operator for comparing Var with Poco::UInt16
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<Poco::UInt16>();
-}
-
-
-inline bool operator > (const Poco::UInt16& other, const Var& da)
-	/// Greater than operator for comparing Var with Poco::UInt16
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<Poco::UInt16>();
-}
-
-
-inline bool operator >= (const Poco::UInt16& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with Poco::UInt16
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<Poco::UInt16>();
-}
-
-
-inline Poco::Int32 operator + (const Poco::Int32& other, const Var& da)
-	/// Addition operator for adding Var to Poco::Int32
-{
-	return other + da.convert<Poco::Int32>();
-}
-
-
-inline Poco::Int32 operator - (const Poco::Int32& other, const Var& da)
-	/// Subtraction operator for subtracting Var from Poco::Int32
-{
-	return other - da.convert<Poco::Int32>();
-}
-
-
-inline Poco::Int32 operator * (const Poco::Int32& other, const Var& da)
-	/// Multiplication operator for multiplying Var with Poco::Int32
-{
-	return other * da.convert<Poco::Int32>();
-}
-
-
-inline Poco::Int32 operator / (const Poco::Int32& other, const Var& da)
-	/// Division operator for dividing Var with Poco::Int32
-{
-	return other / da.convert<Poco::Int32>();
-}
-
-
-inline Poco::Int32 operator += (Poco::Int32& other, const Var& da)
-	/// Addition assignment operator for adding Var to Poco::Int32
-{
-	return other += da.convert<Poco::Int32>();
-}
-
-
-inline Poco::Int32 operator -= (Poco::Int32& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from Poco::Int32
-{
-	return other -= da.convert<Poco::Int32>();
-}
-
-
-inline Poco::Int32 operator *= (Poco::Int32& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with Poco::Int32
-{
-	return other *= da.convert<Poco::Int32>();
-}
-
-
-inline Poco::Int32 operator /= (Poco::Int32& other, const Var& da)
-	/// Division assignment operator for dividing Var with Poco::Int32
-{
-	return other /= da.convert<Poco::Int32>();
-}
-
-
-inline bool operator == (const Poco::Int32& other, const Var& da)
-	/// Equality operator for comparing Var with Poco::Int32
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<Poco::Int32>();
-}
-
-
-inline bool operator != (const Poco::Int32& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::Int32
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::Int32>();
-}
-
-
-inline bool operator < (const Poco::Int32& other, const Var& da)
-	/// Less than operator for comparing Var with Poco::Int32
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<Poco::Int32>();
-}
-
-
-inline bool operator <= (const Poco::Int32& other, const Var& da)
-	/// Less than or equal operator for comparing Var with Poco::Int32
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<Poco::Int32>();
-}
-
-
-inline bool operator > (const Poco::Int32& other, const Var& da)
-	/// Greater than operator for comparing Var with Poco::Int32
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<Poco::Int32>();
-}
-
-
-inline bool operator >= (const Poco::Int32& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with Poco::Int32
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<Poco::Int32>();
-}
-
-
-inline Poco::UInt32 operator + (const Poco::UInt32& other, const Var& da)
-	/// Addition operator for adding Var to Poco::UInt32
-{
-	return other + da.convert<Poco::UInt32>();
-}
-
-
-inline Poco::UInt32 operator - (const Poco::UInt32& other, const Var& da)
-	/// Subtraction operator for subtracting Var from Poco::UInt32
-{
-	return other - da.convert<Poco::UInt32>();
-}
-
-
-inline Poco::UInt32 operator * (const Poco::UInt32& other, const Var& da)
-	/// Multiplication operator for multiplying Var with Poco::UInt32
-{
-	return other * da.convert<Poco::UInt32>();
-}
-
-
-inline Poco::UInt32 operator / (const Poco::UInt32& other, const Var& da)
-	/// Division operator for dividing Var with Poco::UInt32
-{
-	return other / da.convert<Poco::UInt32>();
-}
-
-
-inline Poco::UInt32 operator += (Poco::UInt32& other, const Var& da)
-	/// Addition assignment operator for adding Var to Poco::UInt32
-{
-	return other += da.convert<Poco::UInt32>();
-}
-
-
-inline Poco::UInt32 operator -= (Poco::UInt32& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from Poco::UInt32
-{
-	return other -= da.convert<Poco::UInt32>();
-}
-
-
-inline Poco::UInt32 operator *= (Poco::UInt32& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with Poco::UInt32
-{
-	return other *= da.convert<Poco::UInt32>();
-}
-
-
-inline Poco::UInt32 operator /= (Poco::UInt32& other, const Var& da)
-	/// Division assignment operator for dividing Var with Poco::UInt32
-{
-	return other /= da.convert<Poco::UInt32>();
-}
-
-
-inline bool operator == (const Poco::UInt32& other, const Var& da)
-	/// Equality operator for comparing Var with Poco::UInt32
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<Poco::UInt32>();
-}
-
-
-inline bool operator != (const Poco::UInt32& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::UInt32
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::UInt32>();
-}
-
-
-inline bool operator < (const Poco::UInt32& other, const Var& da)
-	/// Less than operator for comparing Var with Poco::UInt32
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<Poco::UInt32>();
-}
-
-
-inline bool operator <= (const Poco::UInt32& other, const Var& da)
-	/// Less than or equal operator for comparing Var with Poco::UInt32
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<Poco::UInt32>();
-}
-
-
-inline bool operator > (const Poco::UInt32& other, const Var& da)
-	/// Greater than operator for comparing Var with Poco::UInt32
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<Poco::UInt32>();
-}
-
-
-inline bool operator >= (const Poco::UInt32& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with Poco::UInt32
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<Poco::UInt32>();
-}
-
-
-inline Poco::Int64 operator + (const Poco::Int64& other, const Var& da)
-	/// Addition operator for adding Var to Poco::Int64
-{
-	return other + da.convert<Poco::Int64>();
-}
-
-
-inline Poco::Int64 operator - (const Poco::Int64& other, const Var& da)
-	/// Subtraction operator for subtracting Var from Poco::Int64
-{
-	return other - da.convert<Poco::Int64>();
-}
-
-
-inline Poco::Int64 operator * (const Poco::Int64& other, const Var& da)
-	/// Multiplication operator for multiplying Var with Poco::Int64
-{
-	return other * da.convert<Poco::Int64>();
-}
-
-
-inline Poco::Int64 operator / (const Poco::Int64& other, const Var& da)
-	/// Division operator for dividing Var with Poco::Int64
-{
-	return other / da.convert<Poco::Int64>();
-}
-
-
-inline Poco::Int64 operator += (Poco::Int64& other, const Var& da)
-	/// Addition assignment operator for adding Var to Poco::Int64
-{
-	return other += da.convert<Poco::Int64>();
-}
-
-
-inline Poco::Int64 operator -= (Poco::Int64& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from Poco::Int64
-{
-	return other -= da.convert<Poco::Int64>();
-}
-
-
-inline Poco::Int64 operator *= (Poco::Int64& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with Poco::Int64
-{
-	return other *= da.convert<Poco::Int64>();
-}
-
-
-inline Poco::Int64 operator /= (Poco::Int64& other, const Var& da)
-	/// Division assignment operator for dividing Var with Poco::Int64
-{
-	return other /= da.convert<Poco::Int64>();
-}
-
-
-inline bool operator == (const Poco::Int64& other, const Var& da)
-	/// Equality operator for comparing Var with Poco::Int64
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<Poco::Int64>();
-}
-
-
-inline bool operator != (const Poco::Int64& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::Int64
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::Int64>();
-}
-
-
-inline bool operator < (const Poco::Int64& other, const Var& da)
-	/// Less than operator for comparing Var with Poco::Int64
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<Poco::Int64>();
-}
-
-
-inline bool operator <= (const Poco::Int64& other, const Var& da)
-	/// Less than or equal operator for comparing Var with Poco::Int64
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<Poco::Int64>();
-}
-
-
-inline bool operator > (const Poco::Int64& other, const Var& da)
-	/// Greater than operator for comparing Var with Poco::Int64
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<Poco::Int64>();
-}
-
-
-inline bool operator >= (const Poco::Int64& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with Poco::Int64
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<Poco::Int64>();
-}
-
-
-inline Poco::UInt64 operator + (const Poco::UInt64& other, const Var& da)
-	/// Addition operator for adding Var to Poco::UInt64
-{
-	return other + da.convert<Poco::UInt64>();
-}
-
-
-inline Poco::UInt64 operator - (const Poco::UInt64& other, const Var& da)
-	/// Subtraction operator for subtracting Var from Poco::UInt64
-{
-	return other - da.convert<Poco::UInt64>();
-}
-
-
-inline Poco::UInt64 operator * (const Poco::UInt64& other, const Var& da)
-	/// Multiplication operator for multiplying Var with Poco::UInt64
-{
-	return other * da.convert<Poco::UInt64>();
-}
-
-
-inline Poco::UInt64 operator / (const Poco::UInt64& other, const Var& da)
-	/// Division operator for dividing Var with Poco::UInt64
-{
-	return other / da.convert<Poco::UInt64>();
-}
-
-
-inline Poco::UInt64 operator += (Poco::UInt64& other, const Var& da)
-	/// Addition assignment operator for adding Var to Poco::UInt64
-{
-	return other += da.convert<Poco::UInt64>();
-}
-
-
-inline Poco::UInt64 operator -= (Poco::UInt64& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from Poco::UInt64
-{
-	return other -= da.convert<Poco::UInt64>();
-}
-
-
-inline Poco::UInt64 operator *= (Poco::UInt64& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with Poco::UInt64
-{
-	return other *= da.convert<Poco::UInt64>();
-}
-
-
-inline Poco::UInt64 operator /= (Poco::UInt64& other, const Var& da)
-	/// Division assignment operator for dividing Var with Poco::UInt64
-{
-	return other /= da.convert<Poco::UInt64>();
-}
-
-
-inline bool operator == (const Poco::UInt64& other, const Var& da)
-	/// Equality operator for comparing Var with Poco::UInt64
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<Poco::UInt64>();
-}
-
-
-inline bool operator != (const Poco::UInt64& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::UInt64
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::UInt64>();
-}
-
-
-inline bool operator < (const Poco::UInt64& other, const Var& da)
-	/// Less than operator for comparing Var with Poco::UInt64
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<Poco::UInt64>();
-}
-
-
-inline bool operator <= (const Poco::UInt64& other, const Var& da)
-	/// Less than or equal operator for comparing Var with Poco::UInt64
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<Poco::UInt64>();
-}
-
-
-inline bool operator > (const Poco::UInt64& other, const Var& da)
-	/// Greater than operator for comparing Var with Poco::UInt64
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<Poco::UInt64>();
-}
-
-
-inline bool operator >= (const Poco::UInt64& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with Poco::UInt64
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<Poco::UInt64>();
-}
-
-
-inline float operator + (const float& other, const Var& da)
-	/// Addition operator for adding Var to float
-{
-	return other + da.convert<float>();
-}
-
-
-inline float operator - (const float& other, const Var& da)
-	/// Subtraction operator for subtracting Var from float
-{
-	return other - da.convert<float>();
-}
-
-
-inline float operator * (const float& other, const Var& da)
-	/// Multiplication operator for multiplying Var with float
-{
-	return other * da.convert<float>();
-}
-
-
-inline float operator / (const float& other, const Var& da)
-	/// Division operator for dividing Var with float
-{
-	return other / da.convert<float>();
-}
-
-
-inline float operator += (float& other, const Var& da)
-	/// Addition assignment operator for adding Var to float
-{
-	return other += da.convert<float>();
-}
-
-
-inline float operator -= (float& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from float
-{
-	return other -= da.convert<float>();
-}
-
-
-inline float operator *= (float& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with float
-{
-	return other *= da.convert<float>();
-}
-
-
-inline float operator /= (float& other, const Var& da)
-	/// Division assignment operator for dividing Var with float
-{
-	return other /= da.convert<float>();
-}
-
-
-inline bool operator == (const float& other, const Var& da)
-	/// Equality operator for comparing Var with float
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<float>();
-}
-
-
-inline bool operator != (const float& other, const Var& da)
-	/// Inequality operator for comparing Var with float
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<float>();
-}
-
-
-inline bool operator < (const float& other, const Var& da)
-	/// Less than operator for comparing Var with float
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<float>();
-}
-
-
-inline bool operator <= (const float& other, const Var& da)
-	/// Less than or equal operator for comparing Var with float
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<float>();
-}
-
-
-inline bool operator > (const float& other, const Var& da)
-	/// Greater than operator for comparing Var with float
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<float>();
-}
-
-
-inline bool operator >= (const float& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with float
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<float>();
-}
-
-
-inline double operator + (const double& other, const Var& da)
-	/// Addition operator for adding Var to double
-{
-	return other + da.convert<double>();
-}
-
-
-inline double operator - (const double& other, const Var& da)
-	/// Subtraction operator for subtracting Var from double
-{
-	return other - da.convert<double>();
-}
-
-
-inline double operator * (const double& other, const Var& da)
-	/// Multiplication operator for multiplying Var with double
-{
-	return other * da.convert<double>();
-}
-
-
-inline double operator / (const double& other, const Var& da)
-	/// Division operator for dividing Var with double
-{
-	return other / da.convert<double>();
-}
-
-
-inline double operator += (double& other, const Var& da)
-	/// Addition assignment operator for adding Var to double
-{
-	return other += da.convert<double>();
-}
-
-
-inline double operator -= (double& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from double
-{
-	return other -= da.convert<double>();
-}
-
-
-inline double operator *= (double& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with double
-{
-	return other *= da.convert<double>();
-}
-
-
-inline double operator /= (double& other, const Var& da)
-	/// Division assignment operator for dividing Var with double
-{
-	return other /= da.convert<double>();
-}
-
-
-inline bool operator == (const double& other, const Var& da)
-	/// Equality operator for comparing Var with double
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<double>();
-}
-
-
-inline bool operator != (const double& other, const Var& da)
-	/// Inequality operator for comparing Var with double
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<double>();
-}
-
-
-inline bool operator < (const double& other, const Var& da)
-	/// Less than operator for comparing Var with double
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<double>();
-}
-
-
-inline bool operator <= (const double& other, const Var& da)
-	/// Less than or equal operator for comparing Var with double
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<double>();
-}
-
-
-inline bool operator > (const double& other, const Var& da)
-	/// Greater than operator for comparing Var with double
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<double>();
-}
-
-
-inline bool operator >= (const double& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with double
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<double>();
-}
-
-
-inline bool operator == (const bool& other, const Var& da)
-	/// Equality operator for comparing Var with bool
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<bool>();
-}
-
-
-inline bool operator != (const bool& other, const Var& da)
-	/// Inequality operator for comparing Var with bool
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<bool>();
-}
-
-
-inline bool operator == (const std::string& other, const Var& da)
-	/// Equality operator for comparing Var with std::string
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<std::string>();
-}
-
-
-inline bool operator != (const std::string& other, const Var& da)
-	/// Inequality operator for comparing Var with std::string
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<std::string>();
-}
-
-
-inline bool operator == (const UTF16String& other, const Var& da)
-	/// Equality operator for comparing Var with UTF16String
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<UTF16String>();
-}
-
-
-inline bool operator != (const UTF16String& other, const Var& da)
-	/// Inequality operator for comparing Var with UTF16String
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<UTF16String>();
-}
-
-
-inline bool operator == (const char* other, const Var& da)
-	/// Equality operator for comparing Var with const char*
-{
-	if (da.isEmpty()) return false;
-	return da.convert<std::string>() == other;
-}
-
-
-inline bool operator != (const char* other, const Var& da)
-	/// Inequality operator for comparing Var with const char*
-{
-	if (da.isEmpty()) return true;
-	return da.convert<std::string>() != other;
-}
-
-
-#ifndef POCO_INT64_IS_LONG
-
-
-inline long operator + (const long& other, const Var& da)
-	/// Addition operator for adding Var to long
-{
-	return other + da.convert<long>();
-}
-
-
-inline long operator - (const long& other, const Var& da)
-	/// Subtraction operator for subtracting Var from long
-{
-	return other - da.convert<long>();
-}
-
-
-inline long operator * (const long& other, const Var& da)
-	/// Multiplication operator for multiplying Var with long
-{
-	return other * da.convert<long>();
-}
-
-
-inline long operator / (const long& other, const Var& da)
-	/// Division operator for dividing Var with long
-{
-	return other / da.convert<long>();
-}
-
-
-inline long operator += (long& other, const Var& da)
-	/// Addition assignment operator for adding Var to long
-{
-	return other += da.convert<long>();
-}
-
-
-inline long operator -= (long& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from long
-{
-	return other -= da.convert<long>();
-}
-
-
-inline long operator *= (long& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with long
-{
-	return other *= da.convert<long>();
-}
-
-
-inline long operator /= (long& other, const Var& da)
-	/// Division assignment operator for dividing Var with long
-{
-	return other /= da.convert<long>();
-}
-
-
-inline bool operator == (const long& other, const Var& da)
-	/// Equality operator for comparing Var with long
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<long>();
-}
-
-
-inline bool operator != (const long& other, const Var& da)
-	/// Inequality operator for comparing Var with long
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<long>();
-}
-
-
-inline bool operator < (const long& other, const Var& da)
-	/// Less than operator for comparing Var with long
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<long>();
-}
-
-
-inline bool operator <= (const long& other, const Var& da)
-	/// Less than or equal operator for comparing Var with long
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<long>();
-}
-
-
-inline bool operator > (const long& other, const Var& da)
-	/// Greater than operator for comparing Var with long
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<long>();
-}
-
-
-inline bool operator >= (const long& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with long
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<long>();
-}
-
-
-inline unsigned long operator + (const unsigned long& other, const Var& da)
-	/// Addition operator for adding Var to unsigned long
-{
-	return other + da.convert<unsigned long>();
-}
-
-
-inline unsigned long operator - (const unsigned long& other, const Var& da)
-	/// Subtraction operator for subtracting Var from unsigned long
-{
-	return other - da.convert<unsigned long>();
-}
-
-
-inline unsigned long operator * (const unsigned long& other, const Var& da)
-	/// Multiplication operator for multiplying Var with unsigned long
-{
-	return other * da.convert<unsigned long>();
-}
-
-
-inline unsigned long operator / (const unsigned long& other, const Var& da)
-	/// Division operator for dividing Var with unsigned long
-{
-	return other / da.convert<unsigned long>();
-}
-
-
-inline unsigned long operator += (unsigned long& other, const Var& da)
-	/// Addition assignment operator for adding Var to unsigned long
-{
-	return other += da.convert<unsigned long>();
-}
-
-
-inline unsigned long operator -= (unsigned long& other, const Var& da)
-	/// Subtraction assignment operator for subtracting Var from unsigned long
-{
-	return other -= da.convert<unsigned long>();
-}
-
-
-inline unsigned long operator *= (unsigned long& other, const Var& da)
-	/// Multiplication assignment operator for multiplying Var with unsigned long
-{
-	return other *= da.convert<unsigned long>();
-}
-
-
-inline unsigned long operator /= (unsigned long& other, const Var& da)
-	/// Division assignment operator for dividing Var with unsigned long
-{
-	return other /= da.convert<unsigned long>();
-}
-
-
-inline bool operator == (const unsigned long& other, const Var& da)
-	/// Equality operator for comparing Var with unsigned long
-{
-	if (da.isEmpty()) return false;
-	return other == da.convert<unsigned long>();
-}
-
-
-inline bool operator != (const unsigned long& other, const Var& da)
-	/// Inequality operator for comparing Var with unsigned long
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<unsigned long>();
-}
-
-
-inline bool operator < (const unsigned long& other, const Var& da)
-	/// Less than operator for comparing Var with unsigned long
-{
-	if (da.isEmpty()) return false;
-	return other < da.convert<unsigned long>();
-}
-
-
-inline bool operator <= (const unsigned long& other, const Var& da)
-	/// Less than or equal operator for comparing Var with unsigned long
-{
-	if (da.isEmpty()) return false;
-	return other <= da.convert<unsigned long>();
-}
-
-
-inline bool operator > (const unsigned long& other, const Var& da)
-	/// Greater than operator for comparing Var with unsigned long
-{
-	if (da.isEmpty()) return false;
-	return other > da.convert<unsigned long>();
-}
-
-
-inline bool operator >= (const unsigned long& other, const Var& da)
-	/// Greater than or equal operator for comparing Var with unsigned long
-{
-	if (da.isEmpty()) return false;
-	return other >= da.convert<unsigned long>();
-}
 
 
 #endif // POCO_INT64_IS_LONG

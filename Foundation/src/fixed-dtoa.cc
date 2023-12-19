@@ -25,7 +25,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <cmath>
+#endif
 
 #include "fixed-dtoa.h"
 #include "ieee.h"

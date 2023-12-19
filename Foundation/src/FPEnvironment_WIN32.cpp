@@ -14,6 +14,7 @@
 
 #include "Poco/FPEnvironment_WIN32.h"
 
+#include <float.h>
 
 namespace Poco {
 

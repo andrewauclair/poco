@@ -9,12 +9,23 @@
 
 
 #include "FIFOBufferStreamTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#include "Poco/DelegateInlines.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/FIFOBuffer.h"
 #include "Poco/FIFOBufferStream.h"
 #include "Poco/Delegate.h"
-
+#endif
 
 using Poco::FIFOBuffer;
 using Poco::FIFOBufferStream;

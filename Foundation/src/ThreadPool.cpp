@@ -144,7 +144,7 @@ int PooledThread::idleTime()
 #if defined(_WIN32_WCE) && _WIN32_WCE < 0x800
 	return (int) (wceex_time(NULL) - _idleTime);
 #else
-	return (int) (time(NULL) - _idleTime);
+	return (int) (std::time(nullptr) - _idleTime);
 #endif
 }
 

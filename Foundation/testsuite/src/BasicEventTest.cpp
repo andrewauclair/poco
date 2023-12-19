@@ -9,7 +9,18 @@
 
 
 #include "BasicEventTest.h"
-#include "DummyDelegate.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#include "Poco/DelegateInlines.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Expire.h"
@@ -17,7 +28,9 @@
 #include "Poco/FunctionDelegate.h"
 #include "Poco/Thread.h"
 #include "Poco/Exception.h"
+#endif
 
+#include "DummyDelegate.h"
 
 using namespace Poco;
 
@@ -45,7 +58,7 @@ void BasicEventTest::testNoDelegate()
 	Void.notify(this);
 	assertTrue (_count == 0);
 
-	Void += delegate(this, &BasicEventTest::onVoid);
+	Void += Poco::delegate(this, &BasicEventTest::onVoid);
 	assertTrue (!Void.empty());
 	Void -= delegate(this, &BasicEventTest::onVoid);
 	assertTrue (Void.empty());

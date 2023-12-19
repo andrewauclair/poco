@@ -6,7 +6,6 @@
 #ifndef CppUnit_Test_INCLUDED
 #define CppUnit_Test_INCLUDED
 
-
 #include "CppUnit/CppUnit.h"
 
 #if defined(POCO_MODULES)

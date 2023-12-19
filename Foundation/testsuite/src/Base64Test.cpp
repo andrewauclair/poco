@@ -9,13 +9,23 @@
 
 
 #include "Base64Test.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Base64Encoder.h"
 #include "Poco/Base64Decoder.h"
 #include "Poco/Exception.h"
-#include <sstream>
 
+#include <sstream>
+#endif
 
 using Poco::Base64Encoder;
 using Poco::Base64Decoder;
@@ -69,7 +79,7 @@ void Base64Test::testEncoderURL()
 {
 	{
 		std::ostringstream str;
-		Base64Encoder encoder(str, Poco::BASE64_URL_ENCODING);
+		Base64Encoder encoder(str, Poco::Base64EncodingOptions::BASE64_URL_ENCODING);
 		encoder << std::string("\00\01\02\03\04\05", 6);
 		encoder.close();
 		assertTrue (str.str() == "AAECAwQF");

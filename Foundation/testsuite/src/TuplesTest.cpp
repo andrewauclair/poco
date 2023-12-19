@@ -9,13 +9,23 @@
 
 
 #include "TuplesTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Tuple.h"
 #include "Poco/Void.h"
+
 #include <algorithm>
 #include <map>
-
+#endif
 
 using Poco::TypeList;
 using Poco::NullTypeList;

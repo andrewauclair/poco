@@ -25,8 +25,12 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <algorithm>
 #include <cstring>
+#endif
 
 #include "bignum.h"
 #include "utils.h"

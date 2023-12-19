@@ -9,6 +9,15 @@
 
 
 #include "TaskManagerTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Exception.h"
@@ -22,8 +31,9 @@
 #include "Poco/Observer.h"
 #include "Poco/Exception.h"
 #include "Poco/AutoPtr.h"
-#include <iostream>
 
+#include <iostream>
+#endif
 
 using Poco::TaskManager;
 using Poco::Task;

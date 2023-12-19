@@ -9,7 +9,17 @@
 
 
 #include "FIFOEventTest.h"
-#include "DummyDelegate.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#include "Poco/DelegateInlines.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Delegate.h"
@@ -17,9 +27,12 @@
 #include "Poco/Thread.h"
 #include "Poco/Exception.h"
 #include "Poco/Stopwatch.h"
+
 #include <iostream>
 #include <numeric>
+#endif
 
+#include "DummyDelegate.h"
 
 using namespace Poco;
 

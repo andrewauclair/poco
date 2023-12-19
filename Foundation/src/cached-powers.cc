@@ -25,9 +25,13 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#if defined(POCO_MODULES)
+import std;
+#else
 #include <climits>
 #include <cmath>
 #include <cstdarg>
+#endif
 
 #include "utils.h"
 
@@ -142,7 +146,7 @@ void GetCachedPowerForBinaryExponentRange(
     DiyFp* power,
     int* decimal_exponent) {
   int kQ = DiyFp::kSignificandSize;
-  double k = ceil((min_exponent + kQ - 1) * kD_1_LOG2_10);
+  double k = std::ceil((min_exponent + kQ - 1) * kD_1_LOG2_10);
   int foo = kCachedPowersOffset;
   int index =
       (foo + static_cast<int>(k) - 1) / kDecimalExponentDistance + 1;

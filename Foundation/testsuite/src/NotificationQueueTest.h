@@ -13,13 +13,20 @@
 #ifndef NotificationQueueTest_INCLUDED
 #define NotificationQueueTest_INCLUDED
 
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/NotificationQueue.h"
 #include "Poco/Mutex.h"
 #include <set>
-
+#endif
 
 class NotificationQueueTest: public CppUnit::TestCase
 {

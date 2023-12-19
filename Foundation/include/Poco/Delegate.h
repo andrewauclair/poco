@@ -382,68 +382,68 @@ private:
 };
 
 
-template <class TObj>
-inline Delegate<TObj, void, true> delegate(TObj* pObj, void (TObj::*NotifyMethod)(const void*))
-{
-	return Delegate<TObj, void, true>(pObj, NotifyMethod);
-}
-
-
-template <class TObj>
-inline Delegate<TObj, void, false> delegate(TObj* pObj, void (TObj::*NotifyMethod)())
-{
-	return Delegate<TObj, void, false>(pObj, NotifyMethod);
-}
-
-
-template <class TObj>
-inline Expire<void> delegate(TObj* pObj, void (TObj::*NotifyMethod)(const void*), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<void>(Delegate<TObj, void, true>(pObj, NotifyMethod), expireMillisecs);
-}
-
-
-template <class TObj>
-inline Expire<void> delegate(TObj* pObj, void (TObj::*NotifyMethod)(), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<void>(Delegate<TObj, void, false>(pObj, NotifyMethod), expireMillisecs);
-}
-
-
-inline Expire<void> delegate(void (*NotifyMethod)(const void*), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<void>(FunctionDelegate<void, true, true>(NotifyMethod), expireMillisecs);
-}
-
-
-inline Expire<void> delegate(void (*NotifyMethod)(void*), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<void>(FunctionDelegate<void, true, false>(NotifyMethod), expireMillisecs);
-}
-
-
-inline Expire<void> delegate(void (*NotifyMethod)(), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<void>(FunctionDelegate<void, false>(NotifyMethod), expireMillisecs);
-}
-
-
-inline FunctionDelegate<void, true, true> delegate(void (*NotifyMethod)(const void*))
-{
-	return FunctionDelegate<void, true, true>(NotifyMethod);
-}
-
-
-inline FunctionDelegate<void, true, false> delegate(void (*NotifyMethod)(void*))
-{
-	return FunctionDelegate<void, true, false>(NotifyMethod);
-}
-
-
-inline FunctionDelegate<void, false> delegate(void (*NotifyMethod)())
-{
-	return FunctionDelegate<void, false>(NotifyMethod);
-}
+//template <class TObj>
+//inline Delegate<TObj, void, true> delegate(TObj* pObj, void (TObj::*NotifyMethod)(const void*))
+//{
+//	return Delegate<TObj, void, true>(pObj, NotifyMethod);
+//}
+//
+//
+//template <class TObj>
+//inline Delegate<TObj, void, false> delegate(TObj* pObj, void (TObj::*NotifyMethod)())
+//{
+//	return Delegate<TObj, void, false>(pObj, NotifyMethod);
+//}
+//
+//
+//template <class TObj>
+//inline Expire<void> delegate(TObj* pObj, void (TObj::*NotifyMethod)(const void*), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<void>(Delegate<TObj, void, true>(pObj, NotifyMethod), expireMillisecs);
+//}
+//
+//
+//template <class TObj>
+//inline Expire<void> delegate(TObj* pObj, void (TObj::*NotifyMethod)(), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<void>(Delegate<TObj, void, false>(pObj, NotifyMethod), expireMillisecs);
+//}
+//
+//
+//inline Expire<void> delegate(void (*NotifyMethod)(const void*), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<void>(FunctionDelegate<void, true, true>(NotifyMethod), expireMillisecs);
+//}
+//
+//
+//inline Expire<void> delegate(void (*NotifyMethod)(void*), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<void>(FunctionDelegate<void, true, false>(NotifyMethod), expireMillisecs);
+//}
+//
+//
+//inline Expire<void> delegate(void (*NotifyMethod)(), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<void>(FunctionDelegate<void, false>(NotifyMethod), expireMillisecs);
+//}
+//
+//
+//inline FunctionDelegate<void, true, true> delegate(void (*NotifyMethod)(const void*))
+//{
+//	return FunctionDelegate<void, true, true>(NotifyMethod);
+//}
+//
+//
+//inline FunctionDelegate<void, true, false> delegate(void (*NotifyMethod)(void*))
+//{
+//	return FunctionDelegate<void, true, false>(NotifyMethod);
+//}
+//
+//
+//inline FunctionDelegate<void, false> delegate(void (*NotifyMethod)())
+//{
+//	return FunctionDelegate<void, false>(NotifyMethod);
+//}
 
 
 } // namespace Poco

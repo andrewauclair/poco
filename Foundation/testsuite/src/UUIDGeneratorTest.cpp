@@ -9,13 +9,23 @@
 
 
 #include "UUIDGeneratorTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/UUIDGenerator.h"
 #include "Poco/UUID.h"
 #include "Poco/SHA1Engine.h"
-#include <set>
 
+#include <set>
+#endif
 
 using Poco::UUIDGenerator;
 using Poco::UUID;

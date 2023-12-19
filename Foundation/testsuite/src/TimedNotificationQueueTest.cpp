@@ -9,13 +9,22 @@
 
 
 #include "TimedNotificationQueueTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/TimedNotificationQueue.h"
 #include "Poco/Notification.h"
 #include "Poco/Timestamp.h"
 #include "Poco/Clock.h"
-
+#endif
 
 using Poco::TimedNotificationQueue;
 using Poco::Notification;

@@ -10,12 +10,22 @@
 
 
 #include "DigestStreamTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/DigestStream.h"
 #include "Poco/MD5Engine.h"
-#include <sstream>
 
+#include <sstream>
+#endif
 
 using Poco::DigestInputStream;
 using Poco::DigestOutputStream;

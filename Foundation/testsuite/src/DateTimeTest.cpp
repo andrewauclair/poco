@@ -14,13 +14,22 @@
 
 
 #include "DateTimeTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/DateTime.h"
 #include "Poco/Timestamp.h"
 #include "Poco/Timespan.h"
 #include "Poco/Exception.h"
-
+#endif
 
 using Poco::Timestamp;
 using Poco::DateTime;
@@ -863,7 +872,7 @@ void DateTimeTest::testTM()
 {
 	time_t now;
 	time(&now);
-	tm* pTM = gmtime(&now);
+	std::tm* pTM = gmtime(&now);
 	DateTime dt(*pTM);
 	assertTrue (dt.second() == pTM->tm_sec);
 	assertTrue (dt.minute() == pTM->tm_min);
