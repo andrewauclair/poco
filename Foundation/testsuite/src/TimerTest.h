@@ -13,11 +13,16 @@
 #ifndef TimerTest_INCLUDED
 #define TimerTest_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/Timer.h"
 #include "Poco/Event.h"
+#endif
 
 
 class TimerTest: public CppUnit::TestCase

@@ -13,11 +13,16 @@
 #ifndef PriorityEventTest_INCLUDED
 #define PriorityEventTest_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/PriorityEvent.h"
 #include "Poco/EventArgs.h"
+#endif
 
 
 class PriorityEventTest: public CppUnit::TestCase

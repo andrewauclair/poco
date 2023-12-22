@@ -13,11 +13,16 @@
 #ifndef ThreadPoolTest_INCLUDED
 #define ThreadPoolTest_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/Event.h"
 #include "Poco/Mutex.h"
+#endif
 
 
 class ThreadPoolTest: public CppUnit::TestCase

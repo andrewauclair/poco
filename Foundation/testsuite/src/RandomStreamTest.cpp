@@ -9,13 +9,19 @@
 
 
 #include "RandomStreamTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/RandomStream.h"
 
-#if defined(POCO_MODULES)
-import std;
-#else
 #include <vector>
 #include <cmath>
 #endif

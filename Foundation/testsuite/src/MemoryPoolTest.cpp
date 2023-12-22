@@ -239,7 +239,7 @@ void MemoryPoolTest::testFastMemoryPool()
 	char* pC = reinterpret_cast<char*>(fastArrayPool.get());
 	const char* pStr = "1234567890abcde";
 	std::memcpy(pC, pStr, elements);
-	assert (strlen(pC) == elements - 1);
+	assert (std::strlen(pC) == elements - 1);
 	assert (std::strcmp(pC, pStr) == 0);
 	fastArrayPool.release(pC);
 }

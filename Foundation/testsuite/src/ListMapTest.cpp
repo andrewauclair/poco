@@ -82,7 +82,7 @@ void ListMapTest::testInsert()
 
 void ListMapTest::testInsertOrder()
 {
-	const int POCO_UNUSED N = 1000;
+	const int  N = 1000;
 
 	typedef ListMap<std::string, int> StrToIntMap;
 	StrToIntMap lm;
@@ -232,7 +232,7 @@ void ListMapTest::testIntIndex()
 	try
 	{
 		const IntMap& im = hm;
-		int POCO_UNUSED x = im[4];
+		int  x = im[4];
 		fail("no such key - must throw");
 	}
 	catch (Poco::NotFoundException&)

@@ -30,6 +30,8 @@ import poco.foundation;
 #include <set>
 #endif
 
+#include "Poco/Platform.h"
+
 using Poco::File;
 using Poco::TemporaryFile;
 using Poco::Path;
@@ -55,7 +57,7 @@ void FileTest::testFileAttributes1()
 
 	try
 	{
-		bool POCO_UNUSED flag = f.canRead();
+		bool  flag = f.canRead();
 		failmsg("file does not exist - must throw exception");
 	}
 	catch (Exception&)
@@ -64,7 +66,7 @@ void FileTest::testFileAttributes1()
 
 	try
 	{
-		bool POCO_UNUSED flag = f.canWrite();
+		bool  flag = f.canWrite();
 		failmsg("file does not exist - must throw exception");
 	}
 	catch (Exception&)
@@ -73,7 +75,7 @@ void FileTest::testFileAttributes1()
 
 	try
 	{
-		bool POCO_UNUSED flag = f.isFile();
+		bool  flag = f.isFile();
 		failmsg("file does not exist - must throw exception");
 	}
 	catch (Exception&)
@@ -82,7 +84,7 @@ void FileTest::testFileAttributes1()
 
 	try
 	{
-		bool POCO_UNUSED flag = f.isDirectory();
+		bool  flag = f.isDirectory();
 		failmsg("file does not exist - must throw exception");
 	}
 	catch (Exception&)
@@ -91,7 +93,7 @@ void FileTest::testFileAttributes1()
 
 	try
 	{
-		Timestamp POCO_UNUSED ts = f.created();
+		Timestamp  ts = f.created();
 		failmsg("file does not exist - must throw exception");
 	}
 	catch (Exception&)
@@ -100,7 +102,7 @@ void FileTest::testFileAttributes1()
 
 	try
 	{
-		Timestamp POCO_UNUSED ts = f.getLastModified();
+		Timestamp  ts = f.getLastModified();
 		failmsg("file does not exist - must throw exception");
 	}
 	catch (Exception&)
@@ -119,7 +121,7 @@ void FileTest::testFileAttributes1()
 
 	try
 	{
-		File::FileSize POCO_UNUSED fs = f.getSize();
+		File::FileSize  fs = f.getSize();
 		failmsg("file does not exist - must throw exception");
 	}
 	catch (Exception&)
@@ -602,7 +604,7 @@ void FileTest::testLongPath()
 	Poco::Path p("longpathtest");
 	p.makeAbsolute();
 	std::string longpath(p.toString());
-	while (longpath.size() < MAX_PATH*4)
+	while (longpath.size() < 260*4)
 	{
 		longpath.append("\\");
 		longpath.append(64, 'x');

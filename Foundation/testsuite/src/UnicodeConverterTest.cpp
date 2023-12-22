@@ -10,13 +10,21 @@
 
 #ifndef POCO_NO_WSTRING
 
-
-#include "Poco/UnicodeConverter.h"
 #include "UnicodeConverterTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
+#include "Poco/UnicodeConverter.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/UTFString.h"
-
+#endif
 
 using Poco::UnicodeConverter;
 using Poco::UTF16Char;

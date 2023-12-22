@@ -8,13 +8,24 @@
 //
 
 #include "SharedMemoryTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/SharedMemory.h"
 #include "Poco/Path.h"
 #include "Poco/File.h"
 #include "Poco/Exception.h"
+#endif
 
+//#include <winerror.h>
 
 using Poco::SharedMemory;
 
@@ -90,7 +101,7 @@ void SharedMemoryTest::testCreateLarge()
 	catch (Poco::SystemException& ex)
 	{
 		// no memory, quite posible to happen
-		assertEqual(ERROR_NOT_ENOUGH_MEMORY, ex.code());
+		assertEqual(8L, ex.code());
 	}
 #endif
 }

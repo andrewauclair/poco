@@ -13,8 +13,13 @@
 #ifndef DateTimeTestSuite_INCLUDED
 #define DateTimeTestSuite_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestSuite.h"
+#endif
 
 
 class DateTimeTestSuite

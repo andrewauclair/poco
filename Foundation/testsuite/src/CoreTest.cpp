@@ -13,6 +13,8 @@
 #include "CppUnit/CppAsserts.h"
 #include "CppUnit/CppTestMacros.h"
 
+#include "Poco/DelegateInlines.h"
+
 #if defined(POCO_MODULES)
 import std;
 import poco.cppunit;
@@ -33,12 +35,15 @@ import poco.foundation;
 #include "Poco/BasicEvent.h"
 #include "Poco/Delegate.h"
 #include "Poco/Exception.h"
+#include "Poco/Timer.h"
 
 #include <iostream>
 #include <sstream>
 #include <vector>
 #include <cstring>
 #endif
+
+#include "Poco/Platform.h"
 
 namespace
 {
@@ -427,8 +432,8 @@ void CoreTest::testFIFOBufferChar()
 	Poco::Buffer<T> b(10);
 	std::vector<T> v;
 
-	f.readable += delegate(this, &CoreTest::onReadable);
-	f.writable += delegate(this, &CoreTest::onWritable);
+	f.readable += Poco::delegate(this, &CoreTest::onReadable);
+	f.writable += Poco::delegate(this, &CoreTest::onWritable);
 
 	for (T c = '0'; c < '0' +  10; ++c)
 		v.push_back(c);
@@ -748,8 +753,8 @@ void CoreTest::testFIFOBufferChar()
 	assertTrue (f[8] == '0');
 	assertTrue (f[9] == '1');
 
-	f.readable -= delegate(this, &CoreTest::onReadable);
-	f.writable -= delegate(this, &CoreTest::onReadable);
+	f.readable -= Poco::delegate(this, &CoreTest::onReadable);
+	f.writable -= Poco::delegate(this, &CoreTest::onReadable);
 }
 
 

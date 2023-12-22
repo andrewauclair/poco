@@ -13,18 +13,20 @@
 #ifndef DirectoryWatcherTest_INCLUDED
 #define DirectoryWatcherTest_INCLUDED
 
-
-#include "Poco/Foundation.h"
-
-
 #ifndef POCO_NO_INOTIFY
 
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
+#include "Poco/Foundation.h"
 
 #include "Poco/DirectoryWatcher.h"
 #include "Poco/Path.h"
 #include "Poco/Mutex.h"
 #include "CppUnit/TestCase.h"
-
+#endif
 
 class DirectoryWatcherTest: public CppUnit::TestCase
 {

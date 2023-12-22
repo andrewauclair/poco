@@ -14,9 +14,14 @@
 #define ClassLoaderTest_INCLUDED
 
 
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
-
+#endif
 
 class ClassLoaderTest: public CppUnit::TestCase
 {

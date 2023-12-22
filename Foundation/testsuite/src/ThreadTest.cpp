@@ -35,6 +35,8 @@ import poco.foundation;
 #include <iostream>
 #endif
 
+#include "Poco/Config.h"
+
 using Poco::Thread;
 using Poco::Runnable;
 using Poco::ThreadTarget;

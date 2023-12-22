@@ -51,9 +51,9 @@ typedef Poco::Int64 intmax_t;
 #endif // POCO_COMPILER_MSVC
 
 // binary numbers are supported, thus 64 (bits) + 1 (string terminating zero)
-#define POCO_MAX_INT_STRING_LEN 65
+inline constexpr int POCO_MAX_INT_STRING_LEN = 65;
 // value from strtod.cc (double_conversion::kMaxSignificantDecimalDigits)
-#define POCO_MAX_FLT_STRING_LEN 780
+inline constexpr int POCO_MAX_FLT_STRING_LEN = 780;
 
 #define POCO_FLT_INF "inf"
 #define POCO_FLT_NAN "nan"

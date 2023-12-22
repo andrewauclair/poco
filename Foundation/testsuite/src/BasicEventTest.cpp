@@ -69,7 +69,7 @@ void BasicEventTest::testNoDelegate()
 	Simple.notify(this, tmp);
 	assertTrue (_count == 0);
 
-	Simple += delegate(this, &BasicEventTest::onSimple);
+	Simple += Poco::delegate(this, &BasicEventTest::onSimple);
 	assertTrue (!Simple.empty());
 	Simple -= delegate(this, &BasicEventTest::onSimple);
 	assertTrue (Simple.empty());

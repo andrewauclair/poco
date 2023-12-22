@@ -13,11 +13,16 @@
 #ifndef FIFOEventTest_INCLUDED
 #define FIFOEventTest_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/FIFOEvent.h"
 #include "Poco/EventArgs.h"
+#endif
 
 
 class FIFOEventTest: public CppUnit::TestCase

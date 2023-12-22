@@ -29,6 +29,8 @@ import poco.foundation;
 #include <sstream>
 #endif
 
+#include "Poco/zlib.h"
+
 using Poco::InflatingInputStream;
 using Poco::InflatingOutputStream;
 using Poco::DeflatingOutputStream;

@@ -9,11 +9,20 @@
 
 
 #include "RegularExpressionTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/RegularExpression.h"
 #include "Poco/Exception.h"
-
+#endif
 
 using Poco::RegularExpression;
 using Poco::RegularExpressionException;

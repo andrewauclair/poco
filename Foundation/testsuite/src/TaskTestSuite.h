@@ -13,8 +13,13 @@
 #ifndef TaskTestSuite_INCLUDED
 #define TaskTestSuite_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestSuite.h"
+#endif
 
 
 class TaskTestSuite

@@ -8,7 +8,16 @@
 //
 
 
-#include "Poco/SimpleFileChannel.h"
+#include "SimpleFileChannelTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Message.h"
 #include "Poco/Path.h"
 #include "Poco/File.h"
@@ -16,10 +25,10 @@
 #include "Poco/Timestamp.h"
 #include "Poco/DateTimeFormatter.h"
 #include "Poco/AutoPtr.h"
-#include "SimpleFileChannelTest.h"
+#include "Poco/SimpleFileChannel.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
-
+#endif
 
 using Poco::SimpleFileChannel;
 using Poco::Message;

@@ -13,11 +13,15 @@
 #ifndef DirectoryIteratorsTest_INCLUDED
 #define DirectoryIteratorsTest_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "Poco/Path.h"
 #include "CppUnit/TestCase.h"
-
+#endif
 
 class DirectoryIteratorsTest: public CppUnit::TestCase
 {

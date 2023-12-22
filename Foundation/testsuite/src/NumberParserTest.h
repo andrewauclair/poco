@@ -13,10 +13,6 @@
 #ifndef NumberParserTest_INCLUDED
 #define NumberParserTest_INCLUDED
 
-
-#include "Poco/Foundation.h"
-#include "CppUnit/TestCase.h"
-
 #include "CppUnit/CppAsserts.h"
 #include "CppUnit/CppTestMacros.h"
 
@@ -25,6 +21,9 @@ import std;
 import poco.cppunit;
 import poco.foundation;
 #else
+#include "Poco/Foundation.h"
+#include "CppUnit/TestCase.h"
+
 #include "Poco/NumberParser.h"
 #include "Poco/NumberFormatter.h"
 #undef max

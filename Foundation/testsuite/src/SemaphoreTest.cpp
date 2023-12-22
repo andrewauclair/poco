@@ -9,13 +9,22 @@
 
 
 #include "SemaphoreTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Thread.h"
 #include "Poco/Runnable.h"
 #include "Poco/Semaphore.h"
 #include "Poco/Exception.h"
-
+#endif
 
 using Poco::Thread;
 using Poco::Runnable;

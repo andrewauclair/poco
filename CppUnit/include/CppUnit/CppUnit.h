@@ -7,7 +7,7 @@
 #define CppUnit_CppUnit_INCLUDED
 
 #if !defined(POCO_MODULES)
-#define POCO_MODULES
+//#define POCO_MODULES
 #endif
 
 //

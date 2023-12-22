@@ -13,12 +13,20 @@
 #ifndef UnicodeConverterTest_INCLUDED
 #define UnicodeConverterTest_INCLUDED
 
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/UnicodeConverter.h"
 #include "Poco/UTFString.h"
 #include <cstring>
+#endif
 
 
 class UnicodeConverterTest: public CppUnit::TestCase
@@ -49,7 +57,7 @@ private:
 			assertTrue (Poco::UnicodeConverter::UTFStrlen(wtext.data()) == 8);
 		else if (sizeof(typename T::value_type) == 4)
 			assertTrue (Poco::UnicodeConverter::UTFStrlen(wtext.data()) == 5);
-		Poco::UnicodeConverter::convert((const char*) supp, strlen((const char*) supp), wtext2);
+		Poco::UnicodeConverter::convert((const char*) supp, std::strlen((const char*) supp), wtext2);
 		Poco::UnicodeConverter::convert((const char*)supp, wtext3);
 		assertTrue (wtext == wtext2);
 		assertTrue (wtext == wtext3);

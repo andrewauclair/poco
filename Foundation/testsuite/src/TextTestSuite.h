@@ -13,8 +13,13 @@
 #ifndef TextTestSuite_INCLUDED
 #define TextTestSuite_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestSuite.h"
+#endif
 
 
 class TextTestSuite

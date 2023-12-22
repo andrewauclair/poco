@@ -9,6 +9,15 @@
 
 
 #include "SharedLibraryTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/SharedLibrary.h"
@@ -16,7 +25,7 @@
 #include "Poco/Path.h"
 #include "Poco/File.h"
 #include "Poco/Format.h"
-
+#endif
 
 using Poco::SharedLibrary;
 using Poco::NotFoundException;

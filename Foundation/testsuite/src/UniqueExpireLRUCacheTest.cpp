@@ -10,6 +10,9 @@
 
 #include "UniqueExpireLRUCacheTest.h"
 
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
 #if defined(POCO_MODULES)
 import std;
 import poco.cppunit;

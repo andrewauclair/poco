@@ -32,6 +32,8 @@ import poco.foundation;
 #include <iostream>
 #endif
 
+#include "Poco/ordered_hash.h"
+
 #if defined(_MSC_VER) && _MSC_VER < 1400
 	#pragma warning(disable:4800)//forcing value to bool 'true' or 'false'
 #endif
@@ -90,7 +92,7 @@ VarTest::~VarTest()
 void VarTest::testInt8()
 {
 	Poco::Int8 src = 32;
-	Var a1 = src;
+	Poco::Dynamic::Var a1 = src;
 
 	assertTrue (a1.type() == typeid(Poco::Int8));
 
@@ -155,7 +157,7 @@ void VarTest::testInt8()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -813,7 +815,7 @@ void VarTest::testUInt64()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -907,7 +909,7 @@ void VarTest::testBool()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -984,7 +986,7 @@ void VarTest::testChar()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -996,7 +998,7 @@ void VarTest::testChar()
 void VarTest::testFloat()
 {
 	Var any("0");
-	float POCO_UNUSED f = any;
+	float  f = any;
 
 	float src = 32.0f;
 	Var a1 = src;
@@ -1064,7 +1066,7 @@ void VarTest::testFloat()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -1094,7 +1096,7 @@ void VarTest::testDouble()
 {
 	double d = 0;
 	Var v(d);
-	float POCO_UNUSED f = v;
+	float  f = v;
 
 	double src = 32.0;
 	Var a1 = src;
@@ -1162,7 +1164,7 @@ void VarTest::testDouble()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -1252,7 +1254,7 @@ void VarTest::testString()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -1347,7 +1349,7 @@ void VarTest::testLong()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -1441,7 +1443,7 @@ void VarTest::testULong()
 
 	try
 	{
-		Int16 POCO_UNUSED value2; value2 = a1.extract<Int16>();
+		Int16  value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -1534,7 +1536,7 @@ void VarTest::testLongLong()
 
 	try
 	{
-		POCO_UNUSED Int16 value2; value2 = a1.extract<Int16>();
+		[[maybe_unused]] Int16 value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -1628,7 +1630,7 @@ void VarTest::testULongLong()
 
 	try
 	{
-		POCO_UNUSED Int16 value2; value2 = a1.extract<Int16>();
+		 Int16 value2; value2 = a1.extract<Int16>();
 		fail("bad cast - must throw");
 	}
 	catch (Poco::BadCastException&)
@@ -1669,7 +1671,7 @@ void VarTest::testUDT()
 
 	try
 	{
-		float POCO_UNUSED f = da1;
+		float  f = da1;
 		fail ("must fail");
 	}
 	catch (BadCastException&) { }
@@ -2010,12 +2012,12 @@ void VarTest::testLimitsFloat()
 	{
 		double iMin = -1 * std::numeric_limits<float>::max();
 		Var da = iMin * 10;
-		try { float POCO_UNUSED f; f = da; fail("must fail"); }
+		try { float  f; f = da; fail("must fail"); }
 		catch (RangeException&) {}
 
 		double iMax = std::numeric_limits<float>::max();
 		da = iMax * 10;
-		try { float POCO_UNUSED f; f = da; fail("must fail"); }
+		try { float  f; f = da; fail("must fail"); }
 		catch (RangeException&) {}
 	}
 }
@@ -3023,13 +3025,13 @@ void VarTest::testEmpty()
 
 	try
 	{
-		int POCO_UNUSED i = da;
+		int i = da;
 		fail ("must fail");
 	} catch (InvalidAccessException&) { }
 
 	try
 	{
-		int POCO_UNUSED i = da.extract<int>();
+		int i = da.extract<int>();
 		fail ("must fail");
 	} catch (InvalidAccessException&) { }
 }

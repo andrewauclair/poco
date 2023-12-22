@@ -9,6 +9,15 @@
 
 
 #include "ActiveThreadPoolTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/ActiveThreadPool.h"
@@ -16,7 +25,7 @@
 #include "Poco/Exception.h"
 #include "Poco/Thread.h"
 #include "Poco/Environment.h"
-
+#endif
 
 using Poco::ActiveThreadPool;
 using Poco::RunnableAdapter;

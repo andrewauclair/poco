@@ -13,6 +13,8 @@
 #include "CppUnit/CppAsserts.h"
 #include "CppUnit/CppTestMacros.h"
 
+#include "Poco/DelegateInlines.h"
+
 #if defined(POCO_MODULES)
 import std;
 import poco.cppunit;

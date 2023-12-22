@@ -170,74 +170,74 @@ private:
 };
 
 
-template <class TObj, class TArgs>
-inline Delegate<TObj, TArgs, true> delegate(TObj* pObj, void (TObj::*NotifyMethod)(const void*, TArgs&))
-{
-	return Delegate<TObj, TArgs, true>(pObj, NotifyMethod);
-}
-
-
-template <class TObj, class TArgs>
-inline Delegate<TObj, TArgs, false> delegate(TObj* pObj, void (TObj::*NotifyMethod)(TArgs&))
-{
-	return Delegate<TObj, TArgs, false>(pObj, NotifyMethod);
-}
-
-
-template <class TObj, class TArgs>
-inline Expire<TArgs> delegate(TObj* pObj, void (TObj::*NotifyMethod)(const void*, TArgs&), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<TArgs>(Delegate<TObj, TArgs, true>(pObj, NotifyMethod), expireMillisecs);
-}
-
-
-template <class TObj, class TArgs>
-inline Expire<TArgs> delegate(TObj* pObj, void (TObj::*NotifyMethod)(TArgs&), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<TArgs>(Delegate<TObj, TArgs, false>(pObj, NotifyMethod), expireMillisecs);
-}
-
-
-template <class TArgs>
-inline Expire<TArgs> delegate(void (*NotifyMethod)(const void*, TArgs&), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<TArgs>(FunctionDelegate<TArgs, true, true>(NotifyMethod), expireMillisecs);
-}
-
-
-template <class TArgs>
-inline Expire<TArgs> delegate(void (*NotifyMethod)(void*, TArgs&), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<TArgs>(FunctionDelegate<TArgs, true, false>(NotifyMethod), expireMillisecs);
-}
-
-
-template <class TArgs>
-inline Expire<TArgs> delegate(void (*NotifyMethod)(TArgs&), Timestamp::TimeDiff expireMillisecs)
-{
-	return Expire<TArgs>(FunctionDelegate<TArgs, false>(NotifyMethod), expireMillisecs);
-}
-
-
-template <class TArgs>
-inline FunctionDelegate<TArgs, true, true> delegate(void (*NotifyMethod)(const void*, TArgs&))
-{
-	return FunctionDelegate<TArgs, true, true>(NotifyMethod);
-}
-
-
-template <class TArgs>
-inline FunctionDelegate<TArgs, true, false> delegate(void (*NotifyMethod)(void*, TArgs&))
-{
-	return FunctionDelegate<TArgs, true, false>(NotifyMethod);
-}
-
-
-template <class TArgs>
-inline FunctionDelegate<TArgs, false> delegate(void (*NotifyMethod)(TArgs&))
-{
-	return FunctionDelegate<TArgs, false>(NotifyMethod);
-}
+//template <class TObj, class TArgs>
+//inline Delegate<TObj, TArgs, true> delegate(TObj* pObj, void (TObj::*NotifyMethod)(const void*, TArgs&))
+//{
+//	return Delegate<TObj, TArgs, true>(pObj, NotifyMethod);
+//}
+//
+//
+//template <class TObj, class TArgs>
+//inline Delegate<TObj, TArgs, false> delegate(TObj* pObj, void (TObj::*NotifyMethod)(TArgs&))
+//{
+//	return Delegate<TObj, TArgs, false>(pObj, NotifyMethod);
+//}
+//
+//
+//template <class TObj, class TArgs>
+//inline Expire<TArgs> delegate(TObj* pObj, void (TObj::*NotifyMethod)(const void*, TArgs&), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<TArgs>(Delegate<TObj, TArgs, true>(pObj, NotifyMethod), expireMillisecs);
+//}
+//
+//
+//template <class TObj, class TArgs>
+//inline Expire<TArgs> delegate(TObj* pObj, void (TObj::*NotifyMethod)(TArgs&), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<TArgs>(Delegate<TObj, TArgs, false>(pObj, NotifyMethod), expireMillisecs);
+//}
+//
+//
+//template <class TArgs>
+//inline Expire<TArgs> delegate(void (*NotifyMethod)(const void*, TArgs&), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<TArgs>(FunctionDelegate<TArgs, true, true>(NotifyMethod), expireMillisecs);
+//}
+//
+//
+//template <class TArgs>
+//inline Expire<TArgs> delegate(void (*NotifyMethod)(void*, TArgs&), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<TArgs>(FunctionDelegate<TArgs, true, false>(NotifyMethod), expireMillisecs);
+//}
+//
+//
+//template <class TArgs>
+//inline Expire<TArgs> delegate(void (*NotifyMethod)(TArgs&), Timestamp::TimeDiff expireMillisecs)
+//{
+//	return Expire<TArgs>(FunctionDelegate<TArgs, false>(NotifyMethod), expireMillisecs);
+//}
+//
+//
+//template <class TArgs>
+//inline FunctionDelegate<TArgs, true, true> delegate(void (*NotifyMethod)(const void*, TArgs&))
+//{
+//	return FunctionDelegate<TArgs, true, true>(NotifyMethod);
+//}
+//
+//
+//template <class TArgs>
+//inline FunctionDelegate<TArgs, true, false> delegate(void (*NotifyMethod)(void*, TArgs&))
+//{
+//	return FunctionDelegate<TArgs, true, false>(NotifyMethod);
+//}
+//
+//
+//template <class TArgs>
+//inline FunctionDelegate<TArgs, false> delegate(void (*NotifyMethod)(TArgs&))
+//{
+//	return FunctionDelegate<TArgs, false>(NotifyMethod);
+//}
 
 
 template <class TObj>

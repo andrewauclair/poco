@@ -13,12 +13,13 @@
 #include "CppUnit/CppAsserts.h"
 #include "CppUnit/CppTestMacros.h"
 
+#include "Poco/DelegateInlines.h"
+
 #if defined(POCO_MODULES)
 import std;
 import poco.cppunit;
 import poco.foundation;
 #else
-#include "DummyDelegate.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/PriorityDelegate.h"
@@ -26,6 +27,8 @@ import poco.foundation;
 #include "Poco/Thread.h"
 #include "Poco/Exception.h"
 #endif
+
+#include "DummyDelegate.h"
 
 using namespace Poco;
 

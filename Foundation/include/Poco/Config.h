@@ -18,7 +18,7 @@
 #define Foundation_Config_INCLUDED
 
 #if !defined(POCO_MODULES)
-#define POCO_MODULES
+//#define POCO_MODULES
 #endif
 
 // Define to disable implicit linking

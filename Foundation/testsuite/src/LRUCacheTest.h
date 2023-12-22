@@ -12,10 +12,15 @@
 #ifndef LRUCacheTest_INCLUDED
 #define LRUCacheTest_INCLUDED
 
-
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "Poco/Foundation.h"
 #include "Poco/KeyValueArgs.h"
 #include "CppUnit/TestCase.h"
+#endif
 
 
 class LRUCacheTest: public CppUnit::TestCase

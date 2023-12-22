@@ -55,7 +55,8 @@ void NDCTest::testNDC()
 	assertTrue (ndc.depth() == 0);
 }
 
-
+#define poco_ndc(func) \
+	Poco::NDCScope _theNdcScope(#func, __LINE__, __FILE__)
 void NDCTest::testNDCScope()
 {
 	poco_ndc("item1");

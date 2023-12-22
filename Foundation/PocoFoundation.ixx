@@ -38,6 +38,7 @@ module;
 #include "Poco/DynamicAny.h"
 #include "Poco/DynamicAnyHolder.h"
 #include "Poco/DynamicFactory.h"
+#include "Poco/Dynamic/VarVisitor.h"
 #include "Poco/Environment.h"
 #include "Poco/Error.h"
 #include "Poco/Exception.h"
@@ -295,6 +296,7 @@ module;
 
 // this isn't in a group?
 #include "Poco/Array.h"
+#include "Poco/ordered_hash.h"
 
 export module poco.foundation;
 
@@ -407,7 +409,7 @@ namespace Poco
 	export using Poco::TypeAllReplacer;
 	export using Poco::Tuple;
 	export using Poco::Void;
-
+	export using Poco::FileNotFoundException;
 	export using Poco::TaskStartedNotification;
 	export using Poco::TaskCancelledNotification;
 	export using Poco::TaskFinishedNotification;
@@ -542,16 +544,28 @@ namespace Poco
 	export using Poco::thousandSeparator;
 	export using Poco::DataURIStream;
 
-	namespace Dynamic
+	export namespace Dynamic
 	{
 		export using Poco::Dynamic::Var;
 		export using Poco::Dynamic::Pair;
 		export using Poco::Dynamic::Struct;
-		
+		export using Poco::Dynamic::Visitor;
+		export using Poco::Dynamic::Array;
 	}
+	export using Poco::PIDFile;
+	export using Poco::ObjectPool;
+	export using Poco::SharedMemory;
+	export using Poco::RWLock;
+	export using Poco::SimpleHashTable;
+	export using Poco::Latin2Encoding;
+	export using Poco::Latin9Encoding;
+	export using Poco::Windows1250Encoding;
+	export using Poco::Windows1251Encoding;
+	export using Poco::Windows1252Encoding;
 	export using Poco::DynamicStruct;
 	export using Poco::FIFOBufferStream;
 
+	export using Poco::OrderedDynamicStruct;
 	export using Poco::FPE;
 
 	export using Poco::FileInputStream;
@@ -577,6 +591,39 @@ namespace Poco
 	export using Poco::Random;
 	export using Poco::OrderedMap;
 	export using Poco::OrderedSet;
+	export using Poco::NamedEvent;
+	export using Poco::PurgeByCountStrategy;
+
+	export using Poco::FunctionPriorityDelegate;
+	export using Poco::PriorityDelegate;
+	export using Poco::PriorityExpire;
+	export using Poco::DynamicFactory;
+	export using Poco::AccessExpireCache;
+	export using Poco::InputStreamConverter;
+	export using Poco::OutputStreamConverter;
+	export using Poco::ASCIIEncoding;
+	export using Poco::RegularExpression;
+	export using Poco::RegularExpressionException;
+	export using Poco::Semaphore;
+	export using Poco::RandomInputStream;
+	export using Poco::LibraryLoadException;
+	export using Poco::LibraryAlreadyLoadedException;
+	export using Poco::TextConverter;
+	export using Poco::UTF8;
+	export using Poco::ThreadPool;
+	export using Poco::UniqueAccessExpireCache;
+	export using Poco::ActiveThreadPool;
+	export using Poco::TeeInputStream;
+	export using Poco::TeeOutputStream;
+	export using Poco::TextEncoding;
+	export using Poco::UniqueExpireCache;
+	export using Poco::ExpirationDecorator;
+	export using Poco::UniqueAccessExpireLRUCache;
+	export using Poco::AccessExpireLRUCache;
+	export using Poco::ExistsException;
+	export using Poco::DirectoryWatcher;
+	
+	export using Poco::InvalidAccessException;
 
 	export template <typename I>
 		bool strToInt(const char* pStr, I& outResult, short base, char thSep);
@@ -635,4 +682,146 @@ namespace Poco
 	{
 		return FunctionDelegate<void, false>(NotifyMethod);
 	}*/
+
+	export template<class S>
+		S trimLeft(const S& str);
+	export template <class S>
+	S& trimLeftInPlace(S& str);
+	export template <class S>
+	S trimRight(const S& str);
+	export template <class S>
+	S& trimRightInPlace(S& str);
+	export template <class S>
+	S trim(const S& str);
+	export template <class S>
+	S& trimInPlace(S& str);
+	export template <class S>
+	S toUpper(const S& str);
+	export template <class S>
+	S& toUpperInPlace(S& str);
+	export template <class S>
+	S toLower(const S& str);
+	export template <class S>
+	S& toLowerInPlace(S& str);
+	export template <class S, class It>
+	int icompare(
+		const S& str,
+		typename S::size_type pos,
+		typename S::size_type n,
+		It it2,
+		It end2);
+	export template <class S>
+	int icompare(const S& str1, const S& str2);
+	export template <class S>
+	int icompare(const S& str1, typename S::size_type n1, const S& str2, typename S::size_type n2);
+	export template <class S>
+		int icompare(const S& str1, typename S::size_type n, const S& str2);
+	export template <class S>
+		int icompare(const S& str1, typename S::size_type pos, typename S::size_type n, const S& str2);
+	export template <class S>
+	int icompare(
+		const S& str1,
+		typename S::size_type pos1,
+		typename S::size_type n1,
+		const S& str2,
+		typename S::size_type pos2,
+		typename S::size_type n2);
+	export template <class S>
+	int icompare(
+		const S& str1,
+		typename S::size_type pos1,
+		typename S::size_type n,
+		const S& str2,
+		typename S::size_type pos2);
+	export template <class S>
+	int icompare(
+		const S& str,
+		typename S::size_type pos,
+		typename S::size_type n,
+		const typename S::value_type* ptr);
+	export template <class S>
+	int icompare(
+		const S& str,
+		typename S::size_type pos,
+		const typename S::value_type* ptr);
+	export template <class S>
+	int icompare(
+		const S& str,
+		const typename S::value_type* ptr);
+	export template <class S>
+	S translate(const S& str, const S& from, const S& to);
+	export template <class S>
+	S translate(const S& str, const typename S::value_type* from, const typename S::value_type* to);
+	export template <class S>
+	S& translateInPlace(S& str, const S& from, const S& to);
+	export template <class S>
+	S translateInPlace(S& str, const typename S::value_type* from, const typename S::value_type* to);
+	export template <class S>
+	S& replaceInPlace(S& str, const S& from, const S& to, typename S::size_type start);
+	export template <class S>
+	S& replaceInPlace(S& str, const typename S::value_type* from, const typename S::value_type* to, typename S::size_type start);
+	export template <class S>
+	S& replaceInPlace(S& str, const typename S::value_type from, const typename S::value_type to, typename S::size_type start);
+	export template <class S>
+	S& removeInPlace(S& str, const typename S::value_type ch, typename S::size_type start);
+	export template <class S>
+	S replace(const S& str, const S& from, const S& to, typename S::size_type start);
+	export template <class S>
+	S replace(const S& str, const typename S::value_type* from, const typename S::value_type* to, typename S::size_type start);
+	export template <class S>
+	S replace(const S& str, const typename S::value_type from, const typename S::value_type to, typename S::size_type start);
+	export template <class S>
+	S remove(const S& str, const typename S::value_type ch, typename S::size_type start);
+	export template<typename T>
+	std::size_t isubstr(const T& str, const T& sought);
+	export using Poco::istring;
+	export using Poco::translate;
+	export using Poco::translateInPlace;
+	export using Poco::replace;
+	export using Poco::replaceInPlace;
+	export using Poco::remove;
+	export using Poco::removeInPlace;
+	export using Poco::cat;
+	export using Poco::startsWith;
+	export using Poco::endsWith;
+	export using Poco::strToFloat;
+	export using Poco::strToDouble;
+	export using Poco::intToStr;
+	export using Poco::intToStr;
+	export using Poco::floatToStr;
+	export using Poco::doubleToStr;
+	export using Poco::toJSON;
+	export using Poco::CILess;
+	export using Poco::isIntOverflow;
+	export using Poco::safeMultiply;
+	export using Poco::isSafeIntCast;
+	export using Poco::safeIntCast;
+	export using Poco::FPEnvironment;
+	export using Poco::IntPtr;
+	export using Poco::UIntPtr;
+	export using Poco::KeyValueArgs;
+	export using Poco::BasicEvent;
+	export using Poco::EventArgs;
+	export using Poco::JSONOptions;
+	export using Poco::NullMutex;
+	export using Poco::FIFOEvent;
+	export using Poco::PriorityEvent;
+	export using Poco::BinaryWriter;
+	export using Poco::BinaryReader;
+	export using Poco::MemoryBinaryWriter;
+	export using Poco::MemoryBinaryReader;
+	export using Poco::ProcessRunner;
+	export using Poco::UnicodeConverter;
+	export using Poco::FastMutex;
+	export using Poco::Timer;
+	export using Poco::TimerCallback;
+	export using Poco::UTF16Char;
+	export using Poco::UTF16String;
+	export using Poco::UTF32Char;
+	export using Poco::UTF32String;
+
+	// binary numbers are supported, thus 64 (bits) + 1 (string terminating zero)
+	export inline constexpr int POCO_MAX_INT_STRING_LEN = 65;
+	// value from strtod.cc (double_conversion::kMaxSignificantDecimalDigits)
+	export inline constexpr int POCO_MAX_FLT_STRING_LEN = 780;
 }

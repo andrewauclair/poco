@@ -10,6 +10,15 @@
 
 
 #include "ProcessRunnerTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/PIDFile.h"
@@ -17,7 +26,7 @@
 #include "Poco/Path.h"
 #include "Poco/File.h"
 #include "Poco/FileStream.h"
-
+#endif
 
 using namespace Poco;
 

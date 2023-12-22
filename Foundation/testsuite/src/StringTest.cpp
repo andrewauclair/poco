@@ -871,7 +871,7 @@ void StringTest::testNumericLocale()
 #if !defined(POCO_NO_LOCALE) && POCO_OS == POCO_OS_WINDOWS_NT
 	try
 	{
-		char buffer[POCO_MAX_FLT_STRING_LEN];
+		char buffer[Poco::POCO_MAX_FLT_STRING_LEN];
 
 		char dp = decimalSeparator();
 		char ts = thousandSeparator();
@@ -879,7 +879,7 @@ void StringTest::testNumericLocale()
 		std::cout << "Original locale: '" << loc.name() << '\'' << std::endl;
 		std::cout << "Decimal point: '" << decimalSeparator() << '\'' << std::endl;
 		std::cout << "Thousand separator: '" << ts << '\'' << std::endl;
-		doubleToStr(buffer, POCO_MAX_FLT_STRING_LEN, 1.23);
+		doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, 1.23);
 		assertTrue (std::strncmp(buffer, "1.23", 4) == 0);
 		std::cout << "1.23 == '" << buffer << '\'' << std::endl;
 
@@ -890,7 +890,7 @@ void StringTest::testNumericLocale()
 		std::cout << "New locale: '" << locGerman.name() << '\'' << std::endl;
 		std::cout << "Decimal point: '" << decimalSeparator() << '\'' << std::endl;
 		std::cout << "Thousand separator: '" << thousandSeparator() << '\'' << std::endl;
-		doubleToStr(buffer, POCO_MAX_FLT_STRING_LEN, 1.23);
+		doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, 1.23);
 		assertTrue (std::strncmp(buffer, "1.23", 4) == 0);
 		std::cout << "1.23 == '" << buffer << '\'' << std::endl;
 
@@ -901,7 +901,7 @@ void StringTest::testNumericLocale()
 		std::cout << "New locale: '" << locUS.name() << '\'' << std::endl;
 		std::cout << "Decimal point: '" << decimalSeparator() << '\'' << std::endl;
 		std::cout << "Thousand separator: '" << thousandSeparator() << '\'' << std::endl;
-		doubleToStr(buffer, POCO_MAX_FLT_STRING_LEN, 1.23);
+		doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, 1.23);
 		assertTrue (std::strncmp(buffer, "1.23", 4) == 0);
 		std::cout << "1.23 == '" << buffer << '\'' << std::endl;
 
@@ -911,7 +911,7 @@ void StringTest::testNumericLocale()
 		std::cout << "Final locale: '" << loc.name() << '\'' << std::endl;
 		std::cout << "Decimal point: '" << decimalSeparator() << '\'' << std::endl;
 		std::cout << "Thousand separator: '" << thousandSeparator() << '\'' << std::endl;
-		doubleToStr(buffer, POCO_MAX_FLT_STRING_LEN, 1.23);
+		doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, 1.23);
 		assertTrue (std::strncmp(buffer, "1.23", 4) == 0);
 		std::cout << "1.23 == '" << buffer << '\'' << std::endl;
 
@@ -1042,8 +1042,8 @@ void StringTest::testIntToString()
 
 	try
 	{
-		char pResult[POCO_MAX_INT_STRING_LEN];
-		std::size_t sz = POCO_MAX_INT_STRING_LEN;
+		char pResult[Poco::POCO_MAX_INT_STRING_LEN];
+		std::size_t sz = Poco::POCO_MAX_INT_STRING_LEN;
 		intToStr(0, 10, pResult, sz, false, (int) sz + 1, ' ');
 		fail ("must throw RangeException");
 	} catch (RangeException&) { }
@@ -1082,7 +1082,7 @@ void StringTest::testNumericStringLimit()
 	assertTrue(safeIntCast<char>(c, t) == c);
 	assertTrue(t == c);
 
-	short s = SHRT_MAX;
+	short s = std::numeric_limits<short>::max();
 	assertTrue(isIntOverflow<char>(s));
 	try
 	{
@@ -1091,7 +1091,7 @@ void StringTest::testNumericStringLimit()
 	}
 	catch(Poco::BadCastException&){}
 
-	s = SHRT_MIN;
+	s = std::numeric_limits<short>::min();
 	assertTrue(isIntOverflow<char>(s));
 	try
 	{
@@ -1105,7 +1105,7 @@ void StringTest::testNumericStringLimit()
 	assertTrue(safeIntCast<char>(sc, st) == sc);
 	assertTrue(st == sc);
 
-	short ss = SHRT_MAX;
+	short ss = std::numeric_limits<short>::max();
 	assertTrue(isIntOverflow<signed char>(ss));
 	assertTrue(isIntOverflow<char>(ss));
 	try
@@ -1115,7 +1115,7 @@ void StringTest::testNumericStringLimit()
 	}
 	catch(Poco::BadCastException&){}
 
-	ss = SHRT_MIN;
+	ss = std::numeric_limits<short>::min();
 	assertTrue(isIntOverflow<signed char>(ss));
 	assertTrue(isIntOverflow<char>(ss));
 	try
@@ -1133,7 +1133,7 @@ void StringTest::testNumericStringLimit()
 	assertTrue(safeIntCast<char>(uc, ut) == uc);
 	assertTrue(ut == uc);
 
-	ss = SHRT_MAX;
+	ss = std::numeric_limits<short>::max();
 	assertTrue(isIntOverflow<unsigned char>(ss));
 	try
 	{
@@ -1166,7 +1166,7 @@ void StringTest::testNumericStringLimit()
 
 	if (sizeof(long) > sizeof(int))
 	{
-		long l = LONG_MAX;
+		long l = std::numeric_limits<long>::max();
 		assertTrue(isIntOverflow<int>(l));
 		l = -1L;
 		assertTrue(isIntOverflow<unsigned>(l));
@@ -1174,7 +1174,7 @@ void StringTest::testNumericStringLimit()
 		assertTrue(!isIntOverflow<long>(i));
 		long tl = 0;
 		assertTrue(safeIntCast(i, tl) == i);
-		unsigned long ul = ULONG_MAX, tul = 0;
+		unsigned long ul = std::numeric_limits<unsigned long>::max(), tul = 0;
 		assertTrue(isIntOverflow<long>(ul));
 		try
 		{
@@ -1185,7 +1185,7 @@ void StringTest::testNumericStringLimit()
 		assertTrue(!isIntOverflow<unsigned long>(ul));
 		tl = 0;
 		assertTrue(safeIntCast(ul, tul) == ul);
-		l = LONG_MIN;
+		l = std::numeric_limits<long>::min();
 		assertTrue(isIntOverflow<unsigned long>(l));
 		try
 		{
@@ -1193,7 +1193,7 @@ void StringTest::testNumericStringLimit()
 			fail("unsigned long => long cast must fail");
 		}
 		catch(Poco::BadCastException&){}
-		ul = LONG_MAX;
+		ul = std::numeric_limits<long>::max();
 		assertTrue(!isIntOverflow<long>(ul));
 		assertTrue(safeIntCast(ul, l) == ul);
 	}
@@ -1217,44 +1217,44 @@ void StringTest::testNumericStringLimit()
 		numericStringLowerLimit<Poco::Int64, Poco::Int32>();
 	}
 
-	assertTrue(!isIntOverflow<int8_t>(0));
-	assertTrue(isIntOverflow<int8_t>(std::numeric_limits<int16_t>::max()));
-	assertTrue(isIntOverflow<int8_t>(std::numeric_limits<int16_t>::min()));
-	assertTrue(!isIntOverflow<uint8_t>(0));
-	assertTrue(isIntOverflow<uint8_t>(std::numeric_limits<int16_t>::max()));
-	assertTrue(isIntOverflow<uint8_t>(-1));
-	assertTrue(!isIntOverflow<int32_t>(0));
-	assertTrue(isIntOverflow<int32_t>(std::numeric_limits<int64_t>::max()));
-	assertTrue(!isIntOverflow<uint32_t>(0));
-	assertTrue(isIntOverflow<uint32_t>(-1));
-	assertTrue(isIntOverflow<uint32_t>(-1L));
-	assertTrue(isIntOverflow<uint32_t>(-1LL));
-	assertTrue(!isIntOverflow<int64_t>(-1));
-	assertTrue(isIntOverflow<int64_t>(std::numeric_limits<uint64_t>::max()));
-	assertTrue(!isIntOverflow<uint64_t>(std::numeric_limits<uint64_t>::max()));
-	assertTrue(isIntOverflow<uint64_t>(std::numeric_limits<int64_t>::min()));
-	assertTrue(!isIntOverflow<uint64_t>(std::numeric_limits<uint64_t>::min()));
-	assertTrue(!isIntOverflow<int64_t>(std::numeric_limits<int64_t>::max()));
+	assertTrue(!isIntOverflow<std::int8_t>(0));
+	assertTrue(isIntOverflow<std::int8_t>(std::numeric_limits<std::int16_t>::max()));
+	assertTrue(isIntOverflow<std::int8_t>(std::numeric_limits<std::int16_t>::min()));
+	assertTrue(!isIntOverflow<std::uint8_t>(0));
+	assertTrue(isIntOverflow<std::uint8_t>(std::numeric_limits<std::int16_t>::max()));
+	assertTrue(isIntOverflow<std::uint8_t>(-1));
+	assertTrue(!isIntOverflow<std::int32_t>(0));
+	assertTrue(isIntOverflow<std::int32_t>(std::numeric_limits<std::int64_t>::max()));
+	assertTrue(!isIntOverflow<std::uint32_t>(0));
+	assertTrue(isIntOverflow<std::uint32_t>(-1));
+	assertTrue(isIntOverflow<std::uint32_t>(-1L));
+	assertTrue(isIntOverflow<std::uint32_t>(-1LL));
+	assertTrue(!isIntOverflow<std::int64_t>(-1));
+	assertTrue(isIntOverflow<std::int64_t>(std::numeric_limits<std::uint64_t>::max()));
+	assertTrue(!isIntOverflow<std::uint64_t>(std::numeric_limits<std::uint64_t>::max()));
+	assertTrue(isIntOverflow<std::uint64_t>(std::numeric_limits<std::int64_t>::min()));
+	assertTrue(!isIntOverflow<std::uint64_t>(std::numeric_limits<std::uint64_t>::min()));
+	assertTrue(!isIntOverflow<std::int64_t>(std::numeric_limits<std::int64_t>::max()));
 
-	numericStringLimitSameSign<uint16_t, uint8_t>();
-	numericStringLimitSameSign<int16_t, int8_t>();
-	numericStringLimitSameSign<uint32_t, uint16_t>();
-	numericStringLimitSameSign<int32_t, int16_t>();
-	numericStringLimitSameSign<uint64_t, uint32_t>();
-	numericStringLimitSameSign<int64_t, int32_t>();
+	numericStringLimitSameSign<std::uint16_t, std::uint8_t>();
+	numericStringLimitSameSign<std::int16_t, std::int8_t>();
+	numericStringLimitSameSign<std::uint32_t, std::uint16_t>();
+	numericStringLimitSameSign<std::int32_t, std::int16_t>();
+	numericStringLimitSameSign<std::uint64_t, std::uint32_t>();
+	numericStringLimitSameSign<std::int64_t, std::int32_t>();
 
-	numericStringLowerLimit<int16_t, int8_t>();
-	numericStringLowerLimit<int32_t, int16_t>();
-	numericStringLowerLimit<int64_t, int32_t>();
+	numericStringLowerLimit<std::int16_t, std::int8_t>();
+	numericStringLowerLimit<std::int32_t, std::int16_t>();
+	numericStringLowerLimit<std::int64_t, std::int32_t>();
 
-	multiplyOverflow<int8_t>();
-	multiplyOverflow<uint8_t>();
-	multiplyOverflow<int16_t>();
-	multiplyOverflow<uint16_t>();
-	multiplyOverflow<int32_t>();
-	multiplyOverflow<uint32_t>();
-	multiplyOverflow<int64_t>();
-	multiplyOverflow<uint64_t>();
+	multiplyOverflow<std::int8_t>();
+	multiplyOverflow<std::uint8_t>();
+	multiplyOverflow<std::int16_t>();
+	multiplyOverflow<std::uint16_t>();
+	multiplyOverflow<std::int32_t>();
+	multiplyOverflow<std::uint32_t>();
+	multiplyOverflow<std::int64_t>();
+	multiplyOverflow<std::uint64_t>();
 }
 
 
@@ -1289,10 +1289,10 @@ void StringTest::testJSONString()
 	assertTrue (toJSON("\r", 0) == "\\r");
 	assertTrue (toJSON("\t", 0) == "\\t");
 	assertTrue (toJSON("\v", 0) == "\\u000B");
-	assertTrue (toJSON("\v", Poco::JSON_LOWERCASE_HEX) == "\\u000b");
+	assertTrue (toJSON("\v", Poco::JSONOptions::JSON_LOWERCASE_HEX) == "\\u000b");
 	assertTrue (toJSON("a", 0) == "a");
 	assertTrue (toJSON("\xD0\x82", 0) == "\xD0\x82");
-	assertTrue (toJSON("\xD0\x82", Poco::JSON_ESCAPE_UNICODE) == "\\u0402");
+	assertTrue (toJSON("\xD0\x82", Poco::JSONOptions::JSON_ESCAPE_UNICODE) == "\\u0402");
 
 	// ??? on MSVC, the assert macro expansion
 	// fails to compile when this string is inline ???
@@ -1306,9 +1306,9 @@ void StringTest::testJSONString()
 	assertTrue (toJSON("nl\n") == "\"nl\\n\"");
 	assertTrue (toJSON("tb\t") == "\"tb\\t\"");
 	assertTrue (toJSON("\xD0\x82") == "\"\xD0\x82\"");
-	assertTrue (toJSON("\xD0\x82", Poco::JSON_WRAP_STRINGS) == "\"\xD0\x82\"");
+	assertTrue (toJSON("\xD0\x82", Poco::JSONOptions::JSON_WRAP_STRINGS) == "\"\xD0\x82\"");
 	assertTrue (toJSON("\xD0\x82",
-			Poco::JSON_WRAP_STRINGS | Poco::JSON_ESCAPE_UNICODE) == "\"\\u0402\"");
+			Poco::JSONOptions::JSON_WRAP_STRINGS | Poco::JSONOptions::JSON_ESCAPE_UNICODE) == "\"\\u0402\"");
 
 	std::ostringstream ostr;
 	toJSON("foo\\", ostr);
@@ -1337,7 +1337,7 @@ void StringTest::testJSONString()
 	toJSON("\xD0\x82", ostr);
 	assertTrue (ostr.str() == "\"\xD0\x82\"");
 	ostr.str("");
-	toJSON("\xD0\x82", ostr, Poco::JSON_WRAP_STRINGS);
+	toJSON("\xD0\x82", ostr, Poco::JSONOptions::JSON_WRAP_STRINGS);
 	assertTrue (ostr.str() == "\"\xD0\x82\"");
 
 	// wrap
@@ -1347,7 +1347,7 @@ void StringTest::testJSONString()
 	assertTrue (ostr.str() == "\"\\u000B\"");
 	// lowercase
 	ostr.str("");
-	toJSON("\v", ostr, Poco::JSON_WRAP_STRINGS | Poco::JSON_LOWERCASE_HEX);
+	toJSON("\v", ostr, Poco::JSONOptions::JSON_WRAP_STRINGS | Poco::JSONOptions::JSON_LOWERCASE_HEX);
 	assertTrue (ostr.str() == "\"\\u000b\"");
 
 	// no wrap
@@ -1357,11 +1357,11 @@ void StringTest::testJSONString()
 	assertTrue (ostr.str() == "\\u000B");
 	// lowercase
 	ostr.str("");
-	toJSON("\v", ostr, Poco::JSON_LOWERCASE_HEX);
+	toJSON("\v", ostr, Poco::JSONOptions::JSON_LOWERCASE_HEX);
 	assertTrue (ostr.str() == "\\u000b");
 
 	ostr.str("");
-	toJSON("\xD0\x82", ostr, Poco::JSON_WRAP_STRINGS | Poco::JSON_ESCAPE_UNICODE);
+	toJSON("\xD0\x82", ostr, Poco::JSONOptions::JSON_WRAP_STRINGS | Poco::JSONOptions::JSON_ESCAPE_UNICODE);
 	assertTrue (ostr.str() == "\"\\u0402\"");
 	ostr.str("");
 }
@@ -1405,8 +1405,8 @@ void StringTest::benchmarkFloatToStr()
 	// POCO Way (via double-conversion)
 	// no padding
 	sw.restart();
-	char buffer[POCO_MAX_FLT_STRING_LEN];
-	for (int i = 0; i < 1000000; ++i) doubleToStr(buffer, POCO_MAX_FLT_STRING_LEN, val);
+	char buffer[Poco::POCO_MAX_FLT_STRING_LEN];
+	for (int i = 0; i < 1000000; ++i) doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, val);
 	sw.stop();
 	std::cout << "doubleToStr(char) Number: " << buffer << std::endl;
 	double timeDoubleToStrChar = sw.elapsed() / 1000.0;

@@ -23,6 +23,8 @@ import poco.foundation;
 #include "Poco/Exception.h"
 #endif
 
+#include "Poco/ordered_hash.h"
+
 #ifdef POCO_COMPILER_MSVC
 #pragma warning(push)
 #pragma warning(disable : 4244)

@@ -9,11 +9,20 @@
 
 
 #include "SharedPtrTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_MODULES)
+import std;
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/SharedPtr.h"
 #include "Poco/Exception.h"
-
+#endif
 
 using Poco::SharedPtr;
 using Poco::NullPointerException;
