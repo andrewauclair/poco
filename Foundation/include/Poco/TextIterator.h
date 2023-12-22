@@ -110,6 +110,8 @@ private:
 	std::string::const_iterator _end;
 };
 
+#if !defined(BUILDING_POCO_FOUNDATION_MODULE)
+
 inline TextIterator::TextIterator(const std::string::const_iterator& end) :
 	_pEncoding(0),
 	_it(end),
@@ -143,7 +145,7 @@ inline TextIterator TextIterator::end() const
 	return TextIterator(_end);
 }
 
-
+#endif
 } // namespace Poco
 
 

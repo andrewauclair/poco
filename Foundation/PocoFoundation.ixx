@@ -1,5 +1,7 @@
 module;
 
+#define BUILDING_POCO_FOUNDATION_MODULE
+
 // Cache
 #include "Poco/AbstractCache.h"
 #include "Poco/AbstractStrategy.h"
@@ -61,8 +63,9 @@ module;
 #include "Poco/Optional.h"
 #include "Poco/OrderedMap.h"
 #include "Poco/OrderedSet.h"
-#include "Poco/Platform.h"
-#include "Poco/Poco.h"
+//#include "Poco/Platform.h"
+//#include "Poco/Poco.h"
+
 #include "Poco/RefCountedObject.h"
 #include "Poco/SharedPtr.h"
 #include "Poco/SingletonHolder.h"
@@ -72,8 +75,9 @@ module;
 #include "Poco/Tuple.h"
 #include "Poco/TypeList.h"
 #include "Poco/Types.h"
-#include "Poco/UnWindows.h"
-#include "Poco/Version.h"
+
+//#include "Poco/UnWindows.h"
+//#include "Poco/Version.h"
 #include "Poco/Void.h"
 
 // Crypt
@@ -166,7 +170,7 @@ module;
 #include "Poco/Message.h"
 #include "Poco/NullChannel.h"
 #include "Poco/PatternFormatter.h"
-//#include "Poco/pocomsg.h"
+
 #include "Poco/PurgeStrategy.h"
 #include "Poco/RotateStrategy.h"
 #include "Poco/SimpleFileChannel.h"
@@ -245,8 +249,11 @@ module;
 #include "Poco/StreamConverter.h"
 #include "Poco/TextBufferIterator.h"
 #include "Poco/TextConverter.h"
+
 #include "Poco/TextEncoding.h"
+
 #include "Poco/TextIterator.h"
+
 #include "Poco/Unicode.h"
 #include "Poco/UnicodeConverter.h"
 #include "Poco/UTF8Encoding.h"
@@ -821,7 +828,7 @@ namespace Poco
 	export using Poco::UTF32String;
 
 	// binary numbers are supported, thus 64 (bits) + 1 (string terminating zero)
-	export inline constexpr int POCO_MAX_INT_STRING_LEN = 65;
+	export inline constexpr int MAX_INT_STRING_LEN = 65;
 	// value from strtod.cc (double_conversion::kMaxSignificantDecimalDigits)
-	export inline constexpr int POCO_MAX_FLT_STRING_LEN = 780;
+	export inline constexpr int MAX_FLT_STRING_LEN = 780;
 }

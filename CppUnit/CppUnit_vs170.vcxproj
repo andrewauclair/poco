@@ -824,7 +824,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PocoCppUnit.ixx" />
+    <ClCompile Include="PocoCppUnit.ixx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug_shared|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\CppUnitException.cpp">
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>

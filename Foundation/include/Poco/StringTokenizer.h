@@ -93,6 +93,7 @@ private:
 };
 
 
+#if !defined(BUILDING_POCO_FOUNDATION_MODULE)
 //
 // inlines
 //
@@ -129,6 +130,7 @@ inline std::size_t StringTokenizer::count() const
 	return _tokens.size();
 }
 
+#endif
 
 } // namespace Poco
 

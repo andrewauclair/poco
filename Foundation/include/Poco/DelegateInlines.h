@@ -17,7 +17,15 @@
 #ifndef Foundation_DelegateInlines_INCLUDED
 #define Foundation_DelegateInlines_INCLUDED
 
+#if defined(POCO_MODULES)
 import poco.foundation;
+#else
+#include "Poco/Delegate.h"
+#include "Poco/PriorityExpire.h"
+#include "Poco/PriorityDelegate.h"
+#include "Poco/FunctionDelegate.h"
+#include "Poco/FunctionPriorityDelegate.h"
+#endif
 
 namespace Poco {
 

@@ -383,6 +383,7 @@
       <CompileAs>Default</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <AdditionalDependencies>iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -480,9 +481,10 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>CppUnit.lib;PocoFoundation.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>bin64\TestSuite.exe</OutputFile>
       <AdditionalLibraryDirectories>..\..\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>

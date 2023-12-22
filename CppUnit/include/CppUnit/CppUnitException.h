@@ -59,6 +59,7 @@ private:
 	std::string _fileName;
 };
 
+#if !defined(BUILDING_POCO_FOUNDATION_MODULE)
 
 inline CppUnitException::CppUnitException(const CppUnitException& other): exception (other)
 {
@@ -136,6 +137,7 @@ inline const std::string& CppUnitException::fileName() const
 	return _fileName;
 }
 
+#endif
 
 } // namespace CppUnit
 

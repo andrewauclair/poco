@@ -478,6 +478,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ShowIncludes>false</ShowIncludes>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <BuildStlModules>true</BuildStlModules>
     </ClCompile>
     <Link>
       <AdditionalDependencies>iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -861,7 +863,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PocoFoundation.ixx" />
+    <ClCompile Include="PocoFoundation.ixx">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug_shared|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release_shared|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\AbstractObserver.cpp" />
     <ClCompile Include="src\ActiveDispatcher.cpp" />
     <ClCompile Include="src\adler32.c" />

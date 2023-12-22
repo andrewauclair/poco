@@ -50,19 +50,22 @@ typedef Poco::Int64 intmax_t;
 #pragma warning(disable : 4146)
 #endif // POCO_COMPILER_MSVC
 
-// binary numbers are supported, thus 64 (bits) + 1 (string terminating zero)
-inline constexpr int POCO_MAX_INT_STRING_LEN = 65;
-// value from strtod.cc (double_conversion::kMaxSignificantDecimalDigits)
-inline constexpr int POCO_MAX_FLT_STRING_LEN = 780;
+
+
 
 #define POCO_FLT_INF "inf"
 #define POCO_FLT_NAN "nan"
 #define POCO_FLT_EXP 'e'
 
+// binary numbers are supported, thus 64 (bits) + 1 (string terminating zero)
+inline constexpr int POCO_MAX_INT_STRING_LEN = 65;
 
+// value from strtod.cc (double_conversion::kMaxSignificantDecimalDigits)
+inline constexpr int POCO_MAX_FLT_STRING_LEN = 780;
 namespace Poco {
-
-
+//#if !defined(POCO_MODULES)
+	
+//#endif
 namespace Impl {
 
 	template<bool SIGNED, typename T>

@@ -871,7 +871,7 @@ void StringTest::testNumericLocale()
 #if !defined(POCO_NO_LOCALE) && POCO_OS == POCO_OS_WINDOWS_NT
 	try
 	{
-		char buffer[Poco::POCO_MAX_FLT_STRING_LEN];
+		char buffer[Poco::MAX_FLT_STRING_LEN];
 
 		char dp = decimalSeparator();
 		char ts = thousandSeparator();
@@ -879,7 +879,7 @@ void StringTest::testNumericLocale()
 		std::cout << "Original locale: '" << loc.name() << '\'' << std::endl;
 		std::cout << "Decimal point: '" << decimalSeparator() << '\'' << std::endl;
 		std::cout << "Thousand separator: '" << ts << '\'' << std::endl;
-		doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, 1.23);
+		doubleToStr(buffer, Poco::MAX_FLT_STRING_LEN, 1.23);
 		assertTrue (std::strncmp(buffer, "1.23", 4) == 0);
 		std::cout << "1.23 == '" << buffer << '\'' << std::endl;
 
@@ -890,7 +890,7 @@ void StringTest::testNumericLocale()
 		std::cout << "New locale: '" << locGerman.name() << '\'' << std::endl;
 		std::cout << "Decimal point: '" << decimalSeparator() << '\'' << std::endl;
 		std::cout << "Thousand separator: '" << thousandSeparator() << '\'' << std::endl;
-		doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, 1.23);
+		doubleToStr(buffer, Poco::MAX_FLT_STRING_LEN, 1.23);
 		assertTrue (std::strncmp(buffer, "1.23", 4) == 0);
 		std::cout << "1.23 == '" << buffer << '\'' << std::endl;
 
@@ -901,7 +901,7 @@ void StringTest::testNumericLocale()
 		std::cout << "New locale: '" << locUS.name() << '\'' << std::endl;
 		std::cout << "Decimal point: '" << decimalSeparator() << '\'' << std::endl;
 		std::cout << "Thousand separator: '" << thousandSeparator() << '\'' << std::endl;
-		doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, 1.23);
+		doubleToStr(buffer, Poco::MAX_FLT_STRING_LEN, 1.23);
 		assertTrue (std::strncmp(buffer, "1.23", 4) == 0);
 		std::cout << "1.23 == '" << buffer << '\'' << std::endl;
 
@@ -911,7 +911,7 @@ void StringTest::testNumericLocale()
 		std::cout << "Final locale: '" << loc.name() << '\'' << std::endl;
 		std::cout << "Decimal point: '" << decimalSeparator() << '\'' << std::endl;
 		std::cout << "Thousand separator: '" << thousandSeparator() << '\'' << std::endl;
-		doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, 1.23);
+		doubleToStr(buffer, Poco::MAX_FLT_STRING_LEN, 1.23);
 		assertTrue (std::strncmp(buffer, "1.23", 4) == 0);
 		std::cout << "1.23 == '" << buffer << '\'' << std::endl;
 
@@ -1042,8 +1042,8 @@ void StringTest::testIntToString()
 
 	try
 	{
-		char pResult[Poco::POCO_MAX_INT_STRING_LEN];
-		std::size_t sz = Poco::POCO_MAX_INT_STRING_LEN;
+		char pResult[Poco::MAX_INT_STRING_LEN];
+		std::size_t sz = Poco::MAX_INT_STRING_LEN;
 		intToStr(0, 10, pResult, sz, false, (int) sz + 1, ' ');
 		fail ("must throw RangeException");
 	} catch (RangeException&) { }
@@ -1405,8 +1405,8 @@ void StringTest::benchmarkFloatToStr()
 	// POCO Way (via double-conversion)
 	// no padding
 	sw.restart();
-	char buffer[Poco::POCO_MAX_FLT_STRING_LEN];
-	for (int i = 0; i < 1000000; ++i) doubleToStr(buffer, Poco::POCO_MAX_FLT_STRING_LEN, val);
+	char buffer[Poco::MAX_FLT_STRING_LEN];
+	for (int i = 0; i < 1000000; ++i) doubleToStr(buffer, Poco::MAX_FLT_STRING_LEN, val);
 	sw.stop();
 	std::cout << "doubleToStr(char) Number: " << buffer << std::endl;
 	double timeDoubleToStrChar = sw.elapsed() / 1000.0;

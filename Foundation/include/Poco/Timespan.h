@@ -156,7 +156,7 @@ private:
 	TimeDiff _span;
 };
 
-
+#if !defined(BUILDING_POCO_FOUNDATION_MODULE)
 //
 // inlines
 //
@@ -313,7 +313,7 @@ inline void swap(Timespan& s1, Timespan& s2) noexcept
 inline Timespan::~Timespan()
 {
 }
-
+#endif
 
 } // namespace Poco
 
