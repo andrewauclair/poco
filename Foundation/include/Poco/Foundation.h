@@ -86,7 +86,7 @@
 		#endif
 	#endif
 
-	#if !defined(POCO_NO_AUTOMATIC_LIBS) && !defined(Foundation_EXPORTS)
+	#if !defined(POCO_NO_AUTOMATIC_LIBS) && !defined(Foundation_EXPORTS) && !defined(Foundation_MODULE)
 		#pragma comment(lib, "PocoFoundation" POCO_LIB_SUFFIX)
 	#endif
 #endif

@@ -472,6 +472,7 @@
       </DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -1614,6 +1615,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release_static_mt|ARM64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\PipeStream.cpp" />
+    <ClCompile Include="src\PocoFoundation.ixx">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='release_shared|x64'">CompileAsCppModule</CompileAs>
+      <ModuleOutputFile Condition="'$(Configuration)|$(Platform)'=='release_shared|x64'">..\lib64\PocoFoundation.ixx.ifc</ModuleOutputFile>
+    </ClCompile>
     <ClCompile Include="src\PriorityNotificationQueue.cpp" />
     <ClCompile Include="src\Process.cpp" />
     <ClCompile Include="src\Process_UNIX.cpp">
