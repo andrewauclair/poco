@@ -11,12 +11,16 @@
 #include "ActiveThreadPoolTest.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.foundation;
+#else
 #include "Poco/ActiveThreadPool.h"
 #include "Poco/RunnableAdapter.h"
 #include "Poco/Exception.h"
 #include "Poco/Thread.h"
 #include "Poco/Environment.h"
-
+#endif
 
 using Poco::ActiveThreadPool;
 using Poco::RunnableAdapter;

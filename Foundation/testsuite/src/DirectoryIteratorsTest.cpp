@@ -9,6 +9,7 @@
 
 
 #include "DirectoryIteratorsTest.h"
+
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/DirectoryIterator.h"

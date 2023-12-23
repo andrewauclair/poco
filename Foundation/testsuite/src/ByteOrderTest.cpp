@@ -9,10 +9,18 @@
 
 
 #include "ByteOrderTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/ByteOrder.h"
-
+#endif
 
 using Poco::ByteOrder;
 using Poco::Int16;

@@ -11,9 +11,13 @@
 #include "UUIDTest.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.foundation;
+#else
 #include "Poco/UUID.h"
 #include "Poco/Exception.h"
-
+#endif
 
 using Poco::UUID;
 

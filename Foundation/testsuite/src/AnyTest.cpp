@@ -12,17 +12,21 @@
 
 #include "CppUnit/CppAsserts.h"
 #include "CppUnit/CppTestMacros.h"
-//#include "CppUnit/TestCaller.h"
-//#include "CppUnit/TestSuite.h"
-//#include "Poco/Exception.h"
-//#include "Poco/Any.h"
-//#include "Poco/SharedPtr.h"
-#include "Poco/Bugcheck.h"
-#include <vector>
-#include <memory>
 
+#if defined(POCO_USE_MODULES)
 import poco.cppunit;
 import poco.foundation;
+#else
+#include "CppUnit/TestCaller.h"
+#include "CppUnit/TestSuite.h"
+
+#include "Poco/Exception.h"
+#include "Poco/Any.h"
+#include "Poco/SharedPtr.h"
+#include "Poco/Bugcheck.h"
+#endif
+
+#include <memory>
 
 #if defined(_MSC_VER) && _MSC_VER < 1400
 	#pragma warning(disable:4800)//forcing value to bool 'true' or 'false'

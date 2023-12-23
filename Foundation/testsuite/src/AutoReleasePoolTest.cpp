@@ -9,10 +9,18 @@
 
 
 #include "AutoReleasePoolTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.cppunit;
+import poco.foundation;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/AutoReleasePool.h"
-
+#endif
 
 using Poco::AutoReleasePool;
 
