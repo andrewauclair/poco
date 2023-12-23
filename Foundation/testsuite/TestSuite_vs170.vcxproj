@@ -477,6 +477,9 @@
       </DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalModuleDependencies>poco.cppunit=..\..\lib64\PocoCppUnit.ixx.ifc</AdditionalModuleDependencies>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalBMIDirectories>..\..\lib64</AdditionalBMIDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>

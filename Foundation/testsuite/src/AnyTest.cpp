@@ -9,6 +9,9 @@
 
 
 #include "AnyTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Exception.h"
@@ -18,6 +21,7 @@
 #include <vector>
 #include <memory>
 
+//import poco.cppunit;
 
 #if defined(_MSC_VER) && _MSC_VER < 1400
 	#pragma warning(disable:4800)//forcing value to bool 'true' or 'false'
@@ -233,7 +237,7 @@ void AnyTest::testAnySwap()
 		Poco::UInt64 eight = 8;
 		Poco::UInt64 nine = 9;
 
-		bool operator==(const BigObject& other)
+		bool operator==(const BigObject& other) const
 		{
 			return one == other.one &&
 				two == other.two &&
