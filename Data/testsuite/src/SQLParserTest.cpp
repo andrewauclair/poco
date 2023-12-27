@@ -9,13 +9,23 @@
 
 
 #include "SQLParserTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.cppunit;
+import poco.foundation;
+import poco.data;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
-#include <sstream>
-
+#endif
 #ifndef POCO_DATA_NO_SQL_PARSER
 
 #include "Poco/Data/SQLParser.h"
+
+#include <sstream>
 
 
 using namespace Poco::Data::Parser;

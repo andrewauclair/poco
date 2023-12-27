@@ -13,9 +13,14 @@
 #ifndef Data_Test_Extractor_INCLUDED
 #define Data_Test_Extractor_INCLUDED
 
-
+//#if defined(POCO_USE_MODULES)
+//import poco.foundation;
+//import poco.data;
+//#else
 #include "Poco/Data/AbstractExtractor.h"
+//#endif
 
+#include <string>
 
 namespace Poco {
 namespace Data {

@@ -9,8 +9,14 @@
 
 
 #include "Extractor.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.foundation;
+import poco.data;
+#else
 #include "Poco/Data/LOB.h"
 #include "Poco/Exception.h"
+#endif
 
 
 namespace Poco {

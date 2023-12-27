@@ -8,7 +8,14 @@
 //
 
 
-#include "SessionPoolTest.h"
+
+
+#if defined(POCO_USE_MODULES)
+import poco.cppunit;
+import poco.foundation;
+import poco.data;
+#define POCO_ALREADY_IMPORTED_MODULES
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Data/SessionPool.h"
@@ -16,6 +23,12 @@
 #include "Poco/Thread.h"
 #include "Poco/AutoPtr.h"
 #include "Poco/Exception.h"
+
+#endif
+#include "SessionPoolTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
 #include "Connector.h"
 
 

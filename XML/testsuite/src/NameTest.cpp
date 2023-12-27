@@ -9,10 +9,18 @@
 
 
 #include "NameTest.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.cppunit;
+import poco.xml;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/XML/Name.h"
-
+#endif
 
 using Poco::XML::Name;
 

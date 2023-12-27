@@ -53,7 +53,7 @@
 // Automatically link Data library.
 //
 #if defined(_MSC_VER)
-	#if !defined(POCO_NO_AUTOMATIC_LIBS) && !defined(Data_EXPORTS)
+	#if !defined(POCO_NO_AUTOMATIC_LIBS) && !defined(Data_EXPORTS) && !defined(Data_MODULE)
 		#pragma comment(lib, "PocoData" POCO_LIB_SUFFIX)
 	#endif
 #endif

@@ -10,6 +10,17 @@
 
 #include "DataTest.h"
 #include "Extractor.h"
+
+#include "CppUnit/CppAsserts.h"
+#include "CppUnit/CppTestMacros.h"
+
+#include "Connector.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.cppunit;
+import poco.foundation;
+import poco.data;
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Data/Session.h"
@@ -23,7 +34,6 @@
 #include "Poco/Data/SimpleRowFormatter.h"
 #include "Poco/Data/JSONRowFormatter.h"
 #include "Poco/Data/DataException.h"
-#include "Connector.h"
 #include "Poco/BinaryReader.h"
 #include "Poco/BinaryWriter.h"
 #include "Poco/DateTime.h"
@@ -33,6 +43,8 @@
 #include "Poco/Data/DynamicDateTime.h"
 #include "Poco/Latin1Encoding.h"
 #include "Poco/Exception.h"
+#endif
+
 #include <cstring>
 #include <sstream>
 #include <iomanip>

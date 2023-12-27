@@ -13,10 +13,15 @@
 #ifndef Data_Test_SessionImpl_INCLUDED
 #define Data_Test_SessionImpl_INCLUDED
 
-
+//#if defined(POCO_USE_MODULES)
+//import poco.foundation;
+//import poco.data;
+//#else
 #include "Poco/Data/AbstractSessionImpl.h"
 #include "Poco/Data/StatementImpl.h"
 #include "Poco/SharedPtr.h"
+//#endif
+
 #include "Binder.h"
 
 

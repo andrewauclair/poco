@@ -10,8 +10,13 @@
 
 #include "Connector.h"
 #include "SessionImpl.h"
-#include "Poco/Data/SessionFactory.h"
 
+#if defined(POCO_USE_MODULES)
+import poco.foundation;
+import poco.data;
+#else
+#include "Poco/Data/SessionFactory.h"
+#endif
 
 namespace Poco {
 namespace Data {

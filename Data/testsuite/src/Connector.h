@@ -13,9 +13,9 @@
 #ifndef Data_Test_Connector_INCLUDED
 #define Data_Test_Connector_INCLUDED
 
-
+#if !defined(POCO_ALREADY_IMPORTED_MODULES)
 #include "Poco/Data/Connector.h"
-
+#endif
 
 namespace Poco {
 namespace Data {

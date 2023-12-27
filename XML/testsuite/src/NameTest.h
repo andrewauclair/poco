@@ -13,10 +13,10 @@
 #ifndef NameTest_INCLUDED
 #define NameTest_INCLUDED
 
-
 #include "Poco/XML/XML.h"
 #include "CppUnit/TestCase.h"
 
+#include <string>
 
 class NameTest: public CppUnit::TestCase
 {

@@ -13,9 +13,13 @@
 
 
 #include "Poco/XML/NamePool.h"
+
+#if defined(POCO_USE_MODULES)
+import poco.foundation;
+#else
 #include "Poco/Exception.h"
 #include "Poco/Random.h"
-
+#endif
 
 namespace Poco {
 namespace XML {

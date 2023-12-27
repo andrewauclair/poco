@@ -440,6 +440,7 @@
     <ClCompile Include="src\ArchiveStrategy.cpp">
       <Filter>Logging\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\PocoData.ixx" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\DLLVersion.rc" />

@@ -321,6 +321,7 @@ namespace Poco
 	export using Poco::Base64Encoder;
 	export using Poco::Base64Decoder;
 
+	export using Poco::PoolOverflowException;
 	export using Poco::DataFormatException;
 	export using Poco::ActiveMethod;
 	export using Poco::ActiveResult;
