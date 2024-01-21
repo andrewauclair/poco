@@ -24,7 +24,7 @@ class TestResult;
  * See TestResult.
  *
  */
-class CppUnit_API Test
+POCO_MODULES_EXPORT_CppUnit class CppUnit_API Test
 {
 public:
 	enum Type {

@@ -39,7 +39,7 @@ class Test;
  *
  * see Test
  */
-class CppUnit_API TestResult
+POCO_MODULES_EXPORT_CppUnit class CppUnit_API TestResult
 {
 	REFERENCEOBJECT (TestResult)
 

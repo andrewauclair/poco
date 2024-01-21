@@ -6,6 +6,12 @@
 #ifndef CppUnit_CppUnit_INCLUDED
 #define CppUnit_CppUnit_INCLUDED
 
+#ifndef POCO_MODULES_EXPORT_CppUnit
+#define POCO_MODULES_EXPORT_CppUnit
+#define POCO_MODULES_EXPORT_BEGIN_CppUnit
+#define POCO_MODULES_EXPORT_END_CppUnit
+#endif
+
 //
 // Ensure that POCO_DLL is default unless POCO_STATIC is defined
 //

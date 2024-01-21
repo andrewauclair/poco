@@ -33,7 +33,7 @@ class TestResult;
  *
  * see Test and TestCaller
  */
-class CppUnit_API TestSuite: public Test
+POCO_MODULES_EXPORT_CppUnit class CppUnit_API TestSuite: public Test
 {
 	REFERENCEOBJECT (TestSuite)
 

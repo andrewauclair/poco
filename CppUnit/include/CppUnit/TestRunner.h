@@ -35,7 +35,7 @@ namespace CppUnit {
  * TestRunner [-all] [-long] [-print] [-wait] ExampleTestCase
  *
  */
-class CppUnit_API TestRunner
+POCO_MODULES_EXPORT_CppUnit class CppUnit_API TestRunner
 {
 	typedef std::pair<std::string, Test*> Mapping;
 	typedef std::vector<Mapping> Mappings;

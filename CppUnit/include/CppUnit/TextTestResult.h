@@ -16,7 +16,7 @@
 namespace CppUnit {
 
 
-class CppUnit_API TextTestResult: public TestResult
+POCO_MODULES_EXPORT_CppUnit class CppUnit_API TextTestResult: public TestResult
 {
 public:
 	TextTestResult();

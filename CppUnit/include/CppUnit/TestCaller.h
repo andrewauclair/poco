@@ -46,6 +46,7 @@ namespace CppUnit {
  *
  * See TestCase
  */
+POCO_MODULES_EXPORT_CppUnit 
 template <class Fixture>
 class TestCaller: public TestCase
 {

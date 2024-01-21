@@ -19,7 +19,7 @@ class Test;
 class TestResult;
 
 
-class CppUnit_API TestSetup: public TestDecorator
+POCO_MODULES_EXPORT_CppUnit class CppUnit_API TestSetup: public TestDecorator
 {
 	REFERENCEOBJECT (TestSetup)
 

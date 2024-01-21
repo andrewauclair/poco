@@ -35,6 +35,9 @@
     <ClCompile Include="src\TextTestResult.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="include\CppUnit\PocoCppUnit.ixx">
+      <Filter>Include Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\CppUnit\CppUnit.h">
