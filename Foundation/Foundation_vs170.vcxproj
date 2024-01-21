@@ -472,6 +472,7 @@
       </DebugInformationFormat>
       <CompileAs>Default</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -847,6 +848,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="include\Poco\PocoFoundation.ixx">
+      <ModuleOutputFile Condition="'$(Configuration)|$(Platform)'=='release_shared|x64'">..\lib64\PocoFoundation.ixx.ifc</ModuleOutputFile>
+    </ClCompile>
     <ClCompile Include="src\AbstractObserver.cpp" />
     <ClCompile Include="src\ActiveDispatcher.cpp" />
     <ClCompile Include="src\adler32.c" />
@@ -2100,6 +2104,7 @@
     <ClInclude Include="include\Poco\BufferedBidirectionalStreamBuf.h" />
     <ClInclude Include="include\Poco\BufferedStreamBuf.h" />
     <ClInclude Include="include\Poco\Bugcheck.h" />
+    <ClInclude Include="include\Poco\BugcheckAsserts.h" />
     <ClInclude Include="include\Poco\ByteOrder.h" />
     <ClInclude Include="include\Poco\Channel.h" />
     <ClInclude Include="include\Poco\Checksum.h" />

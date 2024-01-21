@@ -88,5 +88,8 @@
     <ClInclude Include="include\CppUnit\TextTestResult.h">
       <Filter>Include Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\CppUnit\Asserts.h">
+      <Filter>Include Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

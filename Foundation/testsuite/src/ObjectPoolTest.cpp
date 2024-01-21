@@ -7,6 +7,9 @@
 // SPDX-License-Identifier:	BSL-1.0
 //
 
+#ifdef POCO_CONSUME_MODULES
+import poco.cppunit;
+#endif
 
 #include "ObjectPoolTest.h"
 #include "CppUnit/TestCaller.h"

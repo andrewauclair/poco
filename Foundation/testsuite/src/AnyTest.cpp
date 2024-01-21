@@ -7,8 +7,12 @@
 // SPDX-License-Identifier:	BSL-1.0
 //
 
-
-#include "AnyTest.h"
+#ifdef POCO_CONSUME_MODULES
+import poco.cppunit;
+import poco.foundation;
+#include"CppUnit/Asserts.h"
+#include"Poco/BugcheckAsserts.h"
+#else
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
 #include "Poco/Exception.h"
@@ -16,8 +20,11 @@
 #include "Poco/SharedPtr.h"
 #include "Poco/Bugcheck.h"
 #include <vector>
-#include <memory>
+#endif
+#include "AnyTest.h"
+#include "Poco/Config.h"
 
+#include <memory>
 
 #if defined(_MSC_VER) && _MSC_VER < 1400
 	#pragma warning(disable:4800)//forcing value to bool 'true' or 'false'
@@ -233,7 +240,7 @@ void AnyTest::testAnySwap()
 		Poco::UInt64 eight = 8;
 		Poco::UInt64 nine = 9;
 
-		bool operator==(const BigObject& other)
+		bool operator==(const BigObject& other) const
 		{
 			return one == other.one &&
 				two == other.two &&
@@ -328,7 +335,7 @@ void AnyTest::testAnyInt()
 	std::string* s = AnyCast<std::string>(&a);
 	assertTrue (s == NULL);
 
-	int POCO_UNUSED tmp = AnyCast<int>(a);
+	int tmp = AnyCast<int>(a);
 	const Any c = a;
 	tmp = AnyCast<int>(a);
 }

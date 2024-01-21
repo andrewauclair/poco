@@ -9,6 +9,7 @@ module;
 
 // make sure the module imports the classes. unsure on this.
 #undef CppUnit_EXPORTS
+#define POCO_NO_AUTOMATIC_LIBS
 
 // setup macros for exporting classes for the module
 #define POCO_MODULES_EXPORT_CppUnit export
@@ -20,7 +21,7 @@ module;
 #include "Poco/UnWindows.h"
 #endif
 
-export module PocoCppUnit;
+export module poco.cppunit;
 
 #include "RepeatedTest.h"
 #include "Test.h"

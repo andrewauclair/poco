@@ -847,6 +847,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\CppUnit\Asserts.h" />
     <ClInclude Include="include\CppUnit\CppUnit.h" />
     <ClInclude Include="include\CppUnit\CppUnitException.h" />
     <ClInclude Include="include\CppUnit\estring.h" />

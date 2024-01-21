@@ -23,7 +23,7 @@
 #include <type_traits>
 
 
-namespace Poco {
+POCO_MODULES_EXPORT_Foundation namespace Poco {
 
 
 using Int8    = std::conditional<std::is_same<signed char, std::int8_t>::value, std::int8_t, signed char>::type;

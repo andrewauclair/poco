@@ -12,10 +12,12 @@
 #ifndef AnyTest_INCLUDED
 #define AnyTest_INCLUDED
 
-
+#ifndef POCO_CONSUME_MODULES
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
+#endif
 
+#include <string>
 
 class AnyTest: public CppUnit::TestCase
 {

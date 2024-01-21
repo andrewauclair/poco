@@ -25,7 +25,7 @@
 #include <cstddef>
 
 
-namespace Poco {
+POCO_MODULES_EXPORT_Foundation namespace Poco {
 
 
 class ReferenceCounter

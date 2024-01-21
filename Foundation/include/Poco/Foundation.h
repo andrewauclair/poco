@@ -25,6 +25,11 @@
 //
 #include "Poco/Config.h"
 
+#ifndef POCO_MODULES_EXPORT_Foundation
+#define POCO_MODULES_EXPORT_Foundation
+#define POCO_MODULES_EXPORT_BEGIN_Foundation
+#define POCO_MODULES_EXPORT_END_Foundation
+#endif
 
 //
 // Ensure that POCO_DLL is default unless POCO_STATIC is defined

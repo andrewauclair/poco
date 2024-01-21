@@ -27,11 +27,11 @@
 #define poco_any_assert(cond) do { if (!(cond)) std::abort(); } while (0)
 
 
-namespace Poco {
+POCO_MODULES_EXPORT_Foundation namespace Poco {
 
 class Any;
 
-namespace Dynamic {
+POCO_MODULES_EXPORT_Foundation namespace Dynamic {
 
 class Var;
 class VarHolder;
