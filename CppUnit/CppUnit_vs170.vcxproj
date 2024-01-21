@@ -817,7 +817,10 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="include\CppUnit\PocoCppUnit.ixx" />
+    <ClCompile Include="include\CppUnit\PocoCppUnit.ixx">
+      <ModuleOutputFile Condition="'$(Configuration)|$(Platform)'=='release_shared|x64'">..\lib64\PocoCppUnit.ixx.ifc</ModuleOutputFile>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release_shared|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\CppUnitException.cpp">
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
