@@ -28,6 +28,7 @@ public:
 
 	void testTimer();
 	void testDuplicateStop();
+	void testTimerRunning();
 
 	void setUp();
 	void tearDown();

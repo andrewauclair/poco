@@ -69,6 +69,27 @@ void TimerTest::testDuplicateStop()
 	t.stop();
 }
 
+
+void TimerTest::testTimerRunning()
+{
+	Timer timer(100, 200);
+
+	assertFalse(timer.isRunning());
+
+	TimerCallback<TimerTest> tc(*this, &TimerTest::onTimer);
+	timer.start(tc);
+
+	assertTrue(timer.isRunning());
+	_event.wait();
+
+	assertTrue(timer.isRunning());
+
+	timer.stop();
+
+	assertFalse(timer.isRunning());
+}
+
+
 void TimerTest::setUp()
 {
 }
@@ -91,6 +112,7 @@ CppUnit::Test* TimerTest::suite()
 
 	CppUnit_addTest(pSuite, TimerTest, testTimer);
 	CppUnit_addTest(pSuite, TimerTest, testDuplicateStop);
+	CppUnit_addTest(pSuite, TimerTest, testTimerRunning);
 
 	return pSuite;
 }

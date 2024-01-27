@@ -137,6 +137,9 @@ public:
 		/// Skipped invocations happen if the timer callback function takes
 		/// longer to execute than the timer interval.
 
+	bool isRunning() const;
+		/// Returns true if the timer is currently running, otherwise returns false.
+
 protected:
 	void run();
 

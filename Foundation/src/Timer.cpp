@@ -25,7 +25,7 @@ Timer::Timer(long startInterval, long periodicInterval):
 	_startInterval(startInterval),
 	_periodicInterval(periodicInterval),
 	_skipped(0),
-	_pCallback(0)
+	_pCallback(nullptr)
 {
 	poco_assert (startInterval >= 0 && periodicInterval >= 0);
 }
@@ -69,7 +69,7 @@ void Timer::start(const AbstractTimerCallback& method, Thread::Priority priority
 
 	FastMutex::ScopedLock lock(_mutex);
 
-	if (_pCallback)
+	if (isRunning())
 	{
 		throw Poco::IllegalStateException("Timer already running");
 	}
@@ -77,6 +77,7 @@ void Timer::start(const AbstractTimerCallback& method, Thread::Priority priority
 	_nextInvocation = nextInvocation;
 	_pCallback = method.clone();
 	_wakeUp.reset();
+
 	try
 	{
 		threadPool.startWithPriority(priority, *this);
@@ -84,7 +85,7 @@ void Timer::start(const AbstractTimerCallback& method, Thread::Priority priority
 	catch (...)
 	{
 		delete _pCallback;
-		_pCallback = 0;
+		_pCallback = nullptr;
 		throw;
 	}
 }
@@ -93,7 +94,8 @@ void Timer::start(const AbstractTimerCallback& method, Thread::Priority priority
 void Timer::stop()
 {
 	FastMutex::ScopedLock lock(_mutex);
-	if (_pCallback)
+
+	if (isRunning())
 	{
 		_periodicInterval = 0;
 		_mutex.unlock();
@@ -101,7 +103,7 @@ void Timer::stop()
 		_done.wait(); // warning: deadlock if called from timer callback
 		_mutex.lock();
 		delete _pCallback;
-		_pCallback = 0;
+		_pCallback = nullptr;
 	}
 }
 
@@ -109,7 +111,8 @@ void Timer::stop()
 void Timer::restart()
 {
 	FastMutex::ScopedLock lock(_mutex);
-	if (_pCallback)
+
+	if (isRunning())
 	{
 		_wakeUp.set();
 	}
@@ -120,7 +123,8 @@ void Timer::restart(long milliseconds)
 {
 	poco_assert (milliseconds >= 0);
 	FastMutex::ScopedLock lock(_mutex);
-	if (_pCallback)
+
+	if (isRunning())
 	{
 		_periodicInterval = milliseconds;
 		_wakeUp.set();
@@ -222,6 +226,11 @@ long Timer::skipped() const
 	return _skipped;
 }
 
+
+bool Timer::isRunning() const
+{
+	return _pCallback != nullptr;
+}
 
 AbstractTimerCallback::AbstractTimerCallback()
 {
