@@ -472,6 +472,13 @@ void FormatTest::testAny()
 	std::vector<Any> av{ 42, std::string("42"), 42. };
 	format(s, "%d '%s' %f", av);
 	assertTrue (s.find("42 '42' 42.0") == 0);
+
+	std::string value;
+	s = format("%p", static_cast<void*>(&value));
+
+	char buf[255];
+	sprintf(buf, "%p", &value);
+	assertTrue (s == std::string(buf));
 }
 
 

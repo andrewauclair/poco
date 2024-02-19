@@ -400,7 +400,6 @@ private:
 	friend ValueType AnyCast(Any&);
 };
 
-
 template <typename ValueType>
 ValueType* AnyCast(Any* operand)
 	/// AnyCast operator used to extract the ValueType from an Any*. Will return a pointer

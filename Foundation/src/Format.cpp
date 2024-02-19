@@ -38,6 +38,7 @@ namespace
 			case '+': str.setf(std::ios::showpos); ++itFmt; break;
 			case '0': str.fill('0'); str.setf(std::ios::internal); ++itFmt; break;
 			case '#': str.setf(std::ios::showpoint | std::ios::showbase); ++itFmt; break;
+			case ' ': break;
 			default:  isFlag = false; break;
 			}
 		}
@@ -54,11 +55,11 @@ namespace
 		}
 		else
 		{
-		while (itFmt != endFmt && Ascii::isDigit(*itFmt))
-		{
-			width = 10*width + *itFmt - '0';
-			++itFmt;
-		}
+			while (itFmt != endFmt && Ascii::isDigit(*itFmt))
+			{
+				width = 10*width + *itFmt - '0';
+				++itFmt;
+			}
 		}
 		if (width > 0) str.width(width);
 	}
@@ -224,6 +225,9 @@ namespace
 					break;
 				case 'z':
 					str << AnyCast<std::size_t>(*itVal++);
+					break;
+				case 'p':
+					str << std::hex << std::showbase << AnyCast<void*>(*itVal++);
 					break;
 				case 'I':
 				case 'D':
