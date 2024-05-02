@@ -246,6 +246,8 @@ else()
 endif()
 
 if (POCO_GENERATE_MODULES)
+	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
 	message(STATUS "Generating modules")
 else()
 	message(STATUS "Not generating modules")
