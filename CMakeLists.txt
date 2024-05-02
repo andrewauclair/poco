@@ -245,6 +245,12 @@ else()
 	message(STATUS "Using internal sqlite, zlib, pcre2, expat, ...")
 endif()
 
+if (POCO_GENERATE_MODULES)
+	message(STATUS "Generating modules")
+else()
+	message(STATUS "Not generating modules")
+endif()
+
 # Disable fork exec
 option(POCO_NO_FORK_EXEC "Set to OFF|ON (default is OFF) to disable use of fork() and exec*() which are not allowed on some Apple platforms (iOS, watchOS, iPadOS, tvOS)." OFF)
 
