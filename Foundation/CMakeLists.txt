@@ -88,8 +88,12 @@ else()
 	)
 endif(POCO_UNBUNDLED)
 
+if (POCO_GENERATE_MODULES)
+	add_library(Foundation)
+else()
+	add_library(Foundation ${SRCS})
+endif()
 
-add_library(Foundation ${SRCS})
 add_library(Poco::Foundation ALIAS Foundation)
 set_target_properties(Foundation
 	PROPERTIES
@@ -97,6 +101,17 @@ set_target_properties(Foundation
 	OUTPUT_NAME PocoFoundation
 	DEFINE_SYMBOL Foundation_EXPORTS
 )
+
+if (POCO_GENERATE_MODULES)
+target_sources(Foundation PUBLIC
+	FILE_SET all_poco_modules TYPE CXX_MODULES FILES
+	modules/PocoFoundation.cppm
+	modules/Exception.cppm
+	modules/Mutex.cppm
+	modules/Timestamp.cppm
+	modules/Timespan.cppm
+)
+endif()
 
 if(POCO_UNBUNDLED)
 	target_link_libraries(Foundation PUBLIC Pcre2::Pcre2 ZLIB::ZLIB)

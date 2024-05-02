@@ -54,6 +54,8 @@ else()
 	message(FATAL_ERROR "Compiler does not support C++17.")
 endif()
 
+set(CMAKE_CXX_STANDARD 20)
+
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
 endif()
@@ -223,6 +225,8 @@ option(ENABLE_SAMPLES
 
 option(POCO_UNBUNDLED
 	"Set to OFF|ON (default is OFF) to control linking dependencies as external" OFF)
+
+option(POCO_GENERATE_MODULES "Set to OFF|ON (default is OFF) to generate C++20 modules for POCO libraries" OFF)
 
 if(ENABLE_TESTS)
 	include(CTest)
