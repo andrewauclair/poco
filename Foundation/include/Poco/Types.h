@@ -21,6 +21,8 @@
 #include "Poco/Foundation.h"
 #include <cstdint>
 #include <type_traits>
+#include <typeinfo>
+#ifndef POCO_ENABLE_MODULES
 #if defined(__clang__) || (defined (__GNUC__) && (__GNUC__ >= 3))
 #	if (__cplusplus >= 201703L)
 #		if __has_include(<cxxabi.h>)
@@ -31,7 +33,7 @@
 #		endif // __has_include(<cxxabi.h>)
 #	endif // __cplusplus >= 201703L
 #endif // defined(__clang__) || (defined (__GNUC__) && (__GNUC__ >= 3))
-
+#endif
 
 namespace Poco {
 
@@ -82,7 +84,7 @@ using UIntPtr = std::uintptr_t;
 	#define POCO_HAVE_INT64 1
 #endif
 
-
+#ifndef POCO_ENABLE_MODULES
 inline std::string Foundation_API demangle(const char* typeName)
 {
 	std::string result(typeName);
@@ -115,7 +117,7 @@ std::string demangle()
 {
 	return demangle(typeid(T).name());
 }
-
+#endif
 
 } // namespace Poco
 

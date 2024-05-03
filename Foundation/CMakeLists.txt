@@ -109,8 +109,8 @@ target_sources(Foundation PUBLIC
 	modules/Exception.cppm
 	modules/Mutex.cppm
 	modules/PocoFoundation.cppm
-	# modules/Timestamp.cppm
-	# modules/Timespan.cppm
+	modules/Timestamp.cppm
+	#modules/Timespan.cppm
 )
 endif()
 

@@ -25,6 +25,9 @@
 
 namespace Poco {
 
+#ifndef Export_Poco_Timespan
+#define Export_Poco_Timespan
+#endif
 
 Export_Foundation_Module class Foundation_API Timespan
 	/// A class that represents time spans up to microsecond resolution.

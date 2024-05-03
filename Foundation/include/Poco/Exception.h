@@ -24,8 +24,11 @@
 
 namespace Poco {
 
+#ifndef Export_Poco_Exception
+#define Export_Poco_Exception
+#endif
 
-class Foundation_API Exception: public std::exception
+Export_Foundation_Module class Foundation_API Exception: public std::exception
 	/// This is the base class for all exceptions defined
 	/// in the Poco class library.
 {
