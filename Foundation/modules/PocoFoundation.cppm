@@ -5,7 +5,8 @@ module;
 #include <chrono>
 #include <algorithm>
 #include <type_traits>
-#include <windows.h>
+
+#include "Poco/UnWindows.h"
 
 export module PocoFoundation;
 
