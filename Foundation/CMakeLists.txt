@@ -105,11 +105,12 @@ set_target_properties(Foundation
 if (POCO_GENERATE_MODULES)
 target_sources(Foundation PUBLIC
 	FILE_SET all_poco_modules TYPE CXX_MODULES FILES
-	modules/PocoFoundation.cppm
+	
 	modules/Exception.cppm
 	modules/Mutex.cppm
-	modules/Timestamp.cppm
-	modules/Timespan.cppm
+	modules/PocoFoundation.cppm
+	# modules/Timestamp.cppm
+	# modules/Timespan.cppm
 )
 endif()
 
