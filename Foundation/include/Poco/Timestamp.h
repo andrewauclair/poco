@@ -25,13 +25,9 @@
 namespace Poco {
 
 
-Export_Foundation_Module class Timespan;
+class Timespan;
 
-#ifndef Export_Poco_Timestamp
-#define Export_Poco_Timestamp
-#endif
-
-Export_Foundation_Module class Foundation_API Timestamp
+class Foundation_API Timestamp
 	/// A Timestamp stores a monotonic* time value
 	/// with (theoretical) microseconds resolution.
 	/// Timestamps can be compared with each other

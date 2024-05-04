@@ -40,7 +40,7 @@
 namespace Poco {
 
 
-Export_Foundation_Module class Foundation_API Mutex : private MutexImpl
+class Foundation_API Mutex : private MutexImpl
 	/// A Mutex (mutual exclusion) is a synchronization
 	/// mechanism used to control access to a shared resource
 	/// in a concurrent (multithreaded) scenario.

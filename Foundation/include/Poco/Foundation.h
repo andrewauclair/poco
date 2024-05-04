@@ -52,12 +52,6 @@
 	#endif
 #endif
 
-#if defined(POCO_ENABLE_MODULES)
-#define Export_Foundation_Module export
-#else
-#define Export_Foundation_Module
-#endif
-
 #if !defined(Foundation_API)
 	#if !defined(POCO_NO_GCC_API_ATTRIBUTE) && defined (__GNUC__) && (__GNUC__ >= 4)
 		#define Foundation_API __attribute__ ((visibility ("default")))
