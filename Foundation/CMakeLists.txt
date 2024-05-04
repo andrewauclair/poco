@@ -130,8 +130,10 @@ if (POCO_GENERATE_MODULES)
 		src/trees.c
 		src/zutil.c
 		
+		src/pocomsg.mc
 	)
-	add_library(Foundation ${C_CODE_SRCS})
+	POCO_MESSAGES(GENERATED_MSGS Logging src/pocomsg.mc)
+	add_library(Foundation ${C_CODE_SRCS} ${GENERATED_MSGS})
 else()
 	add_library(Foundation ${SRCS})
 endif()
