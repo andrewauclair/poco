@@ -156,8 +156,8 @@ target_sources(Foundation PUBLIC
 	modules/Bugcheck.cppm
 	modules/Channel.cppm
 	modules/EventChannel.cppm
-	modules/EventLogChannel.cppm
-	modules/WindowsConsoleChannel.cppm
+#	modules/EventLogChannel.cppm
+#	modules/WindowsConsoleChannel.cppm
 	modules/NullChannel.cppm
 	modules/FormattingChannel.cppm
 	modules/SplitterChannel.cppm

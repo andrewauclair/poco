@@ -22,7 +22,7 @@
 #include <cstdint>
 #include <type_traits>
 #include <typeinfo>
-#ifndef POCO_ENABLE_MODULES
+
 #if defined(__clang__) || (defined (__GNUC__) && (__GNUC__ >= 3))
 #	if (__cplusplus >= 201703L)
 #		if __has_include(<cxxabi.h>)
@@ -33,7 +33,7 @@
 #		endif // __has_include(<cxxabi.h>)
 #	endif // __cplusplus >= 201703L
 #endif // defined(__clang__) || (defined (__GNUC__) && (__GNUC__ >= 3))
-#endif
+
 
 namespace Poco {
 
@@ -90,7 +90,7 @@ inline std::string Foundation_API demangle(const char* typeName)
 	std::string result(typeName);
 #ifdef POCO_HAVE_CXXABI_H
 	int status;
-	char* demangled = abi::__cxa_demangle(typeName, nullptr, nullptr, &status);
+	char* demangled = __cxxabiv1::__cxa_demangle(typeName, nullptr, nullptr, &status);
 	if (demangled)
 	{
 		if (status == 0) result = demangled;

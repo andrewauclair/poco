@@ -9,5 +9,5 @@ export module poco.foundation:message;
 
 export namespace Poco
 {
-	export using Poco::Message;
+	using Poco::Message;
 }
