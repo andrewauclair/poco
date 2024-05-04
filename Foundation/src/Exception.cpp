@@ -124,7 +124,6 @@ void Exception::rethrow() const
 	throw *this;
 }
 
-
 POCO_IMPLEMENT_EXCEPTION(LogicException, Exception, "Logic exception")
 POCO_IMPLEMENT_EXCEPTION(AssertionViolationException, LogicException, "Assertion violation")
 POCO_IMPLEMENT_EXCEPTION(NullPointerException, LogicException, "Null pointer")
@@ -177,6 +176,5 @@ POCO_IMPLEMENT_EXCEPTION(URISyntaxException, SyntaxException, "Bad URI syntax")
 
 POCO_IMPLEMENT_EXCEPTION(ApplicationException, Exception, "Application exception")
 POCO_IMPLEMENT_EXCEPTION(BadCastException, RuntimeException, "Bad cast exception")
-
 
 } // namespace Poco

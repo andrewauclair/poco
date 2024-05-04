@@ -110,7 +110,7 @@ target_sources(Foundation PUBLIC
 	modules/Mutex.cppm
 	modules/PocoFoundation.cppm
 	modules/Timestamp.cppm
-	#modules/Timespan.cppm
+	modules/Timespan.cppm
 )
 endif()
 
