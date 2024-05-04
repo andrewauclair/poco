@@ -9,5 +9,5 @@ export module poco.foundation:unicodeConverter;
 
 export namespace Poco
 {
-	export using Poco::UnicodeConverter;
+	using Poco::UnicodeConverter;
 }

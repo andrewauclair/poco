@@ -9,5 +9,5 @@ export module poco.foundation:numberFormatter;
 
 export namespace Poco
 {
-	export using Poco::NumberFormatter;
+	using Poco::NumberFormatter;
 }

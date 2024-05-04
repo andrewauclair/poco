@@ -9,5 +9,5 @@ export module poco.foundation:asyncChannel;
 
 export namespace Poco
 {
-	export using Poco::AsyncChannel;
+	using Poco::AsyncChannel;
 }

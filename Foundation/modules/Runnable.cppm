@@ -9,5 +9,5 @@ export module poco.foundation:runnable;
 
 export namespace Poco
 {
-	export using Poco::Runnable;
+	using Poco::Runnable;
 }

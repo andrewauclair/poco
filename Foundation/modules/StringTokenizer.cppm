@@ -9,5 +9,5 @@ export module poco.foundation:stringTokenizer;
 
 export namespace Poco
 {
-	export using Poco::StringTokenizer;
+	using Poco::StringTokenizer;
 }

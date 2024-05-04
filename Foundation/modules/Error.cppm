@@ -8,5 +8,5 @@ export module poco.foundation:Error;
 
 export namespace Poco
 {
-    export using Poco::Error;
+    using Poco::Error;
 }

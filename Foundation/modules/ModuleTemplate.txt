@@ -9,5 +9,5 @@ export module poco.foundation:<type>;
 
 export namespace Poco
 {
-	export using Poco::<Type>;
+	using Poco::<Type>;
 }

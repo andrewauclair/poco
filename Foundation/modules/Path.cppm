@@ -8,5 +8,5 @@ export module poco.foundation:path;
 
 export namespace Poco
 {
-	export using Poco::Path;
+	using Poco::Path;
 }

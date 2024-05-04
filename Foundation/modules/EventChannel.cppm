@@ -9,5 +9,5 @@ export module poco.foundation:eventChannel;
 
 export namespace Poco
 {
-	export using Poco::EventChannel;
+	using Poco::EventChannel;
 }

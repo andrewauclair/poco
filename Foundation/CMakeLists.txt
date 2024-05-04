@@ -147,8 +147,16 @@ set_target_properties(Foundation
 )
 
 if (POCO_GENERATE_MODULES)
+if (MSVC)
 target_sources(Foundation PUBLIC
-	FILE_SET all_poco_modules TYPE CXX_MODULES FILES
+	FILE_SET windows_modules TYPE CXX_MODULES FILES
+	modules/EventLogChannel.cppm
+	modules/WindowsConsoleChannel.cppm
+)
+endif()
+target_sources(Foundation PUBLIC
+
+	FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
 	
 	modules/AtomicCounter.cppm
 	modules/Ascii.cppm
@@ -156,8 +164,6 @@ target_sources(Foundation PUBLIC
 	modules/Bugcheck.cppm
 	modules/Channel.cppm
 	modules/EventChannel.cppm
-#	modules/EventLogChannel.cppm
-#	modules/WindowsConsoleChannel.cppm
 	modules/NullChannel.cppm
 	modules/FormattingChannel.cppm
 	modules/SplitterChannel.cppm

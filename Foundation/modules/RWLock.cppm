@@ -8,5 +8,5 @@ export module poco.foundation:RWLock;
 
 export namespace Poco
 {
-    export using Poco::RWLock;
+    using Poco::RWLock;
 }

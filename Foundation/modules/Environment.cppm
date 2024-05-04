@@ -8,5 +8,5 @@ export module poco.foundation:environment;
 
 export namespace Poco
 {
-	export using Poco::Environment;
+	using Poco::Environment;
 }

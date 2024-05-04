@@ -8,5 +8,5 @@ export module poco.foundation:event;
 
 export namespace Poco
 {
-	export using Poco::Event;
+	using Poco::Event;
 }

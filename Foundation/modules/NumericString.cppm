@@ -8,10 +8,10 @@ export module poco.foundation:NumericString;
 
 export namespace Poco
 {
-    export using Poco::floatToStr;
-    export using Poco::floatToFixedStr;
-    export using Poco::doubleToStr;
-    export using Poco::doubleToFixedStr;
-    export using Poco::strToFloat;
-    export using Poco::strToDouble;
+    using Poco::floatToStr;
+    using Poco::floatToFixedStr;
+    using Poco::doubleToStr;
+    using Poco::doubleToFixedStr;
+    using Poco::strToFloat;
+    using Poco::strToDouble;
 }

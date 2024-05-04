@@ -9,5 +9,5 @@ export module poco.foundation:numberParser;
 
 export namespace Poco
 {
-	export using Poco::NumberParser;
+	using Poco::NumberParser;
 }

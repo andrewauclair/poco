@@ -9,5 +9,5 @@ export module poco.foundation:fileStream;
 
 export namespace Poco
 {
-	export using Poco::FileStream;
+	using Poco::FileStream;
 }

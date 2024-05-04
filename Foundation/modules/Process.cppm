@@ -9,5 +9,5 @@ export module poco.foundation:process;
 
 export namespace Poco
 {
-	export using Poco::Process;
+	using Poco::Process;
 }

@@ -9,5 +9,5 @@ export module poco.foundation:configurable;
 
 export namespace Poco
 {
-	export using Poco::Configurable;
+	using Poco::Configurable;
 }

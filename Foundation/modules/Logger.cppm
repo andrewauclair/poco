@@ -9,5 +9,5 @@ export module poco.foundation:logger;
 
 export namespace Poco
 {
-	export using Poco::Logger;
+	using Poco::Logger;
 }

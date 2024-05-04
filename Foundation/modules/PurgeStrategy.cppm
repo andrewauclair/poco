@@ -8,5 +8,5 @@ export module poco.foundation:purgeStrategy;
 
 export namespace Poco
 {
-	export using Poco::PurgeStrategy;
+	using Poco::PurgeStrategy;
 }

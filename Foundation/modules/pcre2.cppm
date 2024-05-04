@@ -9,5 +9,5 @@ export module poco.foundation:Pipe;
 
 export namespace Poco
 {
-    export using Poco::Pipe;
+    using Poco::Pipe;
 }

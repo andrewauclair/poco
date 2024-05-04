@@ -8,5 +8,5 @@ export module poco.foundation:Latin1Encoding;
 
 export namespace Poco
 {
-    export using Poco::Latin1Encoding;
+    using Poco::Latin1Encoding;
 }

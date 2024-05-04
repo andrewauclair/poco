@@ -9,5 +9,5 @@ export module poco.foundation:textEncoding;
 
 export namespace Poco
 {
-	export using Poco::TextEncoding;
+	using Poco::TextEncoding;
 }

@@ -9,5 +9,5 @@ export module poco.foundation:localDateTime;
 
 export namespace Poco
 {
-	export using Poco::LocalDateTime;
+	using Poco::LocalDateTime;
 }

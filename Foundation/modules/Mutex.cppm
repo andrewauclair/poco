@@ -10,5 +10,5 @@ import :exception;
 
 export namespace Poco
 {
-	export using Poco::Mutex;
+	using Poco::Mutex;
 }

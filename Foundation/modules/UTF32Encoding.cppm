@@ -9,5 +9,5 @@ export module poco.foundation:UTF32Encoding;
 
 export namespace Poco
 {
-	export using Poco::UTF32Encoding;
+	using Poco::UTF32Encoding;
 }

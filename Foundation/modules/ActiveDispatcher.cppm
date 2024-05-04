@@ -8,5 +8,5 @@ export module poco.foundation:ActiveDispatcher;
 
 export namespace Poco
 {
-    export using Poco::ActiveDispatcher;
+    using Poco::ActiveDispatcher;
 }

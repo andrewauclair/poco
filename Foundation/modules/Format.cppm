@@ -9,5 +9,5 @@ export module poco.foundation:format;
 
 export namespace Poco
 {
-	export using Poco::format;
+	using Poco::format;
 }

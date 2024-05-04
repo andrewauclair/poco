@@ -8,8 +8,8 @@ export module poco.foundation:DeflatingStream;
 
 export namespace Poco
 {
-    export using Poco::DeflatingStreamBuf;
-    export using Poco::DeflatingIOS;
-    export using Poco::DeflatingOutputStream;
-    export using Poco::DeflatingInputStream;
+    using Poco::DeflatingStreamBuf;
+    using Poco::DeflatingIOS;
+    using Poco::DeflatingOutputStream;
+    using Poco::DeflatingInputStream;
 }

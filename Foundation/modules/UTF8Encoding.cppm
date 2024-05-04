@@ -9,5 +9,5 @@ export module poco.foundation:UTF8Encoding;
 
 export namespace Poco
 {
-	export using Poco::UTF8Encoding;
+	using Poco::UTF8Encoding;
 }

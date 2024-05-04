@@ -9,5 +9,5 @@ export module poco.foundation:bugcheck;
 
 export namespace Poco
 {
-	export using Poco::Bugcheck;
+	using Poco::Bugcheck;
 }

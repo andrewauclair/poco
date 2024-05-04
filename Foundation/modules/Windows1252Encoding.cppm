@@ -8,5 +8,5 @@ export module poco.foundation:Windows1252Encoding;
 
 export namespace Poco
 {
-    export using Poco::Windows1252Encoding;
+    using Poco::Windows1252Encoding;
 }

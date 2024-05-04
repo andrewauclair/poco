@@ -8,5 +8,5 @@ export module poco.foundation:Formatter;
 
 export namespace Poco
 {
-    export using Poco::Formatter;
+    using Poco::Formatter;
 }

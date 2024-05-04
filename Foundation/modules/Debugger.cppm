@@ -9,5 +9,5 @@ export module poco.foundation:debugger;
 
 export namespace Poco
 {
-	export using Poco::Debugger;
+	using Poco::Debugger;
 }

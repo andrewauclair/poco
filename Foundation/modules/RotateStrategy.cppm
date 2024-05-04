@@ -8,5 +8,5 @@ export module poco.foundation:rotateStrategy;
 
 export namespace Poco
 {
-	export using Poco::RotateStrategy;
+	using Poco::RotateStrategy;
 }

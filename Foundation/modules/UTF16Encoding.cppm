@@ -9,5 +9,5 @@ export module poco.foundation:UTF16Encoding;
 
 export namespace Poco
 {
-	export using Poco::UTF16Encoding;
+	using Poco::UTF16Encoding;
 }

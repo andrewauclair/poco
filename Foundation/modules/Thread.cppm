@@ -8,5 +8,5 @@ export module poco.foundation:thread;
 
 export namespace Poco
 {
-	export using Poco::Thread;
+	using Poco::Thread;
 }

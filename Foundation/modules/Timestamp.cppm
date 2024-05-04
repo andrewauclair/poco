@@ -8,5 +8,5 @@ export module poco.foundation:timestamp;
 
 export namespace Poco
 {
-	export using Poco::Timestamp;
+	using Poco::Timestamp;
 }

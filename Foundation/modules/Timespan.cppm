@@ -8,5 +8,5 @@ export module poco.foundation:timespan;
 
 export namespace Poco
 {
-	export using Poco::Timespan;
+	using Poco::Timespan;
 }

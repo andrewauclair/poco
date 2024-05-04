@@ -8,5 +8,5 @@ export module poco.foundation:ASCIIEncoding;
 
 export namespace Poco
 {
-    export using Poco::ASCIIEncoding;
+    using Poco::ASCIIEncoding;
 }

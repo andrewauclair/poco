@@ -9,5 +9,5 @@ export module poco.foundation:textIterator;
 
 export namespace Poco
 {
-	export using Poco::TextIterator;
+	using Poco::TextIterator;
 }

@@ -9,5 +9,5 @@ export module poco.foundation:splitterChannel;
 
 export namespace Poco
 {
-	export using Poco::SplitterChannel;
+	using Poco::SplitterChannel;
 }

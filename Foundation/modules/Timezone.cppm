@@ -8,5 +8,5 @@ export module poco.foundation:Timezone;
 
 export namespace Poco
 {
-    export using Poco::Timezone;
+    using Poco::Timezone;
 }

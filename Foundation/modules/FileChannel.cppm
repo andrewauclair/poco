@@ -9,5 +9,5 @@ export module poco.foundation:fileChannel;
 
 export namespace Poco
 {
-	export using Poco::FileChannel;
+	using Poco::FileChannel;
 }

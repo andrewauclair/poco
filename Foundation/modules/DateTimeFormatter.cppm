@@ -9,5 +9,5 @@ export module poco.foundation:dateTimeFormatter;
 
 export namespace Poco
 {
-	export using Poco::DateTimeFormatter;
+	using Poco::DateTimeFormatter;
 }

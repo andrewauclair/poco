@@ -9,5 +9,5 @@ export module poco.foundation:condition;
 
 export namespace Poco
 {
-	export using Poco::Condition;
+	using Poco::Condition;
 }

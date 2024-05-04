@@ -9,5 +9,5 @@ export module poco.foundation:notification;
 
 export namespace Poco
 {
-	export using Poco::Notification;
+	using Poco::Notification;
 }

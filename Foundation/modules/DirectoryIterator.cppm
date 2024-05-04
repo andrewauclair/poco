@@ -9,5 +9,5 @@ export module poco.foundation:directoryIterator;
 
 export namespace Poco
 {
-	export using Poco::DirectoryIterator;
+	using Poco::DirectoryIterator;
 }

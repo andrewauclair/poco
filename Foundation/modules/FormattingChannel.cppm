@@ -9,5 +9,5 @@ export module poco.foundation:formattingChannel;
 
 export namespace Poco
 {
-	export using Poco::FormattingChannel;
+	using Poco::FormattingChannel;
 }

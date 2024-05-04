@@ -9,6 +9,6 @@ export module poco.foundation:windowsConsoleChannel;
 
 export namespace Poco
 {
-	export using Poco::WindowsConsoleChannel;
-	export using Poco::WindowsColorConsoleChannel;
+	using Poco::WindowsConsoleChannel;
+	using Poco::WindowsColorConsoleChannel;
 }

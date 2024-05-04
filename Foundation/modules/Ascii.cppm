@@ -9,5 +9,5 @@ export module poco.foundation:ascii;
 
 export namespace Poco
 {
-	export using Poco::Ascii;
+	using Poco::Ascii;
 }

@@ -9,5 +9,5 @@ export module poco.foundation:textConverter;
 
 export namespace Poco
 {
-	export using Poco::TextConverter;
+	using Poco::TextConverter;
 }

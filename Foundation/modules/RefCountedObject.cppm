@@ -9,5 +9,5 @@ export module poco.foundation:refCountedObject;
 
 export namespace Poco
 {
-	export using Poco::RefCountedObject;
+	using Poco::RefCountedObject;
 }

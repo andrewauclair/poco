@@ -8,5 +8,5 @@ export module poco.foundation:file;
 
 export namespace Poco
 {
-	export using Poco::File;
+	using Poco::File;
 }

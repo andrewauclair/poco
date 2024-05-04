@@ -9,5 +9,5 @@ export module poco.foundation:archiveStrategy;
 
 export namespace Poco
 {
-	export using Poco::ArchiveStrategy;
+	using Poco::ArchiveStrategy;
 }

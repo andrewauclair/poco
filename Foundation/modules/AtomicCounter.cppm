@@ -9,5 +9,5 @@ export module poco.foundation:atomicCounter;
 
 export namespace Poco
 {
-	export using Poco::AtomicCounter;
+	using Poco::AtomicCounter;
 }
