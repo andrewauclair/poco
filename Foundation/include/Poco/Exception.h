@@ -28,7 +28,7 @@ namespace Poco {
 #define Export_Poco_Exception
 #endif
 
-Export_Foundation_Module class Foundation_API Exception: public std::exception
+class Foundation_API Exception: public std::exception
 	/// This is the base class for all exceptions defined
 	/// in the Poco class library.
 {
@@ -141,7 +141,7 @@ inline int Exception::code() const
 // are not allowed as template arguments.
 //
 #define POCO_DECLARE_EXCEPTION_CODE(EXPORT, API, CLS, BASE, CODE) \
-	EXPORT class API CLS: public BASE														\
+	class API CLS: public BASE														\
 	{																				\
 	public:																			\
 		CLS(int code = CODE);														\

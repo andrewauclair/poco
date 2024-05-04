@@ -89,7 +89,49 @@ else()
 endif(POCO_UNBUNDLED)
 
 if (POCO_GENERATE_MODULES)
-	add_library(Foundation)
+	# pcre2
+	POCO_SOURCES(C_CODE_SRCS pcre2
+		src/pcre2_auto_possess.c
+		src/pcre2_chartables.c
+		src/pcre2_compile.c
+		src/pcre2_config.c
+		src/pcre2_context.c
+		src/pcre2_convert.c
+		src/pcre2_dfa_match.c
+		src/pcre2_error.c
+		src/pcre2_extuni.c
+		src/pcre2_find_bracket.c
+		src/pcre2_jit_compile.c
+		src/pcre2_maketables.c
+		src/pcre2_match.c
+		src/pcre2_match_data.c
+		src/pcre2_newline.c
+		src/pcre2_ord2utf.c
+		src/pcre2_pattern_info.c
+		src/pcre2_script_run.c
+		src/pcre2_serialize.c
+		src/pcre2_string_utils.c
+		src/pcre2_study.c
+		src/pcre2_substitute.c
+		src/pcre2_substring.c
+		src/pcre2_tables.c
+		src/pcre2_ucd.c
+		src/pcre2_valid_utf.c
+		src/pcre2_xclass.c
+		#zlib
+		src/adler32.c
+		src/compress.c
+		src/crc32.c
+		src/deflate.c
+		src/infback.c
+		src/inffast.c
+		src/inflate.c
+		src/inftrees.c
+		src/trees.c
+		src/zutil.c
+		
+	)
+	add_library(Foundation ${C_CODE_SRCS})
 else()
 	add_library(Foundation ${SRCS})
 endif()
@@ -106,11 +148,85 @@ if (POCO_GENERATE_MODULES)
 target_sources(Foundation PUBLIC
 	FILE_SET all_poco_modules TYPE CXX_MODULES FILES
 	
+	modules/AtomicCounter.cppm
+	modules/Ascii.cppm
+	modules/AsyncChannel.cppm
+	modules/Bugcheck.cppm
+	modules/Channel.cppm
+	modules/EventChannel.cppm
+	modules/EventLogChannel.cppm
+	modules/WindowsConsoleChannel.cppm
+	modules/NullChannel.cppm
+	modules/FormattingChannel.cppm
+	modules/SplitterChannel.cppm
+	modules/Configurable.cppm
+	modules/Debugger.cppm
 	modules/Exception.cppm
+	modules/Environment.cppm
+	modules/LineEndingConverter.cppm
+	modules/Logger.cppm
+	modules/LoggingFactory.cppm
+	modules/LoggingRegistry.cppm
+	modules/Message.cppm
 	modules/Mutex.cppm
 	modules/PocoFoundation.cppm
+	modules/RefCountedObject.cppm
 	modules/Timestamp.cppm
 	modules/Timespan.cppm
+	modules/Runnable.cppm
+	modules/FileChannel.cppm
+	modules/FileStream.cppm
+	modules/SimpleFileChannel.cppm
+	modules/Thread.cppm
+	modules/ThreadLocal.cppm
+	modules/File.cppm
+	modules/Path.cppm
+	modules/Event.cppm
+	modules/ErrorHandler.cppm
+	modules/PurgeStrategy.cppm
+	modules/RotateStrategy.cppm
+	modules/Notification.cppm
+	modules/NotificationQueue.cppm
+	modules/Format.cppm
+	modules/UnicodeConverter.cppm
+	modules/StringTokenizer.cppm
+	modules/TextIterator.cppm
+	modules/TextEncoding.cppm
+	modules/UTF8Encoding.cppm
+	modules/UTF16Encoding.cppm
+	modules/UTF32Encoding.cppm
+	modules/NumberParser.cppm
+	modules/PatternFormatter.cppm
+	modules/Process.cppm
+	modules/LogFile.cppm
+	modules/DateTime.cppm
+	modules/DateTimeFormatter.cppm
+	modules/DateTimeFormat.cppm
+	modules/NumberFormatter.cppm
+	modules/LocalDateTime.cppm
+	modules/ArchiveStrategy.cppm
+	modules/DateTimeParser.cppm
+	modules/DirectoryIterator.cppm
+	modules/Condition.cppm
+	modules/TextConverter.cppm
+	modules/ASCIIEncoding.cppm
+	modules/Latin1Encoding.cppm
+	modules/Latin2Encoding.cppm
+	modules/Latin9Encoding.cppm
+	modules/Windows1250Encoding.cppm
+	modules/Windows1251Encoding.cppm
+	modules/Windows1252Encoding.cppm
+	modules/RWLock.cppm
+	modules/NumericString.cppm
+	modules/StreamCopier.cppm
+	modules/ActiveDispatcher.cppm
+	modules/RegularExpression.cppm
+	modules/Timezone.cppm
+	modules/Pipe.cppm
+	modules/Formatter.cppm
+	modules/NamedEvent.cppm
+	modules/DeflatingStream.cppm
+	modules/Error.cppm
 )
 endif()
 

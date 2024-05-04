@@ -84,7 +84,7 @@ using UIntPtr = std::uintptr_t;
 	#define POCO_HAVE_INT64 1
 #endif
 
-#ifndef POCO_ENABLE_MODULES
+// #ifndef POCO_ENABLE_MODULES
 inline std::string Foundation_API demangle(const char* typeName)
 {
 	std::string result(typeName);
@@ -117,7 +117,7 @@ std::string demangle()
 {
 	return demangle(typeid(T).name());
 }
-#endif
+// #endif
 
 } // namespace Poco
 
