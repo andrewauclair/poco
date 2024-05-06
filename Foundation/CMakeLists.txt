@@ -184,6 +184,7 @@ target_sources(Foundation PUBLIC
 	modules/Runnable.cppm
 	modules/FileChannel.cppm
 	modules/FileStream.cppm
+	modules/FileStreamFactory.cppm
 	modules/SimpleFileChannel.cppm
 	modules/Thread.cppm
 	modules/ThreadLocal.cppm
@@ -238,6 +239,8 @@ target_sources(Foundation PUBLIC
 	modules/NamedEvent.cppm
 	modules/DeflatingStream.cppm
 	modules/Unicode.cppm
+	modules/Random.cppm
+	modules/RandomStream.cppm
 	modules/Error.cppm
 	modules/JSONString.cppm
 	modules/MemoryPool.cppm
@@ -249,6 +252,12 @@ target_sources(Foundation PUBLIC
 	modules/DynamicVarHolder.cppm
 	modules/DynamicVarIterator.cppm
 	modules/DynamicVarVisitor.cppm
+	modules/URI.cppm
+	modules/URIStreamOpener.cppm
+	modules/URIStreamFactory.cppm
+	modules/BinaryReader.cppm
+	modules/BinaryWriter.cppm
+	modules/StreamConverter.cppm
 )
 endif()
 
