@@ -200,6 +200,7 @@ target_sources(Foundation PUBLIC
 	modules/StringTokenizer.cppm
 	modules/TextIterator.cppm
 	modules/TextEncoding.cppm
+	modules/UTF8String.cppm
 	modules/UTF8Encoding.cppm
 	modules/UTF16Encoding.cppm
 	modules/UTF32Encoding.cppm
@@ -218,6 +219,8 @@ target_sources(Foundation PUBLIC
 	modules/Condition.cppm
 	modules/TextConverter.cppm
 	modules/ASCIIEncoding.cppm
+	modules/ActiveThreadPool.cppm
+	modules/FPEnvironment.cppm
 	modules/Latin1Encoding.cppm
 	modules/Latin2Encoding.cppm
 	modules/Latin9Encoding.cppm
@@ -234,7 +237,18 @@ target_sources(Foundation PUBLIC
 	modules/Formatter.cppm
 	modules/NamedEvent.cppm
 	modules/DeflatingStream.cppm
+	modules/Unicode.cppm
 	modules/Error.cppm
+	modules/JSONString.cppm
+	modules/MemoryPool.cppm
+	modules/MemoryStream.cppm
+	modules/UUID.cppm
+	modules/DynamicPair.cppm
+	modules/DynamicStruct.cppm
+	modules/DynamicVar.cppm
+	modules/DynamicVarHolder.cppm
+	modules/DynamicVarIterator.cppm
+	modules/DynamicVarVisitor.cppm
 )
 endif()
 

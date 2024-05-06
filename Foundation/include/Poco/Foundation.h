@@ -29,7 +29,7 @@
 //
 // Ensure that POCO_DLL is default unless POCO_STATIC is defined
 //
-#if defined(_WIN32) && defined(_DLL) && !defined(POCO_ENABLE_MODULES)
+#if defined(_WIN32) && defined(_DLL)// && !defined(POCO_ENABLE_MODULES)
 	#if !defined(POCO_DLL) && !defined(POCO_STATIC)
 		#define POCO_DLL
 	#endif
@@ -85,7 +85,7 @@
 		#endif
 	#endif
 
-	#if !defined(POCO_NO_AUTOMATIC_LIBS) && !defined(Foundation_EXPORTS)
+	#if !defined(POCO_NO_AUTOMATIC_LIBS) && !defined(Foundation_EXPORTS) && !defined(POCO_ENABLE_MODULES)
 		#pragma comment(lib, "PocoFoundation" POCO_LIB_SUFFIX)
 	#endif
 #endif

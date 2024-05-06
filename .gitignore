@@ -171,3 +171,5 @@ node_modules
 ##############
 *.core
 /build-msvc
+/build-headers
+/build-modules
