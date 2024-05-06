@@ -258,6 +258,17 @@ target_sources(Foundation PUBLIC
 	modules/BinaryReader.cppm
 	modules/BinaryWriter.cppm
 	modules/StreamConverter.cppm
+	modules/Checksum.cppm
+	modules/InflatingStream.cppm
+	modules/Timer.cppm
+	modules/Stopwatch.cppm
+	modules/Clock.cppm
+	modules/ThreadPool.cppm
+	modules/Hash.cppm
+	modules/Void.cppm
+	modules/TimedNotificationQueue.cppm
+	modules/ConsoleChannel.cppm
+	modules/TemporaryFile.cppm
 )
 endif()
 

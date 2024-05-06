@@ -16,6 +16,10 @@ if(MSVC AND BUILD_SHARED_LIBS)
 	list(APPEND SRCS ${PROJECT_SOURCE_DIR}/DLLVersion.rc)
 endif()
 
+if (MSVC)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:strictStrings-")
+endif()
+
 add_library(Net ${SRCS})
 add_library(Poco::Net ALIAS Net)
 set_target_properties(Net

@@ -25,11 +25,11 @@ if(MSVC AND BUILD_SHARED_LIBS)
 	list(APPEND SRCS ${PROJECT_SOURCE_DIR}/DLLVersion.rc)
 endif()
 
-if (POCO_GENERATE_MODULES)
-	add_library(Data)
-else()
+#if (POCO_GENERATE_MODULES)
+#	add_library(Data)
+#else()
 	add_library(Data ${SRCS})
-endif()
+#endif()
 
 add_library(Poco::Data ALIAS Data)
 set_target_properties(Data
@@ -39,17 +39,17 @@ set_target_properties(Data
 	DEFINE_SYMBOL Data_EXPORTS
 )
 
-if (POCO_GENERATE_MODULES)
-	target_sources(Data PUBLIC
-		FILE_SET windows_modules TYPE CXX_MODULES FILES
-	)
-	target_sources(Data PUBLIC
-		FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
-		
-		modules/PocoData.cppm
-		modules/Session.cppm
-	)
-endif()
+#if (POCO_GENERATE_MODULES)
+#	target_sources(Data PUBLIC
+#		FILE_SET windows_modules TYPE CXX_MODULES FILES
+#	)
+#	target_sources(Data PUBLIC
+#		FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
+#		
+#		modules/PocoData.cppm
+#		modules/Session.cppm
+#	)
+#endif()
 
 if (NOT POCO_DATA_NO_SQL_PARSER)
 	target_compile_definitions(Data PUBLIC -DSQLParser_EXPORTS)
