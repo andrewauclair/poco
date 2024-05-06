@@ -269,6 +269,52 @@ target_sources(Foundation PUBLIC
 	modules/TimedNotificationQueue.cppm
 	modules/ConsoleChannel.cppm
 	modules/TemporaryFile.cppm
+	modules/PIDFile.cppm
+	modules/Base32Encoder.cppm
+	modules/Base64Encoder.cppm
+	modules/EventArgs.cppm
+	modules/StreamChannel.cppm
+	modules/SharedLibrary.cppm
+	modules/DigestEngine.cppm
+	modules/MD5Engine.cppm
+	modules/DirectoryWatcher.cppm
+	modules/FIFOBufferStream.cppm
+	modules/Glob.cppm
+	modules/HashStatistic.cppm
+	modules/LogStream.cppm
+	modules/NestedDiagnosticContext.cppm
+	modules/NamedMutex.cppm
+	modules/NotificationCenter.cppm
+	modules/AbstractObserver.cppm
+	modules/SHA1Engine.cppm
+	modules/PriorityNotificationQueue.cppm
+	modules/ProcessRunner.cppm
+	modules/Semaphore.cppm
+	modules/StreamTokenizer.cppm
+	modules/TaskManager.cppm
+	modules/Task.cppm
+	modules/Token.cppm
+	modules/TaskNotification.cppm
+	modules/TextBufferIterator.cppm
+	modules/SharedMemory.cppm
+	modules/UUIDGenerator.cppm
+	modules/SHA2Engine.cppm
+	modules/AsyncNotificationCenter.cppm
+	modules/CountingStream.cppm
+	modules/DataURIStream.cppm
+	modules/PipeStream.cppm
+	modules/Manifest.cppm
+	modules/ThreadTarget.cppm
+	modules/Base64Decoder.cppm
+	modules/HexBinaryDecoder.cppm
+	modules/HexBinaryEncoder.cppm
+	modules/NullStream.cppm
+	modules/TeeStream.cppm
+	modules/MD4Engine.cppm
+	modules/DirectoryIteratorStrategy.cppm
+	modules/SortedDirectoryIterator.cppm
+	modules/Base32Decoder.cppm
+	modules/DigestStream.cppm
 )
 endif()
 
