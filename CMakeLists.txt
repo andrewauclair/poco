@@ -54,7 +54,10 @@ else()
 	message(FATAL_ERROR "Compiler does not support C++17.")
 endif()
 
-set(CMAKE_CXX_STANDARD 20)
+# TODO set this up in a better way
+if (POCO_GENERATE_MODULES)
+	set(CMAKE_CXX_STANDARD 20)
+endif()
 
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
