@@ -13,7 +13,15 @@ if(MSVC AND BUILD_SHARED_LIBS)
 	list(APPEND SRCS ${PROJECT_SOURCE_DIR}/DLLVersion.rc)
 endif()
 
-add_library(JSON ${SRCS})
+if (POCO_GENERATE_MODULES)
+	POCO_SOURCES(C_CODE_SRCS pdjson
+		src/pdjson.c
+	)
+	add_library(JSON ${C_CODE_SRCS})
+else()
+	add_library(JSON ${SRCS})
+endif()
+
 add_library(Poco::JSON ALIAS JSON)
 set_target_properties(JSON
 	PROPERTIES
@@ -21,6 +29,26 @@ set_target_properties(JSON
 		OUTPUT_NAME PocoJSON
 		DEFINE_SYMBOL JSON_EXPORTS
 )
+
+if (POCO_GENERATE_MODULES)
+	target_sources(JSON PUBLIC
+		FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
+	
+		modules/PocoJSON.cppm
+		modules/Array.cppm
+		modules/Handler.cppm
+		modules/JSONException.cppm
+		modules/Object.cppm
+		modules/ParseHandler.cppm
+		modules/Parser.cppm
+		modules/ParserImpl.cppm
+		modules/PrintHandler.cppm
+		modules/Query.cppm
+		modules/Stringifier.cppm
+		modules/Template.cppm
+		modules/TemplateCache.cppm
+	)
+endif()
 
 target_link_libraries(JSON PUBLIC Poco::Foundation)
 target_include_directories(JSON

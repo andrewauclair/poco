@@ -18,8 +18,8 @@
 #include "Poco/Token.h"
 #include "Poco/UTF8Encoding.h"
 #include "Poco/String.h"
-#undef min
-#undef max
+//#undef min
+//#undef max
 #include <limits>
 #include <clocale>
 #include <istream>

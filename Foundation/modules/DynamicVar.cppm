@@ -6,7 +6,11 @@ module;
 
 export module poco.foundation:dynamicVar;
 
-export namespace Poco::Dynamic
+export namespace Poco
 {
-	export using Poco::Dynamic::Var;
+	export namespace Dynamic
+	{
+		using Poco::Dynamic::Var;
+	}
+	using Poco::DynamicAny;
 }

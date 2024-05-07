@@ -13,9 +13,10 @@
 #include "CppUnit/TestSuite.h"
 #include "Poco/ActiveMethod.h"
 #include "Poco/Thread.h"
-#include "Poco/Event.h"
+//#include "Poco/Event.h"
 #include "Poco/Exception.h"
 
+import poco.foundation;
 
 using Poco::ActiveMethod;
 using Poco::ActiveResult;

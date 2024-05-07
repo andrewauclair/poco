@@ -63,9 +63,12 @@ class JSON_API Parser: private ParserImpl
 	///    Array::Ptr pChildren = pObject->getArray("children");
 	/// ----
 {
-public:
+private:
+	// FIXME this is to get around an ICE in MSVC
+	static ParseHandler* newHandler() { return new ParseHandler; }
 
-	Parser(const Handler::Ptr& pHandler = new ParseHandler);
+public:
+	Parser(const Handler::Ptr& pHandler = newHandler());
 		/// Creates JSON Parser, using the given Handler and buffer size.
 
 	virtual ~Parser();

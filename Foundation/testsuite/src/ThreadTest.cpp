@@ -14,7 +14,7 @@
 #include "Poco/Thread.h"
 #include "Poco/Runnable.h"
 #include "Poco/ThreadTarget.h"
-#include "Poco/Event.h"
+//#include "Poco/Event.h"
 #include "Poco/Timestamp.h"
 #include "Poco/Timespan.h"
 #if defined(__sun) && defined(__SVR4) && !defined(__EXTENSIONS__)
@@ -23,6 +23,7 @@
 #include <climits>
 #include <iostream>
 
+import poco.foundation;
 
 using Poco::Thread;
 using Poco::Runnable;

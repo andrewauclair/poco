@@ -7,24 +7,27 @@
 // SPDX-License-Identifier:	BSL-1.0
 //
 
+import poco.foundation;
+import poco.JSON;
 
 #include "JSONTest.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
-#include "Poco/Path.h"
-#include "Poco/Environment.h"
-#include "Poco/File.h"
-#include "Poco/FileStream.h"
-#include "Poco/Glob.h"
-#include "Poco/UTF8Encoding.h"
-#include "Poco/Latin1Encoding.h"
-#include "Poco/TextConverter.h"
-#include "Poco/Nullable.h"
-#include "Poco/Dynamic/Struct.h"
-#include "Poco/DateTime.h"
-#include "Poco/DateTimeFormatter.h"
+//#include "Poco/Path.h"
+//#include "Poco/Environment.h"
+//#include "Poco/File.h"
+//#include "Poco/FileStream.h"
+//#include "Poco/Glob.h"
+//#include "Poco/UTF8Encoding.h"
+//#include "Poco/Latin1Encoding.h"
+//#include "Poco/TextConverter.h"
+//#include "Poco/Nullable.h"
+//#include "Poco/Dynamic/Struct.h"
+//#include "Poco/DateTime.h"
+//#include "Poco/DateTimeFormatter.h"
 #include <set>
 #include <iostream>
+
 
 
 using namespace Poco::JSON;

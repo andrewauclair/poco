@@ -12,7 +12,7 @@
 //
 
 
-#include "Poco/JSON/Parser.h"
+#include "Poco/JSON/ParserImpl.h"
 #include "Poco/JSON/JSONException.h"
 #include "Poco/Ascii.h"
 #include "Poco/Token.h"
@@ -119,7 +119,7 @@ void ParserImpl::handle(std::istream& json)
 }
 
 
-Dynamic::Var ParserImpl::parseImpl(const std::string& json)
+Poco::Dynamic::Var ParserImpl::parseImpl(const std::string& json)
 {
 	if (_allowComments)
 	{
@@ -136,7 +136,7 @@ Dynamic::Var ParserImpl::parseImpl(const std::string& json)
 }
 
 
-Dynamic::Var ParserImpl::parseImpl(std::istream& json)
+Poco::Dynamic::Var ParserImpl::parseImpl(std::istream& json)
 {
 	if (_allowComments || !_allowNullByte)
 	{

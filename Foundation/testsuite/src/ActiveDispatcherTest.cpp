@@ -14,11 +14,12 @@
 #include "Poco/ActiveDispatcher.h"
 #include "Poco/ActiveMethod.h"
 #include "Poco/Thread.h"
-#include "Poco/Event.h"
+//#include "Poco/Event.h"
 #include "Poco/Exception.h"
 #include "Poco/Environment.h"
 #include <iostream>
 
+import poco.foundation;
 
 using Poco::ActiveDispatcher;
 using Poco::ActiveMethod;

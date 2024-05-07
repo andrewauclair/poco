@@ -92,7 +92,6 @@ private:
 	Event& operator = (const Event&);
 };
 
-
 //
 // inlines
 //

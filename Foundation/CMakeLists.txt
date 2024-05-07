@@ -246,6 +246,7 @@ target_sources(Foundation PUBLIC
 	modules/MemoryPool.cppm
 	modules/MemoryStream.cppm
 	modules/UUID.cppm
+	#modules/DynamicArray.cppm
 	modules/DynamicPair.cppm
 	modules/DynamicStruct.cppm
 	modules/DynamicVar.cppm
@@ -315,6 +316,8 @@ target_sources(Foundation PUBLIC
 	modules/SortedDirectoryIterator.cppm
 	modules/Base32Decoder.cppm
 	modules/DigestStream.cppm
+	modules/ActiveMethod.cppm
+	modules/ActiveResult.cppm
 )
 endif()
 

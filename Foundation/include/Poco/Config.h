@@ -76,7 +76,7 @@
 // cases when value holder fits into POCO_SMALL_OBJECT_SIZE
 // (see below).
 //
-// #define POCO_NO_SOO
+#define POCO_NO_SOO
 
 
 // Small object size in bytes. When assigned to Any or Var,

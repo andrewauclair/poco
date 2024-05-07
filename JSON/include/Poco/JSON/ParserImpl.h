@@ -17,7 +17,6 @@
 #ifndef JSON_JSONParserImpl_INCLUDED
 #define JSON_JSONParserImpl_INCLUDED
 
-
 #include "Poco/JSON/JSON.h"
 #include "Poco/JSON/Object.h"
 #include "Poco/JSON/Array.h"
@@ -37,10 +36,16 @@ namespace JSON {
 
 class JSON_API ParserImpl
 {
+private:
+	// FIXME this is to get around an ICE in MSVC
+	static ParseHandler* newHandler() { return new ParseHandler; }
+
 protected:
 	static const std::size_t JSON_DEFAULT_DEPTH = 128;
 
-	ParserImpl(const Handler::Ptr& pHandler = new ParseHandler);
+	
+
+	ParserImpl(const Handler::Ptr& pHandler = newHandler());
 		/// Creates JSON ParserImpl, using the given Handler and buffer size.
 
 	virtual ~ParserImpl();
@@ -73,10 +78,10 @@ protected:
 	std::size_t getDepthImpl() const;
 		/// Returns the allowed JSON depth.
 
-	Dynamic::Var parseImpl(const std::string& json);
+	Poco::Dynamic::Var parseImpl(const std::string& json);
 		/// Parses JSON from a string.
 
-	Dynamic::Var parseImpl(std::istream& in);
+	Poco::Dynamic::Var parseImpl(std::istream& in);
 		/// Parses JSON from an input stream.
 
 	void setHandlerImpl(const Handler::Ptr& pHandler);
@@ -85,10 +90,10 @@ protected:
 	const Handler::Ptr& getHandlerImpl();
 		/// Returns the Handler.
 
-	Dynamic::Var asVarImpl() const;
+	Poco::Dynamic::Var asVarImpl() const;
 		/// Returns the result of parsing;
 
-	Dynamic::Var resultImpl() const;
+	Poco::Dynamic::Var resultImpl() const;
 		/// Returns the result of parsing as Dynamic::Var;
 
 private:
@@ -173,17 +178,17 @@ inline const Handler::Ptr& ParserImpl::getHandlerImpl()
 }
 
 
-inline Dynamic::Var ParserImpl::resultImpl() const
+inline Poco::Dynamic::Var ParserImpl::resultImpl() const
 {
 	return asVarImpl();
 }
 
 
-inline Dynamic::Var ParserImpl::asVarImpl() const
+inline Poco::Dynamic::Var ParserImpl::asVarImpl() const
 {
 	if (_pHandler) return _pHandler->asVar();
 
-	return Dynamic::Var();
+	return Poco::Dynamic::Var();
 }
 
 

@@ -16,9 +16,10 @@
 
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
-#include "Poco/Event.h"
+//#include "Poco/Event.h"
 #include "Poco/AtomicCounter.h"
 
+import poco.foundation;
 
 class ActiveThreadPoolTest: public CppUnit::TestCase
 {

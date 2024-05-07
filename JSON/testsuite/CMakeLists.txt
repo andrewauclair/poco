@@ -10,7 +10,12 @@ POCO_SOURCES_AUTO_PLAT(TEST_SRCS OFF
 	src/WinDriver.cpp
 )
 
+if (POCO_GENERATE_MODULES)
+	add_compile_definitions(POCO_ENABLE_MODULES)
+endif()
+
 add_executable(JSON-testrunner ${TEST_SRCS})
+
 if(ANDROID)
 	add_test(
 		NAME JSON
@@ -30,4 +35,5 @@ else()
 		COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/data ${CMAKE_CURRENT_BINARY_DIR}/data
 	)
 endif()
+
 target_link_libraries(JSON-testrunner PUBLIC Poco::JSON CppUnit)
