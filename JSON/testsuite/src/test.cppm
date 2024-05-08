@@ -1294,62 +1294,6 @@ public:
 		m_grow_on_next_insert = false;
 	}
 
-	template<typename P>
-	std::pair<iterator, bool> insert(P&& value) {
-		return insert_impl(KeySelect()(value), std::forward<P>(value));
-	}
-
-	template<typename P>
-	iterator insert(const_iterator hint, P&& value) {
-		if (hint != cend() && compare_keys(KeySelect()(*hint), KeySelect()(value))) {
-			return mutable_iterator(hint);
-		}
-
-		return insert(std::forward<P>(value)).first;
-	}
-
-	template<class InputIt>
-	void insert(InputIt first, InputIt last) {
-		if (std::is_base_of<std::forward_iterator_tag,
-			typename std::iterator_traits<InputIt>::iterator_category>::value)
-		{
-			const auto nb_elements_insert = std::distance(first, last);
-			const size_type nb_free_buckets = m_load_threshold - size();
-			tsl_assert(m_load_threshold >= size());
-
-			if (nb_elements_insert > 0 && nb_free_buckets < size_type(nb_elements_insert)) {
-				reserve(size() + size_type(nb_elements_insert));
-			}
-		}
-
-		for (; first != last; ++first) {
-			insert(*first);
-		}
-	}
-
-
-
-	template<class K, class M>
-	std::pair<iterator, bool> insert_or_assign(K&& key, M&& value) {
-		auto it = try_emplace(std::forward<K>(key), std::forward<M>(value));
-		if (!it.second) {
-			it.first.value() = std::forward<M>(value);
-		}
-
-		return it;
-	}
-
-	template<class K, class M>
-	iterator insert_or_assign(const_iterator hint, K&& key, M&& obj) {
-		if (hint != cend() && compare_keys(KeySelect()(*hint), key)) {
-			auto it = mutable_iterator(hint);
-			it.value() = std::forward<M>(obj);
-
-			return it;
-		}
-
-		return insert_or_assign(std::forward<K>(key), std::forward<M>(obj)).first;
-	}
 
 
 
@@ -1365,48 +1309,6 @@ public:
 
 
 
-	template<class K, class... Args>
-	std::pair<iterator, bool> try_emplace(K&& key, Args&&... value_args) {
-		return insert_impl(key, std::piecewise_construct,
-			std::forward_as_tuple(std::forward<K>(key)),
-			std::forward_as_tuple(std::forward<Args>(value_args)...));
-	}
-
-	template<class K, class... Args>
-	iterator try_emplace(const_iterator hint, K&& key, Args&&... args) {
-		if (hint != cend() && compare_keys(KeySelect()(*hint), key)) {
-			return mutable_iterator(hint);
-		}
-
-		return try_emplace(std::forward<K>(key), std::forward<Args>(args)...).first;
-	}
-
-
-
-	/**
-	 * Here to avoid `template<class K> size_type erase(const K& key)` being used when
-	 * we use a iterator instead of a const_iterator.
-	 */
-	iterator erase(iterator pos) {
-		return erase(const_iterator(pos));
-	}
-
-	iterator erase(const_iterator pos) {
-		tsl_assert(pos != cend());
-
-		const std::size_t index_erase = iterator_to_index(pos);
-
-		auto it_bucket = find_key(pos.key(), hash_key(pos.key()));
-		tsl_assert(it_bucket != m_buckets.end());
-
-		erase_value_from_bucket(it_bucket);
-
-		/*
-		 * One element was removed from m_values, due to the left shift the next element
-		 * is now at the position of the previous element (or end if none).
-		 */
-		return begin() + index_erase;
-	}
 
 	iterator erase(const_iterator first, const_iterator last) {
 		if (first == last) {
@@ -1484,44 +1386,6 @@ public:
 	template<class K, class U = ValueSelect, typename std::enable_if<has_mapped_type<U>::value>::type* = nullptr>
 	typename U::value_type& operator[](K&& key) {
 		return try_emplace(std::forward<K>(key)).first.value();
-	}
-
-
-	template<class K>
-	size_type count(const K& key) const {
-		return count(key, hash_key(key));
-	}
-
-	template<class K>
-	size_type count(const K& key, std::size_t hash) const {
-		if (find(key, hash) == cend()) {
-			return 0;
-		}
-		else {
-			return 1;
-		}
-	}
-
-	template<class K>
-	iterator find(const K& key) {
-		return find(key, hash_key(key));
-	}
-
-	template<class K>
-	iterator find(const K& key, std::size_t hash) {
-		auto it_bucket = find_key(key, hash);
-		return (it_bucket != m_buckets.end()) ? iterator(m_values.begin() + it_bucket->index()) : end();
-	}
-
-	template<class K>
-	const_iterator find(const K& key) const {
-		return find(key, hash_key(key));
-	}
-
-	template<class K>
-	const_iterator find(const K& key, std::size_t hash) const {
-		auto it_bucket = find_key(key, hash);
-		return (it_bucket != m_buckets.cend()) ? const_iterator(m_values.begin() + it_bucket->index()) : end();
 	}
 
 
@@ -1775,111 +1639,6 @@ private:
 		}
 	}
 
-	template<class K>
-	size_type erase_impl(const K& key, std::size_t hash) {
-		auto it_bucket = find_key(key, hash);
-		if (it_bucket != m_buckets.end()) {
-			erase_value_from_bucket(it_bucket);
-
-			return 1;
-		}
-		else {
-			return 0;
-		}
-	}
-
-	template<class K, class... Args>
-	std::pair<iterator, bool> insert_impl(const K& key, Args&&... value_type_args) {
-		return insert_at_position_impl(m_values.cend(), key, std::forward<Args>(value_type_args)...);
-	}
-
-	/**
-	 * Insert the element before insert_position.
-	 */
-	template<class K, class... Args>
-	std::pair<iterator, bool> insert_at_position_impl(typename values_container_type::const_iterator insert_position,
-		const K& key, Args&&... value_type_args)
-	{
-		const std::size_t hash = hash_key(key);
-
-		std::size_t ibucket = bucket_for_hash(hash);
-		std::size_t dist_from_ideal_bucket = 0;
-
-		while (!m_buckets[ibucket].empty() && dist_from_ideal_bucket <= distance_from_ideal_bucket(ibucket)) {
-			if (m_buckets[ibucket].truncated_hash() == bucket_entry::truncate_hash(hash) &&
-				compare_keys(key, KeySelect()(m_values[m_buckets[ibucket].index()])))
-			{
-				return std::make_pair(begin() + m_buckets[ibucket].index(), false);
-			}
-
-			ibucket = next_bucket(ibucket);
-			dist_from_ideal_bucket++;
-		}
-
-		if (size() >= max_size()) {
-			throw std::length_error("We reached the maximum size for the hash table.");
-		}
-
-
-		if (grow_on_high_load()) {
-			ibucket = bucket_for_hash(hash);
-			dist_from_ideal_bucket = 0;
-		}
-
-
-		const index_type index_insert_position = index_type(std::distance(m_values.cbegin(), insert_position));
-
-#ifdef TSL_NO_CONTAINER_EMPLACE_CONST_ITERATOR
-		m_values.emplace(m_values.begin() + std::distance(m_values.cbegin(), insert_position), std::forward<Args>(value_type_args)...);
-#else
-		m_values.emplace(insert_position, std::forward<Args>(value_type_args)...);
-#endif
-
-		insert_index(ibucket, dist_from_ideal_bucket,
-			index_insert_position, bucket_entry::truncate_hash(hash));
-
-		/*
-		 * The insertion didn't happend at the end of the m_values container,
-		 * we need to shift the indexes in m_buckets.
-		 */
-		if (index_insert_position != m_values.size() - 1) {
-			shift_indexes_in_buckets(index_insert_position + 1, short(-1));
-		}
-
-		return std::make_pair(iterator(m_values.begin() + index_insert_position), true);
-	}
-
-	void insert_index(std::size_t ibucket, std::size_t dist_from_ideal_bucket,
-		index_type index_insert, truncated_hash_type hash_insert) noexcept
-	{
-		while (!m_buckets[ibucket].empty()) {
-			const std::size_t distance = distance_from_ideal_bucket(ibucket);
-			if (dist_from_ideal_bucket > distance) {
-				std::swap(index_insert, m_buckets[ibucket].index_ref());
-				std::swap(hash_insert, m_buckets[ibucket].truncated_hash_ref());
-
-				dist_from_ideal_bucket = distance;
-			}
-
-
-			ibucket = next_bucket(ibucket);
-			dist_from_ideal_bucket++;
-
-
-			if (dist_from_ideal_bucket > REHASH_ON_HIGH_NB_PROBES__NPROBES && !m_grow_on_next_insert &&
-				load_factor() >= REHASH_ON_HIGH_NB_PROBES__MIN_LOAD_FACTOR)
-			{
-				// We don't want to grow the map now as we need this method to be noexcept.
-				// Do it on next insert.
-				m_grow_on_next_insert = true;
-			}
-		}
-
-
-		m_buckets[ibucket].set_index(index_insert);
-		m_buckets[ibucket].set_hash(hash_insert);
-	}
-
 	std::size_t distance_from_ideal_bucket(std::size_t ibucket) const noexcept {
 		const std::size_t ideal_bucket = bucket_for_hash(m_buckets[ibucket].truncated_hash());
 
@@ -1904,12 +1663,6 @@ private:
 		return hash & m_mask;
 	}
 
-	std::size_t iterator_to_index(const_iterator it) const noexcept {
-		const auto dist = std::distance(cbegin(), it);
-		tsl_assert(dist >= 0);
-
-		return std::size_t(dist);
-	}
 
 	/**
 	 * Return true if the map has been rehashed.
