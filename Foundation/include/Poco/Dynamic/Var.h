@@ -348,6 +348,8 @@ public:
 	bool operator == (const Var& other) const;
 		/// Equality operator overload for Var
 
+	// TODO generate these only if not C++20
+	/*
 	template <typename T>
 	bool operator != (const T& other) const
 		/// Inequality operator
@@ -356,12 +358,13 @@ public:
 		return convert<T>() != other;
 	}
 
+	
 	bool operator != (const Var& other) const;
 		/// Inequality operator overload for Var
 
 	bool operator != (const char* other) const;
 		/// Inequality operator overload for const char*
-
+	*/
 	template <typename T>
 	bool operator < (const T& other) const
 		/// Less than operator
@@ -927,12 +930,12 @@ inline bool operator == (const char& other, const Var& da)
 }
 
 
-inline bool operator != (const char& other, const Var& da)
-	/// Inequality operator for comparing Var with char
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<char>();
-}
+//inline bool operator != (const char& other, const Var& da)
+//	/// Inequality operator for comparing Var with char
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<char>();
+//}
 
 
 inline bool operator < (const char& other, const Var& da)
@@ -1031,12 +1034,12 @@ inline bool operator == (const Poco::Int8& other, const Var& da)
 }
 
 
-inline bool operator != (const Poco::Int8& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::Int8
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::Int8>();
-}
+//inline bool operator != (const Poco::Int8& other, const Var& da)
+//	/// Inequality operator for comparing Var with Poco::Int8
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<Poco::Int8>();
+//}
 
 
 inline bool operator < (const Poco::Int8& other, const Var& da)
@@ -1135,12 +1138,12 @@ inline bool operator == (const Poco::UInt8& other, const Var& da)
 }
 
 
-inline bool operator != (const Poco::UInt8& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::UInt8
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::UInt8>();
-}
+//inline bool operator != (const Poco::UInt8& other, const Var& da)
+//	/// Inequality operator for comparing Var with Poco::UInt8
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<Poco::UInt8>();
+//}
 
 
 inline bool operator < (const Poco::UInt8& other, const Var& da)
@@ -1239,12 +1242,12 @@ inline bool operator == (const Poco::Int16& other, const Var& da)
 }
 
 
-inline bool operator != (const Poco::Int16& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::Int16
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::Int16>();
-}
+//inline bool operator != (const Poco::Int16& other, const Var& da)
+//	/// Inequality operator for comparing Var with Poco::Int16
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<Poco::Int16>();
+//}
 
 
 inline bool operator < (const Poco::Int16& other, const Var& da)
@@ -1343,12 +1346,12 @@ inline bool operator == (const Poco::UInt16& other, const Var& da)
 }
 
 
-inline bool operator != (const Poco::UInt16& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::UInt16
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::UInt16>();
-}
+//inline bool operator != (const Poco::UInt16& other, const Var& da)
+//	/// Inequality operator for comparing Var with Poco::UInt16
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<Poco::UInt16>();
+//}
 
 
 inline bool operator < (const Poco::UInt16& other, const Var& da)
@@ -1447,12 +1450,12 @@ inline bool operator == (const Poco::Int32& other, const Var& da)
 }
 
 
-inline bool operator != (const Poco::Int32& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::Int32
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::Int32>();
-}
+//inline bool operator != (const Poco::Int32& other, const Var& da)
+//	/// Inequality operator for comparing Var with Poco::Int32
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<Poco::Int32>();
+//}
 
 
 inline bool operator < (const Poco::Int32& other, const Var& da)
@@ -1551,12 +1554,12 @@ inline bool operator == (const Poco::UInt32& other, const Var& da)
 }
 
 
-inline bool operator != (const Poco::UInt32& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::UInt32
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::UInt32>();
-}
+//inline bool operator != (const Poco::UInt32& other, const Var& da)
+//	/// Inequality operator for comparing Var with Poco::UInt32
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<Poco::UInt32>();
+//}
 
 
 inline bool operator < (const Poco::UInt32& other, const Var& da)
@@ -1655,12 +1658,12 @@ inline bool operator == (const Poco::Int64& other, const Var& da)
 }
 
 
-inline bool operator != (const Poco::Int64& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::Int64
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::Int64>();
-}
+//inline bool operator != (const Poco::Int64& other, const Var& da)
+//	/// Inequality operator for comparing Var with Poco::Int64
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<Poco::Int64>();
+//}
 
 
 inline bool operator < (const Poco::Int64& other, const Var& da)
@@ -1759,12 +1762,12 @@ inline bool operator == (const Poco::UInt64& other, const Var& da)
 }
 
 
-inline bool operator != (const Poco::UInt64& other, const Var& da)
-	/// Inequality operator for comparing Var with Poco::UInt64
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<Poco::UInt64>();
-}
+//inline bool operator != (const Poco::UInt64& other, const Var& da)
+//	/// Inequality operator for comparing Var with Poco::UInt64
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<Poco::UInt64>();
+//}
 
 
 inline bool operator < (const Poco::UInt64& other, const Var& da)
@@ -1863,12 +1866,12 @@ inline bool operator == (const float& other, const Var& da)
 }
 
 
-inline bool operator != (const float& other, const Var& da)
-	/// Inequality operator for comparing Var with float
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<float>();
-}
+//inline bool operator != (const float& other, const Var& da)
+//	/// Inequality operator for comparing Var with float
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<float>();
+//}
 
 
 inline bool operator < (const float& other, const Var& da)
@@ -1967,12 +1970,12 @@ inline bool operator == (const double& other, const Var& da)
 }
 
 
-inline bool operator != (const double& other, const Var& da)
-	/// Inequality operator for comparing Var with double
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<double>();
-}
+//inline bool operator != (const double& other, const Var& da)
+//	/// Inequality operator for comparing Var with double
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<double>();
+//}
 
 
 inline bool operator < (const double& other, const Var& da)
@@ -2015,12 +2018,12 @@ inline bool operator == (const bool& other, const Var& da)
 }
 
 
-inline bool operator != (const bool& other, const Var& da)
-	/// Inequality operator for comparing Var with bool
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<bool>();
-}
+//inline bool operator != (const bool& other, const Var& da)
+//	/// Inequality operator for comparing Var with bool
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<bool>();
+//}
 
 
 inline bool operator == (const std::string& other, const Var& da)
@@ -2031,12 +2034,12 @@ inline bool operator == (const std::string& other, const Var& da)
 }
 
 
-inline bool operator != (const std::string& other, const Var& da)
-	/// Inequality operator for comparing Var with std::string
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<std::string>();
-}
+//inline bool operator != (const std::string& other, const Var& da)
+//	/// Inequality operator for comparing Var with std::string
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<std::string>();
+//}
 
 
 inline bool operator == (const UTF16String& other, const Var& da)
@@ -2047,12 +2050,12 @@ inline bool operator == (const UTF16String& other, const Var& da)
 }
 
 
-inline bool operator != (const UTF16String& other, const Var& da)
-	/// Inequality operator for comparing Var with UTF16String
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<UTF16String>();
-}
+//inline bool operator != (const UTF16String& other, const Var& da)
+//	/// Inequality operator for comparing Var with UTF16String
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<UTF16String>();
+//}
 
 
 inline bool operator == (const char* other, const Var& da)
@@ -2063,12 +2066,12 @@ inline bool operator == (const char* other, const Var& da)
 }
 
 
-inline bool operator != (const char* other, const Var& da)
-	/// Inequality operator for comparing Var with const char*
-{
-	if (da.isEmpty()) return true;
-	return da.convert<std::string>() != other;
-}
+//inline bool operator != (const char* other, const Var& da)
+//	/// Inequality operator for comparing Var with const char*
+//{
+//	if (da.isEmpty()) return true;
+//	return da.convert<std::string>() != other;
+//}
 
 
 #ifndef POCO_INT64_IS_LONG
@@ -2138,12 +2141,12 @@ inline bool operator == (const long& other, const Var& da)
 }
 
 
-inline bool operator != (const long& other, const Var& da)
-	/// Inequality operator for comparing Var with long
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<long>();
-}
+//inline bool operator != (const long& other, const Var& da)
+//	/// Inequality operator for comparing Var with long
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<long>();
+//}
 
 
 inline bool operator < (const long& other, const Var& da)
@@ -2242,12 +2245,12 @@ inline bool operator == (const unsigned long& other, const Var& da)
 }
 
 
-inline bool operator != (const unsigned long& other, const Var& da)
-	/// Inequality operator for comparing Var with unsigned long
-{
-	if (da.isEmpty()) return true;
-	return other != da.convert<unsigned long>();
-}
+//inline bool operator != (const unsigned long& other, const Var& da)
+//	/// Inequality operator for comparing Var with unsigned long
+//{
+//	if (da.isEmpty()) return true;
+//	return other != da.convert<unsigned long>();
+//}
 
 
 inline bool operator < (const unsigned long& other, const Var& da)

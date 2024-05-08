@@ -318,6 +318,9 @@ target_sources(Foundation PUBLIC
 	modules/DigestStream.cppm
 	modules/ActiveMethod.cppm
 	modules/ActiveResult.cppm
+	modules/Types.cppm
+	modules/OrderedMap.cppm
+	modules/OrderedSet.cppm
 )
 endif()
 

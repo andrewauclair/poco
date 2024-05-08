@@ -9,5 +9,6 @@ export module poco.foundation:JSONString;
 
 export namespace Poco
 {
+	using Poco::JSONOptions::JSON_PRESERVE_KEY_ORDER;
 	using Poco::toJSON;
 }

@@ -13,4 +13,5 @@ export namespace Poco
 		using Poco::Dynamic::Struct;
 	}
 	using Poco::DynamicStruct;
+	using Poco::OrderedDynamicStruct;
 }

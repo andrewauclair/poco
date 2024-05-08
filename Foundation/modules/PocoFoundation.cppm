@@ -164,3 +164,6 @@ export import :Base32Decoder;
 export import :DigestStream;
 export import :ActiveMethod;
 export import :ActiveResult;
+export import :Types;
+export import :OrderedMap;
+export import :OrderedSet;
