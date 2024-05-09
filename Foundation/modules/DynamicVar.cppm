@@ -8,7 +8,7 @@ export module poco.foundation:dynamicVar;
 
 export namespace Poco
 {
-	export namespace Dynamic
+	namespace Dynamic
 	{
 		using Poco::Dynamic::Var;
 	}

@@ -38,10 +38,10 @@ template class std::basic_string<Poco::UTF32Char, Poco::UTF32CharTraits>;
 namespace Poco {
 
 
-namespace
-{
+//namespace
+//{
 	static UTF8Encoding utf8;
-}
+//}
 
 
 int UTF8::icompare(const std::string& str, std::string::size_type pos, std::string::size_type n, std::string::const_iterator it2, std::string::const_iterator end2)

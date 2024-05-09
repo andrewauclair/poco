@@ -50,7 +50,7 @@ public:
 		/// Copyright 2001-2004 Unicode, Inc.
 
 private:
-	static const char* _names[];
+	static const char* _names[3];
 	static const CharacterMap _charMap;
 };
 

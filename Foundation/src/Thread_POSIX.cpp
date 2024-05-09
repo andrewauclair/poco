@@ -81,8 +81,8 @@ namespace
 #endif
 
 
-namespace
-{
+//namespace
+//{
 	std::string truncName(const std::string& name, int nameSize = POCO_MAX_THREAD_NAME_LEN)
 	{
 		if (name.size() > nameSize)
@@ -128,7 +128,7 @@ namespace
 #endif
 		return name;
 	}
-}
+//}
 
 
 namespace Poco {

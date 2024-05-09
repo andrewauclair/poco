@@ -177,7 +177,6 @@ target_sources(Foundation PUBLIC
 	modules/LoggingRegistry.cppm
 	modules/Message.cppm
 	modules/Mutex.cppm
-	modules/PocoFoundation.cppm
 	modules/RefCountedObject.cppm
 	modules/Timestamp.cppm
 	modules/Timespan.cppm
@@ -321,6 +320,7 @@ target_sources(Foundation PUBLIC
 	modules/Types.cppm
 	modules/OrderedMap.cppm
 	modules/OrderedSet.cppm
+	modules/PocoFoundation.cppm
 )
 endif()
 

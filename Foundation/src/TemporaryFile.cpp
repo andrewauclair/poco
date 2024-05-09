@@ -123,10 +123,10 @@ void TemporaryFile::keepUntilExit()
 }
 
 
-namespace
-{
+//namespace
+//{
 	static TempFileCollector fc;
-}
+//}
 
 
 void TemporaryFile::registerForDeletion(const std::string& path)

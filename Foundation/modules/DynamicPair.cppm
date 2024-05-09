@@ -8,7 +8,8 @@ export module poco.foundation:dynamicPair;
 
 export namespace Poco
 {
-export namespace Dynamic {
-export using Poco::Dynamic::Pair;
-}
+	namespace Dynamic
+	{
+		using Poco::Dynamic::Pair;
+	}
 }

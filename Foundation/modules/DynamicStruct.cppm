@@ -8,7 +8,7 @@ export module poco.foundation:dynamicStruct;
 
 export namespace Poco
 {
-	export namespace Dynamic
+	namespace Dynamic
 	{
 		using Poco::Dynamic::Struct;
 	}

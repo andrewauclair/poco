@@ -8,5 +8,5 @@ export module poco.foundation:checksum;
 
 export namespace Poco
 {
-	export using Poco::Checksum;
+	using Poco::Checksum;
 }

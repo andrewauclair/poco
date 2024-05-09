@@ -8,7 +8,8 @@ export module poco.foundation:dynamicVarIterator;
 
 export namespace Poco
 {
-export namespace Dynamic {
-export using Poco::Dynamic::VarIterator;
-}
+	namespace Dynamic
+	{
+		using Poco::Dynamic::VarIterator;
+	}
 }

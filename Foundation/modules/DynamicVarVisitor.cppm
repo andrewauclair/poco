@@ -8,7 +8,8 @@ export module poco.foundation:dynamicVarVisitor;
 
 export namespace Poco
 {
-export namespace Dynamic {
-export using Poco::Dynamic::Visitor;
-}
+	namespace Dynamic
+	{
+		using Poco::Dynamic::Visitor;
+	}
 }

@@ -16,9 +16,9 @@
 #include "Poco/Environment.h"
 
 
-namespace
-{
-	std::vector<char> getEnvironmentVariablesBuffer(const Poco::Process::Env& env)
+//namespace
+//{
+static	std::vector<char> getEnvironmentVariablesBuffer(const Poco::Process::Env& env)
 	{
 		std::vector<char> envbuf;
 		std::size_t pos = 0;
@@ -44,7 +44,7 @@ namespace
 
 		return envbuf;
 	}
-}
+//}
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
