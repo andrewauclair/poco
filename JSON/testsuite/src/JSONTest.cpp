@@ -7,9 +7,9 @@
 // SPDX-License-Identifier:	BSL-1.0
 //
 
-#include "JSONTest.h"
 #include "CppUnit/TestCaller.h"
 #include "CppUnit/TestSuite.h"
+#include "JSONTest.h"
 
 #ifndef POCO_ENABLE_MODULES
 #include "Poco/Path.h"

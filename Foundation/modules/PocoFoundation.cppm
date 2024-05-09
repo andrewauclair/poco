@@ -10,7 +10,7 @@ export import :ascii;
 export import :asyncChannel;
 
 export import :bugcheck;
-/*
+
 export import :channel;
 export import :eventChannel;
 
@@ -28,7 +28,7 @@ export import :fpEnvironment;
 export import :exception;
 export import :environment;
 export import :lineEndingConverter;
-//export import :logger;
+export import :logger;
 export import :timestamp;
 export import :message;
 export import :mutex;
@@ -173,4 +173,4 @@ export import :OrderedMap;
 export import :OrderedSet;
 export import :loggingFactory;
 export import :loggingRegistry;
-*/
+
