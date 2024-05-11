@@ -13,11 +13,11 @@
 #include "CppUnit/TestSuite.h"
 #include "Poco/Task.h"
 #include "Poco/Thread.h"
-//#include "Poco/Event.h"
+#include "Poco/Event.h"
 #include "Poco/AutoPtr.h"
 #include <iostream>
 
-import poco.foundation;
+//import poco.foundation;
 
 using Poco::Task;
 using Poco::Thread;

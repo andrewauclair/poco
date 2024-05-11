@@ -173,3 +173,4 @@ node_modules
 /build-msvc
 /build-headers
 /build-modules
+/out/build

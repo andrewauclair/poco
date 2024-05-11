@@ -18,13 +18,13 @@
 #include "Poco/NotificationCenter.h"
 #include "Poco/Thread.h"
 #include "Poco/ThreadPool.h"
-//#include "Poco/Event.h"
+#include "Poco/Event.h"
 #include "Poco/Observer.h"
 #include "Poco/Exception.h"
 #include "Poco/AutoPtr.h"
 #include <iostream>
 
-import poco.foundation;
+//import poco.foundation;
 
 using Poco::TaskManager;
 using Poco::Task;

@@ -170,7 +170,7 @@ target_sources(Foundation PUBLIC
 	modules/Configurable.cppm
 	modules/Debugger.cppm
 	modules/Exception.cppm
-	modules/Environment.cppm
+	modules/EnvironmentA.cppm
 	modules/LineEndingConverter.cppm
 	modules/Logger.cppm
 	modules/LoggingFactory.cppm
@@ -188,7 +188,7 @@ target_sources(Foundation PUBLIC
 	modules/Thread.cppm
 	modules/ThreadLocal.cppm
 	modules/File.cppm
-	modules/Path.cppm
+	modules/PathA.cppm
 	modules/Event.cppm
 	modules/ErrorHandler.cppm
 	modules/PurgeStrategy.cppm

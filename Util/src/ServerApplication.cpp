@@ -311,7 +311,7 @@ int ServerApplication::run(int argc, wchar_t** argv)
 bool ServerApplication::isService()
 {
 	SERVICE_TABLE_ENTRYW svcDispatchTable[2];
-	svcDispatchTable[0].lpServiceName = L"";
+	svcDispatchTable[0].lpServiceName = const_cast<LPWSTR>(L"");
 	svcDispatchTable[0].lpServiceProc = ServiceMain;
 	svcDispatchTable[1].lpServiceName = NULL;
 	svcDispatchTable[1].lpServiceProc = NULL;

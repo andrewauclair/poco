@@ -16,10 +16,10 @@
 
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
-//#include "Poco/Event.h"
+#include "Poco/Event.h"
 #include "Poco/Mutex.h"
 
-import poco.foundation;
+//import poco.foundation;
 
 class ThreadPoolTest: public CppUnit::TestCase
 {

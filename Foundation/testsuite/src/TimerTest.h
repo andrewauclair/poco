@@ -17,9 +17,9 @@
 #include "Poco/Foundation.h"
 #include "CppUnit/TestCase.h"
 #include "Poco/Timer.h"
-//#include "Poco/Event.h"
+#include "Poco/Event.h"
 
-import poco.foundation;
+//import poco.foundation;
 
 class TimerTest: public CppUnit::TestCase
 {

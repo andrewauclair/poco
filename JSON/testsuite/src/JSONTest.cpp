@@ -43,7 +43,6 @@ using Poco::DateTimeFormatter;
 
 JSONTest::JSONTest(const std::string& name) : CppUnit::TestCase("JSON")
 {
-
 }
 
 

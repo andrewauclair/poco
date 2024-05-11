@@ -4,7 +4,7 @@ module;
 
 #include "File.cpp"
 
-export module poco.foundation:file;
+export module poco.foundation:File;
 
 export namespace Poco
 {

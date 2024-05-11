@@ -1,3 +1,7 @@
+if (POCO_GENERATE_MODULES)
+	cmake_policy(SET CMP0155 NEW)
+endif()
+
 # Sources
 file(GLOB SRCS_G "src/*.cpp")
 POCO_SOURCES_AUTO(SRCS ${SRCS_G})
