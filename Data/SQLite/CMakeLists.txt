@@ -25,7 +25,11 @@ if(MSVC AND BUILD_SHARED_LIBS)
 	list(APPEND SQLITE_SRCS ${PROJECT_SOURCE_DIR}/DLLVersion.rc)
 endif()
 
-add_library(DataSQLite ${SQLITE_SRCS})
+if (POCO_GENERATE_MODULES)
+	add_library(DataSQLite src/sqlite3.c)
+else()
+	add_library(DataSQLite ${SQLITE_SRCS})
+endif()
 
 add_library(Poco::DataSQLite ALIAS DataSQLite)
 set_target_properties(DataSQLite
@@ -34,6 +38,26 @@ set_target_properties(DataSQLite
 	OUTPUT_NAME PocoDataSQLite
 	DEFINE_SYMBOL SQLite_EXPORTS
 )
+
+if (POCO_GENERATE_MODULES)
+	target_sources(DataSQLite PUBLIC
+		FILE_SET windows_modules TYPE CXX_MODULES FILES
+	)
+	target_sources(DataSQLite PUBLIC
+		FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
+		
+		modules/PocoDataSQLite.cppm
+		modules/Binder.cppm
+		modules/Connector.cppm
+		modules/Extractor.cppm
+		modules/Notifier.cppm
+		modules/SessionImpl.cppm
+		modules/SQLiteException.cppm
+		modules/SQLiteStatementImpl.cppm
+		modules/Utility.cppm
+	)
+endif()
+
 target_link_libraries(DataSQLite PUBLIC Poco::Data)
 target_include_directories(DataSQLite
 	PUBLIC
