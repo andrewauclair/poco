@@ -245,20 +245,20 @@ bool Var::operator == (const char* other) const
 }
 
 
-//bool Var::operator != (const Var& other) const
-//{
-//	if (isEmpty() && other.isEmpty()) return false;
-//	else if (isEmpty() || other.isEmpty()) return true;
-//
-//	return convert<std::string>() != other.convert<std::string>();
-//}
-//
-//
-//bool Var::operator != (const char* other) const
-//{
-//	if (isEmpty()) return true;
-//	return convert<std::string>() != other;
-//}
+bool Var::operator != (const Var& other) const
+{
+	if (isEmpty() && other.isEmpty()) return false;
+	else if (isEmpty() || other.isEmpty()) return true;
+
+	return convert<std::string>() != other.convert<std::string>();
+}
+
+
+bool Var::operator != (const char* other) const
+{
+	if (isEmpty()) return true;
+	return convert<std::string>() != other;
+}
 
 
 bool Var::operator < (const Var& other) const
