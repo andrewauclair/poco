@@ -42,6 +42,9 @@ coverage/
 config.build
 config.make
 
+# VSCode #
+.vscode/
+
 # CLion #
 ########
 .idea/
@@ -54,6 +57,7 @@ CMakeFiles
 CMakeCache.txt
 CPackConfig.cmake
 CPackSourceConfig.cmake
+CMakeUserPresets.json
 cmake_*
 cmake-build-*
 
@@ -174,3 +178,5 @@ node_modules
 /build-headers
 /build-modules
 /out/build
+/build-gcc
+CMakeUserPresets.json

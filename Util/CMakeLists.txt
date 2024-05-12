@@ -24,6 +24,14 @@ POCO_SOURCES_AUTO_PLAT(SRCS WIN32
 
 add_library(Util ${SRCS})
 add_library(Poco::Util ALIAS Util)
+
+if (POCO_GENERATE_MODULES)
+	target_sources(Util PUBLIC 
+		FILE_SET poco_modules TYPE CXX_MODULES FILES
+		modules/PocoUtil.cppm
+	)
+endif()
+
 set_target_properties(Util
 	PROPERTIES
 	VERSION ${SHARED_LIBRARY_VERSION} SOVERSION ${SHARED_LIBRARY_VERSION}
