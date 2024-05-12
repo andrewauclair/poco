@@ -1,176 +1,473 @@
 module;
 
+#include "Poco/Windows1251Encoding.h"
+#include "Poco/SortedDirectoryIterator.h"
+#include "Poco/ProcessRunner.h"
+#include "Poco/TextConverter.h"
+#include "Poco/NullStream.h"
+#include "Poco/PatternFormatter.h"
+#include "Poco/TaskManager.h"
+#include "Poco/HexBinaryEncoder.h"
+#include "Poco/RWLock.h"
+#include "Poco/UUID.h"
+#include "Poco/Timer.h"
+#include "Poco/Array.h"
+#include "Poco/Thread.h"
+#include "Poco/Latin9Encoding.h"
+#include "Poco/DigestStream.h"
+#include "Poco/BinaryWriter.h"
+#include "Poco/Formatter.h"
+#include "Poco/NumericString.h"
+#include "Poco/UUIDGenerator.h"
+#include "Poco/InflatingStream.h"
+#include "Poco/Random.h"
+#include "Poco/Condition.h"
+#include "Poco/StringTokenizer.h"
+#include "Poco/Base32Decoder.h"
+#include "Poco/Base64Decoder.h"
+#include "Poco/DigestEngine.h"
+#include "Poco/NotificationCenter.h"
+#include "Poco/Pipe.h"
+#include "Poco/BinaryReader.h"
+#include "Poco/Token.h"
+#include "Poco/TextBufferIterator.h"
+#include "Poco/StreamCopier.h"
+#include "Poco/Timestamp.h"
+#include "Poco/DirectoryWatcher.h"
+#include "Poco/DeflatingStream.h"
+#include "Poco/ASCIIEncoding.h"
+#include "Poco/TextEncoding.h"
+#include "Poco/Checksum.h"
+#include "Poco/LoggingFactory.h"
+#include "Poco/Bugcheck.h"
+#include "Poco/Pipe.h"
+#include "Poco/PipeImpl.h"
+#include "Poco/FileStreamFactory.h"
+#include "Poco/Ascii.h"
+#include "Poco/Hash.h"
+#include "Poco/PipeStream.h"
+#include "Poco/MD5Engine.h"
+#include "Poco/Void.h"
+#include "Poco/DateTimeParser.h"
+#include "Poco/OrderedMap.h"
+#include "Poco/Stopwatch.h"
+#include "Poco/NamedMutex.h"
+#include "Poco/SHA1Engine.h"
+#include "Poco/Base64Encoder.h"
+#include "Poco/Environment.h"
+#include "Poco/Types.h"
+#include "Poco/Base32Encoder.h"
+#include "Poco/Latin2Encoding.h"
+#include "Poco/NotificationQueue.h"
+#include "Poco/ConsoleChannel.h"
+#include "Poco/Dynamic/Var.h"
+#include "Poco/ThreadLocal.h"
+#include "Poco/StreamConverter.h"
+#include "Poco/RotateStrategy.h"
+#include "Poco/Debugger.h"
+#include "Poco/ThreadTarget.h"
+#include "Poco/Task.h"
+#include "Poco/Mutex.h"
+#include "Poco/Manifest.h"
+#include "Poco/PurgeStrategy.h"
+#include "Poco/Unicode.h"
+#include "Poco/AsyncChannel.h"
+#include "Poco/UTF16Encoding.h"
+#include "Poco/ErrorHandler.h"
+#include "Poco/OrderedSet.h"
+#include "Poco/Error.h"
+#include "Poco/RefCountedObject.h"
+#include "Poco/SplitterChannel.h"
+#include "Poco/ActiveThreadPool.h"
+#include "Poco/HashStatistic.h"
+#include "Poco/TimedNotificationQueue.h"
+#include "Poco/LogFile.h"
+#include "Poco/Event.h"
+#include "Poco/SharedMemory.h"
+#include "Poco/NullChannel.h"
+#include "Poco/ActiveMethod.h"
+#include "Poco/Timespan.h"
+#include "Poco/Path.h"
+#include "Poco/Notification.h"
+#include "Poco/URI.h"
+#include "Poco/UTF8Encoding.h"
+#include "Poco/Glob.h"
+#include "Poco/RegularExpression.h"
+#include "Poco/NumberParser.h"
+#include "Poco/ThreadPool.h"
+#include "Poco/UTF8String.h"
+#include "Poco/Timezone.h"
+#include "Poco/CountingStream.h"
+#include "Poco/Format.h"
+#include "Poco/Configurable.h"
+#include "Poco/Channel.h"
+#include "Poco/File.h"
+#include "Poco/DateTimeFormatter.h"
+#include "Poco/Windows1250Encoding.h"
+#include "Poco/MD4Engine.h"
+#include "Poco/EventChannel.h"
+#include "Poco/PriorityNotificationQueue.h"
+#include "Poco/SHA2Engine.h"
+#include "Poco/SharedLibrary.h"
+#include "Poco/TeeStream.h"
+#include "Poco/AtomicCounter.h"
+#include "Poco/DirectoryIteratorStrategy.h"
+#include "Poco/Dynamic/VarIterator.h"
+#include "Poco/LoggingRegistry.h"
+#include "Poco/UTF32Encoding.h"
+
+#include "Poco/MemoryPool.h"
+#include "Poco/ActiveDispatcher.h"
+#include "Poco/StreamChannel.h"
+#include "Poco/FIFOBufferStream.h"
+#include "Poco/Dynamic/Pair.h"
+#include "Poco/ActiveResult.h"
+#include "Poco/UnicodeConverter.h"
+#include "Poco/AsyncNotificationCenter.h"
+#include "Poco/DirectoryIterator.h"
+#include "Poco/RecursiveDirectoryIterator.h"
+#include "Poco/Clock.h"
+#include "Poco/Latin1Encoding.h"
+#include "Poco/NumberFormatter.h"
+#include "Poco/FormattingChannel.h"
+#include "Poco/EventArgs.h"
+#include "Poco/ArchiveStrategy.h"
+#include "Poco/PIDFile.h"
+#include "Poco/SimpleFileChannel.h"
+#include "Poco/LogStream.h"
+#include "Poco/Logger.h"
+#include "Poco/TaskNotification.h"
+#include "Poco/FPEnvironment.h"
+#include "Poco/DateTime.h"
+#include "Poco/FileChannel.h"
+#include "Poco/TemporaryFile.h"
+#include "Poco/DataURIStream.h"
+#include "Poco/DateTimeFormat.h"
+#include "Poco/MemoryStream.h"
+#include "Poco/Process.h"
+#include "Poco/Runnable.h"
+#include "Poco/JSONString.h"
+#include "Poco/LineEndingConverter.h"
+#include "Poco/FileStream.h"
+#include "Poco/Semaphore.h"
+#include "Poco/Message.h"
+#include "Poco/Dynamic/VarHolder.h"
+#include "Poco/RandomStream.h"
+#include "Poco/Dynamic/VarVisitor.h"
+#include "Poco/HexBinaryDecoder.h"
+#include "Poco/Windows1252Encoding.h"
+#include "Poco/NestedDiagnosticContext.h"
+#include "Poco/Dynamic/Struct.h"
+#include "Poco/Exception.h"
+#include "Poco/StreamTokenizer.h"
+#include "Poco/URIStreamOpener.h"
+#include "Poco/TextIterator.h"
+#include "Poco/LocalDateTime.h"
+#include "Poco/URIStreamFactory.h"
+#include "Poco/AbstractObserver.h"
+#include "Poco/NamedEvent.h"
+
+#if POCO_OS_FAMILY_WINDOWS
+#include "Poco/EventLogChannel.h"
+#include "Poco/WindowsConsoleChannel.h"
+#endif
 
 export module poco.foundation;
 
-export import :atomicCounter;
-
-export import :activeThreadPool;
-export import :ascii;
-export import :asyncChannel;
-
-export import :bugcheck;
-
-export import :channel;
-export import :eventChannel;
-
+export namespace Poco
+{
 #if POCO_OS_FAMILY_WINDOWS
-export import :eventLogChannel;
-export import :windowsConsoleChannel;
+	using Poco::EventLogChannel;
+	using Poco::WindowsConsoleChannel;
+	using Poco::WindowsColorConsoleChannel;
 #endif
 
-export import :nullChannel;
-export import :formattingChannel;
-export import :splitterChannel;
-export import :configurable;
-export import :debugger;
-export import :fpEnvironment;
-export import :exception;
-export import :environment;
-export import :lineEndingConverter;
-export import :logger;
-export import :timestamp;
-export import :message;
-export import :mutex;
-export import :timespan;
-export import :refCountedObject;
-export import :runnable;
-export import :fileChannel;
-export import :fileStream;
-export import :fileStreamFactory;
-export import :simpleFileChannel;
-export import :thread;
-export import :threadLocal;
-export import :File;
-export import :path;
-export import :event;
-export import :errorHandler;
-export import :purgeStrategy;
-export import :rotateStrategy;
-export import :notificationQueue;
-export import :notification;
-export import :format;
-export import :unicodeConverter;
-export import :stringTokenizer;
-export import :textIterator;
-export import :textEncoding;
-export import :UTF8String;
-export import :UTF8Encoding;
-export import :UTF16Encoding;
-export import :UTF32Encoding;
-export import :numberParser;
-export import :patternFormatter;
-export import :process;
-export import :logFile;
-export import :dateTime;
-export import :localDateTime;
-export import :dateTimeFormat;
-export import :dateTimeFormatter;
-export import :numberFormatter;
-export import :dateTimeParser;
-export import :directoryIterator;
-export import :condition;
-export import :Latin1Encoding;
-export import :textConverter;
-export import :ASCIIEncoding;
-export import :Latin2Encoding;
-export import :Latin9Encoding;
-export import :Windows1250Encoding;
-export import :Windows1251Encoding;
-export import :Windows1252Encoding;
-export import :RWLock;
-export import :NumericString;
-export import :StreamCopier;
-export import :ActiveDispatcher;
-export import :RegularExpression;
-export import :Timezone;
-export import :Pipe;
-export import :Formatter;
-export import :NamedEvent;
-export import :DeflatingStream;
-export import :Error;
-export import :UUID;
-//export import :dynamicArray;
-export import :dynamicPair;
-export import :dynamicStruct;
-export import :dynamicVar;
-export import :dynamicVarHolder;
-export import :dynamicVarIterator;
-export import :dynamicVarVisitor;
-export import :memoryPool;
-export import :memoryStream;
-export import :JSONString;
-export import :unicode;
-export import :random;
-export import :randomStream;
-export import :URI;
-export import :URIStreamOpener;
-export import :URIStreamFactory;
-export import :binaryReader;
-export import :binaryWriter;
-export import :streamConverter;
-export import :checksum;
-export import :inflatingStream;
-export import :timer;
-export import :stopwatch;
-export import :threadPool;
-export import :clock;
-export import :void_type;
-export import :hash;
-export import :timedNotificationQueue;
-export import :temporaryFile;
-export import :consoleChannel;
-export import :PIDFile;
-export import :Base32Encoder;
-export import :Base64Encoder;
-export import :EventArgs;
-export import :StreamChannel;
-export import :SharedLibrary;
-export import :DigestEngine;
-export import :MD5Engine;
-export import :DirectoryWatcher;
-export import :FIFOBufferStream;
-export import :Glob;
-export import :HashStatistic;
-export import :LogStream;
-export import :NestedDiagnosticContext;
-export import :NamedMutex;
-export import :NotificationCenter;
-export import :AbstractObserver;
-export import :SHA1Engine;
-export import :PriorityNotificationQueue;
-export import :ProcessRunner;
-export import :Semaphore;
-export import :StreamTokenizer;
-export import :TaskManager;
-export import :Task;
-export import :Token;
-export import :TaskNotification;
-export import :TextBufferIterator;
-export import :SharedMemory;
-export import :UUIDGenerator;
-export import :SHA2Engine;
-export import :AsyncNotificationCenter;
-export import :CountingStream;
-export import :DataURIStream;
-export import :PipeStream;
-export import :Manifest;
-export import :ThreadTarget;
-export import :Base64Decoder;
-export import :HexBinaryDecoder;
-export import :HexBinaryEncoder;
-export import :NullStream;
-export import :TeeStream;
-export import :MD4Engine;
-export import :DirectoryIteratorStrategy;
-export import :SortedDirectoryIterator;
-export import :Base32Decoder;
-export import :DigestStream;
-export import :ActiveMethod;
-export import :ActiveResult;
-export import :Types;
-export import :OrderedMap;
-export import :OrderedSet;
-export import :loggingFactory;
-export import :loggingRegistry;
+	namespace Dynamic
+	{
+		                using Poco::Dynamic::Array;
+                using Poco::Dynamic::Var;
+                using Poco::Dynamic::VarIterator;
+                using Poco::Dynamic::Pair;
+                using Poco::Dynamic::VarHolder;
+                using Poco::Dynamic::VarHolderImpl;
+                using Poco::Dynamic::Array;
+                using Poco::Dynamic::Visitor;
+                using Poco::Dynamic::Struct;
+	}
+	    using Poco::Windows1251Encoding;
+    using Poco::SortedDirectoryIterator;
+    using Poco::ProcessRunner;
+	using Poco::TextConverter;
+	
+    using Poco::NullStreamBuf;
+    using Poco::NullIOS;
+    using Poco::NullInputStream;
+    using Poco::NullOutputStream;
+	using Poco::PatternFormatter;
+    using Poco::TaskManager;
+    using Poco::HexBinaryEncoder;
+    using Poco::RWLock;
+    using Poco::UUID;
+	using Poco::Timer;
+	using Poco::Thread;
+    using Poco::Latin9Encoding;
+    using Poco::DigestBuf;
+    using Poco::DigestIOS;
+    using Poco::DigestInputStream;
+    using Poco::DigestOutputStream;
+	using Poco::BinaryWriter;
+    using Poco::Formatter;
+    using Poco::floatToStr;
+    using Poco::floatToFixedStr;
+    using Poco::doubleToStr;
+    using Poco::doubleToFixedStr;
+    using Poco::strToFloat;
+    using Poco::strToDouble;
+    using Poco::UUIDGenerator;
+	using Poco::InflatingStreamBuf;
+	using Poco::InflatingIOS;
+	using Poco::InflatingInputStream;
+	using Poco::InflatingOutputStream;
+	using Poco::Random;
+	using Poco::Condition;
+	using Poco::StringTokenizer;
+    using Poco::Base32Decoder;
+    using Poco::Base64Decoder;
+    using Poco::DigestEngine;
+    using Poco::NotificationCenter;
+    using Poco::Pipe;
+	using Poco::BinaryReader;
+    using Poco::Token;
+    using Poco::TextBufferIterator;
+    using Poco::StreamCopier;
+	using Poco::Timestamp;
+    using Poco::DirectoryWatcher;
+    using Poco::DeflatingStreamBuf;
+    using Poco::DeflatingIOS;
+    using Poco::DeflatingOutputStream;
+    using Poco::DeflatingInputStream;
+    using Poco::ASCIIEncoding;
+	using Poco::TextEncoding;
+	using Poco::Checksum;
+	using Poco::LoggingFactory;
+	using Poco::Bugcheck;
+    using Poco::Pipe;
+	using Poco::FileStreamFactory;
+	using Poco::Ascii;
+	using Poco::Ascii::CharacterProperties::ACP_CONTROL;
+	using Poco::Ascii::CharacterProperties::ACP_SPACE;
+	using Poco::Ascii::CharacterProperties::ACP_PUNCT;
+	using Poco::Ascii::CharacterProperties::ACP_DIGIT;
+	using Poco::Ascii::CharacterProperties::ACP_HEXDIGIT;
+	using Poco::Ascii::CharacterProperties::ACP_ALPHA;
+	using Poco::Ascii::CharacterProperties::ACP_LOWER;
+	using Poco::Ascii::CharacterProperties::ACP_UPPER;
+	using Poco::Ascii::CharacterProperties::ACP_GRAPH;
+	using Poco::Ascii::CharacterProperties::ACP_PRINT;
+	using Poco::Hash;
+    using Poco::PipeStreamBuf;
+    using Poco::PipeIOS;
+    using Poco::PipeOutputStream;
+    using Poco::PipeInputStream;
+    using Poco::MD5Engine;
+	using Poco::Void;
+	using Poco::DateTimeParser;
+    using Poco::OrderedMap;
+	using Poco::Stopwatch;
+    using Poco::NamedMutex;
+    using Poco::SHA1Engine;
+    using Poco::Base64EncoderBuf;
+    using Poco::Base64EncoderIOS;
+    using Poco::Base64Encoder;
+	using Poco::Environment;
+	using Poco::Int8;
+	using Poco::UInt8;
+	using Poco::Int16;
+	using Poco::UInt16;
+	using Poco::Int32;
+	using Poco::UInt32;
+	using Poco::Int64;
+	using Poco::UInt64;
+	using Poco::IntPtr;
+	using Poco::UIntPtr;
+    using Poco::Base32Encoder;
+    using Poco::Latin2Encoding;
+	using Poco::NotificationQueue;
+	using Poco::ConsoleChannel;
+	using Poco::ThreadLocal;
+    using Poco::StreamConverterBuf;
+    using Poco::StreamConverterIOS;
+    using Poco::InputStreamConverter;
+    using Poco::OutputStreamConverter;
+	using Poco::RotateStrategy;
+	using Poco::Debugger;
+    using Poco::ThreadTarget;
+    using Poco::Task;
+	using Poco::Mutex;
+    using Poco::Manifest;
+	using Poco::PurgeStrategy;
+	using Poco::Unicode;
+	using Poco::AsyncChannel;
+	using Poco::UTF16Encoding;
+	using Poco::ErrorHandler;
+    using Poco::OrderedSet;
+    using Poco::Error;
+	using Poco::RefCountedObject;
+	using Poco::SplitterChannel;
+    using Poco::ActiveThreadPool;
+    using Poco::HashStatistic;
+	using Poco::TimedNotificationQueue;
+	using Poco::LogFile;
+	using Poco::Event;
+    using Poco::SharedMemory;
+	using Poco::NullChannel;
+    using Poco::ActiveMethod;
+	using Poco::Timespan;
+	using Poco::Path;
+	using Poco::Notification;
+    using Poco::URI;
+	using Poco::UTF8Encoding;
+    using Poco::Glob;
+    using Poco::RegularExpression;
+	using Poco::NumberParser;
+	using Poco::ThreadPool;
+	using Poco::UTF8;
+    using Poco::Timezone;
+    using Poco::CountingStreamBuf;
+    using Poco::CountingIOS;
+    using Poco::CountingInputStream;
+    using Poco::CountingOutputStream;
+	using Poco::format;
+	using Poco::Configurable;
+	using Poco::Channel;
+	using Poco::File;
+	using Poco::DateTimeFormatter;
+    using Poco::Windows1250Encoding;
+    using Poco::MD4Engine;
+	using Poco::EventChannel;
+    using Poco::PriorityNotificationQueue;
+    using Poco::SHA2Engine;
+    using Poco::SharedLibrary;
+    using Poco::TeeStreamBuf;
+    using Poco::TeeIOS;
+    using Poco::TeeInputStream;
+    using Poco::TeeOutputStream;
+	using Poco::AtomicCounter;
+    using Poco::TraverseBase;
+    using Poco::ChildrenFirstTraverse;
+    using Poco::SiblingsFirstTraverse;
+	using Poco::LoggingRegistry;
+	using Poco::UTF32Encoding;
+	
+	using Poco::MemoryPool;
+    using Poco::ActiveDispatcher;
+    using Poco::StreamChannel;
+    using Poco::FIFOBufferStream;
+    using Poco::ActiveResult;
+	using Poco::UnicodeConverter;
+    using Poco::AsyncNotificationCenter;
+	using Poco::DirectoryIterator;
+	using Poco::Clock;
+    using Poco::Latin1Encoding;
+	using Poco::NumberFormatter;
+	using Poco::FormattingChannel;
+    using Poco::EventArgs;
+	using Poco::ArchiveStrategy;
+	using Poco::PIDFile;
+	using Poco::SimpleFileChannel;
+    using Poco::LogStream;
+	using Poco::Logger;
+    using Poco::TaskNotification;
+    using Poco::TaskStartedNotification;
+    using Poco::TaskCancelledNotification;
+    using Poco::TaskFinishedNotification;
+    using Poco::TaskFailedNotification;
+    using Poco::TaskProgressNotification;
+	using Poco::FPEnvironment;
+	using Poco::DateTime;
+	using Poco::FileChannel;
+	using Poco::TemporaryFile;
+    using Poco::DataURIStream;
+	using Poco::DateTimeFormat;
+	using Poco::MemoryIOS;
+	using Poco::MemoryInputStream;
+	using Poco::MemoryOutputStream;
+	using Poco::Process;
+	using Poco::Runnable;
+	using Poco::JSONOptions::JSON_PRESERVE_KEY_ORDER;
+	using Poco::toJSON;
+	using Poco::LineEnding;
+	using Poco::LineEndingConverterIOS;
+	using Poco::InputLineEndingConverter;
+	using Poco::OutputLineEndingConverter;
+	using Poco::FileStream;
+	using Poco::FileInputStream;
+	using Poco::FileOutputStream;
+    using Poco::Semaphore;
+	using Poco::Message;
+	using Poco::RandomBuf;
+	using Poco::RandomIOS;
+	using Poco::RandomInputStream;
+    using Poco::HexBinaryDecoder;
+    using Poco::Windows1252Encoding;
+    using Poco::NestedDiagnosticContext;
+	using Poco::OrderedDynamicStruct;
+	using Poco::Exception;
+	using Poco::LogicException;
+	using Poco::AssertionViolationException;
+	using Poco::NullPointerException;
+	using Poco::NullValueException;
+	using Poco::BugcheckException;
+	using Poco::InvalidArgumentException;
+	using Poco::NotImplementedException;
+	using Poco::RangeException;
+	using Poco::IllegalStateException;
+	using Poco::InvalidAccessException;
+	using Poco::SignalException;
+	using Poco::UnhandledException;
+	using Poco::RuntimeException;
+	using Poco::NotFoundException;
+	using Poco::ExistsException;
+	using Poco::TimeoutException;
+	using Poco::SystemException;
+	using Poco::RegularExpressionException;
+	using Poco::LibraryLoadException;
+	using Poco::LibraryAlreadyLoadedException;
+	using Poco::NoThreadAvailableException;
+	using Poco::PropertyNotSupportedException;
+	using Poco::PoolOverflowException;
+	using Poco::NoPermissionException;
+	using Poco::OutOfMemoryException;
+	using Poco::DataException;
+	using Poco::DataFormatException;
+	using Poco::SyntaxException;
+	using Poco::CircularReferenceException;
+	using Poco::PathSyntaxException;
+	using Poco::IOException;
+	using Poco::ProtocolException;
+	using Poco::FileException;
+	using Poco::FileExistsException;
+	using Poco::FileNotFoundException;
+	using Poco::PathNotFoundException;
+	using Poco::FileReadOnlyException;
+	using Poco::FileAccessDeniedException;
+	using Poco::CreateFileException;
+	using Poco::OpenFileException;
+	using Poco::WriteFileException;
+	using Poco::ReadFileException;
+	using Poco::FileNotReadyException;
+	using Poco::DirectoryNotEmptyException;
+	using Poco::UnknownURISchemeException;
+	using Poco::TooManyURIRedirectsException;
+	using Poco::URISyntaxException;
+	using Poco::ApplicationException;
+	using Poco::BadCastException;
+    using Poco::StreamTokenizer;
+    using Poco::URIStreamOpener;
+	using Poco::TextIterator;
+	using Poco::LocalDateTime;
+    using Poco::URIStreamFactory;
+    using Poco::AbstractObserver;
+    using Poco::NamedEvent;
 
+}

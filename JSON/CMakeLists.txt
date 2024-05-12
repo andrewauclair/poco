@@ -36,7 +36,7 @@ set_target_properties(JSON
 
 if (POCO_GENERATE_MODULES)
 	target_sources(JSON PUBLIC
-		FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
+		FILE_SET poco_modules TYPE CXX_MODULES FILES
 	
 		modules/PocoJSON.cppm
 		modules/Array.cppm

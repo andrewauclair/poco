@@ -41,10 +41,7 @@ set_target_properties(DataSQLite
 
 if (POCO_GENERATE_MODULES)
 	target_sources(DataSQLite PUBLIC
-		FILE_SET windows_modules TYPE CXX_MODULES FILES
-	)
-	target_sources(DataSQLite PUBLIC
-		FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
+		FILE_SET poco_modules TYPE CXX_MODULES FILES
 		
 		modules/PocoDataSQLite.cppm
 		modules/Binder.cppm

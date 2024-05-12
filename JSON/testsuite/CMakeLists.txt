@@ -16,16 +16,6 @@ endif()
 
 add_executable(JSON-testrunner ${TEST_SRCS})
 
-#if (POCO_GENERATE_MODULES)
-	#target_sources(JSON-testrunner PUBLIC
-	#
-#	FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
-#	
-#	src/test.cppm
-#	src/JSONTest.cppm
-#	)
-#endif()
-
 if(ANDROID)
 	add_test(
 		NAME JSON

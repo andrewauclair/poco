@@ -44,10 +44,7 @@ set_target_properties(Data
 
 if (POCO_GENERATE_MODULES)
 	target_sources(Data PUBLIC
-		FILE_SET windows_modules TYPE CXX_MODULES FILES
-	)
-	target_sources(Data PUBLIC
-		FILE_SET cross_platform_modules TYPE CXX_MODULES FILES
+		FILE_SET poco_modules TYPE CXX_MODULES FILES
 		
 		modules/PocoData.cppm
 		modules/Session.cppm
