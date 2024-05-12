@@ -32,8 +32,15 @@ else()
 endif(POCO_UNBUNDLED)
 
 add_library(XML ${SRCS})
-
 add_library(Poco::XML ALIAS XML)
+
+if (POCO_GENERATE_MODULES)
+	target_sources(XML PUBLIC
+		FILE_SET poco_modules TYPE CXX_MODULES FILES
+		modules/PocoXML.cppm
+	)
+endif()
+
 set_target_properties(XML
 	PROPERTIES
 	VERSION ${SHARED_LIBRARY_VERSION} SOVERSION ${SHARED_LIBRARY_VERSION}
