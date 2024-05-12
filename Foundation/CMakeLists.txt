@@ -89,24 +89,21 @@ else()
 endif(POCO_UNBUNDLED)
 
 add_library(Foundation ${SRCS})
-
 add_library(Poco::Foundation ALIAS Foundation)
+
+if (POCO_GENERATE_MODULES)
+	target_sources(Foundation PUBLIC
+		FILE_SET poco_modules TYPE CXX_MODULES FILES
+		modules/PocoFoundation.cppm
+	)
+endif()
+
 set_target_properties(Foundation
 	PROPERTIES
 	VERSION ${SHARED_LIBRARY_VERSION} SOVERSION ${SHARED_LIBRARY_VERSION}
 	OUTPUT_NAME PocoFoundation
 	DEFINE_SYMBOL Foundation_EXPORTS
 )
-
-if (POCO_GENERATE_MODULES)
-
-target_sources(Foundation PUBLIC
-
-	FILE_SET poco_modules TYPE CXX_MODULES FILES
-	
-	modules/PocoFoundation.cppm
-)
-endif()
 
 if(POCO_UNBUNDLED)
 	target_link_libraries(Foundation PUBLIC Pcre2::Pcre2 ZLIB::ZLIB)

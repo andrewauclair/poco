@@ -25,75 +25,22 @@ if(MSVC AND BUILD_SHARED_LIBS)
 	list(APPEND SRCS ${PROJECT_SOURCE_DIR}/DLLVersion.rc)
 endif()
 
+add_library(Data ${SRCS})
+add_library(Poco::Data ALIAS Data)
+
 if (POCO_GENERATE_MODULES)
-	add_library(Data
-	SQLParser/src/parser/bison_parser.cpp
-	SQLParser/src/parser/flex_lexer.cpp
+	target_sources(Data PUBLIC
+		FILE_SET poco_modules TYPE CXX_MODULES FILES
+		modules/PocoData.cppm
 	)
-else()
-	add_library(Data ${SRCS})
 endif()
 
-add_library(Poco::Data ALIAS Data)
 set_target_properties(Data
 	PROPERTIES
 	VERSION ${SHARED_LIBRARY_VERSION} SOVERSION ${SHARED_LIBRARY_VERSION}
 	OUTPUT_NAME PocoData
 	DEFINE_SYMBOL Data_EXPORTS
 )
-
-if (POCO_GENERATE_MODULES)
-	target_sources(Data PUBLIC
-		FILE_SET poco_modules TYPE CXX_MODULES FILES
-		
-		modules/PocoData.cppm
-		modules/Session.cppm
-		modules/AbstractBinder.cppm
-		modules/AbstractBinding.cppm
-		modules/AbstractExtraction.cppm
-		modules/AbstractExtractor.cppm
-		modules/AbstractPreparation.cppm
-		modules/AbstractPreparator.cppm
-		modules/ArchiveStrategy.cppm
-		modules/Bulk.cppm
-		modules/Connector.cppm
-		modules/DataException.cppm
-		modules/Date.cppm
-		modules/DynamicLOB.cppm
-		modules/JSONRowFormatter.cppm
-		modules/Limit.cppm
-		modules/MetaColumn.cppm
-		modules/PooledSessionHolder.cppm
-		modules/PooledSessionImpl.cppm
-		modules/Position.cppm
-		modules/Range.cppm
-		modules/RecordSet.cppm
-		modules/Row.cppm
-		modules/RowFilter.cppm
-		modules/RowFormatter.cppm
-		modules/RowIterator.cppm
-		modules/SessionFactory.cppm
-		modules/SessionImpl.cppm
-		modules/SessionPool.cppm
-		modules/SessionPoolContainer.cppm
-		modules/SimpleRowFormatter.cppm
-		modules/SQLChannel.cppm
-		modules/Statement.cppm
-		modules/StatementCreator.cppm
-		modules/StatementImpl.cppm
-		modules/Time.cppm
-		modules/Transaction.cppm
-		modules/Transcoder.cppm
-
-		SQLParser/modules/SQLParser.cppm
-		SQLParser/modules/SQLParserResult.cppm
-		SQLParser/modules/SQLStatement.cppm
-		SQLParser/modules/PrepareStatement.cppm
-		SQLParser/modules/CreateStatement.cppm
-		SQLParser/modules/statements.cppm
-		SQLParser/modules/Expr.cppm
-	)
-endif()
 
 if (NOT POCO_DATA_NO_SQL_PARSER)
 	target_compile_definitions(Data PUBLIC -DSQLParser_EXPORTS)
