@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "UTF16Encoding.cpp"
+#include "Poco/UTF16Encoding.h"
 
 export module poco.foundation:UTF16Encoding;
 

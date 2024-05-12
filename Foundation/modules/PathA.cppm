@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Path.cpp"
+#include "Poco/Path.h"
 
 export module poco.foundation:path;
 

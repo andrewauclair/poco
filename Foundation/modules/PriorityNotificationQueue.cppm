@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "PriorityNotificationQueue.cpp"
+#include "Poco/PriorityNotificationQueue.h"
 
 export module poco.foundation:PriorityNotificationQueue;
 

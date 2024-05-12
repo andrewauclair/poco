@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "VarVisitor.cpp"
+#include "Poco/Dynamic/VarVisitor.h"
 
 export module poco.foundation:dynamicVarVisitor;
 

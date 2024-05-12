@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "File.cpp"
+#include "Poco/File.h"
 
 export module poco.foundation:File;
 

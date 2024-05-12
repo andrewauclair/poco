@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "EventArgs.cpp"
+#include "Poco/EventArgs.h"
 
 export module poco.foundation:EventArgs;
 

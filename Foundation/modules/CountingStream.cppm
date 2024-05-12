@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "CountingStream.cpp"
+#include "Poco/CountingStream.h"
 
 export module poco.foundation:CountingStream;
 

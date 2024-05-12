@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "TextEncoding.cpp"
+#include "Poco/TextEncoding.h"
 
 export module poco.foundation:textEncoding;
 

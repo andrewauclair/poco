@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "URIStreamFactory.cpp"
+#include "Poco/URIStreamFactory.h"
 
 export module poco.foundation:URIStreamFactory;
 

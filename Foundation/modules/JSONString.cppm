@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "JSONString.cpp"
+#include "Poco/JSONString.h"
 
 export module poco.foundation:JSONString;
 

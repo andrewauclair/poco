@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Process.cpp"
+#include "Poco/Process.h"
 
 export module poco.foundation:process;
 

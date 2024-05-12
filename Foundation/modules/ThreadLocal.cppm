@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "ThreadLocal.cpp"
+#include "Poco/ThreadLocal.h"
 
 export module poco.foundation:threadLocal;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "SHA2Engine.cpp"
+#include "Poco/SHA2Engine.h"
 
 export module poco.foundation:SHA2Engine;
 

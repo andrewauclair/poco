@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DigestStream.cpp"
+#include "Poco/DigestStream.h"
 
 export module poco.foundation:DigestStream;
 

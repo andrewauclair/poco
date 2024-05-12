@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Channel.cpp"
+#include "Poco/Channel.h"
 
 export module poco.foundation:channel;
 

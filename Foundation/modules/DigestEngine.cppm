@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DigestEngine.cpp"
+#include "Poco/DigestEngine.h"
 
 export module poco.foundation:DigestEngine;
 

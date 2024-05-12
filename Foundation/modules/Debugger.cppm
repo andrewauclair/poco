@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Debugger.cpp"
+#include "Poco/Debugger.h"
 
 export module poco.foundation:debugger;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "PIDFile.cpp"
+#include "Poco/PIDFile.h"
 
 export module poco.foundation:PIDFile;
 

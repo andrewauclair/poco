@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "TaskNotification.cpp"
+#include "Poco/TaskNotification.h"
 
 export module poco.foundation:TaskNotification;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "FPEnvironment.cpp"
+#include "Poco/FPEnvironment.h"
 
 export module poco.foundation:fpEnvironment;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Notification.cpp"
+#include "Poco/Notification.h"
 
 export module poco.foundation:notification;
 

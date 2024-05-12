@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Runnable.cpp"
+#include "Poco/Runnable.h"
 
 export module poco.foundation:runnable;
 

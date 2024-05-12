@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "BinaryReader.cpp"
+#include "Poco/BinaryReader.h"
 
 export module poco.foundation:binaryReader;
 

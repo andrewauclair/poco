@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "RotateStrategy.cpp"
+#include "Poco/RotateStrategy.h"
 
 export module poco.foundation:rotateStrategy;
 

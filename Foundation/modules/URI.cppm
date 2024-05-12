@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "URI.cpp"
+#include "Poco/URI.h"
 
 export module poco.foundation:URI;
 

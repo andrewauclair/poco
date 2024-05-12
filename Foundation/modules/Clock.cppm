@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Clock.cpp"
+#include "Poco/Clock.h"
 
 export module poco.foundation:clock;
 

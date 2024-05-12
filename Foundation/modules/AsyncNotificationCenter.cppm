@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "AsyncNotificationCenter.cpp"
+#include "Poco/AsyncNotificationCenter.h"
 
 export module poco.foundation:AsyncNotificationCenter;
 

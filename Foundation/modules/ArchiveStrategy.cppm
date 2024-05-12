@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "ArchiveStrategy.cpp"
+#include "Poco/ArchiveStrategy.h"
 
 export module poco.foundation:archiveStrategy;
 

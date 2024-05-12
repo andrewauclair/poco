@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DirectoryWatcher.cpp"
+#include "Poco/DirectoryWatcher.h"
 
 export module poco.foundation:DirectoryWatcher;
 

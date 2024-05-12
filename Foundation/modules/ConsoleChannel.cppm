@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "ConsoleChannel.cpp"
+#include "Poco/ConsoleChannel.h"
 
 export module poco.foundation:consoleChannel;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "SortedDirectoryIterator.cpp"
+#include "Poco/SortedDirectoryIterator.h"
 
 export module poco.foundation:SortedDirectoryIterator;
 

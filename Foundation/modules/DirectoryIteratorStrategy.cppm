@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DirectoryIteratorStrategy.cpp"
+#include "Poco/DirectoryIteratorStrategy.h"
 
 export module poco.foundation:DirectoryIteratorStrategy;
 

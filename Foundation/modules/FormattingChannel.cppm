@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "FormattingChannel.cpp"
+#include "Poco/FormattingChannel.h"
 
 export module poco.foundation:formattingChannel;
 

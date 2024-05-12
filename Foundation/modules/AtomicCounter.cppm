@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "AtomicCounter.cpp"
+#include "Poco/AtomicCounter.h"
 
 export module poco.foundation:atomicCounter;
 

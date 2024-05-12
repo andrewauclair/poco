@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Hash.cpp"
+#include "Poco/Hash.h"
 
 export module poco.foundation:hash;
 

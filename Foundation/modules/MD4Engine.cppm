@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "MD4Engine.cpp"
+#include "Poco/MD4Engine.h"
 
 export module poco.foundation:MD4Engine;
 

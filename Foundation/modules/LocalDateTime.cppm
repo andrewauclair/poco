@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "LocalDateTime.cpp"
+#include "Poco/LocalDateTime.h"
 
 export module poco.foundation:localDateTime;
 

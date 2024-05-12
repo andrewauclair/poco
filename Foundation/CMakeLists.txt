@@ -88,55 +88,57 @@ else()
 	)
 endif(POCO_UNBUNDLED)
 
-if (POCO_GENERATE_MODULES)
-	# pcre2
-	POCO_SOURCES(C_CODE_SRCS pcre2
-		src/pcre2_auto_possess.c
-		src/pcre2_chartables.c
-		src/pcre2_compile.c
-		src/pcre2_config.c
-		src/pcre2_context.c
-		src/pcre2_convert.c
-		src/pcre2_dfa_match.c
-		src/pcre2_error.c
-		src/pcre2_extuni.c
-		src/pcre2_find_bracket.c
-		src/pcre2_jit_compile.c
-		src/pcre2_maketables.c
-		src/pcre2_match.c
-		src/pcre2_match_data.c
-		src/pcre2_newline.c
-		src/pcre2_ord2utf.c
-		src/pcre2_pattern_info.c
-		src/pcre2_script_run.c
-		src/pcre2_serialize.c
-		src/pcre2_string_utils.c
-		src/pcre2_study.c
-		src/pcre2_substitute.c
-		src/pcre2_substring.c
-		src/pcre2_tables.c
-		src/pcre2_ucd.c
-		src/pcre2_valid_utf.c
-		src/pcre2_xclass.c
-		#zlib
-		src/adler32.c
-		src/compress.c
-		src/crc32.c
-		src/deflate.c
-		src/infback.c
-		src/inffast.c
-		src/inflate.c
-		src/inftrees.c
-		src/trees.c
-		src/zutil.c
+# if (POCO_GENERATE_MODULES)
+	# # pcre2
+	# POCO_SOURCES(C_CODE_SRCS pcre2
+		# src/pcre2_auto_possess.c
+		# src/pcre2_chartables.c
+		# src/pcre2_compile.c
+		# src/pcre2_config.c
+		# src/pcre2_context.c
+		# src/pcre2_convert.c
+		# src/pcre2_dfa_match.c
+		# src/pcre2_error.c
+		# src/pcre2_extuni.c
+		# src/pcre2_find_bracket.c
+		# src/pcre2_jit_compile.c
+		# src/pcre2_maketables.c
+		# src/pcre2_match.c
+		# src/pcre2_match_data.c
+		# src/pcre2_newline.c
+		# src/pcre2_ord2utf.c
+		# src/pcre2_pattern_info.c
+		# src/pcre2_script_run.c
+		# src/pcre2_serialize.c
+		# src/pcre2_string_utils.c
+		# src/pcre2_study.c
+		# src/pcre2_substitute.c
+		# src/pcre2_substring.c
+		# src/pcre2_tables.c
+		# src/pcre2_ucd.c
+		# src/pcre2_valid_utf.c
+		# src/pcre2_xclass.c
+		# #zlib
+		# src/adler32.c
+		# src/compress.c
+		# src/crc32.c
+		# src/deflate.c
+		# src/infback.c
+		# src/inffast.c
+		# src/inflate.c
+		# src/inftrees.c
+		# src/trees.c
+		# src/zutil.c
 		
-		src/pocomsg.mc
-	)
-	POCO_MESSAGES(GENERATED_MSGS Logging src/pocomsg.mc)
-	add_library(Foundation ${C_CODE_SRCS} ${GENERATED_MSGS})
-else()
-	add_library(Foundation ${SRCS})
-endif()
+		# src/pocomsg.mc
+	# )
+	# POCO_MESSAGES(GENERATED_MSGS Logging src/pocomsg.mc)
+	# add_library(Foundation ${C_CODE_SRCS} ${GENERATED_MSGS})
+# else()
+	
+# endif()
+
+add_library(Foundation ${SRCS})
 
 add_library(Poco::Foundation ALIAS Foundation)
 set_target_properties(Foundation

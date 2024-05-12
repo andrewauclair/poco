@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "NumberParser.cpp"
+#include "Poco/NumberParser.h"
 
 export module poco.foundation:numberParser;
 

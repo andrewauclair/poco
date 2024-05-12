@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "SharedLibrary.cpp"
+#include "Poco/SharedLibrary.h"
 
 export module poco.foundation:SharedLibrary;
 

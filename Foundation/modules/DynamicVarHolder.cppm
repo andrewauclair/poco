@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "VarHolder.cpp"
+#include "Poco/Dynamic/VarHolder.h"
 
 export module poco.foundation:dynamicVarHolder;
 

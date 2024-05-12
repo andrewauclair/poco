@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "TimedNotificationQueue.cpp"
+#include "Poco/TimedNotificationQueue.h"
 
 export module poco.foundation:timedNotificationQueue;
 

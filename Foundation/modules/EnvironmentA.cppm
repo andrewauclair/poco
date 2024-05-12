@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Environment.cpp"
+#include "Poco/Environment.h"
 
 export module poco.foundation:environment;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "LogStream.cpp"
+#include "Poco/LogStream.h"
 
 export module poco.foundation:LogStream;
 

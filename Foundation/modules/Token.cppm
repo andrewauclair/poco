@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Token.cpp"
+#include "Poco/Token.h"
 
 export module poco.foundation:Token;
 

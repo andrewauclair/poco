@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DataURIStream.cpp"
+#include "Poco/DataURIStream.h"
 
 export module poco.foundation:DataURIStream;
 

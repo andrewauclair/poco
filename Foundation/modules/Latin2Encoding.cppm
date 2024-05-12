@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Latin2Encoding.cpp"
+#include "Poco/Latin2Encoding.h"
 
 export module poco.foundation:Latin2Encoding;
 

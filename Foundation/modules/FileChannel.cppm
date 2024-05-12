@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "FileChannel.cpp"
+#include "Poco/FileChannel.h"
 
 export module poco.foundation:fileChannel;
 

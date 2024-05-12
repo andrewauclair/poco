@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "NullChannel.cpp"
+#include "Poco/NullChannel.h"
 
 export module poco.foundation:nullChannel;
 

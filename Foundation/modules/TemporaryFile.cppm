@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "TemporaryFile.cpp"
+#include "Poco/TemporaryFile.h"
 
 export module poco.foundation:temporaryFile;
 

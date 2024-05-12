@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "TextConverter.cpp"
+#include "Poco/TextConverter.h"
 
 export module poco.foundation:textConverter;
 

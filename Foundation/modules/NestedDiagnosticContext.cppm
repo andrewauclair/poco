@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "NestedDiagnosticContext.cpp"
+#include "Poco/NestedDiagnosticContext.h"
 
 export module poco.foundation:NestedDiagnosticContext;
 

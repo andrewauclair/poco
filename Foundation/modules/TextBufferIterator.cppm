@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "TextBufferIterator.cpp"
+#include "Poco/TextBufferIterator.h"
 
 export module poco.foundation:TextBufferIterator;
 

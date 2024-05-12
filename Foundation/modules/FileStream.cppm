@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "FileStream.cpp"
+#include "Poco/FileStream.h"
 
 export module poco.foundation:fileStream;
 

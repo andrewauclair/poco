@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Ascii.cpp"
+#include "Poco/Ascii.h"
 
 export module poco.foundation:ascii;
 

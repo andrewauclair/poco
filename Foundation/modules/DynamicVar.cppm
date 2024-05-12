@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Var.cpp"
+#include "Poco/Dynamic/Var.h"
 
 export module poco.foundation:dynamicVar;
 

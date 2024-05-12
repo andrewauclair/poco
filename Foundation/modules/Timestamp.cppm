@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Timestamp.cpp"
+#include "Poco/Timestamp.h"
 
 export module poco.foundation:timestamp;
 

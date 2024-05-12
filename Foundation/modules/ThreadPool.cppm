@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "ThreadPool.cpp"
+#include "Poco/ThreadPool.h"
 
 export module poco.foundation:threadPool;
 

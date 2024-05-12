@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DateTimeFormat.cpp"
+#include "Poco/DateTimeFormat.h"
 
 export module poco.foundation:dateTimeFormat;
 

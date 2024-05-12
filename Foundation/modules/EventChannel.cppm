@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "EventChannel.cpp"
+#include "Poco/EventChannel.h"
 
 export module poco.foundation:eventChannel;
 

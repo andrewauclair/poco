@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "ActiveDispatcher.cpp"
+#include "Poco/ActiveDispatcher.h"
 
 export module poco.foundation:ActiveDispatcher;
 

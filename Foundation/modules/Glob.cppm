@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Glob.cpp"
+#include "Poco/Glob.h"
 
 export module poco.foundation:Glob;
 

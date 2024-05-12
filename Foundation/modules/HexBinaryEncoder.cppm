@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "HexBinaryEncoder.cpp"
+#include "Poco/HexBinaryEncoder.h"
 
 export module poco.foundation:HexBinaryEncoder;
 

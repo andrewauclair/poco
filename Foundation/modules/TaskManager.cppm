@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "TaskManager.cpp"
+#include "Poco/TaskManager.h"
 
 export module poco.foundation:TaskManager;
 

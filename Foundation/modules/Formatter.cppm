@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Formatter.cpp"
+#include "Poco/Formatter.h"
 
 export module poco.foundation:Formatter;
 

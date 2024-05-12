@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "StreamConverter.cpp"
+#include "Poco/StreamConverter.h"
 
 export module poco.foundation:streamConverter;
 

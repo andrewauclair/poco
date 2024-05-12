@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Unicode.cpp"
+#include "Poco/Unicode.h"
 
 export module poco.foundation:unicode;
 

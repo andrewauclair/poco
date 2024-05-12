@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Error.cpp"
+#include "Poco/Error.h"
 
 export module poco.foundation:Error;
 

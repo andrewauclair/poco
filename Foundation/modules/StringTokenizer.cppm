@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "StringTokenizer.cpp"
+#include "Poco/StringTokenizer.h"
 
 export module poco.foundation:stringTokenizer;
 

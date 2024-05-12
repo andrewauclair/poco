@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Exception.cpp"
+#include "Poco/Exception.h"
 
 export module poco.foundation:exception;
 

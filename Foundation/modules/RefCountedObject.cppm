@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "RefCountedObject.cpp"
+#include "Poco/RefCountedObject.h"
 
 export module poco.foundation:refCountedObject;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Thread.cpp"
+#include "Poco/Thread.h"
 
 export module poco.foundation:thread;
 

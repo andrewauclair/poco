@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "InflatingStream.cpp"
+#include "Poco/InflatingStream.h"
 
 export module poco.foundation:inflatingStream;
 

@@ -2,8 +2,8 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Pipe.cpp"
-#include "PipeImpl.cpp"
+#include "Pipe.h"
+#include "PipeImpl.h"
 
 export module poco.foundation:Pipe;
 

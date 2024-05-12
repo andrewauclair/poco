@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "HashStatistic.cpp"
+#include "Poco/HashStatistic.h"
 
 export module poco.foundation:HashStatistic;
 

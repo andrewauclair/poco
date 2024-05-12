@@ -3,7 +3,7 @@ module;
 #define POCO_ENABLE_MODULES
 #define POCO_GENERATE_MODULE
 
-#include "Event.cpp"
+#include "Poco/Event.h"
 
 export module poco.foundation:event;
 

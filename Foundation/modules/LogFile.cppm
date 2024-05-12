@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "LogFile.cpp"
+#include "Poco/LogFile.h"
 
 export module poco.foundation:logFile;
 

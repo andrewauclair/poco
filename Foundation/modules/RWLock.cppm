@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "RWLock.cpp"
+#include "Poco/RWLock.h"
 
 export module poco.foundation:RWLock;
 

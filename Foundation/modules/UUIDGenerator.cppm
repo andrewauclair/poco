@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "UUIDGenerator.cpp"
+#include "Poco/UUIDGenerator.h"
 
 export module poco.foundation:UUIDGenerator;
 

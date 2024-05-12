@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DateTimeParser.cpp"
+#include "Poco/DateTimeParser.h"
 
 export module poco.foundation:dateTimeParser;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Semaphore.cpp"
+#include "Poco/Semaphore.h"
 
 export module poco.foundation:Semaphore;
 

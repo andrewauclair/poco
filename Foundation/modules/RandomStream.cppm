@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "RandomStream.cpp"
+#include "Poco/RandomStream.h"
 
 export module poco.foundation:randomStream;
 

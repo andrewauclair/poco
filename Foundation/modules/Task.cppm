@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Task.cpp"
+#include "Poco/Task.h"
 
 export module poco.foundation:Task;
 

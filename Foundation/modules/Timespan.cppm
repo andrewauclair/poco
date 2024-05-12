@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Timespan.cpp"
+#include "Poco/Timespan.h"
 
 export module poco.foundation:timespan;
 

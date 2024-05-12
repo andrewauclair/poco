@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "LineEndingConverter.cpp"
+#include "Poco/LineEndingConverter.h"
 
 export module poco.foundation:lineEndingConverter;
 

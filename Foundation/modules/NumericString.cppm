@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "NumericString.cpp"
+#include "Poco/NumericString.h"
 
 export module poco.foundation:NumericString;
 

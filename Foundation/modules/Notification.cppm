@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "NotificationQueue.cpp"
+#include "Poco/NotificationQueue.h"
 
 export module poco.foundation:notificationQueue;
 

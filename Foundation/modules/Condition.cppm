@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Condition.cpp"
+#include "Poco/Condition.h"
 
 export module poco.foundation:condition;
 

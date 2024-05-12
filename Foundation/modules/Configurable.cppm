@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Configurable.cpp"
+#include "Poco/Configurable.h"
 
 export module poco.foundation:configurable;
 

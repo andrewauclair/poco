@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "ProcessRunner.cpp"
+#include "Poco/ProcessRunner.h"
 
 export module poco.foundation:ProcessRunner;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "FIFOBufferStream.cpp"
+#include "Poco/FIFOBufferStream.h"
 
 export module poco.foundation:FIFOBufferStream;
 

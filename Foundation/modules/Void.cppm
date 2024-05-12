@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Void.cpp"
+#include "Poco/Void.h"
 
 export module poco.foundation:void_type;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "NamedEvent.cpp"
+#include "Poco/NamedEvent.h"
 
 export module poco.foundation:NamedEvent;
 

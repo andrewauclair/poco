@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "PipeStream.cpp"
+#include "Poco/PipeStream.h"
 
 export module poco.foundation:PipeStream;
 

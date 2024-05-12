@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "URIStreamOpener.cpp"
+#include "Poco/URIStreamOpener.h"
 
 export module poco.foundation:URIStreamOpener;
 

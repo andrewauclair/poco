@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Base64Encoder.cpp"
+#include "Poco/Base64Encoder.h"
 
 export module poco.foundation:Base64Encoder;
 

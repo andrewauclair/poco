@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "AsyncChannel.cpp"
+#include "Poco/AsyncChannel.h"
 
 export module poco.foundation:asyncChannel;
 

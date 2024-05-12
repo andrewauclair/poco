@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Message.cpp"
+#include "Poco/Message.h"
 
 export module poco.foundation:message;
 

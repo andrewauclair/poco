@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "PurgeStrategy.cpp"
+#include "Poco/PurgeStrategy.h"
 
 export module poco.foundation:purgeStrategy;
 

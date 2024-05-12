@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "LoggingRegistry.cpp"
+#include "Poco/LoggingRegistry.h"
 
 export module poco.foundation:loggingRegistry;
 

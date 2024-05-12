@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "NumberFormatter.cpp"
+#include "Poco/NumberFormatter.h"
 
 export module poco.foundation:numberFormatter;
 

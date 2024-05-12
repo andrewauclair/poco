@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "MD5Engine.cpp"
+#include "Poco/MD5Engine.h"
 
 export module poco.foundation:MD5Engine;
 

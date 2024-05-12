@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DateTime.cpp"
+#include "Poco/DateTime.h"
 
 export module poco.foundation:dateTime;
 

@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "WindowsConsoleChannel.cpp"
+#include "Poco/WindowsConsoleChannel.h"
 
 export module poco.foundation:windowsConsoleChannel;
 

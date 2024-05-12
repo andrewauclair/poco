@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "SplitterChannel.cpp"
+#include "Poco/SplitterChannel.h"
 
 export module poco.foundation:splitterChannel;
 

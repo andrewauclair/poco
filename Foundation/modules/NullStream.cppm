@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "NullStream.cpp"
+#include "Poco/NullStream.h"
 
 export module poco.foundation:NullStream;
 

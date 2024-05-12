@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "VarIterator.cpp"
+#include "Poco/Dynamic/VarIterator.h"
 
 export module poco.foundation:dynamicVarIterator;
 

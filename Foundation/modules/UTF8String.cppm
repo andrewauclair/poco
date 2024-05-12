@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "UTF8String.cpp"
+#include "Poco/UTF8String.h"
 
 export module poco.foundation:UTF8String;
 

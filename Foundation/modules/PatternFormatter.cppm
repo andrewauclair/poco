@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "PatternFormatter.cpp"
+#include "Poco/PatternFormatter.h"
 
 export module poco.foundation:patternFormatter;
 

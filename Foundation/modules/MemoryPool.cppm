@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "MemoryPool.cpp"
+#include "Poco/MemoryPool.h"
 
 export module poco.foundation:memoryPool;
 

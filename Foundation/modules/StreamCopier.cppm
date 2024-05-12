@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "StreamCopier.cpp"
+#include "Poco/StreamCopier.h"
 
 export module poco.foundation:StreamCopier;
 

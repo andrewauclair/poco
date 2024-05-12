@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Base32Encoder.cpp"
+#include "Poco/Base32Encoder.h"
 
 export module poco.foundation:Base32Encoder;
 

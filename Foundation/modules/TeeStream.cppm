@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "TeeStream.cpp"
+#include "Poco/TeeStream.h"
 
 export module poco.foundation:TeeStream;
 

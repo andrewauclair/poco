@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Manifest.cpp"
+#include "Poco/Manifest.h"
 
 export module poco.foundation:Manifest;
 

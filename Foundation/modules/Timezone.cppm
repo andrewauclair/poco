@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Timezone.cpp"
+#include "Poco/Timezone.h"
 
 export module poco.foundation:Timezone;
 

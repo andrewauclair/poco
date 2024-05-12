@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Stopwatch.cpp"
+#include "Poco/Stopwatch.h"
 
 export module poco.foundation:stopwatch;
 

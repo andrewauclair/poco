@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Random.cpp"
+#include "Poco/Random.h"
 
 export module poco.foundation:random;
 

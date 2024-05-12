@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Windows1252Encoding.cpp"
+#include "Poco/Windows1252Encoding.h"
 
 export module poco.foundation:Windows1252Encoding;
 

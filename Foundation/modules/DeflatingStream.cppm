@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "DeflatingStream.cpp"
+#include "Poco/DeflatingStream.h"
 
 export module poco.foundation:DeflatingStream;
 

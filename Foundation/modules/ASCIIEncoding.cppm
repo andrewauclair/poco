@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "ASCIIEncoding.cpp"
+#include "Poco/ASCIIEncoding.h"
 
 export module poco.foundation:ASCIIEncoding;
 

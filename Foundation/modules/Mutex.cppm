@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Mutex.cpp"
+#include "Poco/Mutex.h"
 
 export module poco.foundation:mutex;
 

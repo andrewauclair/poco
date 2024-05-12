@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "Checksum.cpp"
+#include "Poco/Checksum.h"
 
 export module poco.foundation:checksum;
 

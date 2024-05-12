@@ -2,7 +2,7 @@ module;
 
 #define POCO_ENABLE_MODULES
 
-#include "MemoryStream.cpp"
+#include "Poco/MemoryStream.h"
 
 export module poco.foundation:memoryStream;
 
