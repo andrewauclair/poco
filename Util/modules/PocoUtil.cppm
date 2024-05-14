@@ -26,7 +26,7 @@ module;
 #include "Poco/Util/SystemConfiguration.h"
 #include "Poco/Util/Timer.h"
 #include "Poco/Util/TimerTask.h"
-#include "Poco/Util/TimeTaskAdapter.h"
+#include "Poco/Util/TimerTaskAdapter.h"
 #include "Poco/Util/Units.h"
 #include "Poco/Util/Util.h"
 #include "Poco/Util/Validator.h"
@@ -43,7 +43,7 @@ export namespace Poco::Util
     using Poco::Util::FilesystemConfiguration;
     using Poco::Util::HelpFormatter;
     using Poco::Util::IniFileConfiguration;
-    using Poco::Util::IntValidation;
+    using Poco::Util::IntValidator;
     using Poco::Util::JSONConfiguration;
     using Poco::Util::LayeredConfiguration;
     using Poco::Util::LocalConfigurationView;
@@ -63,8 +63,16 @@ export namespace Poco::Util
     using Poco::Util::Timer;
     using Poco::Util::TimerTask;
     using Poco::Util::TimerTaskAdapter;
-    using Poco::Util::Units;
-    using Poco::Util::Util;
+    
+    namespace Units
+    {
+        using Poco::Util::Units::Compose;
+        using Poco::Util::Units::Scale;
+        using Poco::Util::Units::Translate;
+        using Poco::Util::Units::Power;
+        using Poco::Util::Units::Unit;
+        using Poco::Util::Units::Value;
+    }
     using Poco::Util::Validator;
     using Poco::Util::XMLConfiguration;
 }

@@ -86,80 +86,99 @@ export module poco.XML;
 
 export namespace Poco::XML
 {
-	export Poco::XML::AbstractContainerNode;
-	export Poco::XML::AbstractNode;
-	export Poco::XML::Attr;
-	export Poco::XML::AttrMap;
-	export Poco::XML::AutoPtr;
-	export Poco::XML::CDATASection;
-	export Poco::XML::CharacterData;
-	export Poco::XML::ChildNodesList;
-	export Poco::XML::Comment;
-	export Poco::XML::Document;
-	export Poco::XML::DocumentEvent;
-	export Poco::XML::DocumentFragment;
-	export Poco::XML::DocumentType;
-	export Poco::XML::DOMBuilder;
-	export Poco::XML::DOMException;
-	export Poco::XML::DOMImplementation;
-	export Poco::XML::DOMObject;
-	export Poco::XML::DOMParser;
-	export Poco::XML::DOMSerializer;
-	export Poco::XML::DOMWriter;
-	export Poco::XML::DTDMap;
-	export Poco::XML::Element;
-	export Poco::XML::ElementsByTagNameList;
-	export Poco::XML::Entity;
-	export Poco::XML::EntityReference;
-	export Poco::XML::Event;
-	export Poco::XML::EventDispatcher;
-	export Poco::XML::EventException;
-	export Poco::XML::EventListener;
-	export Poco::XML::EventTarget;
-	export Poco::XML::MutationEvent;
-	export Poco::XML::NamedNodeMap;
-	export Poco::XML::Node;
-	export Poco::XML::NodeAppender;
-	export Poco::XML::NodeFilter;
-	export Poco::XML::NodeIterator;
-	export Poco::XML::NodeList;
-	export Poco::XML::Notation;
-	export Poco::XML::ProcessingInstruction;
-	export Poco::XML::Text;
-	export Poco::XML::TreeWalker;
+	using Poco::XML::AbstractContainerNode;
+	using Poco::XML::AbstractNode;
+	using Poco::XML::Attr;
+	using Poco::XML::AttrMap;
+	using Poco::XML::AutoPtr;
+	using Poco::XML::CDATASection;
+	using Poco::XML::CharacterData;
+	using Poco::XML::ChildNodesList;
+	using Poco::XML::Comment;
+	using Poco::XML::Document;
+	using Poco::XML::DocumentEvent;
+	using Poco::XML::DocumentFragment;
+	using Poco::XML::DocumentType;
+	using Poco::XML::DOMBuilder;
+	using Poco::XML::DOMException;
+	using Poco::XML::DOMImplementation;
+	using Poco::XML::DOMObject;
+	using Poco::XML::DOMParser;
+	using Poco::XML::DOMSerializer;
+	using Poco::XML::DOMWriter;
+	using Poco::XML::DTDMap;
+	using Poco::XML::Element;
+	using Poco::XML::ElementsByTagNameList;
+	using Poco::XML::Entity;
+	using Poco::XML::EntityReference;
+	using Poco::XML::Event;
+	using Poco::XML::EventDispatcher;
+	using Poco::XML::EventException;
+	using Poco::XML::EventListener;
+	using Poco::XML::EventTarget;
+	using Poco::XML::MutationEvent;
+	using Poco::XML::NamedNodeMap;
+	using Poco::XML::Node;
+	using Poco::XML::NodeAppender;
+	using Poco::XML::NodeFilter;
+	using Poco::XML::NodeIterator;
+	using Poco::XML::NodeList;
+	using Poco::XML::Notation;
+	using Poco::XML::ProcessingInstruction;
+	using Poco::XML::Text;
+	using Poco::XML::TreeWalker;
 
-	export Poco::XML::Attributes;
-	export Poco::XML::AttributesImpl;
-	export Poco::XML::ContentHandler;
-	export Poco::XML::DeclHandler;
-	export Poco::XML::DTDHandler;
-	export Poco::XML::EntityResolver;
-	export Poco::XML::EntityResolverImpl;
-	export Poco::XML::ErrorHandler;
-	export Poco::XML::InputSource;
-	export Poco::XML::LexicalHandler;
-	export Poco::XML::Locator;
-	export Poco::XML::LocatorImpl;
-	export Poco::XML::NamespaceSupport;
-	export Poco::XML::SAXException;
-	export Poco::XML::SAXParser;
-	export Poco::XML::WhitespaceFilter;
-	export Poco::XML::XMLFilter;
-	export Poco::XML::XMLFilterImpl;
-	export Poco::XML::XMLReader;
+	using Poco::XML::Attributes;
+	using Poco::XML::AttributesImpl;
+	using Poco::XML::ContentHandler;
+	using Poco::XML::DeclHandler;
+	using Poco::XML::DTDHandler;
+	using Poco::XML::EntityResolver;
+	using Poco::XML::EntityResolverImpl;
+	using Poco::XML::ErrorHandler;
+	using Poco::XML::InputSource;
+	using Poco::XML::LexicalHandler;
+	using Poco::XML::Locator;
+	using Poco::XML::LocatorImpl;
+	using Poco::XML::NamespaceSupport;
+	using Poco::XML::SAXException;
+	using Poco::XML::SAXParser;
+	using Poco::XML::WhitespaceFilter;
+	using Poco::XML::XMLFilter;
+	using Poco::XML::XMLFilterImpl;
+	using Poco::XML::XMLReader;
 
-	export Poco::XML::Content;
-	export Poco::XML::Name;
-	export Poco::XML::NamePool;
-	export Poco::XML::NamespaceStrategy;
-	export Poco::XML::ParserEngine;
-	export Poco::XML::QName;
-	export Poco::XML::ValueTraits;
-	export Poco::XML::XML;
-	export Poco::XML::XMLException;
-	export Poco::XML::XMLStream;
-	export Poco::XML::XMLStreamParser;
-	export Poco::XML::XMLStreamParserException;
-	export Poco::XML::XMLString;
-	export Poco::XML::XMLWriter;
+	using Poco::XML::Content;
+	using Poco::XML::Name;
+	using Poco::XML::NamePool;
+	using Poco::XML::NamespaceStrategy;
+	using Poco::XML::ParserEngine;
+	using Poco::XML::QName;
+	using Poco::XML::ValueTraits;
+	using Poco::XML::XMLException;
+	using Poco::XML::XMLByteInputStream;
+	using Poco::XML::XMLByteOutputStream;
+
+#if defined(XML_UNICODE_WCHAR_T)
+
+	// Unicode - use wide streams
+	using Poco::XML::XMLCharInputStream;
+	using Poco::XML::XMLCharOutputStream;
+
+#elif defined(XML_UNICODE)
+
+	// not supported - leave XMLString undefined
+
+#else
+
+	// Characters are UTF-8 encoded
+	using Poco::XML::XMLCharInputStream;
+	using Poco::XML::XMLCharOutputStream;
+
+#endif
+
+	using Poco::XML::XMLStreamParser;
+	using Poco::XML::XMLStreamParserException;
+	using Poco::XML::XMLString;
+	using Poco::XML::XMLWriter;
 }
