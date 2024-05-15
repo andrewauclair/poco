@@ -89,6 +89,15 @@ protected:
 		{
 		}
 
+		ItemInfo& operator=(const ItemInfo& other)
+		{
+			path = other.path;
+			size = other.size;
+			lastModified = other.lastModified;
+
+			return *this;
+		}
+
 		std::string path;
 		File::FileSize size;
 		Timestamp lastModified;
