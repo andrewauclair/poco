@@ -54,7 +54,7 @@ if(CXX17_COMPILER)
 else()
 	message(FATAL_ERROR "Compiler does not support C++17.")
 endif()
-set(CMAKE_CXX_STANDARD 20)
+
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE "RelWithDebInfo")
 endif()
