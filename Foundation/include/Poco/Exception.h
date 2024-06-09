@@ -99,6 +99,7 @@ protected:
 
 private:
 	std::string _msg;
+	std::string _whatMessage; // store the message used for what()
 	Exception*  _pNested;
 	int			_code;
 };
