@@ -21,33 +21,36 @@ namespace Poco {
 
 Exception::Exception(int code): _pNested(0), _code(code)
 {
+	_whatMessage = displayText();
 }
 
 
 Exception::Exception(const std::string& msg, int code): _msg(msg), _whatMessage(msg), _pNested(0), _code(code)
 {
+	_whatMessage = displayText();
 }
 
 
-Exception::Exception(const std::string& msg, const std::string& arg, int code): _msg(msg), _whatMessage(msg), _pNested(0), _code(code)
+Exception::Exception(const std::string& msg, const std::string& arg, int code): _msg(msg), _pNested(0), _code(code)
 {
 	if (!arg.empty())
 	{
 		_msg.append(": ");
 		_msg.append(arg);
 	}
+	_whatMessage = displayText();
 }
 
 
-Exception::Exception(const std::string& msg, const Exception& nested, int code): _msg(msg), _whatMessage(msg), _pNested(nested.clone()), _code(code)
+Exception::Exception(const std::string& msg, const Exception& nested, int code): _msg(msg), _pNested(nested.clone()), _code(code)
 {
+	_whatMessage = displayText();
 }
 
 
 Exception::Exception(const Exception& exc):
 	std::exception(exc),
 	_msg(exc._msg),
-	_whatMessage(exc._whatMessage),
 	_code(exc._code)
 {
 	_pNested = exc._pNested ? exc._pNested->clone() : 0;
@@ -70,6 +73,8 @@ Exception& Exception::operator = (const Exception& exc)
 		_msg     = exc._msg;
 		_pNested = newPNested;
 		_code    = exc._code;
+
+		_whatMessage = displayText();
 	}
 	return *this;
 }
