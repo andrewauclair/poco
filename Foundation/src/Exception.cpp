@@ -117,6 +117,7 @@ void Exception::extendedMessage(const std::string& arg)
 		if (!_msg.empty()) _msg.append(": ");
 		_msg.append(arg);
 	}
+	_whatMessage = displayText();
 }
 
 
