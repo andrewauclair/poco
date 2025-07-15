@@ -37,6 +37,12 @@ public:
 		/// Creates the RefCountedObject.
 		/// The initial reference count is one.
 
+	RefCountedObject(const RefCountedObject&) = delete;
+	RefCountedObject(RefCountedObject&&) = delete;
+
+	RefCountedObject& operator=(const RefCountedObject&) = delete;
+	RefCountedObject& operator=(RefCountedObject&&) = delete;
+		
 	void duplicate() const;
 		/// Increments the object's reference count.
 
@@ -53,9 +59,6 @@ protected:
 		/// Destroys the RefCountedObject.
 
 private:
-	RefCountedObject(const RefCountedObject&);
-	RefCountedObject& operator = (const RefCountedObject&);
-
 	mutable AtomicCounter _counter;
 };
 
