@@ -129,37 +129,37 @@ inline void formatAny(std::string& result, const char *fmt, const std::vector<An
 }
 
 template <typename T, typename... Args>
-void format(std::string& result, const std::string& fmt, T arg1, Args... args)
+void format(std::string& result, const std::string& fmt, T arg1, Args&&... args)
 	/// Appends the formatted string to result.
 {
 	std::vector<Any> values;
 	values.reserve(sizeof...(Args) + 1);
 	values.emplace_back(arg1);
-	values.insert(values.end(), { args... });
+	values.insert(values.end(), { std::forward<Args>(args)... });
 	formatAny(result, fmt, values);
 }
 
 
 template <typename T, typename... Args>
-void format(std::string& result, const char* fmt, T arg1, Args... args)
+void format(std::string& result, const char* fmt, T arg1, Args&&... args)
 	/// Appends the formatted string to result.
 {
 	std::vector<Any> values;
 	values.reserve(sizeof...(Args) + 1);
 	values.emplace_back(arg1);
-	values.insert(values.end(), { args... });
+	values.insert(values.end(), { std::forward<Args>(args)... });
 	formatAny(result, fmt, values);
 }
 
 
 template <typename T, typename... Args>
-std::string format(const std::string& fmt, T arg1, Args... args)
+std::string format(const std::string& fmt, T arg1, Args&&... args)
 	/// Returns the formatted string.
 {
 	std::vector<Any> values;
 	values.reserve(sizeof...(Args) + 1);
 	values.emplace_back(arg1);
-	values.insert(values.end(), { args... });
+	values.insert(values.end(), { std::forward<Args>(args)... });
 	std::string result;
 	formatAny(result, fmt, values);
 	return result;
@@ -167,13 +167,13 @@ std::string format(const std::string& fmt, T arg1, Args... args)
 
 
 template <typename T, typename... Args>
-std::string format(const char* fmt, T arg1, Args... args)
+std::string format(const char* fmt, T arg1, Args&&... args)
 	/// Returns the formatted string.
 {
 	std::vector<Any> values;
 	values.reserve(sizeof...(Args) + 1);
 	values.emplace_back(arg1);
-	values.insert(values.end(), { args... });
+	values.insert(values.end(), { std::forward<Args>(args)... });
 	std::string result;
 	formatAny(result, fmt, values);
 	return result;
