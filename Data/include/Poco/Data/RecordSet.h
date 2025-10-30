@@ -68,7 +68,7 @@ class Data_API RecordSet: private Statement
 	/// a limit for the Statement.
 {
 public:
-	using RowMap = std::map<std::size_t, std::shared_ptr<Row>>;
+	using RowMap = std::map<std::size_t, std::unique_ptr<Row>>;
 	using ConstIterator = const RowIterator;
 	using Iterator = RowIterator;
 
@@ -405,8 +405,8 @@ private:
 		/// Returns the filter associated with the RecordSet.
 
 	std::size_t  _currentRow;
-	RowIterator* _pBegin;
-	RowIterator* _pEnd;
+	std::unique_ptr<RowIterator> _pBegin;
+	std::unique_ptr<RowIterator> _pEnd;
 	RowMap       _rowMap;
 	Poco::AutoPtr<RowFilter> _pFilter;
 	std::size_t  _totalRowCount;
