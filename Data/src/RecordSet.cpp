@@ -74,8 +74,8 @@ RecordSet::RecordSet(const RecordSet& other):
 RecordSet::RecordSet(RecordSet&& other) noexcept:
 	Statement(std::move(other)),
 	_currentRow(other._currentRow),
-	_pBegin(std::move(other._pBegin),
-	_pEnd(std::move(other._pEnd),
+	_pBegin(std::move(other._pBegin)),
+	_pEnd(std::move(other._pEnd)),
 	_rowMap(std::move(other._rowMap)),
 	_pFilter(other._pFilter),
 	_totalRowCount(other._totalRowCount)
