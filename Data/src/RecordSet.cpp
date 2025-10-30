@@ -38,8 +38,8 @@ RecordSet::RecordSet(const Statement& rStatement,
 	RowFormatter::Ptr pRowFormatter):
 	Statement(rStatement),
 	_currentRow(0),
-	_pBegin(new RowIterator(this, 0 == rowsExtracted())),
-	_pEnd(new RowIterator(this, true)),
+	_pBegin(std::make_unique<RowIterator>(this, 0 == rowsExtracted())),
+	_pEnd(std::make_unique<RowIterator>(this, true)),
 	_totalRowCount(UNKNOWN_TOTAL_ROW_COUNT)
 {
 	if (pRowFormatter) setRowFormatter(pRowFormatter);
@@ -51,8 +51,8 @@ RecordSet::RecordSet(Session& rSession,
 	RowFormatter::Ptr pRowFormatter):
 	Statement((rSession << query, now)),
 	_currentRow(0),
-	_pBegin(new RowIterator(this, 0 == rowsExtracted())),
-	_pEnd(new RowIterator(this, true)),
+	_pBegin(std::make_unique<RowIterator>(this, 0 == rowsExtracted())),
+	_pEnd(std::make_unique<RowIterator>(this, true)),
 	_totalRowCount(UNKNOWN_TOTAL_ROW_COUNT)
 {
 	if (pRowFormatter) setRowFormatter(pRowFormatter);
@@ -62,8 +62,8 @@ RecordSet::RecordSet(Session& rSession,
 RecordSet::RecordSet(const RecordSet& other):
 	Statement(other),
 	_currentRow(other._currentRow),
-	_pBegin(new RowIterator(this, 0 == rowsExtracted())),
-	_pEnd(new RowIterator(this, true)),
+	_pBegin(std::make_unique<RowIterator>(this, 0 == rowsExtracted())),
+	_pEnd(std::make_unique<RowIterator>(this, true)),
 	_rowMap(other._rowMap),
 	_pFilter(other._pFilter),
 	_totalRowCount(other._totalRowCount)
@@ -74,16 +74,14 @@ RecordSet::RecordSet(const RecordSet& other):
 RecordSet::RecordSet(RecordSet&& other) noexcept:
 	Statement(std::move(other)),
 	_currentRow(other._currentRow),
-	_pBegin(new RowIterator(this, 0 == rowsExtracted())),
-	_pEnd(new RowIterator(this, true)),
+	_pBegin(std::move(other._pBegin),
+	_pEnd(std::move(other._pEnd),
 	_rowMap(std::move(other._rowMap)),
 	_pFilter(other._pFilter),
 	_totalRowCount(other._totalRowCount)
 {
 	other._currentRow = 0;
-	delete other._pBegin;
 	other._pBegin = nullptr;
-	delete other._pEnd;
 	other._pEnd = nullptr;
 	other._rowMap.clear();
 	other._pFilter.reset();
@@ -93,15 +91,6 @@ RecordSet::RecordSet(RecordSet&& other) noexcept:
 
 RecordSet::~RecordSet()
 {
-	try
-	{
-		delete _pBegin;
-		delete _pEnd;
-	}
-	catch (...)
-	{
-		poco_unexpected();
-	}
 }
 
 
@@ -110,10 +99,9 @@ RecordSet& RecordSet::operator = (RecordSet&& other) noexcept
 	Statement::operator = (std::move(other));
 	_currentRow = std::move(other._currentRow);
 	other._currentRow = 0;
-	_pBegin = new RowIterator(this, 0 == rowsExtracted());
-	delete other._pBegin;
+	_pBegin = std::move(other._pBegin);
 	other._pBegin = nullptr;
-	_pEnd = new RowIterator(this, true);
+	_pEnd = std::move(other._pEnd);
 	delete other._pEnd;
 	other._pEnd = nullptr;
 	_rowMap = std::move(other._rowMap);
@@ -129,9 +117,7 @@ RecordSet& RecordSet::operator = (RecordSet&& other) noexcept
 
 void RecordSet::reset(const Statement& stmt)
 {
-	delete _pBegin;
 	_pBegin = nullptr;
-	delete _pEnd;
 	_pEnd = nullptr;
 	_currentRow = 0;
 	_totalRowCount = UNKNOWN_TOTAL_ROW_COUNT;
@@ -140,8 +126,8 @@ void RecordSet::reset(const Statement& stmt)
 
 	Statement::operator = (stmt);
 
-	_pBegin = new RowIterator(this, 0 == rowsExtracted());
-	_pEnd = new RowIterator(this, true);
+	_pBegin = std::make_unique<RowIterator>(this, 0 == rowsExtracted());
+	_pEnd = std::make_unique<RowIterator>(this, true);
 }
 
 
@@ -477,25 +463,30 @@ Row& RecordSet::row(std::size_t pos)
 	std::size_t columns = columnCount();
 	if (it == _rowMap.end())
 	{
+		std::unique_ptr<Row> newRow;
+
 		if (_rowMap.size())
 		{
 			//reuse first row column names and sorting fields to save some memory
-			pRow = new Row(_rowMap.begin()->second->names(),
+			newRow = std::unique_ptr<Row>(_rowMap.begin()->second->names(),
 				_rowMap.begin()->second->getSortMap(),
 				getRowFormatter());
+			pRow = newRow.get();
 
 			for (std::size_t col = 0; col < columns; ++col)
 				pRow->set(col, value(col, pos));
 		}
 		else
 		{
-			pRow = new Row;
+			newRow = std::make_unique<Row>();
+			pRow = newRow.get();
+
 			pRow->setFormatter(getRowFormatter());
 			for (std::size_t col = 0; col < columns; ++col)
 				pRow->append(metaColumn(static_cast<UInt32>(col)).name(), value(col, pos));
 		}
 
-		_rowMap.insert(RowMap::value_type(pos, pRow));
+		_rowMap.insert(RowMap::value_type(pos, std::move(newRow)));
 	}
 	else
 	{
