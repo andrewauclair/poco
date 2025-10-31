@@ -64,10 +64,13 @@ RecordSet::RecordSet(const RecordSet& other):
 	_currentRow(other._currentRow),
 	_pBegin(std::make_unique<RowIterator>(this, 0 == rowsExtracted())),
 	_pEnd(std::make_unique<RowIterator>(this, true)),
-	_rowMap(other._rowMap),
 	_pFilter(other._pFilter),
 	_totalRowCount(other._totalRowCount)
 {
+	for (auto&& it : other._rowMap)
+	{
+		_rowMap[it.first] = std::make_unique<Row>(*it.second);
+	}
 }
 
 
