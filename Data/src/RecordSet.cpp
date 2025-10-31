@@ -102,7 +102,6 @@ RecordSet& RecordSet::operator = (RecordSet&& other) noexcept
 	_pBegin = std::move(other._pBegin);
 	other._pBegin = nullptr;
 	_pEnd = std::move(other._pEnd);
-	delete other._pEnd;
 	other._pEnd = nullptr;
 	_rowMap = std::move(other._rowMap);
 	other._rowMap.clear();
@@ -468,7 +467,7 @@ Row& RecordSet::row(std::size_t pos)
 		if (_rowMap.size())
 		{
 			//reuse first row column names and sorting fields to save some memory
-			newRow = std::unique_ptr<Row>(_rowMap.begin()->second->names(),
+			newRow = std::make_unique<Row>(_rowMap.begin()->second->names(),
 				_rowMap.begin()->second->getSortMap(),
 				getRowFormatter());
 			pRow = newRow.get();
